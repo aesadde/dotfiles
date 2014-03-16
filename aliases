@@ -11,12 +11,26 @@ alias ..='cd ..'
 alias dow='cd ~/Downloads'
 
 #commands
-alias ll='ls -l'
-alias la='ls -la'
 alias sshadd='ssh-add ~/.ssh/id_dsa'
 alias hiddentrue='defaults write com.apple.finder AppleShowAllFiles TRUE & killall Finder'
 alias hiddenfalse='defaults write com.apple.finder AppleShowAllFiles FALSE & killall Finder'
 alias lg='ls -la | grep'
+
+########################### These were taken from: https://github.com/mathiasbynens/dotfiles/blob/master/.aliases 
+# Detect which `ls` flavor is in use
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+    colorflag="--color"
+    else # OS X `ls`
+    colorflag="-G"
+fi
+
+#  List only directories
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+# List all files colorized in long format, including dot files
+alias la="ls -laF ${colorflag}"
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+#########################
 
 #Git aliases
 alias g?='git status'

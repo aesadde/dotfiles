@@ -15,15 +15,20 @@
 #===============================================================================
 
 #Variables: {{{1
+DOTFILES_ROOT=$PWD
 #}}}
 
 #Functions: All functions are declared here {{{1
-function usage() {
+
+#Function: usage() prints the usage instructions {{{2
+function usage() { 
     echo -e "Need to select at least one option\n"
-    echo -e "-h for help\n-all for all dotfiles\n-vim just for vim dotfiles\n-bash just for bash dotfiles\n-clean to remove old dotfiles"
+    echo -e "-h for help\n-all for all dotfiles\n-vim just for vim dotfiles\n-bash just for bash dotfiles\n-git for git dotfiles\n-clean to remove old dotfiles"
     exit 1
 }
+#2}}}
 
+#Function: parseOptions() parses the options selected by user {{{2
 function parseOptions() {
 case "$1" in
     -h) 
@@ -37,43 +42,75 @@ case "$1" in
         ;;
     -bash) 
         bashFiles
+        ;; 
+    -git)
+        gitFiles
         ;;
     -clean)
         removeOldDotFiles
         ;;
 esac
 }
+#2}}}
 
+#Function: removeOldDotFiles() cleans up home directory from old dotfiles if they exist {{{2
 function removeOldDotFiles() {
-    for file in $HOME/.{bash_profile,aliases,bashrc,exports,vimrc}; do
-        rm $file
+    for file in $HOME/.{gitignore,gitconfig,gitattribues,bash_profile,aliases,bashrc,exports,vimrc}; do
+        if [ -f $file ]; then
+            rm $file
+        fi
     done
 
-    rm -rf $HOME/.vim
+    if [ -d $HOME/.vim ]; then
+        rm -rf $HOME/.vim
+    fi
 }
+#2}}}
 
+#Function: bashFiles() sets the bash dotfiles {{{2
 function bashFiles() {
     for file in {bash_profile,aliases,bashrc,exports}; do
         if [ -f $HOME/.$file ]; then
             rm $HOME/.$file
         fi
 
-        ln -s $PWD/$file $HOME/.$file;
+        ln -s $DOTFILES_ROOT/$file $HOME/.$file
     done
     unset file
     echo -e "All dotfiles up and running!\n"
 }
+#2}}}
 
+#Function: vimFiles() sets .vimrc and .vim {{{2
 function vimFiles() {
-    cd $PWD/vim
+    cd $DOTFILES_ROOT/vim
     exec $PWD/vimrc.sh
     echo -e "Vim files and plugins up and running!\n"
 }
+#2}}}
 
+#Function: gitFiles() sets global git config dotfiles {{{2
+function gitFiles() {
+echo $DOTFILES_ROOT
+for file in {gitignore,gitattributes,gitconfig}; do
+    if [ -f $HOME/.$file ]; then
+        rm $HOME/.$file
+    fi
+
+    ln -s $DOTFILES_ROOT/$file $HOME/.$file
+done
+unset file
+echo -e "All git config files up and running!\n"
+}
+#2}}}
+
+#Function: all() sets all dotfiles {{{2
 function all() {
 bashFiles
 vimFiles
+gitFiles
 }
+#2}}}
 #}}}
 
 #Main: {{{
