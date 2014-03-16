@@ -1,0 +1,29 @@
+# ALIASES
+
+# Often used folders
+alias haha='open ~/Downloads/.haha'
+alias dropbox='cd ~/Dropbox/'
+alias york='cd ~/Documents/York'
+alias euler='cd ~/Documents/Programming/euler'
+alias programming='cd ~/Documents/Programming/'
+alias des='cd ~/Desktop'
+alias ..='cd ..'
+alias dow='cd ~/Downloads'
+
+#commands
+alias ll='ls -l'
+alias la='ls -la'
+alias sshadd='ssh-add ~/.ssh/id_dsa'
+alias hiddentrue='defaults write com.apple.finder AppleShowAllFiles TRUE & killall Finder'
+alias hiddenfalse='defaults write com.apple.finder AppleShowAllFiles FALSE & killall Finder'
+alias lg='ls -la | grep'
+
+#Git aliases
+alias g?='git status'
+
+#LDC stuff -- here just for old times sake
+alias ntpdate='/usr/sbin/ntpdate'
+alias ldaps='ldapsearch -b dc=ldc,dc=usb,dc=ve -H ldap://ldap.ldc.usb.ve -LLLx'
+alias sback='ssh alberto@sholem.ldc.usb.ve'
+alias site='rsync -avur /Volumes/Alberto/Docs/site_ldc/  alberto@ldc.usb.ve:'/home/alberto/html/''
+alias sldc='ssh alberto@waff.ldc.usb.ve'
