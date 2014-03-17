@@ -69,7 +69,7 @@ function removeOldDotFiles() {
 
 #Function: bashFiles() sets the bash dotfiles {{{2
 function bashFiles() {
-    for file in {bash_profile,aliases,bashrc,exports}; do
+    for file in {bash_profile,bashrc,customFunctions}; do
         if [ -f $HOME/.$file ]; then
             rm $HOME/.$file
         fi
