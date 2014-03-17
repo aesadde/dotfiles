@@ -108,7 +108,6 @@ function miscAliases() {
 #faster cds
 alias ..='cd ..'
 alias dow='cd ~/Downloads'
-alias ga='cd /d/nsga2/nsga2_cuda'
 
 #commands
 alias sshadd='ssh-add ~/.ssh/id_dsa'
