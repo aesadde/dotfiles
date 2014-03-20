@@ -4,50 +4,50 @@ ARCH="$(uname -m)"
 #}}}
 
 #FUNCTIONS: all functions used, basically makes the bashrc more readable {{{1
-#Function: settingsForAl() settings that are known to work on all systems {{{2
+#function: settingsForAl() settings that are known to work on all systems {{{2
 function settingsForAll() {
-    #nice prompt
-    PS1='\e[0;33m\n[\e[0;35m\u-\e[0;33m\W]\$\e[0;37m'
+#nice prompt
+PS1='\e[0;33m\n[\e[0;35m\u-\e[0;33m\W]\$\e[0;37m'
 
-    #sudo prompt
-    SUDO_PS1='[\u@\h \W]\$'
+#sudo prompt
+SUDO_PS1='[\u@\h \W]\$'
 
-    #Append to history file
-    shopt -s histappend
+#Append to history file
+shopt -s histappend
 
-    #Autocorrect typos in path names when using cd
-    shopt -s cdspell
+#Autocorrect typos in path names when using cd
+shopt -s cdspell
 
-    #expand aliases
-    shopt -s expand_aliases
+#expand aliases
+shopt -s expand_aliases
 }
 #2}}}
 
-#Function: settings() these settings apply for all systems that are not windows {{{2
+#function: settings() these settings apply for all systems that are not windows {{{2
 function settings() {
-    #vi editing mode
-    set -o vi
+#vi editing mode
+set -o vi
 
-    #Case insensitive globbing for pathname expansion
-    #doesn't work in windows (msys)
-    shopt -s nocaseglob
+#Case insensitive globbing for pathname expansion
+#doesn't work in windows (msys)
+shopt -s nocaseglob
 
-    # if possible activate tab completion for more stuff
-    [ -f /etc/bash_completion ] && source /etc/bash_completion
+# if possible activate tab completion for more stuff
+[ -f /etc/bash_completion ] && source /etc/bash_completion
 }
 #2}}}
 #1}}}
 
 #EXPORT FUNCTIONS: These functions set the export path for different systems {{{1
 
-#Function: winExports() exports some win paths {{{2
+#function: winExports() exports some win paths {{{2
 function winExports() {
 #Editors
 export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
 }
 #2}}}
 
-#Function: macExports() exports some mac paths {{{2
+#function: macExports() exports some mac paths {{{2
 function macExports() {
 #macports
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
@@ -66,7 +66,7 @@ export PATH=/Developer/NVIDIA/CUDA-5.5/bin:$PATH
 }
 #2}}}
 
-#Function: globalExports() system independent exports {{{2
+#function: globalExports() system independent exports {{{2
 function globalExports() {
 #Shell colors
 export CLICOLOR=1
@@ -76,34 +76,34 @@ export LSCOLORS=dxgxcxdxcxegedacagacad
 #1}}}
 
 # ALIASES: all aliases go here {{{1
-#Function: macAliases() all aliases that are mac only {{{2
+#function: macAliases() all aliases that are mac only {{{2
 function macAliases() {
-    alias haha='open ~/Downloads/.haha'
-    #hide/show .files
-    alias hiddentrue='defaults write com.apple.finder AppleShowAllFiles TRUE & killall Finder'
-    alias hiddenfalse='defaults write com.apple.finder AppleShowAllFiles FALSE & killall Finder'
+alias haha='open ~/Downloads/.haha'
+#hide/show .files
+alias hiddentrue='defaults write com.apple.finder AppleShowAllFiles TRUE & killall Finder'
+alias hiddenfalse='defaults write com.apple.finder AppleShowAllFiles FALSE & killall Finder'
 #Lock the screen (when going AFK)
-    alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-    #faster cds
-    alias dropbox='cd ~/Dropbox/'
-    alias york='cd ~/Documents/York'
-    alias euler='cd ~/Documents/Programming/euler'
-    alias programming='cd ~/Documents/Programming/'
-    alias des='cd ~/Desktop'
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+#faster cds
+alias dropbox='cd ~/Dropbox/'
+alias york='cd ~/Documents/York'
+alias euler='cd ~/Documents/Programming/euler'
+alias programming='cd ~/Documents/Programming/'
+alias des='cd ~/Desktop'
 }
 #2}}}
 
-#Function:  ldcAliases() here only for old time's sake {{{2
+#function:  ldcAliases() here only for old time's sake {{{2
 function ldcAliases() {
-    alias ntpdate='/usr/sbin/ntpdate'
-    alias ldaps='ldapsearch -b dc=ldc,dc=usb,dc=ve -H ldap://ldap.ldc.usb.ve -LLLx'
-    alias sback='ssh alberto@sholem.ldc.usb.ve'
-    alias site='rsync -avur /Volumes/Alberto/Docs/site_ldc/  alberto@ldc.usb.ve:'/home/alberto/html/''
-    alias sldc='ssh alberto@waff.ldc.usb.ve'
+alias ntpdate='/usr/sbin/ntpdate'
+alias ldaps='ldapsearch -b dc=ldc,dc=usb,dc=ve -H ldap://ldap.ldc.usb.ve -LLLx'
+alias sback='ssh alberto@sholem.ldc.usb.ve'
+alias site='rsync -avur /Volumes/Alberto/Docs/site_ldc/  alberto@ldc.usb.ve:'/home/alberto/html/''
+alias sldc='ssh alberto@waff.ldc.usb.ve'
 }
 #2}}}
 
-#Function: miscAliases() all non platform specific aliases go here {{{2
+#function: miscAliases() all non platform specific aliases go here {{{2
 function miscAliases() {
 #faster cds
 alias ..='cd ..'
@@ -116,7 +116,7 @@ alias sshadd='ssh-add ~/.ssh/id_dsa'
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
     colorflag="--color"
-    else # OS X `ls`
+else # OS X `ls`
     colorflag="-G"
 fi
 
@@ -160,7 +160,7 @@ fi
 
 #keeping everything clean so source all the files
 #for file in ~/.aliases; do
-    #[ -r "$file" ] && [ -f "$file" ] && source "$file"
+#[ -r "$file" ] && [ -f "$file" ] && source "$file"
 # Load some customfunctions
 [ -r "$HOME/.customFunctions" ] && [ -f "$HOME/.customFunctions" ] && source "$HOME/.customFunctions"
 #done

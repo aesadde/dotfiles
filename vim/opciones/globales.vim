@@ -22,8 +22,12 @@ filetype indent on
 set incsearch " ...dynamically as they are typed
 "set term=ansi
 set hlsearch "highlighted search
+"hell bells
+set t_vb=
 set novisualbell "esto sirve para que VIM no suene xD
 set noerrorbells  "esto para que no ladille cuando hay errores
+autocmd! GUIEnter * set vb t_vb=
+
 
 "otras para probar
 "Bash-like filename completion
