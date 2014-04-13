@@ -43,27 +43,33 @@
 [submodule "bundle/vim-ctrlp"]
 	path = bundle/vim-ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule "bundle/vim-bufexplorer"]
-	path = bundle/vim-bufexplorer
-	url = https://github.com/corntrace/bufexplorer.git
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "bundle/vim-twit"]
 	path = bundle/vim-twit
 	url = https://github.com/vim-scripts/TwitVim.git
-[submodule "bundle/vim-a"]
-	path = bundle/vim-a
-	url = https://github.com/vim-scripts/a.vim.git
 [submodule "bundle/haskellmode"]
 	path = bundle/haskellmode
 	url = https://github.com/lukerandall/haskellmode-vim.git
-[submodule "bundle/abolish"]
-	path = bundle/abolish
-	url = https://github.com/tpope/vim-abolish.git
 [submodule "bundle/goldenView"]
 	path = bundle/goldenView
 	url = https://github.com/zhaocai/GoldenView.Vim.git
 [submodule "bundle/vim-ghcmod"]
 	path = bundle/vim-ghcmod
 	url = https://github.com/eagletmt/ghcmod-vim
+[submodule "bundle/latex"]
+	path = bundle/latex
+	url = https://github.com/gerw/vim-latex-suite.git
+[submodule "bundle/vim-easydir"]
+	path = bundle/vim-easydir
+	url = https://github.com/dockyard/vim-easydir.git
+[submodule "bundle/unite"]
+	path = bundle/unite
+	url = https://github.com/Shougo/unite.vim.git
+[submodule "bundle/vimproc"]
+	path = bundle/vimproc
+	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "bundle/airline"]
+	path = bundle/airline
+	url = https://github.com/bling/vim-airline.git

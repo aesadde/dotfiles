@@ -10,6 +10,8 @@ set tags=./tags,./../tags,./*/tags
 set ai "Auto indent"
 set si "smart indent"
 
+set number "show line numbers
+
 set showcmd  "shows last entered command
 set lazyredraw "redraw screen only when needed
 
@@ -51,9 +53,6 @@ set ofu=syntaxcomplete "esto prende el auto completion
 "esto es para que no me deje escribir mas de 80 caracteres por linea
 "match ErrorMsg /\%>80v.\+/
 "lo que sigue es para mejorar el statusline
-set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [POS=%04l,%04v]\ [%p%%]
-set statusline+=%{fugitive#statusline()}
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L]
 set laststatus=2
 
 "set statusline+=%#waningmsg#
@@ -79,7 +78,7 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
 "maximo de caracteres por linea
-"set textwidth=80
+set textwidth=80
 
 set splitright                  " Make vertical splits work sanely
 set splitbelow                  " Make horizontal splits work sanely
@@ -98,9 +97,6 @@ set foldmethod=indent
 set foldmethod=syntax
 set foldlevel=20
 set foldcolumn=4
-
-"automatically reload vimrc when its saved!
-au BufWritePost .vimrc so ~/.vimrc
 
 "set errorfile list
 "set errorfile = error.list

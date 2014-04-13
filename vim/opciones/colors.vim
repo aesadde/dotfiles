@@ -1,12 +1,11 @@
 syntax enable
+colorscheme solarized
 
 let s:uname = system("uname")
 
 if s:uname == "Darwin"
     set background=dark
 endif
-
-colorscheme solarized
 
 if !has('gui_running')
     " Compatibility for Terminal

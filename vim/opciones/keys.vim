@@ -1,13 +1,14 @@
 " KEYS OPTIONS ---------------------------------- {{{
 
+"1+2+3
 "map Leader
 let mapleader=","
 let g:mapleader=","
 
 "-------MISC--------------{{{
 "fast saving 
-noremap <Leader>w :w!<CR> 
-noremap <Leader>q :wq<CR>
+nnoremap <Leader>w :w!<CR> 
+nnoremap <Leader>q :wq<CR>
 
 "funcion para prender y apagar el spelling
 nmap <silent> <leader>s :set spell!<CR>
@@ -20,14 +21,15 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "-----TEXT FORMATTING-----------------{{{
 "toggle paste mode
-noremap <Leader>ps :set nopaste<CR>
-noremap <Leader>sp :set paste<CR>
-inoremap <C-v> <esc>"+gP<CR>
+nnoremap <Leader>ps :set nopaste<CR>
+nnoremap <Leader>sp :set paste<CR>
+inoremap <C-v> <esc>"*gP<CR>
+vnoremap <C-c> "*y<CR>
 
 "paste key, con buena indentacion
-noremap <Leader>p p=`]
+nnoremap <Leader>p p=`]
 "indenta de manera correcta todo el archivo
-noremap <Leader>= 1G=G
+nnoremap <Leader>= 1G=G
 
 "append semicolon at end of line
 "inoremap ; <esc>A;
@@ -36,31 +38,33 @@ noremap <Leader>= 1G=G
 "}}}
 
 "-----PLUGINS SHORTCUTS------------{{{
+"opspacing
+nnoremap <leader>os :CorrSpacing<CR>
 
 "taglist
-noremap <leader>lt :TlistToggle<CR>
+nnoremap <leader>lt :TlistToggle<CR>
 "tasklist 
 nmap <Leader>td <Plug>TaskList
 
 "gundo
-noremap <Leader>g :GundoToggle<CR>
+nnoremap <Leader>u :GundoToggle<CR>
 
 "nerd tree
-noremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
 
 "Ack, like grep but better
 nnoremap <leader>a <Esc>:Ack!
 
 "syntastic manual check
-noremap <leader>ch :SyntasticCheck<CR>
-noremap <Leader>stm :SyntasticToggleMode<CR>
+nnoremap <leader>ch :SyntasticCheck<CR>
+nnoremap <Leader>stm :SyntasticToggleMode<CR>
 
 "Clear highlights from search
-noremap <Leader>/ :nohls<CR>
+nnoremap <Leader>/ :nohls<CR>
 
 "Tagbar
 "abre la lista de tags
-noremap <Leader>ts :TagbarToggle<CR> 
+nnoremap <Leader>ts :TagbarToggle<CR> 
 "--------PLUGINS SHORTCUTS END ------"
 "}}}
 
@@ -73,15 +77,15 @@ nnoremap J <c-F>
 nnoremap K <c-B>
 
 "cambio de buffer mas rapido
-noremap <Leader>b :bn<CR>
+nnoremap <Leader>b :bn<CR>
 "remove buffer
-noremap <Leader>db :bd<CR>
+nnoremap <Leader>db :bd<CR>
 
-noremap <Leader>m :execute "vimgrep /" . expand("<cword>") . "/jg ./**/*.cu *.cpp" <cr>:copen<cr>
+nnoremap <Leader>m :execute "vimgrep /" . expand("<cword>") . "/jg ./**/*.cu *.cpp" <cr>:copen<cr>
 "windows navigation
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 
 "this are to get used to NOT use arrow keys in insert mode (good practice is
