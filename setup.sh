@@ -79,6 +79,7 @@ function bashFiles() {
 
 #Function: vimFiles() sets .vimrc and .vim {{{2
 function vimFiles() {
+    git submodule init; git submodule update
     cd $DOTFILES_ROOT/vim
     exec $PWD/vimrc.sh
     echo -e "Vim files and plugins up and running!\n"
