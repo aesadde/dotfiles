@@ -55,15 +55,11 @@ esac
 
 #Function: removeOldDotFiles() cleans up home directory from old dotfiles if they exist {{{2
 function removeOldDotFiles() {
-    for file in $HOME/.{gitignore,gitconfig,gitattribues,bash_profile,aliases,bashrc,exports,vimrc}; do
+    for file in $HOME/.{gitignore,gitconfig,gitattributes,bash_profile,aliases,bashrc,exports,vimrc,vim,customFunctions}; do
         if [ -f $file ]; then
             rm $file
         fi
     done
-
-    if [ -d $HOME/.vim ]; then
-        rm -rf $HOME/.vim
-    fi
 }
 #2}}}
 
