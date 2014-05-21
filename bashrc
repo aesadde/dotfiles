@@ -147,10 +147,12 @@ if [ $OSTYPE == "Darwin" ]; then
     settings
     #echo "Mac settings set"
 
-elif [ "$(expr substr $OSTYPE 1 5)" == "Linux" ]; then
-    #echo "linux settings set"
-    ldcAliases
+elif [ $OSTYPE == "Linux" ]; then
+    echo "linux settings set"
+    #ldcAliases
     settings
+    export PATH="/home/atc/sadde/local/bin:$PATH"
+    export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64"
 
 elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
     winExports
