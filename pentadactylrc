@@ -1,0 +1,74 @@
+""
+"" Pentadactyl settings
+""###############################################
+
+" @section Options {{{1
+"
+set novisualbell
+set newtab=all
+set titlestring=Mozilla\ Firefox
+set autocomplete=".*"
+
+"Use characters for hints
+ set hintkeys=asdflkj
+ hi -a Hint font-size: 9pt !important;
+
+" show up to 35 items in the completion list
+set maxitems=35
+
+" find as you type
+set incfind
+
+" highlight the terms
+set hlfind
+
+" unless they contain upper-case letters
+set findcase=smart
+
+" a toggle for search highlight
+map <silent> coh :set hlfind!<CR>
+
+" Set up google as the default search engine
+set defsearch=google
+
+"smooth scroll setting
+set scrollsteps=1
+set scrolltime=0
+" }}}
+
+
+" @section Mappings {{{
+"
+"set mapleader=","
+
+" Disable some Pentadactyl default mappings
+nmap d <Nop>
+nmap a <Nop>
+nmap w <Nop>
+
+" Disable some regular-Firefox old habits
+nmap <M-F12> <Nop>
+nmap <M-t> <Nop>
+nmap <M-e> <Nop>
+nmap <M-b> <Nop>
+nmap <M-S-h> <Nop>
+nmap <M-k> <Nop>
+nmap <M-f> <Nop>
+nmap <M-g> <Nop>
+nmap <M-l> <Nop>
+nmap <M-Q> <Nop>
+
+" Add some of our own mappings
+nmap x :tabclose<CR>
+"navigate tabs
+nmap -builtin K <C-n>
+nmap -builtin J <C-p>
+
+" Faster scrolling
+map -b j 8j
+map -b k 8k
+map -b h 8h
+map -b l 8l
+
+" }}}
+
