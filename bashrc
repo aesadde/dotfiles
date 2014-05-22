@@ -26,7 +26,7 @@ shopt -s expand_aliases
 #function: settings() these settings apply for all systems that are not windows {{{2
 function settings() {
 #vi editing mode
-set -o vi
+#set -o vi
 
 #Case insensitive globbing for pathname expansion
 #doesn't work in windows (msys)
@@ -34,6 +34,13 @@ shopt -s nocaseglob
 
 # if possible activate tab completion for more stuff
 [ -f /etc/bash_completion ] && source /etc/bash_completion
+if [ -d /etc/bash_completion.d ]; then
+    for file in /etc/bash_completion.d/*;  do
+        source $file
+    done
+fi
+
+
 }
 #2}}}
 #1}}}
@@ -147,10 +154,12 @@ if [ $OSTYPE == "Darwin" ]; then
     settings
     #echo "Mac settings set"
 
-elif [ "$(expr substr $OSTYPE 1 5)" == "Linux" ]; then
-    #echo "linux settings set"
-    ldcAliases
+elif [ $OSTYPE == "Linux" ]; then
+    echo "linux settings set"
+    #ldcAliases
     settings
+    export PATH="/home/atc/sadde/local/bin:$PATH"
+    export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64"
 
 elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
     winExports
@@ -162,7 +171,7 @@ fi
 #for file in ~/.aliases; do
 #[ -r "$file" ] && [ -f "$file" ] && source "$file"
 # Load some customfunctions
-[ -r "$HOME/.customFunctions" ] && [ -f "$HOME/.customFunctions" ] && source "$HOME/.customFunctions"
+[ -r "customFunctions" ] && [ -f "customFunctions" ] && source "customFunctions"
 #done
 #unset file
 
