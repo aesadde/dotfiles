@@ -1,7 +1,5 @@
-""
 "" Pentadactyl settings
-""###############################################
-
+"vim: ft=vim fdm=marker:
 " @section Options {{{1
 "
 set novisualbell
@@ -13,38 +11,52 @@ set autocomplete=".*"
  set hintkeys=asdflkj
  hi -a Hint font-size: 9pt !important;
 
-" show up to 35 items in the completion list
-set maxitems=35
+"show up to 35 items in the completion list
+set maxitems=35 
 
-" find as you type
-set incfind
+"find as you type
+set incfind 
 
-" highlight the terms
-set hlfind
+"highlight the terms
+set hlfind 
 
-" unless they contain upper-case letters
-set findcase=smart
+"unless they contain upper-case letters
+set findcase=smart 
 
-" a toggle for search highlight
-map <silent> coh :set hlfind!<CR>
+"a toggle for search highlight
+map <silent> coh :set hlfind!<CR> 
 
-" Set up google as the default search engine
-set defsearch=google
+"Set up google as the default search engine
+set defsearch=google 
 
 "smooth scroll setting
 set scrollsteps=1
 set scrolltime=0
+"1}}}
+
+" @section Completions {{{1
+" completions s=search l=location bar h=history b=bookmarks
+set complete=slb
+
+" if one match, show it; if more list all matches until longest common
+set wildmode=list:full
 " }}}
 
-
-" @section Mappings {{{
+" @section Mappings {{{1
 "
-"set mapleader=","
+map , <Leader>
 
 " Disable some Pentadactyl default mappings
 nmap d <Nop>
 nmap a <Nop>
 nmap w <Nop>
+
+"close tab, I'm used to this from vimium
+nmap x :tabclose<CR>
+
+" jump to previous and next tabs - matches LH for history movement
+map l gt
+map h gT
 
 " Disable some regular-Firefox old habits
 nmap <M-F12> <Nop>
@@ -58,17 +70,10 @@ nmap <M-g> <Nop>
 nmap <M-l> <Nop>
 nmap <M-Q> <Nop>
 
-" Add some of our own mappings
-nmap x :tabclose<CR>
-"navigate tabs
-nmap -builtin K <C-n>
-nmap -builtin J <C-p>
-
 " Faster scrolling
 map -b j 8j
 map -b k 8k
 map -b h 8h
 map -b l 8l
 
-" }}}
-
+"1}}}
