@@ -2,7 +2,8 @@
 "vim: ft=vim fdm=marker:
 " @section Options {{{1
 "
-set novisualbell
+set novisualbells
+set noerrorbells 
 set newtab=all
 set titlestring=Mozilla\ Firefox
 set autocomplete=".*"
