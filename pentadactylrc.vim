@@ -62,6 +62,7 @@ map <Leader>t :tabopen <SPACE>
 map <Leader>o :open <SPACE>
 map <Leader>a :tabopen amazon-co-uk<SPACE>
 map <Leader>w :tabopen wikipedia-en<SPACE>
+map <Leader>g :tabopen www.gmail.com<CR>
  
 " Disable some Pentadactyl default mappings
 nmap d <Nop>
