@@ -65,13 +65,14 @@ function removeOldDotFiles() {
 
 #Function: bashFiles() sets the bash dotfiles {{{2
 function bashFiles() {
-    for file in {pentadactylrc,bash_profile,bashrc}; do
+    for file in {bash_profile,bashrc}; do
         if [ -f $HOME/.$file ]; then
             rm $HOME/.$file
         fi
 
         ln -s $DOTFILES_ROOT/$file $HOME/.$file
     done
+    ln -s $DOTFILES_ROOT/pentadactylrc.vim $HOME/.pentadactylrc
     unset file
     echo -e "All dotfiles up and running!\n"
 }
