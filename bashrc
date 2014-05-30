@@ -82,6 +82,7 @@ export LSCOLORS=dxgxcxdxcxegedacagacad
 #1}}}
 
 # ALIASES: all aliases go here {{{1
+
 #function: macAliases() all aliases that are mac only {{{2
 function macAliases() {
 alias haha='open ~/Downloads/.haha'
@@ -141,7 +142,13 @@ alias la="ls -laF ${colorflag}"
 
 #Git aliases (git specific aliases are in gitconfig)
 alias g?='git status'
+
+#tmux aliases
+alias tn="tmux new-session -s"
+alias tl="tmux ls"
+alias ta="tmux attach -t"
 }
+
 #2}}}
 #1}}}
 
