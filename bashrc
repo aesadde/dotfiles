@@ -32,15 +32,15 @@ function settings() {
 #doesn't work in windows (msys)
 shopt -s nocaseglob
 
-# if possible activate tab completion for more stuff
+## if possible activate tab completion for more stuff
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-if [ -d /etc/bash_completion.d ]; then
-    for file in /etc/bash_completion.d/*;  do
-        source $file
-    done
-fi
+#if [ -d /etc/bash_completion.d ]; then
+    #for file in /etc/bash_completion.d/*;  do
+        #source $file
+    #done
+#fi
 
-}
+#}
 #2}}}
 #1}}}
 
