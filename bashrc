@@ -40,7 +40,7 @@ shopt -s nocaseglob
     #done
 #fi
 
-#}
+}
 #2}}}
 #1}}}
 
