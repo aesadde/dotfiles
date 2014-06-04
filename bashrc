@@ -7,7 +7,7 @@ ARCH="$(uname -m)"
 #function: settingsForAl() settings that are known to work on all systems {{{2
 function settingsForAll() {
 #nice prompt
-PS1='\e[0;33m\n[\e[0;35m\u-\e[0;33m\W]\$\e[0;37m'
+PS1='\e[0;33m\n[\e[0;35m\u-\e[0;33m\w]\$\e[0;37m'
 
 #sudo prompt
 SUDO_PS1='[\u@\h \W]\$'
@@ -32,13 +32,13 @@ function settings() {
 #doesn't work in windows (msys)
 shopt -s nocaseglob
 
-# if possible activate tab completion for more stuff
+## if possible activate tab completion for more stuff
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-if [ -d /etc/bash_completion.d ]; then
-    for file in /etc/bash_completion.d/*;  do
-        source $file
-    done
-fi
+#if [ -d /etc/bash_completion.d ]; then
+    #for file in /etc/bash_completion.d/*;  do
+        #source $file
+    #done
+#fi
 
 }
 #2}}}
@@ -133,7 +133,8 @@ alias lk='ls -lSr'         #  Sort by size, biggest last.
 alias lt='ls -ltr'         #  Sort by date, most recent last.
 alias lc='ls -ltcr'        #  Sort by/show change time,most recent last.
 alias lu='ls -ltur'        #  Sort by/show access time,most recent last.
-#show only matchin files/dirs
+
+#show only matching files/dirs
 alias lg='ls -la | grep'
 #  List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
