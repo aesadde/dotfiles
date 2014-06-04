@@ -24,7 +24,7 @@ js editor.defaultRegister="+"
 
 " @section Gui options {{{1
 
-set guioptions+=CMB
+set guioptions+=TCMB
 set showtabline=multitab
 
 "1}}}
