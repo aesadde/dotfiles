@@ -7,7 +7,10 @@ ARCH="$(uname -m)"
 #function: settingsForAl() settings that are known to work on all systems {{{2
 function settingsForAll() {
 #nice prompt
-PS1='\e[0;33m\n[\e[0;35m\u-\e[0;33m\w]\$\e[0;37m'
+[ -f /etc/bash_completion ] && source /etc/bash_completion
+
+[ -f $HOME/dotfiles/git-prompt.sh ] && source $HOME/dotfiles/git-prompt.sh
+export PS1='\e[0;35m\u-\e[0;33m\w $(__git_ps1 "(%s)")\$\e[0;37m'
 
 #sudo prompt
 SUDO_PS1='[\u@\h \W]\$'
@@ -33,12 +36,6 @@ function settings() {
 shopt -s nocaseglob
 
 ## if possible activate tab completion for more stuff
-[ -f /etc/bash_completion ] && source /etc/bash_completion
-#if [ -d /etc/bash_completion.d ]; then
-    #for file in /etc/bash_completion.d/*;  do
-        #source $file
-    #done
-#fi
 
 }
 #2}}}
