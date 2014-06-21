@@ -60,9 +60,6 @@ set hlfind
 "unless they contain upper-case letters
 set findcase=smart 
 
-"a toggle for search highlight
-map <silent> coh :set hlfind!<CR> 
-
 "Set up google as the default search engine
 set defsearch=google 
 "1}}}
@@ -83,6 +80,8 @@ set wildmode=list:longest,full
 " }}}
 
 " @section Mappings {{{1
+"a toggle for search highlight
+map <silent> coh :set hlfind!<CR> 
 "
 "set the map leader since set mapleader="," doesn't work
 map , <Leader>
@@ -126,9 +125,19 @@ map -b l 8l
 
 " toggle bookmarks sidebar
 map <Leader>B -ex sidebar! Bookmarks
+
+"toggle pocket sidebar
+map <Leader>pb -ex sidebar! Pocket
+
+"undo tab close
+map <Leader>ut :undo<CR>
+
+"
 "1}}}
 
 map <Leader>sp :source ~/.pentadactylrc<CR>
+
+
 
 "@section Passkeys {{{
 set passkeys+='facebook.com':<CR>
@@ -139,8 +148,6 @@ set passkeys+='www.google.com/calendar':dwmxajkcnqep?<Del>s12345<Return>
 set passkeys+='drive.google.com':jkxANTPSDFcuarvzs<Return>./d?,gn,gl,gf,gd
 set passkeys+='mail.google.com':c/kjnp<Return>uemxs+-!raflvIU[]zNqy?<CR>,gi,gs,gt,gd,ga,gc,gb,gk,gl
 
-"Enable Pass Through mode on all Google sites:
-  "autocmd LocationChange google.com :normal! <C-z>
 " }}}
 
 "@section Custom commands {{{

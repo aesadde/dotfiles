@@ -24,8 +24,8 @@ export SUDO_PS1='[\u@\h \W]\$'
 }
 #2}}}
 
-#function: settingsForAl() settings that are known to work on all systems {{{2
-function settingsForAll() {
+#function: settings() these settings apply for all systems that are not windows {{{2
+function settings() {
 #Append to history file
 shopt -s histappend
 
@@ -34,20 +34,13 @@ shopt -s cdspell
 
 #expand aliases
 shopt -s expand_aliases
-}
-#2}}}
 
-#function: settings() these settings apply for all systems that are not windows {{{2
-function settings() {
 #vi editing mode
-#set -o vi
+set -o vi
 
 #Case insensitive globbing for pathname expansion
 #doesn't work in windows (msys)
 shopt -s nocaseglob
-
-## if possible activate tab completion for more stuff
-
 }
 #2}}}
 #1}}}
@@ -63,14 +56,8 @@ export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
 
 #function: macExports() exports some mac paths {{{2
 function macExports() {
-#macports
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export MANPATH=/opt/local/share/man:$MANPATH
-
-#editor
-export EDITOR=/usr/bin/vim
-
-# PACKAGES
+#Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
+test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
 #Haskell
 export PATH="$HOME/.cabal/bin:$PATH";
 #cabal
@@ -136,11 +123,11 @@ else # OS X `ls`
 fi
 
 #LS aliases
-alias lx='ls -lXB'         #  Sort by extension.
-alias lk='ls -lSr'         #  Sort by size, biggest last.
-alias lt='ls -ltr'         #  Sort by date, most recent last.
-alias lc='ls -ltcr'        #  Sort by/show change time,most recent last.
-alias lu='ls -ltur'        #  Sort by/show access time,most recent last.
+alias lx='ls -laXB'         #  Sort by extension.
+alias lk='ls -laSr'         #  Sort by size, biggest last.
+alias lt='ls -latr'         #  Sort by date, most recent last.
+alias lc='ls -latcr'        #  Sort by/show change time,most recent last.
+alias lu='ls -latur'        #  Sort by/show access time,most recent last.
 
 #show only matching files/dirs
 alias lg='ls -la | grep'
@@ -166,34 +153,30 @@ function main() {
 if [ $OSTYPE == "Darwin" ]; then
     macExports
     macAliases
-    settings
 
     BASH_COMPLETION="/opt/local/etc/profile.d/bash_completion.sh"
     GIT_PROMPT="/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh" 
     GIT_COMPLETION="/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" 
+
     promptAndCompletion $GIT_PROMPT $BASH_COMPLETION $GIT_COMPLETION
     #echo "Mac settings set"
 
 elif [ $OSTYPE == "Linux" ]; then
     echo "linux settings set"
     #ldcAliases
-    settings
     export PATH="$HOME/local/bin:$PATH"
     export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64"
 
 elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
     winExports
-
-    #echo "windows settings set"
 fi
 
 #keeping everything clean so source all the files
 # Load some customfunctions
 [ -r "customFunctions" ] && [ -f "customFunctions" ] && source "customFunctions"
-
 globalExports
 miscAliases
-settingsForAll
+settings
 }
 #1}}}
 
