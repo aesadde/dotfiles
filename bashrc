@@ -4,17 +4,28 @@ ARCH="$(uname -m)"
 #}}}
 
 #FUNCTIONS: all functions used, basically makes the bashrc more readable {{{1
-#function: settingsForAl() settings that are known to work on all systems {{{2
-function settingsForAll() {
-#nice prompt
-[ -f /etc/bash_completion ] && source /etc/bash_completion
 
-[ -f $HOME/dotfiles/git-prompt.sh ] && source $HOME/dotfiles/git-prompt.sh
-export PS1='\e[0;35m\u-\e[0;33m\w $(__git_ps1 "(%s)")\$\e[0;37m'
+#function: prompt() pretty up the prompt! {{{2
+function promptAndCompletion() { 
+#nice prompt with git support
+if [ -f $1 ]; then
+    source $1
+    export PS1='\e[0;35m\u-\e[0;33m\w $(__git_ps1 "(%s)")\$\e[0;37m'
+else
+    export PS1='\e[0;35m\u-\e[0;33m\w\$\e[0;37m'
+fi
+
+# Bash and git completion
+[ -f $2 ] && source $2
+[ -f $3 ] && source $3
 
 #sudo prompt
-SUDO_PS1='[\u@\h \W]\$'
+export SUDO_PS1='[\u@\h \W]\$'
+}
+#2}}}
 
+#function: settingsForAl() settings that are known to work on all systems {{{2
+function settingsForAll() {
 #Append to history file
 shopt -s histappend
 
@@ -156,6 +167,11 @@ if [ $OSTYPE == "Darwin" ]; then
     macExports
     macAliases
     settings
+
+    BASH_COMPLETION="/opt/local/etc/profile.d/bash_completion.sh"
+    GIT_PROMPT="/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh" 
+    GIT_COMPLETION="/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" 
+    promptAndCompletion $GIT_PROMPT $BASH_COMPLETION $GIT_COMPLETION
     #echo "Mac settings set"
 
 elif [ $OSTYPE == "Linux" ]; then
@@ -172,12 +188,8 @@ elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
 fi
 
 #keeping everything clean so source all the files
-#for file in ~/.aliases; do
-#[ -r "$file" ] && [ -f "$file" ] && source "$file"
 # Load some customfunctions
 [ -r "customFunctions" ] && [ -f "customFunctions" ] && source "customFunctions"
-#done
-#unset file
 
 globalExports
 miscAliases
