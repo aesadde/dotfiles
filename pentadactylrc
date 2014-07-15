@@ -21,7 +21,12 @@ set scrolltime=0
 "yank to default clipboard with Y
 js editor.defaultRegister="+"
 
+"languages
 set! intl.accept_languages="en-us, en, en-uk, es, it"
+
+"enable in private mode
+set private
+
 "}}}
 
 " @section Gui options {{{1
