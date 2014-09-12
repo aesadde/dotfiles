@@ -24,9 +24,6 @@ js editor.defaultRegister="+"
 "languages
 set! intl.accept_languages="en-us, en, en-uk, es, it"
 
-"enable in private mode
-set private
-
 "}}}
 
 " @section Gui options {{{1
@@ -87,6 +84,7 @@ set wildmode=list:longest,full
 " @section Mappings {{{1
 "a toggle for search highlight
 map <silent> coh :set hlfind!<CR> 
+map <Leader>/ :nohls<CR>
 "
 "set the map leader since set mapleader="," doesn't work
 map , <Leader>
@@ -134,20 +132,12 @@ map <Leader>B -ex sidebar! Bookmarks
 "toggle pocket sidebar
 map <Leader>pb -ex sidebar! Pocket
 
-"undo tab close
-map <Leader>ut :undo<CR>
-
-"
-"1}}}
-
 map <Leader>sp :source ~/.pentadactylrc<CR>
-
-
+"1}}}
 
 "@section Passkeys {{{
 set passkeys+='facebook.com':<CR>
 set passkeys+='twitter.com':jk<Space>/.frmn?ghrpu<Return>
-set passkeys+='www.google.com/calendar':dwmxajkcnqep?<Del>s12345<Return>
 
 "set passkeys+='www.google.com/search':jk
 set passkeys+='drive.google.com':jkxANTPSDFcuarvzs<Return>./d?,gn,gl,gf,gd

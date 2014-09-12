@@ -65,15 +65,16 @@ function removeOldDotFiles() {
 
 #Function: bashFiles() sets the bash dotfiles {{{2
 function bashFiles() {
-    for file in {bash_profile,bashrc,pentadactylrc,tmux.conf}; do
-        if [ -f $HOME/.$file ]; then
-            rm $HOME/.$file
-        fi
+for file in {bash_profile,bashrc,pentadactylrc,tmux.conf}; do
+    if [ -f $HOME/.$file ]; then
+        rm $HOME/.$file
+    fi
 
-        ln -s $DOTFILES_ROOT/$file $HOME/.$file
-    done
-    unset file
-    echo -e "All dotfiles up and running!\n"
+    ln -s $DOTFILES_ROOT/$file $HOME/.$file
+done
+    ln -s $DOTFILES_ROOT/"ghci.conf" $HOME/.ghc/"ghci.conf"
+unset file
+echo -e "All dotfiles up and running!\n"
 }
 #2}}}
 
@@ -88,8 +89,7 @@ function vimFiles() {
 
 #Function: gitFiles() sets global git config dotfiles {{{2
 function gitFiles() {
-echo $DOTFILES_ROOT
-for file in {gitignore,gitattributes,gitconfig}; do
+for file in {gitignore,gitconfig}; do
     if [ -f $HOME/.$file ]; then
         rm $HOME/.$file
     fi
