@@ -86,12 +86,14 @@ alias hiddentrue='defaults write com.apple.finder AppleShowAllFiles TRUE & killa
 alias hiddenfalse='defaults write com.apple.finder AppleShowAllFiles FALSE & killall Finder'
 #Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
 #faster cds
 alias dbx='cd ~/Dropbox/'
 alias yrk='cd ~/Documents/York'
 alias eu='cd ~/Documents/Programming/euler'
 alias pr='cd ~/Documents/Programming/'
 alias des='cd ~/Desktop'
+alias ms='cd ~/Documents/Docs/application/Masters'
 }
 #2}}}
 
