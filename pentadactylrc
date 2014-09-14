@@ -23,7 +23,6 @@ js editor.defaultRegister="+"
 
 "languages
 set! intl.accept_languages="en-us, en, en-uk, es, it"
-
 "}}}
 
 " @section Gui options {{{1
@@ -132,6 +131,10 @@ map <Leader>B -ex sidebar! Bookmarks
 "toggle pocket sidebar
 map <Leader>pb -ex sidebar! Pocket
 
+"toggle evernote
+"map <Leader>ev -ex sidebar! Evernote
+
+"reload penta
 map <Leader>sp :source ~/.pentadactylrc<CR>
 
 map <Leader>ad :ao<CR>
@@ -142,7 +145,7 @@ map <Leader>dw :downloads
 
 "@section Passkeys {{{
 set passkeys+='facebook.com':<CR>
-set passkeys+='twitter.com':jk<Space>/.frmn?ghrpu<Return>
+set passkeys+='twitter.com':jglk<Space>/.frmn?ghrpu<Return>
 
 "set passkeys+='www.google.com/search':jk
 set passkeys+='drive.google.com':jkxANTPSDFcuarvzs<Return>./d?,gn,gl,gf,gd
@@ -159,6 +162,17 @@ command! plex-it -description "Add to plex queue" open javascript:%20var%20s=doc
 
 nmap ch :couch-potato<CR>
 command! couch-potato -description "Add to couch potato for download" open javascript:javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://192.168.1.227:5050/api/221165b906f24a19a92786b337328848/userscript.bookmark/?host=http://192.168.1.227:5050/api/221165b906f24a19a92786b337328848/userscript.get/ryte52Rz/&r='+Math.random()*99999999);document.body.appendChild(e)})());
+
+"" smart reload
+command smartReload -js <<EOF
+if (buffer.URL.spec.indexOf('#') >= 0) {
+dactyl.execute("reload");
+} else {
+dactyl.open(buffer.URL.spec);
+}
+EOF
+nmap -builtin r :smartReload<CR>
+
 " }}}
 
 "@section Start {{{
@@ -168,3 +182,10 @@ set! browser.startup.homepage=about:blank
 set! browser.newtabpage.enabled=false
 set! browser.newtab.url=about:blank
 " }}}
+
+"@section Tab Groups {{{
+map -modes=n -builtin <Leader>nw t https://news.ycombinator.com | http://reddit.com<CR>gT
+map -modes=n -builtin <Leader>fn t https://www.facebook.com | https://twitter.com<CR>gT
+" }}}
+
+
