@@ -119,6 +119,8 @@ nmap x :tabclose<CR>
 map J :tabprevious<CR>
 map K :tabnext<CR>
 
+"stop loading page
+nmap <Leader>x :stop<CR>
 " Faster scrolling
 map -b j 8j
 map -b k 8k
