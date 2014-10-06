@@ -6,7 +6,7 @@ ARCH="$(uname -m)"
 #FUNCTIONS: all functions used, basically makes the bashrc more readable {{{1
 
 #function: prompt() pretty up the prompt! {{{2
-function promptAndCompletion() { 
+function promptAndCompletion() {
 #nice prompt with git support
 if [ -f $1 ]; then
     source $1
@@ -94,6 +94,7 @@ alias eu='cd ~/Documents/Programming/euler'
 alias pr='cd ~/Documents/Programming/'
 alias des='cd ~/Desktop'
 alias ms='cd ~/Documents/Docs/application/Masters'
+alias pr='cd ~/Documents/York/3rdYear/Project'
 }
 #2}}}
 
@@ -116,7 +117,7 @@ alias dow='cd ~/Downloads'
 #commands
 alias sshadd='ssh-add ~/.ssh/id_dsa'
 
-########################### some of these were taken from: https://github.com/mathiasbynens/dotfiles/blob/master/.aliases 
+########################### some of these were taken from: https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
     colorflag="--color"
@@ -157,8 +158,8 @@ if [ $OSTYPE == "Darwin" ]; then
     macAliases
 
     BASH_COMPLETION="/opt/local/etc/profile.d/bash_completion.sh"
-    GIT_PROMPT="/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh" 
-    GIT_COMPLETION="/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash" 
+    GIT_PROMPT="/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
+    GIT_COMPLETION="/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
 
     promptAndCompletion $GIT_PROMPT $BASH_COMPLETION $GIT_COMPLETION
     #echo "Mac settings set"

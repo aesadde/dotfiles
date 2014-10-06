@@ -1,6 +1,6 @@
 "ft=vim
 "" Pentadactyl settings
-" @section Options {{{1
+" ==[ section Options ]=== {{{1
 
 "turn off bells
 set noerrorbells 
@@ -25,7 +25,7 @@ js editor.defaultRegister="+"
 set! intl.accept_languages="en-us, en, en-uk, es, it"
 "}}}
 
-" @section Gui options {{{1
+" ===[ Gui options ]=== {{{1
 
 set guioptions+=CM
 set showtabline=multitab
@@ -48,9 +48,12 @@ set! dom.disable_window_move_resize=true
 " no tab close buttons at all
 set! browser.tabs.closeButtons=2
 
+" title string
+set titlestring="Vim"
+
 "1}}}
 
-" @section Searching {{{1
+" ===[ Searching ]=== {{{1
 
 "find as you type
 set incfind 
@@ -63,6 +66,10 @@ set findcase=smart
 
 "Set up google as the default search engine
 set defsearch=google 
+
+" delete highlights
+map <leader>/ :hi clear<CR>
+
 "1}}}
 
 " @section Completions {{{1
@@ -83,7 +90,6 @@ set wildmode=list:longest,full
 " @section Mappings {{{1
 "a toggle for search highlight
 map <silent> coh :set hlfind!<CR> 
-map <Leader>/ :nohls<CR>
 "
 "set the map leader since set mapleader="," doesn't work
 map , <Leader>
@@ -94,6 +100,7 @@ map <Leader>am :tabopen amazon-co-uk<SPACE>
 map <Leader>we :tabopen wikipedia-en<SPACE>
 map <Leader>g :tabopen mail.google.com<CR>
 map <Leader>pt :tabopen getpocket.com<CR>
+map <Leader>gs :tabopen scholar.google.com<CR>
  
 " Disable some Pentadactyl default mappings
 nmap d <Nop>
