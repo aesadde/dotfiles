@@ -62,8 +62,10 @@ test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed 
 export PATH="$HOME/.cabal/bin:$PATH";
 #cabal
 export PATH="$HOME/Library/Haskell/bin:$PATH"
+
 #CUDA paths
-export PATH=/Developer/NVIDIA/CUDA-5.5/bin:$PATH
+export PATH="/usr/local/cuda/bin:$PATH"
+export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:$DYLD_LIBRARY_PATH"
 }
 #2}}}
 
@@ -162,7 +164,7 @@ if [ $OSTYPE == "Darwin" ]; then
     GIT_COMPLETION="/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
 
     promptAndCompletion $GIT_PROMPT $BASH_COMPLETION $GIT_COMPLETION
-    #echo "Mac settings set"
+    # echo "Mac settings set"
 
 elif [ $OSTYPE == "Linux" ]; then
     echo "linux settings set"
