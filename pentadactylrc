@@ -3,7 +3,7 @@
 " ==[ section Options ]=== {{{1
 
 "turn off bells
-set noerrorbells 
+set noerrorbells
 set novisualbell
 javascript dactyl.beep = function() { return false; }
 
@@ -56,16 +56,16 @@ set titlestring="Vim"
 " ===[ Searching ]=== {{{1
 
 "find as you type
-set incfind 
+set incfind
 
 "highlight the terms
-set hlfind 
+set hlfind
 
 "unless they contain upper-case letters
-set findcase=smart 
+set findcase=smart
 
 "Set up google as the default search engine
-set defsearch=google 
+set defsearch=google
 
 " delete highlights
 map <leader>/ :hi clear<CR>
@@ -81,7 +81,7 @@ set maxitems=10
 
 " completions s=search l=location bar h=history b=bookmarks
 set complete=slb
-set complete-=f 
+set complete-=f
 
 " if one match, show it; if more list all matches until longest common
 set wildmode=list:longest,full
@@ -89,7 +89,7 @@ set wildmode=list:longest,full
 
 " @section Mappings {{{1
 "a toggle for search highlight
-map <silent> coh :set hlfind!<CR> 
+map <silent> coh :set hlfind!<CR>
 "
 "set the map leader since set mapleader="," doesn't work
 map , <Leader>
@@ -101,7 +101,8 @@ map <Leader>we :tabopen wikipedia-en<SPACE>
 map <Leader>g :tabopen mail.google.com<CR>
 map <Leader>pt :tabopen getpocket.com<CR>
 map <Leader>gs :tabopen scholar.google.com<CR>
- 
+map <Leader>lb :tabopen http://subjectguides.york.ac.uk/content.php?pid=348930&sid=2957594#10389840<CR>
+
 " Disable some Pentadactyl default mappings
 nmap d <Nop>
 nmap a <Nop>

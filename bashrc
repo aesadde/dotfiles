@@ -96,7 +96,7 @@ alias eu='cd ~/Documents/Programming/euler'
 alias pr='cd ~/Documents/Programming/'
 alias des='cd ~/Desktop'
 alias ms='cd ~/Documents/Docs/application/Masters'
-alias pr='cd ~/Documents/York/3rdYear/Project'
+alias py='cd ~/Dropbox/ProjectYork'
 }
 #2}}}
 
