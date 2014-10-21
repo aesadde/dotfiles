@@ -67,6 +67,7 @@ set findcase=smart
 "Set up google as the default search engine
 set defsearch=google
 
+
 " delete highlights
 map <leader>/ :hi clear<CR>
 
@@ -102,6 +103,9 @@ map <Leader>g :tabopen mail.google.com<CR>
 map <Leader>pt :tabopen getpocket.com<CR>
 map <Leader>gs :tabopen scholar.google.com<CR>
 map <Leader>lb :tabopen http://subjectguides.york.ac.uk/content.php?pid=348930&sid=2957594#10389840<CR>
+
+"hoogle sarch
+map <Leader>hl :open hoogle<SPACE>
 
 " Disable some Pentadactyl default mappings
 nmap d <Nop>

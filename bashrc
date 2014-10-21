@@ -10,9 +10,9 @@ function promptAndCompletion() {
 #nice prompt with git support
 if [ -f $1 ]; then
     source $1
-    export PS1='\e[0;35m\u-\e[0;33m\w $(__git_ps1 "(%s)")\$\e[0;37m'
+    export PS1='\e[0;35m\u-\e[0;33m\W $(__git_ps1 "(%s)")\$\e[0;37m'
 else
-    export PS1='\e[0;35m\u-\e[0;33m\w\$\e[0;37m'
+    export PS1='\e[0;35m\u-\e[0;33m\W\$\e[0;37m'
 fi
 
 # Bash and git completion
