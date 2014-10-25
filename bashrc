@@ -62,10 +62,14 @@ test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed 
 export PATH="$HOME/.cabal/bin:$PATH";
 #cabal
 export PATH="$HOME/Library/Haskell/bin:$PATH"
+export PATH="/usr/bin:$PATH"
 
 #CUDA paths
 export PATH="/usr/local/cuda/bin:$PATH"
 export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:$DYLD_LIBRARY_PATH"
+
+#export custom scripts
+export PATH="$HOME/scripts:$PATH"
 }
 #2}}}
 
