@@ -180,6 +180,7 @@ elif [ $OSTYPE == "Linux" ]; then
     #ldcAliases
     export PATH="$HOME/local/bin:$PATH"
     export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64"
+    export PS1='\e[0;35m\u-\e[0;33m\W $\e[0;37m'
 
 elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
     winExports
