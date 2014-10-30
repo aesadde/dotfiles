@@ -65,8 +65,13 @@ export PATH="$HOME/Library/Haskell/bin:$PATH"
 export PATH="/usr/bin:$PATH"
 
 #CUDA paths
-export PATH="/usr/local/cuda/bin:$PATH"
-export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:$DYLD_LIBRARY_PATH"
+# USE CUDA 6.5 with these
+# export PATH="/usr/local/cuda/bin:$PATH"
+# export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:$DYLD_LIBRARY_PATH"
+
+# we want 5.5 for now
+export PATH="/Developer/NVIDIA/CUDA-5.5/bin:$PATH"
+export DYLD_LIBRARY_PATH="/Developer/NVIDIA/CUDA-5.5/lib:$DYLD_LIBRARY_PATH"
 
 #export custom scripts
 export PATH="$HOME/scripts:$PATH"
