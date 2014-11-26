@@ -5,7 +5,7 @@
 set noerrorbells
 set novisualbell
 
-set autocomplete=
+set autocomplete=false
 set wildmode=list:longest,full
 
 "yank to default clipboard with Y
@@ -17,6 +17,8 @@ set! intl.accept_languages="en-us, en, en-uk, es, it"
 " home keys for hints
 set hintchars=asdfghjkl
 hi -a Hint font-size: 9pt !important;
+
+set gui=nonavigation
 
 "}}}
 
