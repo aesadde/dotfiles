@@ -12,7 +12,7 @@ set wildmode=list:longest,full
 js editor.defaultRegister="+"
 
 "languages
-set! intl.accept_languages="en-us, en, en-uk, es, it"
+set! intl.accept_languages="en-us, en-uk, es, it"
 
 " home keys for hints
 set hintchars=asdfghjkl
@@ -20,14 +20,20 @@ hi -a Hint font-size: 9pt !important;
 
 set gui=nonavigation
 
+" Make Firefox run faster by using JIT
+set! javascript.options.jit.chrome=true
 "}}}
 
 
 " ===[ Searching ]=== {{{1
-
 "Set up google as the default search engine
 set defsearch=google
 "}}}
+
+" ===[ Auto commands ]=== {{{1
+" Pass through all keys (like CTRL-Z) on Gmail and Google Reader:
+autocmd LocationChange .* :js modes.passAllKeys = /mail\.google\.com|www\.google\.com\/reader\/view/.test(buffer.URL)
+" 1}}}
 
 " ===[ Mappings ]=== {{{
 "set the map leader since set mapleader="," doesn't work

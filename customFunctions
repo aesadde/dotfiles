@@ -32,6 +32,7 @@ function sanitize() { chmod -R u=rwX,g=rX,o= "$@" ;}
 
 #tmux new session based on current dir
 #from tilvim.com/2014/07/30/tmux-and-vim.html
+
 function new-tmux-from-dir-name {
       tmux new-session -As `basename $PWD`
-      }
+}

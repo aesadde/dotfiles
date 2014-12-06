@@ -1,0 +1,22 @@
+#LS aliases
+alias lx='ls -laXB'         #  Sort by extension.
+alias lk='ls -laSr'         #  Sort by size, biggest last.
+alias lt='ls -latr'         #  Sort by date, most recent last.
+alias lc='ls -latcr'        #  Sort by/show change time,most recent last.
+alias lu='ls -latur'        #  Sort by/show access time,most recent last.
+alias la='ls -la -G'
+alias lg='ls -la | grep'    #show only matching files/dirs
+
+#faster cds
+alias ..='cd ..'
+alias dow='cd ~/Downloads'
+
+#Git aliases (git specific aliases are in gitconfig)
+alias g?='git status'
+alias g='git'
+
+#tmux aliases
+alias tn="tmux new-session -s"
+alias tml="tmux ls"
+alias tma="tmux attach -t"
+alias tnew="new-tmux-from-dir-name"
