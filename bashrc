@@ -24,8 +24,7 @@ shopt -s nocaseglob
 export CLICOLOR=1
 export LSCOLORS=dxgxcxdxcxegedacagacad
 
-#keeping everything clean so source all the files
-# Load some customfunctions
+#keeping everything clean. Source all the files
 [ -r $DOTF/customFunctions ] && [ -f $DOTF/customFunctions ] && source $DOTF/customFunctions
 [[ -f $DOTF/aliases ]] && source $DOTF/aliases
 #1}}}
