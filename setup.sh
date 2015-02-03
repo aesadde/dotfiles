@@ -55,7 +55,7 @@ esac
 
 #Function: removeOldDotFiles() cleans up home directory from old dotfiles if they exist {{{2
 function removeOldDotFiles() {
-    for file in $HOME/.{tmux.conf,pentadactylrc,gitignore,gitconfig,gitattributes,bash_profile,aliases,bashrc,exports,vimrc,vim,customFunctions}; do
+    for file in $HOME/.{tmux.conf, gitignore,gitconfig,gitattributes,bash_profile,aliases,bashrc,exports,vimrc,vim,customFunctions}; do
         if [ -f $file ]; then
             rm $file
         fi
@@ -65,7 +65,7 @@ function removeOldDotFiles() {
 
 #Function: bashFiles() sets the bash dotfiles {{{2
 function bashFiles() {
-for file in {bash_profile,bashrc,pentadactylrc,tmux.conf}; do
+for file in {bash_profile,bashrc,tmux.conf}; do
     if [ -f $HOME/.$file ]; then
         rm $HOME/.$file
     fi
