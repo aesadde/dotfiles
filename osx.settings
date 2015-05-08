@@ -35,3 +35,11 @@
         export PS1='\e[0;35m\u-\e[0;33m\W\$\e[0;37m'
     fi
     [ -f $GIT_COMPLETION ] && source $GIT_COMPLETION
+
+    # FDR - PCOC
+    export FDRHOME=/Applications/FDR-2.94
+    export PATH=$PATH:$FDRHOME/bin
+
+    # LLVM
+    export=/usr/local/opt/llvm/bin:$PATH
+    alias ghc-llvm="ghc -O2 -fllvm -pgmlo opt-3.4 -pgmlc llc-3.4"

@@ -34,8 +34,6 @@ if [ $OSTYPE == "Darwin" ]; then
     [[ -f $DOTF/aliases.local ]] && source $DOTF/aliases.local
 
 elif [ $OSTYPE == "Linux" ]; then
-    echo "linux settings set"
-    #ldcAliases
     export PATH="$HOME/local/bin:$PATH"
     export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64"
     export PS1='\e[0;35m\u-\e[0;33m\W $\e[0;37m'

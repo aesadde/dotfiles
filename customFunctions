@@ -36,3 +36,18 @@ function sanitize() { chmod -R u=rwX,g=rX,o= "$@" ;}
 function new-tmux-from-dir-name {
       tmux new-session -As `basename $PWD`
 }
+
+function cleanup-hs {
+  rm *.o *.hi main *.cu*
+  }
+
+function aws() {
+  ssh -i $HOME/.ssh/gpuVirg.pem ec2-user@"$1" ;
+  }
+
+function getf () {
+  scp -r -i $HOME/.ssh/firstKeyPair.pem ec2-user@"$1:~/project/transfers/*" ~/Desktop/transfers/.
+  }
+function pushf() {
+  scp -i $HOME/.ssh/firstKeyPair.pem ~/Desktop/transfers/* ec2-user@"$1:~/project/transfers/."
+  }

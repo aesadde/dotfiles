@@ -10,6 +10,10 @@ alias lg='ls -la | grep'    #show only matching files/dirs
 #faster cds
 alias ..='cd ..'
 alias dow='cd ~/Downloads'
+alias cdot='cd ~/dotfiles'
+
+#edit dots and vim
+alias ev='vim ~/dotfiles/vim/vimrc'
 
 #Git aliases (git specific aliases are in gitconfig)
 alias g?='git status'

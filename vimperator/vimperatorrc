@@ -24,7 +24,7 @@ set! javascript.options.jit.chrome=true
 "}}}
 " ===[ Searching ]=== {{{1
 "Set up google as the default search engine
-set defsearch=google
+set defsearch=duckduckgo
 set suggestengines=google
 "}}}
 "===[ Completion ]=== {{{1
