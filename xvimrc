@@ -1,0 +1,57 @@
+"===[ map Leader ]=== {{{1
+let mapleader=","
+let g:mapleader=","
+let g:localLeader=","
+inoremap jj <ESC>
+"1}}}
+set incsearch
+set hlsearch                   " highlighted search
+set expandtab
+set tabstop=2
+set softtabstop=2
+
+" Case-insensitive searching.
+set ignorecase
+
+" But case-sensitive if expression contains a capital letter.
+set smartcase
+" Default to global substitutions on lines
+set gdefault
+
+" Use the system pasteboard
+set pasteboard
+
+set debug
+"indenta de manera correcta todo el archivo
+nnoremap <Leader>= 1G=G
+
+"windows navigation
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
+
+"this are to get used to NOT use arrow keys in insert mode (good practice is
+"to exit to normal mode and move using normal keysnormal keys
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+"
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+nnoremap <c-o> <c-o>zz
+
+set number
+set novisualbell                 " esto sirve para que VIM no suene xD
+set noerrorbells                 " esto para que no ladille cuando hay errores
+
+set laststatus=2      " always show status line
+set cursorline        " set cursorcolumn
+set linebreak
+set lazyredraw        " redraw screen only when needed

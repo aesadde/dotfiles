@@ -1,3 +1,4 @@
+"ft=vim
 " ===[ Options ]=== {{{
 "turn off bells
 set noerrorbells
@@ -31,12 +32,12 @@ set suggestengines=google
 set complete=bl
 set! browser.urlbar.maxRichResults=20
 set wildmode=list:longest,full
-set autocomplete=false
+set autocomplete=true
 set hintmatching=contains
 "1}}}
 " ===[ Auto commands ]=== {{{1
 " Pass through all keys (like CTRL-Z) on Gmail and Google Reader:
-autocmd LocationChange .* :js modes.passAllKeys = /mail\.google\.com|www\.google\.com\/reader\/view/.test(buffer.URL)
+" autocmd LocationChange .* :js modes.passAllKeys =/mail\.google\.com
 " 1}}}
 " ===[ Mappings ]=== {{{
 " clear all key mappings
@@ -47,9 +48,6 @@ imapclear
 "set the map leader since set mapleader="," doesn't work
 let mapleader=','
 
-map <Leader>t :tabopen <SPACE>
-map <Leader>o :open <SPACE>
-map <Leader>am :tabopen amazon-co-uk<SPACE>
 map <Leader>we :tabopen wikipedia-en<SPACE>
 map <Leader>g :tabopen mail.google.com<CR>
 map <Leader>pt :tabopen getpocket.com<CR>
@@ -97,8 +95,9 @@ map <Leader>pb :emenu View.Sidebar.Pocket<CR>
 
 "add to evernote
 map <Leader>ev :emenu Tools.Add to Evernote<CR>
-"toggle clearly
-map <Leader>cl :emenu Tools.Clearly<CR>
+
+"Reader
+map <Leader>rd :emenu Tools.Firefox Reader<CR>
 
 map <Leader>h :history -max=10<CR>
 map <Leader>dw :downloads<CR>
@@ -122,9 +121,9 @@ set! browser.tabs.loadDivertedInBackground=true
 " }}}
 " ===[ Some optimizations ]=== {{{1
 set! config.trim_on_minimize=true
-set! browser.history_expire_days=30
+set! browser.history_expire_days=10
 set! browser.history_expire_days_min=7
-set! browser.history_expire_sites=1000
+set! browser.history_expire_sites=100
 set! browser.cache.memory.capacity=32768
 set! browser.sessionstore.max_tabs_undo=5
 set! browser.sessionhistory.max_total_viewers=5

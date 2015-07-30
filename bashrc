@@ -42,3 +42,4 @@ elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
     export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
 fi
 #1}}}
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
