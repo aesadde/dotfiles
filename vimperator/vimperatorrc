@@ -17,6 +17,23 @@ set! intl.accept_languages="en-us, en-uk, es, it"
 set hintchars=asdfghjkl
 hi -a Hint font-size: 9pt !important;
 
+" Make hints look a lil nicer.
+hi Hint font-family: Menlo;
+hi -a Hint border: 1px solid black;
+hi -a Hint padding: 1px 1px 0 1px;
+hi -a Hint color: black;
+hi -a Hint background-color: #fffcc8;
+hi -a Hint font-size: 12px;
+hi HintActive background-color: rgba(0,0,0,0) !important;
+hi HintElem background-color: rgba(0,0,0,0) !important;
+
+" Make the bar at the bottom that shows the url a lil easier to see.
+hi -a StatusLine text-align: left;
+hi -a CmdLine font-size: 16px;
+hi -a Normal font-size: 16px;
+hi -a Normal color: #000;
+hi -a StatusLine color: #000;
+
 " show tabbar only
 set gui=none,tabs,addons
 
@@ -96,9 +113,6 @@ map <Leader>pb :emenu View.Sidebar.Pocket<CR>
 "add to evernote
 map <Leader>ev :emenu Tools.Add to Evernote<CR>
 
-"Reader
-map <Leader>rd :emenu Tools.Firefox Reader<CR>
-
 map <Leader>h :history -max=10<CR>
 map <Leader>dw :downloads<CR>
 
@@ -111,7 +125,7 @@ set! browser.startup.homepage=about:blank
 set! browser.newtabpage.enabled=false
 set! browser.newtab.url=about:blank
 " display tab-bar anytime
-set! browser.tabs.autoHide=false
+det! browser.tabs.autoHide=false
 " don't animate tab-bar when switch to fullscreen
 set! browser.fullscreen.animateUp=0
 " hide close buttons

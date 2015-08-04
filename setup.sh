@@ -84,8 +84,9 @@ echo -e "All dotfiles up and running!\n"
 #Function: vimFiles() sets .vimrc and .vim {{{2
 function vimFiles() {
 git submodule init; git submodule update
-cd $DOTFILES_ROOT/vim
-exec $PWD/vimsetup.sh
+ln -s  $DOTFILES_ROOT/vim $HOME/.vim
+ln -s $DOTFILES_ROOT/vim/vimrc $HOME/.vimrc
+ln -s $DOTFILES_ROOT/xvimrc $HOME/.xvimrc
 echo -e "Vim files and plugins up and running!\n"
 cd $DOTFILES_ROOT
 }
