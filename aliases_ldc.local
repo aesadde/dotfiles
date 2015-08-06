@@ -1,0 +1,5 @@
+alias ntpdate='/usr/sbin/ntpdate'
+alias ldaps='ldapsearch -b dc=ldc,dc=usb,dc=ve -H ldap://ldap.ldc.usb.ve -LLLx'
+alias sback='ssh alberto@sholem.ldc.usb.ve'
+alias site='rsync -avur /Volumes/Alberto/Docs/site_ldc/  alberto@ldc.usb.ve:'/home/alberto/html/''
+alias sldc='ssh alberto@waff.ldc.usb.ve'
