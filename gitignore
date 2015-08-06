@@ -37,8 +37,3 @@ Thumbs.db
 *.sum
 *.fls
 *.fdb_latexmk
-
-# sometimes I have .local files
-*.local
-
-
