@@ -1,25 +1,9 @@
     #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
     test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
 
-    export PATH=":/usr/local/bin:/usr/local/sbin:/usr/bin:$PATH"
-
-    # Haskell. This assumes ghc app bundle
-    export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
-    if [ -d "$GHC_DOT_APP" ]; then
-        export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
-    fi
-    #CUDA paths
-    # USE CUDA 6.5 with these
-    # CUDA6="/Developer/NVIDIA/CUDA-6.5"
-    export PATH="/usr/local/cuda/bin:$PATH"
-    export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:$DYLD_LIBRARY_PATH"
-
-    # we want 5.5 for now
-    # export PATH="/Developer/NVIDIA/CUDA-5.5/bin:$PATH"
-    # export DYLD_LIBRARY_PATH="/Developer/NVIDIA/CUDA-5.5/lib:$DYLD_LIBRARY_PATH"
-
     #export custom scripts
     export PATH="$HOME/scripts:$PATH"
+    export PATH="$HOME/.local/bin:$PATH"
 
     if [ -f `brew --prefix`/etc/bash_completion ]; then
         . `brew --prefix`/etc/bash_completion
@@ -35,11 +19,3 @@
         export PS1='\e[0;35m\u-\e[0;33m\W\$\e[0;37m'
     fi
     [ -f $GIT_COMPLETION ] && source $GIT_COMPLETION
-
-    # FDR - PCOC
-    export FDRHOME=/Applications/FDR-2.94
-    export PATH=$PATH:$FDRHOME/bin
-
-    # LLVM
-    export=/usr/local/opt/llvm/bin:$PATH
-    alias ghc-llvm="ghc -O2 -fllvm -pgmlo opt-3.4 -pgmlc llc-3.4"

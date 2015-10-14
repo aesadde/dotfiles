@@ -80,7 +80,9 @@ nmap a <Nop>
 nmap w <Nop>
 
 "scroll
-set scroll=3
+set scroll=10
+noremap j 5j
+noremap k 10k
 
 " Disable some regular-Firefox old habits
 nmap <M-F12> <Nop>
@@ -107,12 +109,6 @@ nmap <Leader>x :stop<CR>
 " source vimperatorrc
 map <Leader>sv :source ~/.vimperatorrc<CR>
 
-"toggle pocket sidebar
-map <Leader>pb :emenu View.Sidebar.Pocket<CR>
-
-"add to evernote
-map <Leader>ev :emenu Tools.Add to Evernote<CR>
-
 map <Leader>h :history -max=10<CR>
 map <Leader>dw :downloads<CR>
 
@@ -125,7 +121,7 @@ set! browser.startup.homepage=about:blank
 set! browser.newtabpage.enabled=false
 set! browser.newtab.url=about:blank
 " display tab-bar anytime
-det! browser.tabs.autoHide=false
+set! browser.tabs.autoHide=false
 " don't animate tab-bar when switch to fullscreen
 set! browser.fullscreen.animateUp=0
 " hide close buttons

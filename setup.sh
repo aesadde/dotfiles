@@ -52,13 +52,15 @@ case "$1" in
     -clean)
         removeOldDotFiles
         ;;
+    -osx)
+      .$DOTFILES_ROOT/osx
 esac
 }
 #2}}}
 
 #Function: removeOldDotFiles() cleans up home directory from old dotfiles if they exist {{{2
 function removeOldDotFiles() {
-    for file in $HOME/.{tmux.conf, gitignore,gitconfig,gitattributes,bash_profile,aliases,bashrc,exports,vimrc,vim,customFunctions}; do
+    for file in $HOME/.{tmux.conf,gitignore,gitconfig,gitattributes,bash_profile,aliases,bashrc,exports,vimrc,vim,customFunctions}; do
         if [ -f $file ]; then
             rm $file
         fi
