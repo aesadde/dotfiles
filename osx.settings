@@ -19,3 +19,5 @@
         export PS1='\e[0;35m\u-\e[0;33m\W\$\e[0;37m'
     fi
     [ -f $GIT_COMPLETION ] && source $GIT_COMPLETION
+
+    export CLASSPATH=/Users/alberto/Documents/Oxford/Modules/CADS/practicals/:$CLASSPATH

@@ -11,6 +11,10 @@ alias lg='ls -la | grep'    #show only matching files/dirs
 alias ..='cd ..'
 alias dow='cd ~/Downloads'
 alias cdot='cd ~/dotfiles'
+alias ox='cd ~/Documents/Oxford'
+alias cads='cd ~/Documents/Oxford/Modules/CADS'
+alias cats='cd ~/Documents/Oxford/Modules/CATS'
+alias popl='cd ~/Documents/Oxford/Modules/POPL'
 
 #edit dots and vim
 alias ev='vim ~/dotfiles/vim/vimrc'

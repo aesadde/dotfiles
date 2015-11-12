@@ -33,6 +33,8 @@ Thumbs.db
 *.mtc
 *.mtc1
 *.out
+*.o
+*.hi
 *.synctex.gz
 *.sum
 *.fls
@@ -83,3 +85,5 @@ DerivedData
 *.ipa
 *.xcuserstate
 
+# ----- JAVA - SCALA ---------------------------
+*.class
