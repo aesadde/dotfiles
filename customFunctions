@@ -41,13 +41,9 @@ function cleanup-hs {
   rm *.o *.hi main *.cu*
   }
 
-function aws() {
-  ssh -i $HOME/.ssh/gpuVirg.pem ec2-user@"$1" ;
-  }
-
-function getf () {
-  scp -r -i $HOME/.ssh/firstKeyPair.pem ec2-user@"$1:~/project/transfers/*" ~/Desktop/transfers/.
-  }
-function pushf() {
-  scp -i $HOME/.ssh/firstKeyPair.pem ~/Desktop/transfers/* ec2-user@"$1:~/project/transfers/."
+  # md -> pdf
+# from
+# https://simplyian.com/2015/09/13/Doing-homework-assignments-in-Markdown-using-Pandoc-and-LaTeX/
+  md2pdf() {
+      pandoc $1 -o `basename $1 .md`.pdf
   }
