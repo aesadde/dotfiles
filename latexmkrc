@@ -1,7 +1,8 @@
-$pdf_previewer = "open -a /Applications/Skim.app %S";
-$pdflatex = "pdflatex -synctex=1 %O %S"
+$pdf_previewer = 'open -ga /Applications/Skim.app' ;
+$pdflatex = 'pdflatex -synctex=1 %O %S';
+$pdf_mode = 1;
 
 # cleans extra files after done processing
-# $cleanup_mode = "1"
+$cleanup_mode = 1;
 # other extensions to clean
-# $clean_ext "*.aux,*.log,*.fls,*.dvi"
+$clean_ext = '*.aux,*.log,*.fls,*.dvi';

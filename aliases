@@ -12,9 +12,10 @@ alias ..='cd ..'
 alias dow='cd ~/Downloads'
 alias cdot='cd ~/dotfiles'
 alias ox='cd ~/Documents/Oxford'
-alias cads='cd ~/Documents/Oxford/Modules/CADS'
-alias cats='cd ~/Documents/Oxford/Modules/CATS'
-alias popl='cd ~/Documents/Oxford/Modules/POPL'
+alias cads='cd ~/Documents/Oxford/Michealmas/CADS'
+alias cats='cd ~/Documents/Oxford/Michealmas/CPP'
+alias popl='cd ~/Documents/Oxford/Michealmas/POPL'
+alias exams='cd ~/Documents/Oxford/Michealmas/Exams'
 
 #edit dots and vim
 alias ev='vim ~/dotfiles/vim/vimrc'

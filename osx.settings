@@ -20,4 +20,4 @@
     fi
     [ -f $GIT_COMPLETION ] && source $GIT_COMPLETION
 
-    export CLASSPATH=/Users/alberto/Documents/Oxford/Modules/CADS/practicals/:$CLASSPATH
+    export CLASSPATH=/Users/alberto/Documents/Oxford/Michealmas/CADS/practicals/:$CLASSPATH
