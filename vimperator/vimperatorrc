@@ -50,7 +50,7 @@ set complete=bl
 set! browser.urlbar.maxRichResults=20
 set wildmode=list:longest,full
 set autocomplete=true
-set hintmatching=contains
+set hintmatching=fuzzy
 "1}}}
 " ===[ Auto commands ]=== {{{1
 " Pass through all keys (like CTRL-Z) on Gmail and Google Reader:
