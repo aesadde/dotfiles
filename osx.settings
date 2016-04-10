@@ -14,9 +14,9 @@
 
     if [ -f $GIT_PROMPT ]; then
         source $GIT_PROMPT
-        export PS1='\e[0;35m\u-\e[0;33m\W $(__git_ps1 "(%s)")\$\e[0;37m'
+        export PS1='\e[0;33m\W $(__git_ps1 "(%s)")\$\e[0;37m'
     else
-        export PS1='\e[0;35m\u-\e[0;33m\W\$\e[0;37m'
+        export PS1='\e[0;33m\W\$\e[0;37m'
     fi
     [ -f $GIT_COMPLETION ] && source $GIT_COMPLETION
 

@@ -40,6 +40,9 @@ case "$1" in
     -vim)
         vimFiles
         ;;
+    -nvim)
+        nvimFiles
+        ;;
     -vimperator)
         vimperator
         ;;
@@ -94,6 +97,16 @@ cd $DOTFILES_ROOT
 }
 #2}}}
 
+#Function: nvimFiles() sets .nvimrc and .nvim {{{2
+function nvimFiles() {
+if [ ! -d $HOME/.config ]; then
+    mkdir -p $HOME/.config
+fi
+    ln -s  $DOTFILES_ROOT/nvim $HOME/.config/nvim
+    ln -s $DOTFILES_ROOT/nvim/init.vim $HOME/.config/init.vim
+cd $DOTFILES_ROOT
+}
+#2}}}
 #Function: vimperator() sets vimperator options {{{2
 function vimperator() {
 if [ -d /Applications/Firefox.app ]; then
