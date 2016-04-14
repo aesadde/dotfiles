@@ -32,20 +32,6 @@ if [ $OSTYPE == "Darwin" ]; then
     [[ -f $DOTF/osx.settings ]] && source $DOTF/osx.settings
     [[ -f $DOTF/aliases.local ]] && source $DOTF/aliases.local
 
-    # Add GHC 7.10.2 to the PATH, via https://ghcformacosx.github.io/
-    export GHC_DOT_APP="/Applications/ghc-7.10.2.app"
-    if [ -d "$GHC_DOT_APP" ]; then
-      export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
-    fi
-
-    # stack autocompletion
-    eval "$(stack --bash-completion-script stack)"
-
-    # torch
-    export PATH=/Users/alberto/torch/install/bin/torch-activate:$PATH
-
-    # added by Anaconda2 2.4.1 installer
-    export PATH="//anaconda/bin:$PATH"
 
 elif [ $OSTYPE == "Linux" ]; then
     export PATH="$HOME/.local/bin:$PATH"

@@ -1,24 +1,39 @@
-    #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
-    test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
+#Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
+test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
 
-    #export custom scripts
-    export PATH="$HOME/scripts:$PATH"
-    export PATH="$HOME/.local/bin:$PATH"
+#export custom scripts
+export PATH="$HOME/scripts:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
-    if [ -f `brew --prefix`/etc/bash_completion ]; then
-        . `brew --prefix`/etc/bash_completion
-    fi
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+. `brew --prefix`/etc/bash_completion
+fi
 
-    GIT_PROMPT="/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
-    GIT_COMPLETION="/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
+GIT_PROMPT="/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
+GIT_COMPLETION="/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
 
-    if [ -f $GIT_PROMPT ]; then
-        source $GIT_PROMPT
-        export PS1='\e[0;33m\W $(__git_ps1 "(%s)")\$\e[0;37m'
-    else
-        export PS1='\e[0;33m\W\$\e[0;37m'
-    fi
-    [ -f $GIT_COMPLETION ] && source $GIT_COMPLETION
+if [ -f $GIT_PROMPT ]; then
+source $GIT_PROMPT
+export PS1='\e[0;33m\W $(__git_ps1 "(%s)")\$\e[0;37m'
+else
+export PS1='\e[0;33m\W\$\e[0;37m'
+fi
+[ -f $GIT_COMPLETION ] && source $GIT_COMPLETION
 
-    export CLASSPATH=/Users/alberto/Documents/Oxford/Michealmas/CADS/practicals/:$CLASSPATH
-    export PATH=/Users/alberto/torch/install/bin/:$PATH
+export CLASSPATH=/Users/alberto/Documents/Oxford/Michealmas/CADS/practicals/:$CLASSPATH
+export PATH=/Users/alberto/torch/install/bin/:$PATH
+
+# Add GHC 7.10.2 to the PATH, via https://ghcformacosx.github.io/
+export GHC_DOT_APP="/Applications/ghc-7.10.2.app"
+if [ -d "$GHC_DOT_APP" ]; then
+export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+fi
+
+# stack autocompletion
+eval "$(stack --bash-completion-script stack)"
+
+# torch
+export PATH=/Users/alberto/torch/install/bin/torch-activate:$PATH
+
+# added by Anaconda2 2.4.1 installer
+export PATH="//anaconda/bin:$PATH"
