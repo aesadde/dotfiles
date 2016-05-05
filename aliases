@@ -24,3 +24,11 @@ alias tn='tmux new-session -s'
 alias tml='tmux ls'
 alias tma='tmux attach -t'
 alias tnew='new-tmux-from-dir-name'
+
+#neovim
+alias vim='nvim'
+alias vi='nvim'
+
+#stack
+# alias ghc='stack ghc'
+# alias ghci='stack ghci'

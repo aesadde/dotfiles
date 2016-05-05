@@ -15,8 +15,4 @@ alias des='cd ~/Desktop'
 alias ms='cd ~/Documents/Docs/application/Masters'
 alias py='cd ~/Documents/York/3rdYear/ProjectYork'
 alias ox='cd ~/Documents/Oxford'
-alias cl='cd ~/Documents/Oxford/Hillary/COMPLING'
-alias ml='cd ~/Documents/Oxford/Hillary/ML'
-alias pan='cd ~/Documents/Oxford/Hillary/PAN'
-
-
+alias ts='cd ~/Documents/Oxford/Dissertation'
