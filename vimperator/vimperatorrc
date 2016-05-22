@@ -69,7 +69,7 @@ map <Leader>pt :tabopen getpocket.com<CR>
 map <Leader>gs :tabopen scholar.google.com<CR>
 
 "hoogle search
-map <Leader>hl :open hoogle<SPACE>
+map <Leader>hl :open !h <SPACE>
 
 " Disable some vimperator default mappings
 nmap d <Nop>

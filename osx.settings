@@ -23,17 +23,13 @@ fi
 export CLASSPATH=/Users/alberto/Documents/Oxford/Michealmas/CADS/practicals/:$CLASSPATH
 export PATH=/Users/alberto/torch/install/bin/:$PATH
 
-# Add GHC 7.10.2 to the PATH, via https://ghcformacosx.github.io/
-# export GHC_DOT_APP="/Applications/ghc-7.10.3.app"
-# if [ -d "$GHC_DOT_APP" ]; then
-# export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
-# fi
-
 # stack autocompletion
-# eval "$(stack --bash-completion-script stack)"
+eval "$(stack --bash-completion-script stack)"
 
 # torch
 export PATH=/Users/alberto/torch/install/bin/torch-activate:$PATH
+#GHC
+export PATH=/Users/alberto/.stack/programs/x86_64-osx/ghc-7.10.3/bin/:$PATH
 
 # added by Anaconda2 2.4.1 installer
 export PATH="//anaconda/bin:$PATH"
