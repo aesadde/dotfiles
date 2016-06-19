@@ -5,26 +5,14 @@ test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed 
 export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-. `brew --prefix`/etc/bash_completion
-fi
-
-GIT_PROMPT="/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
-GIT_COMPLETION="/Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash"
-
-if [ -f $GIT_PROMPT ]; then
-source $GIT_PROMPT
-export PS1='\e[0;33m\W $(__git_ps1 "(%s)")\$\e[0;37m'
-else
-export PS1='\e[0;33m\W\$\e[0;37m'
-fi
-[ -f $GIT_COMPLETION ] && source $GIT_COMPLETION
-
+# For Oxford course CADS
 export CLASSPATH=/Users/alberto/Documents/Oxford/Michealmas/CADS/practicals/:$CLASSPATH
+
+# For Torch (machine learning)
 export PATH=/Users/alberto/torch/install/bin/:$PATH
 
 # stack autocompletion
-eval "$(stack --bash-completion-script stack)"
+# eval "$(stack --bash-completion-script stack)"
 
 # torch
 export PATH=/Users/alberto/torch/install/bin/torch-activate:$PATH

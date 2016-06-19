@@ -17,7 +17,7 @@ alias cdot='cd ~/dotfiles'
 alias ev='vim ~/dotfiles/vim/vimrc'
 
 #Git aliases (git specific aliases are in gitconfig)
-alias g?='git status'
+# alias g?='git status'
 alias g='git'
 alias tasks='git grep -EI "TODO|FIXME"'
 

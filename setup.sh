@@ -73,7 +73,7 @@ function removeOldDotFiles() {
 
 #Function: bashFiles() sets the bash dotfiles {{{2
 function bashFiles() {
-for file in {bash_profile,bashrc,tmux.conf}; do
+for file in {zshrc,bash_profile,bashrc,tmux.conf}; do
     if [ -f $HOME/.$file ]; then
         rm $HOME/.$file
     fi
