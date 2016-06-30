@@ -1,5 +1,8 @@
+# === [ Global ] === {{{1
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
+
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -14,6 +17,9 @@ export ZSH=/Users/alberto/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+
+# cd without the command 'cd foo -> foo'
+setopt AUTO_CD
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -75,6 +81,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
+#1}}}
 
 # === [ config ] === {{{1
 OSTYPE="$(uname -s)"
@@ -106,3 +113,12 @@ elif [ "$OSTYPE" = 'Linux' ]; then
 elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
     export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
 fi
+
+# vi style incremental search
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^c" kill-line

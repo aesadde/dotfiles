@@ -12,7 +12,8 @@ export CLASSPATH=/Users/alberto/Documents/Oxford/Michealmas/CADS/practicals/:$CL
 export PATH=/Users/alberto/torch/install/bin/:$PATH
 
 # stack autocompletion
-# eval "$(stack --bash-completion-script stack)"
+autoload -U +X bashcompinit && bashcompinit
+eval "$(stack --bash-completion-script stack)"
 
 # torch
 export PATH=/Users/alberto/torch/install/bin/torch-activate:$PATH

@@ -14,11 +14,10 @@ alias dow='cd ~/Downloads'
 alias cdot='cd ~/dotfiles'
 
 #edit dots and vim
-alias ev='vim ~/dotfiles/vim/vimrc'
+alias ev='nvim ~/dotfiles/nvim/init.vim'
 
 #Git aliases (git specific aliases are in gitconfig)
-# alias g?='git status'
-alias g='git'
+alias g\?='git status'
 alias tasks='git grep -EI "TODO|FIXME"'
 
 #tmux aliases
