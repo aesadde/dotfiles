@@ -39,6 +39,8 @@
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
         # Un-push a commit but leave the local repo intact
         unpush = "push -f origin HEAD^:master"
+  #extract file from another branch
+  sf = !"git show $1:$2"
 
 [apply]
 	# Detect whitespace errors when applying a patch
