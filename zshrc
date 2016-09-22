@@ -10,7 +10,7 @@ SAVEHIST=10000
 setopt appendhistory autocd extendedglob
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/alberto/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
