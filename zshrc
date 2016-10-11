@@ -122,3 +122,6 @@ bindkey '^N' history-search-forward
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^c" kill-line
+
+# activate syntax highlighting on terminal
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
