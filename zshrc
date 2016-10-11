@@ -2,7 +2,6 @@
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
 
-
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -90,30 +89,7 @@ DOTF="$HOME/dotfiles"
 
 #vi editing mode
 set -o vi
-
-#Shell colors
-export CLICOLOR=1
-export LSCOLORS=dxgxcxdxcxegedacagacad
-
-#keeping everything clean. Source all the files
-[ -r $DOTF/customFunctions ] && [ -f $DOTF/customFunctions ] && source $DOTF/customFunctions
-[[ -f $DOTF/aliases ]] && source $DOTF/aliases
-#1}}}
-# ===[ OS specific ]=== {{{1
-if [ "$OSTYPE" = 'Darwin' ]; then
-    [[ -f $DOTF/osx.settings ]] && source $DOTF/osx.settings
-    [[ -f $DOTF/aliases.local ]] && source $DOTF/aliases.local
-
-
-elif [ "$OSTYPE" = 'Linux' ]; then
-    export PATH="$HOME/.local/bin:$PATH"
-    export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64"
-    export PS1='\e[0;33m\W $\e[0;37m'
-
-elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
-    export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
-fi
-
+#
 # vi style incremental search
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
@@ -122,3 +98,42 @@ bindkey '^N' history-search-forward
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^c" kill-line
+
+#Shell colors
+export CLICOLOR=1
+export LSCOLORS=dxgxcxdxcxegedacagacad
+
+# === [ Global Exports ]=== {{{2
+# stack autocompletion
+autoload -U +X bashcompinit && bashcompinit
+eval "$(stack --bash-completion-script stack)"
+
+#export custom scripts
+export PATH="$HOME/scripts:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+#2}}}
+
+#keeping everything clean. Source all the files
+[ -r $DOTF/customFunctions ] && [ -f $DOTF/customFunctions ] && source $DOTF/customFunctions
+[[ -f $DOTF/aliases ]] && source $DOTF/aliases
+#1}}}
+# ===[ OS specific ]=== {{{1
+if [ "$OSTYPE" = 'Darwin' ]; then
+    [[ -f $DOTF/aliases.local ]] && source $DOTF/aliases.local
+    #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
+    test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
+    #TeX
+    export PATH=/Library/TeX/texbin:$PATH
+
+elif [ "$OSTYPE" = 'Linux' ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+    export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64"
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
+    bash $DOTF/start_tmux.sh
+
+elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
+    export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
+fi
