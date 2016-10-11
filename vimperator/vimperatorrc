@@ -42,7 +42,7 @@ set! javascript.options.jit.chrome=true
 "}}}
 " ===[ Searching ]=== {{{1
 "Set up google as the default search engine
-set defsearch=duckduckgo
+set defsearch=google
 set suggestengines=google
 "}}}
 "===[ Completion ]=== {{{1
@@ -139,6 +139,6 @@ set! browser.history_expire_days=10
 set! browser.history_expire_days_min=7
 set! browser.history_expire_sites=100
 set! browser.cache.memory.capacity=32768
-set! browser.sessionstore.max_tabs_undo=5
+set! browser.sessionstore.max_tabs_undo=10
 set! browser.sessionhistory.max_total_viewers=5
 " 1}}}

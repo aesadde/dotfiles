@@ -124,6 +124,8 @@ if [ "$OSTYPE" = 'Darwin' ]; then
     test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
     #TeX
     export PATH=/Library/TeX/texbin:$PATH
+    # activate syntax highlighting on terminal
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 elif [ "$OSTYPE" = 'Linux' ]; then
     export PATH="$HOME/.local/bin:$PATH"
