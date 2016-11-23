@@ -1,3 +1,8 @@
+<!--
+     Add this script to /Library/LaunchDaemons/
+     Then load the job with "/usr/bin/sudo launchctl load [name-of-script]"
+-->
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -7,7 +12,7 @@
 
     <key>ProgramArguments</key>
     <array>
-      <string>/Users/aesadde/scripts/productive.sh</string>
+      <string>/Users/aesadde/.scripts/productive.sh</string>
       <string>-false</string>
     </array>
 
@@ -30,4 +35,3 @@
     </dict>
   </dict>
 </plist>
-

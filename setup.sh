@@ -45,7 +45,7 @@ function parseOptions() {
     -vimperator)
       vimperator
       ;;
-    -bash)
+    -shell)
       shellFiles
       ;;
     -git)

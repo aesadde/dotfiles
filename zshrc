@@ -109,7 +109,7 @@ autoload -U +X bashcompinit && bashcompinit
 eval "$(stack --bash-completion-script stack)"
 
 #export custom scripts
-export PATH="$HOME/scripts:$PATH"
+# export PATH="$HOME/.scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 #2}}}
 
