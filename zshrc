@@ -136,7 +136,7 @@ elif [ "$OSTYPE" = 'Linux' ]; then
     export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
     export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
-    bash $DOTF/start_tmux.sh
+    bash $DOTF/scripts/start_tmux.sh
 
 elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
     export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
