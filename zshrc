@@ -75,8 +75,9 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   export EDITOR='nvim'
+  # export PS1=''
 else
   export EDITOR='nvim'
 fi
@@ -106,7 +107,6 @@ export LSCOLORS=dxgxcxdxcxegedacagacad
 # === [ Global Exports ]=== {{{2
 # stack autocompletion
 autoload -U +X bashcompinit && bashcompinit
-eval "$(stack --bash-completion-script stack)"
 
 #export custom scripts
 # export PATH="$HOME/.scripts:$PATH"
@@ -116,6 +116,7 @@ export PATH="$HOME/.local/bin:$PATH"
 #keeping everything clean. Source all the files
 [ -r $DOTF/customFunctions ] && [ -f $DOTF/customFunctions ] && source $DOTF/customFunctions
 [[ -f $DOTF/aliases ]] && source $DOTF/aliases
+[[ -f $HOME/.local_settings ]] && source $HOME/.local_settings
 #1}}}
 # ===[ OS specific ]=== {{{1
 if [ "$OSTYPE" = 'Darwin' ]; then
@@ -131,15 +132,11 @@ if [ "$OSTYPE" = 'Darwin' ]; then
 
 elif [ "$OSTYPE" = 'Linux' ]; then
     export PATH="$HOME/.local/bin:$PATH"
-    export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64"
+    export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"
     export PATH="$HOME/.linuxbrew/bin:$PATH"
     export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
     export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
-    bash $DOTF/scripts/start_tmux.sh
-
 elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
     export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
 fi
-
-
