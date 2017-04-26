@@ -150,10 +150,9 @@ function installJobs() {
 function all() {
   shellFiles
   vimperator
-  vimFiles
+  nvimFiles
   nvimFiles
   gitFiles
-  installJobs
 }
 #2}}}
 #Main: {{{
