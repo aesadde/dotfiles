@@ -1,0 +1,2445 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+$PATH	nvim/opciones/globales.vim	/^let $PATH = $PATH . ':' . expand("~\/.local\/bin") "faster tags$/;"	v
+//	nvim/opciones/keys.vim	/^nnoremap \/\/ :Unite grep:<cr>$/;"	m
+<C-B>	nvim/opciones/keys.vim	/^imap <C-B> <C-O>0$/;"	m
+<C-E>	nvim/opciones/keys.vim	/^imap <C-E> <C-O>\$$/;"	m
+<C-P>	nvim/opciones/keys.vim	/^nnoremap <C-P> :<C-u>:UniteWithProjectDir -start-insert file_rec\/async:!<cr>$/;"	m
+<C-c>	nvim/opciones/keys.vim	/^vnoremap <C-c> "*y<CR>$/;"	m
+<C-h>	nvim/opciones/keys.vim	/^inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\\<C-h>"$/;"	m
+<C-v>	nvim/opciones/keys.vim	/^inoremap <C-v> <esc>"*gP<CR>$/;"	m
+<CR>	nvim/opciones/keys.vim	/^inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>$/;"	m
+<Enter>	nvim/opciones/plugins.vim	/^vmap <Enter> <Plug>(EasyAlign)$/;"	m
+<F12>	nvim/opciones/keys.vim	/^inoremap <silent> <F12> <C-R>=(pumvisible()? "\\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>$/;"	m
+<F12>	nvim/opciones/keys.vim	/^nnoremap <silent> <F12> a<C-R>=(pumvisible()? "\\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>$/;"	m
+<F1>	nvim/opciones/globales.vim	/^nnoremap <F1> <nop> "used to toggle help$/;"	m
+<Leader>/	nvim/opciones/keys.vim	/^nnoremap <Leader>\/ :nohls<CR>$/;"	m
+<Leader>=	nvim/opciones/keys.vim	/^nnoremap <Leader>= 1G=G$/;"	m
+<Leader>p	nvim/opciones/keys.vim	/^nnoremap <Leader>p p=`]$/;"	m
+<Leader>ps	nvim/opciones/keys.vim	/^nnoremap <Leader>ps :set nopaste<CR>$/;"	m
+<Leader>sp	nvim/opciones/keys.vim	/^nnoremap <Leader>sp :set paste<CR>$/;"	m
+<Leader>tb	nvim/opciones/keys.vim	/^nnoremap <Leader>tb :TagbarToggle<CR>$/;"	m
+<Leader>w	nvim/opciones/keys.vim	/^nnoremap <Leader>w :w!<CR>$/;"	m
+<S-TAB>	nvim/opciones/keys.vim	/^inoremap <expr><S-TAB>  pumvisible() ? "\\<C-p>" : "\\<TAB>"$/;"	m
+<TAB>	nvim/opciones/keys.vim	/^inoremap <expr><TAB>  pumvisible() ? "\\<C-n>" : "\\<TAB>"$/;"	m
+<c-h>	nvim/opciones/keys.vim	/^noremap <c-h> <c-w>h$/;"	m
+<c-j>	nvim/opciones/keys.vim	/^nnoremap <c-j> <c-w>j$/;"	m
+<c-k>	nvim/opciones/keys.vim	/^nnoremap <c-k> <c-w>k$/;"	m
+<c-l>	nvim/opciones/keys.vim	/^nnoremap <c-l> <c-w>l$/;"	m
+<down>	nvim/opciones/keys.vim	/^inoremap <down> <nop>$/;"	m
+<leader>b	nvim/opciones/keys.vim	/^nnoremap <leader>b :Unite buffer<cr>$/;"	m
+<leader>ev	nvim/opciones/keys.vim	/^nnoremap <leader>ev :vsplit $MYVIMRC<cr>$/;"	m
+<leader>hH	nvim/opciones/keys.vim	/^nnoremap <leader>hH :Hoogle$/;"	m
+<leader>hI	nvim/opciones/keys.vim	/^nnoremap <leader>hI :HoogleInfo$/;"	m
+<leader>hR	nvim/opciones/keys.vim	/^map <silent> <leader>hR :call ApplyAllSuggestions()<CR>$/;"	m
+<leader>hh	nvim/opciones/keys.vim	/^nnoremap <silent> <leader>hh :Hoogle<CR>$/;"	m
+<leader>hi	nvim/opciones/keys.vim	/^nnoremap <silent> <leader>hi :HoogleInfo<CR>$/;"	m
+<leader>hr	nvim/opciones/keys.vim	/^map <silent> <leader>hr :call ApplyOneSuggestion()<CR>$/;"	m
+<leader>hz	nvim/opciones/keys.vim	/^nnoremap <silent> <leader>hz :HoogleClose<CR>$/;"	m
+<leader>lo	nvim/opciones/customFunctions.vim	/^nnoremap <leader>lo :call LoclistToggle()<cr>$/;"	m
+<leader>ne	nvim/opciones/keys.vim	/^nnoremap  <leader>ne :cnext<cr>$/;"	m
+<leader>pe	nvim/opciones/keys.vim	/^nnoremap  <leader>pe :cprevious<cr>$/;"	m
+<leader>q	nvim/opciones/customFunctions.vim	/^nnoremap <leader>q :call QuickfixToggle()<cr>$/;"	m
+<leader>sv	nvim/opciones/keys.vim	/^nnoremap <leader>sv :source $MYVIMRC<cr>$/;"	m
+<leader>tf	nvim/opciones/customFunctions.vim	/^nnoremap <leader>tf :call FoldColumnToggle()<cr>$/;"	m
+<leader>ur	nvim/opciones/keys.vim	/^nnoremap <leader>ur <Plug>(unite_restart)$/;"	m
+<leader>ut	nvim/opciones/keys.vim	/^nnoremap <silent><leader>ut :Unite -silent -auto-resize grep:%::TODO\\|FIXME\\|NOTE<CR>$/;"	m
+<leader>y	nvim/opciones/keys.vim	/^nnoremap <leader>y :<C-u>Unite -auto-resize -no-split -buffer-name=yank history\/yank<cr>$/;"	m
+<left>	nvim/opciones/keys.vim	/^inoremap <left> <nop>$/;"	m
+<localleader>lt	nvim/opciones/keys.vim	/^nnoremap <localleader>lt :<c-u>Unite vimtex_toc<cr>$/;"	m
+<localleader>ly	nvim/opciones/keys.vim	/^nnoremap <localleader>ly :<c-u>Unite vimtex_labels<cr>$/;"	m
+<right>	nvim/opciones/keys.vim	/^inoremap <right> <nop>$/;"	m
+<up>	nvim/opciones/keys.vim	/^inoremap <up> <nop>$/;"	m
+CSAHi	nvim/colors/maroloccio.vim	/^   command! -nargs=+ CSAHi exe "hi" <q-args>$/;"	c
+CSAHi	nvim/colors/maroloccio.vim	/^   command! -nargs=+ CSAHi exe "hi" substitute(substitute(<q-args>, "undercurl", "underline", "g"), "guisp\\\\S\\\\+", "", "g")$/;"	c
+DoRemote	nvim/init.vim	/^function! DoRemote(arg)$/;"	f
+E	nvim/opciones/globales.vim	/^  command! -bang -nargs=? -complete=file E e<bang> <args>$/;"	c
+E2T	nvim/colors/vividchalk.vim	/^function! E2T(a)$/;"	f
+FoldColumnToggle	nvim/opciones/customFunctions.vim	/^function! FoldColumnToggle()$/;"	f
+J	nvim/opciones/keys.vim	/^nnoremap J <c-F>$/;"	m
+K	nvim/opciones/globales.vim	/^nnoremap K <nop> "man pages wtf$/;"	m
+K	nvim/opciones/keys.vim	/^nnoremap K <c-B>$/;"	m
+LoclistToggle	nvim/opciones/customFunctions.vim	/^function! LoclistToggle()$/;"	f
+M	nvim/colors/inkpot.vim	/^fun! <SID>M(a)$/;"	f
+M	nvim/colors/vividchalk.vim	/^fun! s:M(a)$/;"	f
+Marklar	nvim/colors/marklar.vim	/^        command! -nargs=*  Marklar  :call s:Marklar(<f-args>)$/;"	c
+Marklar	nvim/colors/marklar.vim	/^        function! s:Marklar(...)$/;"	f
+NERDTreeQuitOnOpen	nvim/opciones/plugins.vim	/^let NERDTreeQuitOnOpen=1$/;"	v
+NERDTreeRespectWildIgnore	nvim/opciones/plugins.vim	/^let NERDTreeRespectWildIgnore=1$/;"	v
+Q	nvim/opciones/globales.vim	/^  command! -bang Q q<bang>$/;"	c
+Q	nvim/opciones/globales.vim	/^nnoremap Q <nop> "used to start ex mode$/;"	m
+QA	nvim/opciones/globales.vim	/^  command! -bang QA qa<bang>$/;"	c
+Qa	nvim/opciones/globales.vim	/^  command! -bang Qa qa<bang>$/;"	c
+QuickfixToggle	nvim/opciones/customFunctions.vim	/^function! QuickfixToggle()$/;"	f
+SetOption	nvim/colors/solarized.vim	/^function! s:SetOption(name,default)$/;"	f
+SolarizedHiTrail	nvim/colors/solarized.vim	/^augroup SolarizedHiTrail$/;"	a
+SolarizedHiTrail	nvim/colors/solarized.vim	/^function! s:SolarizedHiTrail()$/;"	f
+SolarizedMenu	nvim/colors/solarized.vim	/^function! SolarizedMenu()$/;"	f
+SolarizedOptions	nvim/colors/solarized.vim	/^    command SolarizedOptions :call s:SolarizedOptions()$/;"	c
+SolarizedOptions	nvim/colors/solarized.vim	/^function! s:SolarizedOptions()$/;"	f
+StripTrailingWhitespaces	nvim/opciones/customFunctions.vim	/^function! StripTrailingWhitespaces()$/;"	f
+Syntax_extensions	nvim/colors/lettuce.vim	/^augroup Syntax_extensions$/;"	a
+Tabula	nvim/colors/tabula.vim	/^function! Tabula()$/;"	f
+Tabula_1	nvim/colors/tabula.vim	/^function! Tabula_1()$/;"	f
+Tabula_2	nvim/colors/tabula.vim	/^function! Tabula_2()$/;"	f
+Tabula_3	nvim/colors/tabula.vim	/^function! Tabula_3()$/;"	f
+Tabula_4	nvim/colors/tabula.vim	/^function! Tabula_4()$/;"	f
+Tabula_5	nvim/colors/tabula.vim	/^function! Tabula_5()$/;"	f
+Tabula_6	nvim/colors/tabula.vim	/^function! Tabula_6()$/;"	f
+Tabula_7	nvim/colors/tabula.vim	/^function! Tabula_7()$/;"	f
+Tabula_8	nvim/colors/tabula.vim	/^function! Tabula_8()$/;"	f
+Tabula_9	nvim/colors/tabula.vim	/^function! Tabula_9()$/;"	f
+UltiSnipsCallUnite	nvim/opciones/keys.vim	/^function! UltiSnipsCallUnite()$/;"	f
+UpdateSkim	nvim/opciones/plugins.vim	/^function! UpdateSkim(status)$/;"	f
+W	nvim/opciones/globales.vim	/^  command! -bang -nargs=? -complete=file W w<bang> <args>$/;"	c
+WA	nvim/opciones/globales.vim	/^  command! -bang WA wa<bang>$/;"	c
+WQ	nvim/opciones/globales.vim	/^  command! -bang -nargs=? -complete=file WQ wq<bang> <args>$/;"	c
+Wa	nvim/opciones/globales.vim	/^  command! -bang Wa wa<bang>$/;"	c
+WordCount	nvim/opciones/customFunctions.vim	/^function! WordCount()$/;"	f
+Wq	nvim/opciones/globales.vim	/^  command! -bang -nargs=? -complete=file Wq wq<bang> <args>$/;"	c
+X	nvim/colors/Tomorrow-Night-Eighties.vim	/^	fun <SID>X(group, fg, bg, attr)$/;"	f
+X	nvim/colors/Tomorrow-Night.vim	/^	fun <SID>X(group, fg, bg, attr)$/;"	f
+X	nvim/colors/Tomorrow.vim	/^	fun <SID>X(group, fg, bg, attr)$/;"	f
+X	nvim/colors/desert256.vim	/^    fun <SID>X(group, fg, bg, attr)$/;"	f
+X	nvim/colors/inkpot.vim	/^fun! <SID>X(a)$/;"	f
+X	nvim/colors/jellybeans.vim	/^fun! s:X(group, fg, bg, attr, lcfg, lcbg)$/;"	f
+X	nvim/colors/summerfruit256.vim	/^    fun <SID>X(group, fg, bg, attr)$/;"	f
+X	nvim/colors/vividchalk.vim	/^fun! s:X(a)$/;"	f
+X	nvim/colors/wombat256.vim	/^fun <SID>X(group, fg, bg, attr)$/;"	f
+all	setup.sh	/^function all() {$/;"	f
+append_ul	nvim/autoload/plug.vim	/^function! s:append_ul(lnum, text)$/;"	f
+apply_opts	nvim/colors/marklar.vim	/^        function! s:apply_opts()$/;"	f
+ask	nvim/autoload/plug.vim	/^function! s:ask(message, ...)$/;"	f
+ask_no_interrupt	nvim/autoload/plug.vim	/^function! s:ask_no_interrupt(...)$/;"	f
+assign_name	nvim/autoload/plug.vim	/^function! s:assign_name()$/;"	f
+assoc	nvim/autoload/plug.vim	/^function! s:assoc(dict, key, val)$/;"	f
+bang	nvim/autoload/plug.vim	/^function! s:bang(cmd, ...)$/;"	f
+bar	nvim/autoload/plug.vim	/^function! s:bar()$/;"	f
+check_ruby	nvim/autoload/plug.vim	/^function! s:check_ruby()$/;"	f
+checkargs	nvim/colors/calmar256-dark.vim	/^function! s:checkargs(arg)$/;"	f
+checkargs	nvim/colors/calmar256-light.vim	/^function! s:checkargs(arg)$/;"	f
+checkout	nvim/autoload/plug.vim	/^function! s:checkout(spec)$/;"	f
+choose	nvim/colors/vividchalk.vim	/^function! s:choose(mediocre,good)$/;"	f
+chsh	nvim/autoload/plug.vim	/^function! s:chsh(swap)$/;"	f
+clean	nvim/autoload/plug.vim	/^function! s:clean(force)$/;"	f
+cline	nvim/opciones/globales.vim	/^augroup cline$/;"	a
+color	nvim/colors/desert256.vim	/^    fun <SID>color(r, g, b)$/;"	f
+color	nvim/colors/jellybeans.vim	/^fun! s:color(r, g, b)$/;"	f
+color	nvim/colors/summerfruit256.vim	/^    fun <SID>color(r, g, b)$/;"	f
+color	nvim/colors/wombat256.vim	/^fun <SID>color(r, g, b)$/;"	f
+colors_name	nvim/colors/adaryn.vim	/^let colors_name = "adaryn"$/;"	v
+colors_name	nvim/colors/autumn.vim	/^let colors_name = "autumn"$/;"	v
+colors_name	nvim/colors/autumn2.vim	/^let colors_name = "autumn"$/;"	v
+colors_name	nvim/colors/autumnleaf.vim	/^let colors_name="AutumnLeaf"$/;"	v
+colors_name	nvim/colors/breeze.vim	/^let colors_name = "breeze"$/;"	v
+colors_name	nvim/colors/buttercream.vim	/^let colors_name = "buttercream"$/;"	v
+colors_name	nvim/colors/candy.vim	/^let colors_name = "candy"$/;"	v
+colors_name	nvim/colors/cleanphp.vim	/^let colors_name = "cleanphp"$/;"	v
+colors_name	nvim/colors/coffee.vim	/^let colors_name = "coffee"$/;"	v
+colors_name	nvim/colors/darkblue.vim	/^let colors_name = "darkblue"$/;"	v
+colors_name	nvim/colors/dawn.vim	/^let colors_name = "dawn"$/;"	v
+colors_name	nvim/colors/default.vim	/^let colors_name = "default"$/;"	v
+colors_name	nvim/colors/delek.vim	/^let colors_name = "delek"$/;"	v
+colors_name	nvim/colors/dusk.vim	/^let colors_name = "dusk"$/;"	v
+colors_name	nvim/colors/earendel.vim	/^let colors_name = "earendel"$/;"	v
+colors_name	nvim/colors/evening.vim	/^let colors_name = "evening"$/;"	v
+colors_name	nvim/colors/fine_blue.vim	/^let colors_name = "fine_blue"$/;"	v
+colors_name	nvim/colors/fine_blue2.vim	/^let colors_name = "fine_blue"$/;"	v
+colors_name	nvim/colors/fnaqevan.vim	/^let colors_name = "fnaqevan"$/;"	v
+colors_name	nvim/colors/fog.vim	/^let colors_name = "fog"$/;"	v
+colors_name	nvim/colors/freya.vim	/^let colors_name = "freya"$/;"	v
+colors_name	nvim/colors/fruit.vim	/^let colors_name = "fruit"$/;"	v
+colors_name	nvim/colors/fruity.vim	/^let colors_name = "fruity"$/;"	v
+colors_name	nvim/colors/github.vim	/^let colors_name="github"$/;"	v
+colors_name	nvim/colors/guardian.vim	/^let colors_name   = "Guardian"$/;"	v
+colors_name	nvim/colors/herald.vim	/^let colors_name = "herald"$/;"	v
+colors_name	nvim/colors/inkpot.vim	/^let colors_name = "inkpot"$/;"	v
+colors_name	nvim/colors/ironman.vim	/^let colors_name = "ironman"$/;"	v
+colors_name	nvim/colors/jellybeans.vim	/^let colors_name = "jellybeans"$/;"	v
+colors_name	nvim/colors/kellys.vim	/^let colors_name = "kellys"$/;"	v
+colors_name	nvim/colors/lucius.vim	/^let colors_name="lucius"$/;"	v
+colors_name	nvim/colors/martin_krischik.vim	/^let colors_name = "martin_krischik"$/;"	v
+colors_name	nvim/colors/moria.vim	/^let colors_name = "moria"$/;"	v
+colors_name	nvim/colors/morning.vim	/^let colors_name = "morning"$/;"	v
+colors_name	nvim/colors/mustang.vim	/^let colors_name = "mustang"$/;"	v
+colors_name	nvim/colors/neon.vim	/^let colors_name = "neon"$/;"	v
+colors_name	nvim/colors/night.vim	/^let colors_name = "night"$/;"	v
+colors_name	nvim/colors/no_quarter.vim	/^let colors_name = "no_quarter"$/;"	v
+colors_name	nvim/colors/peachpuff.vim	/^let colors_name = "peachpuff"$/;"	v
+colors_name	nvim/colors/pyte.vim	/^let colors_name = "pyte"$/;"	v
+colors_name	nvim/colors/rdark.vim	/^let colors_name = "rdark"$/;"	v
+colors_name	nvim/colors/satori.vim	/^let colors_name = "satori"$/;"	v
+colors_name	nvim/colors/sea.vim	/^let colors_name = "sea"$/;"	v
+colors_name	nvim/colors/shine.vim	/^let colors_name = "shine"$/;"	v
+colors_name	nvim/colors/slate.vim	/^let colors_name = "slate"$/;"	v
+colors_name	nvim/colors/solarized.vim	/^let colors_name = "solarized"$/;"	v
+colors_name	nvim/colors/spacegray.vim	/^let colors_name = 'spacegray'$/;"	v
+colors_name	nvim/colors/spring.vim	/^let colors_name = "spring"$/;"	v
+colors_name	nvim/colors/tango.vim	/^let colors_name = "tango"$/;"	v
+colors_name	nvim/colors/tango2.vim	/^let colors_name = "tango2"$/;"	v
+colors_name	nvim/colors/taqua.vim	/^let colors_name="taqua"$/;"	v
+colors_name	nvim/colors/tcsoft.vim	/^let colors_name = "TCSoft"$/;"	v
+colors_name	nvim/colors/tir_black.vim	/^let colors_name = "tir_black"$/;"	v
+colors_name	nvim/colors/twilight.vim	/^let colors_name = "twilight"$/;"	v
+colors_name	nvim/colors/vividchalk.vim	/^let colors_name = "vividchalk"$/;"	v
+colors_name	nvim/colors/winter.vim	/^let colors_name = "winter"$/;"	v
+colors_name	nvim/colors/wombat.vim	/^let colors_name = "wombat"$/;"	v
+colors_name	nvim/colors/xoria256.vim	/^let colors_name = "xoria256"$/;"	v
+colour	nvim/colors/Tomorrow-Night-Eighties.vim	/^	fun <SID>colour(r, g, b)$/;"	f
+colour	nvim/colors/Tomorrow-Night.vim	/^	fun <SID>colour(r, g, b)$/;"	f
+colour	nvim/colors/Tomorrow.vim	/^	fun <SID>colour(r, g, b)$/;"	f
+compare_git_uri	nvim/autoload/plug.vim	/^function! s:compare_git_uri(a, b)$/;"	f
+cterm	nvim/colors/base16-3024.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-apathy.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-ashes.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-atelierdune.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-atelierforest.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-atelierheath.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-atelierlakeside.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-atelierseaside.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-bespin.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-brewer.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-bright.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-chalk.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-codeschool.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-colors.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-default.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-eighties.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-embers.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-flat.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-google.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-grayscale.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-greenscreen.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-harmonic16.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-isotope.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-londontube.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-marrakesh.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-mocha.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-monokai.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-ocean.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-paraiso.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-railscasts.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-shapeshifter.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-solarized.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-summerfruit.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-tomorrow.vim	/^fun s:cterm(color)$/;"	f
+cterm	nvim/colors/base16-twilight.vim	/^fun s:cterm(color)$/;"	f
+define_commands	nvim/autoload/plug.vim	/^function! s:define_commands()$/;"	f
+delete	nvim/autoload/plug.vim	/^function! s:delete(range, force)$/;"	f
+delete_op	nvim/autoload/plug.vim	/^function! s:delete_op(type, ...)$/;"	f
+delimitMate_apostrophes	nvim/opciones/plugins.vim	/^let delimitMate_apostrophes = ''$/;"	v
+delimitMate_autoclose	nvim/opciones/plugins.vim	/^let delimitMate_autoclose = 1$/;"	v
+delimitMate_balance_matchpairs	nvim/opciones/plugins.vim	/^let delimitMate_balance_matchpairs = 1$/;"	v
+delimitMate_eol_marker	nvim/opciones/plugins.vim	/^let delimitMate_eol_marker = ''$/;"	v
+delimitMate_excluded_ft	nvim/opciones/plugins.vim	/^let delimitMate_excluded_ft = ''$/;"	v
+delimitMate_excluded_regions	nvim/opciones/plugins.vim	/^let delimitMate_excluded_regions = "Comment,String"$/;"	v
+delimitMate_jump_expansion	nvim/opciones/plugins.vim	/^let delimitMate_jump_expansion = 1$/;"	v
+delimitMate_matchpairs	nvim/opciones/plugins.vim	/^let delimitMate_matchpairs = "(:),[:],{:}"$/;"	v
+delimitMate_nesting_quotes	nvim/opciones/plugins.vim	/^let delimitMate_nesting_quotes = []$/;"	v
+delimitMate_quotes	nvim/opciones/plugins.vim	/^let delimitMate_quotes = '" '' `'$/;"	v
+delimitMate_smart_matchpairs	nvim/opciones/plugins.vim	/^let delimitMate_smart_matchpairs = '^\\%(\\w\\|\\!\\|£\\|\\$\\|_\\|["'']\\s*\\S\\)'$/;"	v
+delimitMate_smart_quotes	nvim/opciones/plugins.vim	/^let delimitMate_smart_quotes = 1$/;"	v
+diff	nvim/autoload/plug.vim	/^function! s:diff()$/;"	f
+dirpath	nvim/autoload/plug.vim	/^  function! s:dirpath(path)$/;"	f
+do	nvim/autoload/plug.vim	/^function! s:do(pull, force, todo)$/;"	f
+doautocmd	nvim/autoload/plug.vim	/^function! s:doautocmd(...)$/;"	f
+dobufread	nvim/autoload/plug.vim	/^function! s:dobufread(names)$/;"	f
+err	nvim/autoload/plug.vim	/^function! s:err(msg)$/;"	f
+esc	nvim/autoload/plug.vim	/^function! s:esc(path)$/;"	f
+escrtp	nvim/autoload/plug.vim	/^function! s:escrtp(path)$/;"	f
+extract_name	nvim/autoload/plug.vim	/^function! s:extract_name(str, prefix, suffix)$/;"	f
+filetype_vim	nvim/init.vim	/^augroup filetype_vim$/;"	a
+findNotebook	scripts/CreateDailyPlanNote.sh	/^function findNotebook(notebook) {$/;"	f
+find_name	nvim/autoload/plug.vim	/^function! s:find_name(lnum)$/;"	f
+finish	nvim/autoload/plug.vim	/^function! s:finish(pull)$/;"	f
+finish_bindings	nvim/autoload/plug.vim	/^function! s:finish_bindings()$/;"	f
+format_git_log	nvim/autoload/plug.vim	/^function! s:format_git_log(line)$/;"	f
+format_message	nvim/autoload/plug.vim	/^function! s:format_message(bullet, name, message)$/;"	f
+g:NERDTreeAutoDeleteBuffer	nvim/opciones/plugins.vim	/^let g:NERDTreeAutoDeleteBuffer=1$/;"	v
+g:NERDTreeHighlightCursorline	nvim/opciones/plugins.vim	/^let g:NERDTreeHighlightCursorline=0$/;"	v
+g:NERDTreeMinimalUI	nvim/opciones/plugins.vim	/^let g:NERDTreeMinimalUI=1$/;"	v
+g:NERDTreeRespectWildIgnore	nvim/opciones/plugins.vim	/^let g:NERDTreeRespectWildIgnore=1$/;"	v
+g:NERDTreeShowHidden	nvim/opciones/plugins.vim	/^let g:NERDTreeShowHidden=1$/;"	v
+g:NERDTreeWinSize	nvim/opciones/plugins.vim	/^let g:NERDTreeWinSize=30$/;"	v
+g:SimpylFold_docstring_preview	nvim/opciones/plugins.vim	/^let g:SimpylFold_docstring_preview=1 "see docstrings folded code$/;"	v
+g:UltiSnipsEditSplit	nvim/opciones/plugins.vim	/^let g:UltiSnipsEditSplit='vertical'$/;"	v
+g:UltiSnipsExpandTrigger	nvim/opciones/plugins.vim	/^let g:UltiSnipsExpandTrigger="<tab>"$/;"	v
+g:UltiSnipsJumpBackwardTrigger	nvim/opciones/plugins.vim	/^let g:UltiSnipsJumpBackwardTrigger="<s-tab>"$/;"	v
+g:UltiSnipsJumpForwardTrigger	nvim/opciones/plugins.vim	/^let g:UltiSnipsJumpForwardTrigger="<tab>"$/;"	v
+g:UltiSnipsSnippetDirectories	nvim/opciones/plugins.vim	/^let g:UltiSnipsSnippetDirectories=["UltiSnips"]$/;"	v
+g:UltiSnipsSnippetsDir	nvim/opciones/plugins.vim	/^let g:UltiSnipsSnippetsDir='~\/.config\/nvim\/UltiSnips'$/;"	v
+g:airline#extensions#tagbar#enabled	nvim/opciones/plugins.vim	/^let g:airline#extensions#tagbar#enabled = 1$/;"	v
+g:airline#extensions#tagbar#flags	nvim/opciones/plugins.vim	/^let g:airline#extensions#tagbar#flags = 's'$/;"	v
+g:airline#extensions#whitespace#enabled	nvim/opciones/plugins.vim	/^let g:airline#extensions#whitespace#enabled = 1$/;"	v
+g:airline_symbols	nvim/opciones/plugins.vim	/^  let g:airline_symbols = {}$/;"	v
+g:airline_symbols	nvim/opciones/plugins.vim	/^let g:airline_symbols.branch = '⎇' "beautifiers$/;"	v
+g:astronaut_bold	nvim/colors/astronaut.vim	/^ let g:astronaut_bold= 0$/;"	v
+g:astronaut_dark	nvim/colors/astronaut.vim	/^ let g:astronaut_dark= 0$/;"	v
+g:astronaut_italic	nvim/colors/astronaut.vim	/^ let g:astronaut_italic= 0$/;"	v
+g:astronaut_underline	nvim/colors/astronaut.vim	/^ let g:astronaut_underline= 1$/;"	v
+g:colors_name	nvim/colors/Tomorrow-Night-Eighties.vim	/^let g:colors_name = "Tomorrow-Night-Eighties"$/;"	v
+g:colors_name	nvim/colors/Tomorrow-Night.vim	/^let g:colors_name = "Tomorrow-Night"$/;"	v
+g:colors_name	nvim/colors/Tomorrow.vim	/^let g:colors_name = "Tomorrow"$/;"	v
+g:colors_name	nvim/colors/adrian.vim	/^let g:colors_name = "adrian"$/;"	v
+g:colors_name	nvim/colors/aiseered.vim	/^let g:colors_name="aiseered"$/;"	v
+g:colors_name	nvim/colors/anotherdark.vim	/^let g:colors_name="anotherdark"$/;"	v
+g:colors_name	nvim/colors/aqua.vim	/^let g:colors_name="aqua"$/;"	v
+g:colors_name	nvim/colors/astronaut.vim	/^let g:colors_name      = "astronaut"$/;"	v
+g:colors_name	nvim/colors/asu1dark.vim	/^let g:colors_name="asu1dark"$/;"	v
+g:colors_name	nvim/colors/base16-3024.vim	/^let g:colors_name = "base16-3024"$/;"	v
+g:colors_name	nvim/colors/base16-apathy.vim	/^let g:colors_name = "base16-apathy"$/;"	v
+g:colors_name	nvim/colors/base16-ashes.vim	/^let g:colors_name = "base16-ashes"$/;"	v
+g:colors_name	nvim/colors/base16-atelierdune.vim	/^let g:colors_name = "base16-atelierdune"$/;"	v
+g:colors_name	nvim/colors/base16-atelierforest.vim	/^let g:colors_name = "base16-atelierforest"$/;"	v
+g:colors_name	nvim/colors/base16-atelierheath.vim	/^let g:colors_name = "base16-atelierheath"$/;"	v
+g:colors_name	nvim/colors/base16-atelierlakeside.vim	/^let g:colors_name = "base16-atelierlakeside"$/;"	v
+g:colors_name	nvim/colors/base16-atelierseaside.vim	/^let g:colors_name = "base16-atelierseaside"$/;"	v
+g:colors_name	nvim/colors/base16-bespin.vim	/^let g:colors_name = "base16-bespin"$/;"	v
+g:colors_name	nvim/colors/base16-brewer.vim	/^let g:colors_name = "base16-brewer"$/;"	v
+g:colors_name	nvim/colors/base16-bright.vim	/^let g:colors_name = "base16-bright"$/;"	v
+g:colors_name	nvim/colors/base16-chalk.vim	/^let g:colors_name = "base16-chalk"$/;"	v
+g:colors_name	nvim/colors/base16-codeschool.vim	/^let g:colors_name = "base16-codeschool"$/;"	v
+g:colors_name	nvim/colors/base16-colors.vim	/^let g:colors_name = "base16-colors"$/;"	v
+g:colors_name	nvim/colors/base16-default.vim	/^let g:colors_name = "base16-default"$/;"	v
+g:colors_name	nvim/colors/base16-eighties.vim	/^let g:colors_name = "base16-eighties"$/;"	v
+g:colors_name	nvim/colors/base16-embers.vim	/^let g:colors_name = "base16-embers"$/;"	v
+g:colors_name	nvim/colors/base16-flat.vim	/^let g:colors_name = "base16-flat"$/;"	v
+g:colors_name	nvim/colors/base16-google.vim	/^let g:colors_name = "base16-google"$/;"	v
+g:colors_name	nvim/colors/base16-grayscale.vim	/^let g:colors_name = "base16-grayscale"$/;"	v
+g:colors_name	nvim/colors/base16-greenscreen.vim	/^let g:colors_name = "base16-greenscreen"$/;"	v
+g:colors_name	nvim/colors/base16-harmonic16.vim	/^let g:colors_name = "base16-harmonic16"$/;"	v
+g:colors_name	nvim/colors/base16-isotope.vim	/^let g:colors_name = "base16-isotope"$/;"	v
+g:colors_name	nvim/colors/base16-londontube.vim	/^let g:colors_name = "base16-londontube"$/;"	v
+g:colors_name	nvim/colors/base16-marrakesh.vim	/^let g:colors_name = "base16-marrakesh"$/;"	v
+g:colors_name	nvim/colors/base16-mocha.vim	/^let g:colors_name = "base16-mocha"$/;"	v
+g:colors_name	nvim/colors/base16-monokai.vim	/^let g:colors_name = "base16-monokai"$/;"	v
+g:colors_name	nvim/colors/base16-ocean.vim	/^let g:colors_name = "base16-ocean"$/;"	v
+g:colors_name	nvim/colors/base16-paraiso.vim	/^let g:colors_name = "base16-paraiso"$/;"	v
+g:colors_name	nvim/colors/base16-pop.vim	/^let g:colors_name = "base16-pop"$/;"	v
+g:colors_name	nvim/colors/base16-railscasts.vim	/^let g:colors_name = "base16-railscasts"$/;"	v
+g:colors_name	nvim/colors/base16-shapeshifter.vim	/^let g:colors_name = "base16-shapeshifter"$/;"	v
+g:colors_name	nvim/colors/base16-solarized.vim	/^let g:colors_name = "base16-solarized"$/;"	v
+g:colors_name	nvim/colors/base16-summerfruit.vim	/^let g:colors_name = "base16-summerfruit"$/;"	v
+g:colors_name	nvim/colors/base16-tomorrow.vim	/^let g:colors_name = "base16-tomorrow"$/;"	v
+g:colors_name	nvim/colors/base16-twilight.vim	/^let g:colors_name = "base16-twilight"$/;"	v
+g:colors_name	nvim/colors/baycomb.vim	/^let g:colors_name="baycomb"$/;"	v
+g:colors_name	nvim/colors/bclear.vim	/^let g:colors_name = "bclear"$/;"	v
+g:colors_name	nvim/colors/biogoo.vim	/^let g:colors_name = "biogoo"$/;"	v
+g:colors_name	nvim/colors/blacksea.vim	/^let g:colors_name = "BlackSea"$/;"	v
+g:colors_name	nvim/colors/blue.vim	/^let g:colors_name = "blue"$/;"	v
+g:colors_name	nvim/colors/bluegreen.vim	/^let g:colors_name="mine"$/;"	v
+g:colors_name	nvim/colors/borland.vim	/^let g:colors_name="borland"$/;"	v
+g:colors_name	nvim/colors/brookstream.vim	/^let g:colors_name="brookstream"$/;"	v
+g:colors_name	nvim/colors/calmar256-dark.vim	/^let g:colors_name = "calmar256-dark"$/;"	v
+g:colors_name	nvim/colors/calmar256-light.vim	/^let g:colors_name = "calmar256-light"$/;"	v
+g:colors_name	nvim/colors/camo.vim	/^let g:colors_name="camo"$/;"	v
+g:colors_name	nvim/colors/candycode.vim	/^let g:colors_name="candycode"$/;"	v
+g:colors_name	nvim/colors/chela_light.vim	/^let g:colors_name="chela_light"$/;"	v
+g:colors_name	nvim/colors/chocolateliquor.vim	/^let g:colors_name = "ChocolateLiquor"$/;"	v
+g:colors_name	nvim/colors/clarity.vim	/^let g:colors_name="clarity"$/;"	v
+g:colors_name	nvim/colors/colorer.vim	/^let g:colors_name = "colorer"$/;"	v
+g:colors_name	nvim/colors/dante.vim	/^let g:colors_name = "dante"$/;"	v
+g:colors_name	nvim/colors/darkZ.vim	/^let g:colors_name="darkZ"$/;"	v
+g:colors_name	nvim/colors/darkblue2.vim	/^let g:colors_name = "darkblue2"$/;"	v
+g:colors_name	nvim/colors/darkbone.vim	/^let g:colors_name = 'darkbone'$/;"	v
+g:colors_name	nvim/colors/darkslategray.vim	/^let g:colors_name = "darkslategray"$/;"	v
+g:colors_name	nvim/colors/darkspectrum.vim	/^let g:colors_name="darkspectrum"$/;"	v
+g:colors_name	nvim/colors/denim.vim	/^let g:colors_name="denim"$/;"	v
+g:colors_name	nvim/colors/desert.vim	/^let g:colors_name="desert"$/;"	v
+g:colors_name	nvim/colors/desert256.vim	/^let g:colors_name="desert256"$/;"	v
+g:colors_name	nvim/colors/desertEx.vim	/^let g:colors_name="desertEx"$/;"	v
+g:colors_name	nvim/colors/dw_blue.vim	/^let g:colors_name="dw_blue"$/;"	v
+g:colors_name	nvim/colors/dw_cyan.vim	/^let g:colors_name="dw_cyan"$/;"	v
+g:colors_name	nvim/colors/dw_green.vim	/^let g:colors_name="dw_green"$/;"	v
+g:colors_name	nvim/colors/dw_orange.vim	/^let g:colors_name="dw_orange"$/;"	v
+g:colors_name	nvim/colors/dw_purple.vim	/^let g:colors_name="dw_purple"$/;"	v
+g:colors_name	nvim/colors/dw_red.vim	/^let g:colors_name="dw_red"$/;"	v
+g:colors_name	nvim/colors/dw_yellow.vim	/^let g:colors_name="dw_yellow"$/;"	v
+g:colors_name	nvim/colors/eclipse.vim	/^let g:colors_name = "eclipse"$/;"	v
+g:colors_name	nvim/colors/ekvoli.vim	/^let g:colors_name = "ekvoli"$/;"	v
+g:colors_name	nvim/colors/elflord.vim	/^let g:colors_name = "elflord"$/;"	v
+g:colors_name	nvim/colors/golden.vim	/^let g:colors_name = "golden"$/;"	v
+g:colors_name	nvim/colors/guardian.vim	/^let g:colors_name = "Guardian"$/;"	v
+g:colors_name	nvim/colors/habilight.vim	/^let g:colors_name = "habiLight"$/;"	v
+g:colors_name	nvim/colors/impact.vim	/^let g:colors_name="impact"$/;"	v
+g:colors_name	nvim/colors/jammy.vim	/^let g:colors_name="jammy"$/;"	v
+g:colors_name	nvim/colors/koehler.vim	/^let g:colors_name = "koehler"$/;"	v
+g:colors_name	nvim/colors/leo.vim	/^let g:colors_name = "leo256"$/;"	v
+g:colors_name	nvim/colors/lettuce.vim	/^let g:colors_name="lettuce"$/;"	v
+g:colors_name	nvim/colors/manxome.vim	/^let g:colors_name = "manxome"$/;"	v
+g:colors_name	nvim/colors/marklar.vim	/^let g:colors_name = "marklar"$/;"	v
+g:colors_name	nvim/colors/maroloccio.vim	/^let g:colors_name="maroloccio"$/;"	v
+g:colors_name	nvim/colors/matrix.vim	/^let g:colors_name = 'matrix'$/;"	v
+g:colors_name	nvim/colors/molokai.vim	/^let g:colors_name="molokai"$/;"	v
+g:colors_name	nvim/colors/moss.vim	/^let g:colors_name = "moss"$/;"	v
+g:colors_name	nvim/colors/motus.vim	/^let g:colors_name = "motus"$/;"	v
+g:colors_name	nvim/colors/murphy.vim	/^let g:colors_name = "murphy"$/;"	v
+g:colors_name	nvim/colors/navajo-night.vim	/^let g:colors_name = "navajo-night"$/;"	v
+g:colors_name	nvim/colors/navajo.vim	/^let g:colors_name = "navajo"$/;"	v
+g:colors_name	nvim/colors/neverness.vim	/^let g:colors_name = 'neverness'$/;"	v
+g:colors_name	nvim/colors/nightshimmer.vim	/^let g:colors_name = "nightshimmer"$/;"	v
+g:colors_name	nvim/colors/northland.vim	/^let g:colors_name="northland"$/;"	v
+g:colors_name	nvim/colors/nuvola.vim	/^let g:colors_name = "nuvola"$/;"	v
+g:colors_name	nvim/colors/oceanblack.vim	/^let g:colors_name = "oceanblack"$/;"	v
+g:colors_name	nvim/colors/oceandeep.vim	/^let g:colors_name = "oceandeep"$/;"	v
+g:colors_name	nvim/colors/oceanlight.vim	/^let g:colors_name = "oceanlight"$/;"	v
+g:colors_name	nvim/colors/olive.vim	/^let g:colors_name="olive"$/;"	v
+g:colors_name	nvim/colors/pablo.vim	/^let g:colors_name = "pablo"$/;"	v
+g:colors_name	nvim/colors/papayawhip.vim	/^let g:colors_name = "PapayaWhip"$/;"	v
+g:colors_name	nvim/colors/peaksea.vim	/^let g:colors_name = expand("<sfile>:t:r")$/;"	v
+g:colors_name	nvim/colors/print_bw.vim	/^let g:colors_name = "print_bw"$/;"	v
+g:colors_name	nvim/colors/railscasts.vim	/^let g:colors_name = "railscasts"$/;"	v
+g:colors_name	nvim/colors/railscasts2.vim	/^let g:colors_name = "railscasts"$/;"	v
+g:colors_name	nvim/colors/relaxedgreen.vim	/^let g:colors_name = "relaxedgreen"$/;"	v
+g:colors_name	nvim/colors/robinhood.vim	/^let g:colors_name = "robinhood"$/;"	v
+g:colors_name	nvim/colors/ron.vim	/^let g:colors_name = "ron"$/;"	v
+g:colors_name	nvim/colors/rootwater.vim	/^let g:colors_name = 'rootwater'$/;"	v
+g:colors_name	nvim/colors/settlemyer.vim	/^let g:colors_name="settlemyer"$/;"	v
+g:colors_name	nvim/colors/sienna.vim	/^let g:colors_name = 'sienna'$/;"	v
+g:colors_name	nvim/colors/silent.vim	/^let g:colors_name = "silent"$/;"	v
+g:colors_name	nvim/colors/simpleandfriendly.vim	/^let g:colors_name = "simpleandfriendly"$/;"	v
+g:colors_name	nvim/colors/smyck.vim	/^let g:colors_name = "smyck"$/;"	v
+g:colors_name	nvim/colors/softblue.vim	/^let g:colors_name="softblue"$/;"	v
+g:colors_name	nvim/colors/soso.vim	/^let g:colors_name="soso"$/;"	v
+g:colors_name	nvim/colors/summerfruit256.vim	/^let g:colors_name="summerfruit256"$/;"	v
+g:colors_name	nvim/colors/synic.vim	/^let g:colors_name = "synic"$/;"	v
+g:colors_name	nvim/colors/tabula.vim	/^let g:colors_name = "tabula"$/;"	v
+g:colors_name	nvim/colors/tolerable.vim	/^let g:colors_name="tolerable"$/;"	v
+g:colors_name	nvim/colors/torte.vim	/^let g:colors_name = "torte"$/;"	v
+g:colors_name	nvim/colors/two2tango.vim	/^let g:colors_name="two2tango"$/;"	v
+g:colors_name	nvim/colors/vc.vim	/^let g:colors_name="vc"$/;"	v
+g:colors_name	nvim/colors/vibrantink.vim	/^let g:colors_name = "vibrantink"$/;"	v
+g:colors_name	nvim/colors/vylight.vim	/^let g:colors_name="vylight"$/;"	v
+g:colors_name	nvim/colors/whitebox.vim	/^let g:colors_name = "whitebox"$/;"	v
+g:colors_name	nvim/colors/wombat256.vim	/^let g:colors_name = "wombat256"$/;"	v
+g:colors_name	nvim/colors/wood.vim	/^let g:colors_name="wood"$/;"	v
+g:colors_name	nvim/colors/wuye.vim	/^let g:colors_name = "wuye"$/;"	v
+g:colors_name	nvim/colors/xemacs.vim	/^let g:colors_name="xemacs"$/;"	v
+g:colors_name	nvim/colors/zellner.vim	/^let g:colors_name = "zellner"$/;"	v
+g:colors_name	nvim/colors/zenburn.vim	/^let g:colors_name="zenburn"$/;"	v
+g:colors_name	nvim/colors/zmrok.vim	/^let g:colors_name="zmrok"$/;"	v
+g:delimitMate_expand_cr	nvim/opciones/plugins.vim	/^let g:delimitMate_expand_cr = 1$/;"	v
+g:delimitMate_expand_space	nvim/opciones/plugins.vim	/^let g:delimitMate_expand_space = 1$/;"	v
+g:deoplete#auto_completion_start_length	nvim/opciones/plugins.vim	/^let g:deoplete#auto_completion_start_length = 2$/;"	v
+g:deoplete#enable_at_startup	nvim/opciones/plugins.vim	/^let g:deoplete#enable_at_startup = 1$/;"	v
+g:deoplete#ignore_sources	nvim/opciones/plugins.vim	/^  let g:deoplete#ignore_sources = {}$/;"	v
+g:deoplete#ignore_sources	nvim/opciones/plugins.vim	/^let g:deoplete#ignore_sources.md = ['buffer']$/;"	v
+g:deoplete#ignore_sources	nvim/opciones/plugins.vim	/^let g:deoplete#ignore_sources.tex = ['buffer']$/;"	v
+g:deoplete#max_list	nvim/opciones/plugins.vim	/^let g:deoplete#max_list = 15$/;"	v
+g:deoplete#omni#input_patterns	nvim/opciones/plugins.vim	/^  let g:deoplete#omni#input_patterns = {}$/;"	v
+g:deoplete#omni#input_patterns	nvim/opciones/plugins.vim	/^let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})$/;"	v
+g:deoplete#omni#input_patterns	nvim/opciones/plugins.vim	/^let g:deoplete#omni#input_patterns.java = [$/;"	v
+g:deoplete#omni#input_patterns	nvim/opciones/plugins.vim	/^let g:deoplete#omni#input_patterns.tex = '\\\\(?:'$/;"	v
+g:deoplete#omni_patterns	nvim/opciones/plugins.vim	/^  let g:deoplete#omni_patterns = {}$/;"	v
+g:deoplete#omni_patterns	nvim/opciones/plugins.vim	/^let g:deoplete#omni_patterns.c = '[^.[:digit:] *\\t]\\%(\\.\\|->\\)'$/;"	v
+g:deoplete#omni_patterns	nvim/opciones/plugins.vim	/^let g:deoplete#omni_patterns.cpp = '[^.[:digit:] *\\t]\\%(\\.\\|->\\)\\|\\h\\w*::'$/;"	v
+g:deoplete#sources	nvim/opciones/plugins.vim	/^  let g:deoplete#sources = {}$/;"	v
+g:deoplete#sources	nvim/opciones/plugins.vim	/^let g:deoplete#sources._    = ['buffer', 'file', 'omni', 'ultisnips']$/;"	v
+g:deoplete#sources	nvim/opciones/plugins.vim	/^let g:deoplete#sources.c = ['cpp','d','cu'] " In c buffers, completes from cpp and d buffers.$/;"	v
+g:deoplete#sources	nvim/opciones/plugins.vim	/^let g:deoplete#sources.cpp = ['c'] " In cpp buffers, completes from c buffers.$/;"	v
+g:deoplete#sources	nvim/opciones/plugins.vim	/^let g:deoplete#sources.css  = ['buffer', 'member', 'file', 'omni', 'ultisnips']$/;"	v
+g:deoplete#sources	nvim/opciones/plugins.vim	/^let g:deoplete#sources.scala = ['java'] "Complete Scala from Java$/;"	v
+g:deoplete#sources	nvim/opciones/plugins.vim	/^let g:deoplete#sources.scss = ['buffer', 'member', 'file', 'omni', 'ultisnips']$/;"	v
+g:deoplete#sources	nvim/opciones/plugins.vim	/^let g:deoplete#sources.tex = ['ultisnips', 'omni']$/;"	v
+g:deoplete#sources	nvim/opciones/plugins.vim	/^let g:deoplete#sources.vim  = ['buffer', 'member', 'file', 'ultisnips']$/;"	v
+g:deoplete#sources#jedi#show_docstring	nvim/opciones/plugins.vim	/^let g:deoplete#sources#jedi#show_docstring = 1$/;"	v
+g:error_is_open	nvim/opciones/customFunctions.vim	/^let g:error_is_open = 0$/;"	v
+g:ghcmod_hlint_options	nvim/opciones/plugins.vim	/^let g:ghcmod_hlint_options = ['--hint=Dollar','--hint=Default','--ignore=Use camelCase']$/;"	v
+g:goldenview__enable_default_mapping	nvim/opciones/plugins.vim	/^let g:goldenview__enable_default_mapping = 0$/;"	v
+g:goldenview_ignore_rule	nvim/opciones/plugins.vim	/^let g:goldenview_ignore_rule = ['nerdtree', 'tagbar', 'unite']$/;"	v
+g:goyo_linenr	nvim/opciones/plugins.vim	/^let g:goyo_linenr        = 1$/;"	v
+g:goyo_margin_bottom	nvim/opciones/plugins.vim	/^let g:goyo_margin_bottom = 2$/;"	v
+g:goyo_margin_top	nvim/opciones/plugins.vim	/^let g:goyo_margin_top    = 2$/;"	v
+g:goyo_width	nvim/opciones/plugins.vim	/^let g:goyo_width         = 82$/;"	v
+g:haskell_conceal	nvim/opciones/plugins.vim	/^let g:haskell_conceal                         = 0$/;"	v
+g:haskell_conceal_enumerations	nvim/opciones/plugins.vim	/^let g:haskell_conceal_enumerations            = 0$/;"	v
+g:haskell_conceal_wide	nvim/opciones/plugins.vim	/^let g:haskell_conceal_wide                    = 0$/;"	v
+g:haskell_enable_arrowsyntax	nvim/opciones/plugins.vim	/^let g:haskell_enable_arrowsyntax              = 1$/;"	v
+g:haskell_enable_pattern_synonyms	nvim/opciones/plugins.vim	/^let g:haskell_enable_pattern_synonyms         = 1$/;"	v
+g:haskell_enable_quantification	nvim/opciones/plugins.vim	/^let g:haskell_enable_quantification           = 1$/;"	v
+g:haskell_enable_recursivedo	nvim/opciones/plugins.vim	/^let g:haskell_enable_recursivedo              = 1$/;"	v
+g:haskell_enable_static_pointers	nvim/opciones/plugins.vim	/^let g:haskell_enable_static_pointers          = 1$/;"	v
+g:haskell_enable_typeroles	nvim/opciones/plugins.vim	/^let g:haskell_enable_typeroles                = 1$/;"	v
+g:haskell_hsp	nvim/opciones/plugins.vim	/^let g:haskell_hsp                             = 0$/;"	v
+g:hindent_indent_size	nvim/opciones/plugins.vim	/^let g:hindent_indent_size = 2$/;"	v
+g:hindent_line_length	nvim/opciones/plugins.vim	/^let g:hindent_line_length = 80$/;"	v
+g:hindent_on_save	nvim/opciones/plugins.vim	/^let g:hindent_on_save = 1$/;"	v
+g:hlintRefactor#disableDefaultKeybindings	nvim/opciones/plugins.vim	/^let g:hlintRefactor#disableDefaultKeybindings = 1$/;"	v
+g:inkpot_black_background	nvim/colors/inkpot.vim	/^    let g:inkpot_black_background = 0$/;"	v
+g:lexical#dictionary_key	nvim/opciones/plugins.vim	/^let g:lexical#dictionary_key = '<leader>k'$/;"	v
+g:lexical#spell_key	nvim/opciones/plugins.vim	/^let g:lexical#spell_key = '<leader>s'$/;"	v
+g:lexical#spelllang	nvim/opciones/plugins.vim	/^let g:lexical#spelllang = ['en_us','en_gb', 'it', 'es']$/;"	v
+g:loaded_astronaut	nvim/colors/astronaut.vim	/^let g:loaded_astronaut = "v7"$/;"	v
+g:loaded_plug	nvim/autoload/plug.vim	/^let g:loaded_plug = 1$/;"	v
+g:localLeader	nvim/opciones/keys.vim	/^let g:localLeader=","$/;"	v
+g:loclist_is_open	nvim/opciones/customFunctions.vim	/^let g:loclist_is_open = 0$/;"	v
+g:make_place_signs	nvim/opciones/plugins.vim	/^let g:make_place_signs= 1 "place error signs always$/;"	v
+g:mapleader	nvim/opciones/keys.vim	/^let g:mapleader=","$/;"	v
+g:neomake_list_height	nvim/opciones/plugins.vim	/^let g:neomake_list_height = 5$/;"	v
+g:neomake_open_list	nvim/opciones/plugins.vim	/^let g:neomake_open_list = 2 "always open error$/;"	v
+g:neomake_verbose	nvim/opciones/plugins.vim	/^let g:neomake_verbose = 1$/;"	v
+g:plugs_order	nvim/autoload/plug.vim	/^  let g:plugs_order = get(g:, 'plugs_order', keys(g:plugs))$/;"	v
+g:python3_host_prog	nvim/opciones/plugins.vim	/^let g:python3_host_prog = $HOME.'\/anaconda3\/envs\/neovim3\/bin\/python'$/;"	v
+g:python_host_prog	nvim/opciones/plugins.vim	/^let g:python_host_prog = $HOME.'\/anaconda3\/envs\/neovim\/bin\/python'$/;"	v
+g:quickfix_is_open	nvim/opciones/customFunctions.vim	/^let g:quickfix_is_open = 0$/;"	v
+g:rbpt_colorpairs	nvim/opciones/plugins.vim	/^let g:rbpt_colorpairs = [$/;"	v
+g:rbpt_loadcmd_toggle	nvim/opciones/plugins.vim	/^let g:rbpt_loadcmd_toggle = 0$/;"	v
+g:rbpt_max	nvim/opciones/plugins.vim	/^let g:rbpt_max = 16$/;"	v
+g:snips_author	nvim/opciones/plugins.vim	/^let g:snips_author='Alberto Sadde (@aesadde)'$/;"	v
+g:snips_email	nvim/opciones/plugins.vim	/^let g:snips_email='alberto@aifi.io'$/;"	v
+g:tagbar_autoclose	nvim/opciones/plugins.vim	/^let g:tagbar_autoclose=0$/;"	v
+g:tagbar_autofocus	nvim/opciones/plugins.vim	/^let g:tagbar_autofocus=1$/;"	v
+g:tagbar_type_haskell	nvim/opciones/plugins.vim	/^  let g:tagbar_type_haskell = {$/;"	v
+g:tagbar_type_tex	nvim/opciones/plugins.vim	/^let g:tagbar_type_tex = {$/;"	v
+g:tagbar_width	nvim/opciones/plugins.vim	/^let g:tagbar_width=50$/;"	v
+g:tex_flavor	nvim/init.vim	/^let g:tex_flavor = 'tex' "use always tex for latex$/;"	v
+g:unite_data_directory	nvim/opciones/plugins.vim	/^let g:unite_data_directory='~\/.vim\/.cache\/unite'$/;"	v
+g:unite_enable_ignore_case	nvim/opciones/plugins.vim	/^let g:unite_enable_ignore_case = 1$/;"	v
+g:unite_enable_start_insert	nvim/opciones/plugins.vim	/^let g:unite_enable_start_insert = 1$/;"	v
+g:unite_force_overwrite_statusline	nvim/opciones/plugins.vim	/^let g:unite_force_overwrite_statusline = 1$/;"	v
+g:unite_prompt	nvim/opciones/plugins.vim	/^let g:unite_prompt = "➤ "$/;"	v
+g:unite_redpen_use_legacy_config_detection	nvim/opciones/plugins.vim	/^let g:unite_redpen_use_legacy_config_detection=1$/;"	v
+g:unite_source_grep_recursive_opt	nvim/opciones/plugins.vim	/^  let g:unite_source_grep_recursive_opt=''$/;"	v
+g:unite_source_history_yank_enable	nvim/opciones/plugins.vim	/^let g:unite_source_history_yank_enable = 1$/;"	v
+g:unite_source_rec_async_command	nvim/opciones/plugins.vim	/^  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'$/;"	v
+g:unite_source_rec_max_cache_files	nvim/opciones/plugins.vim	/^let g:unite_source_rec_max_cache_files=10000$/;"	v
+g:unite_source_rec_min_cache_files	nvim/opciones/plugins.vim	/^  let g:unite_source_rec_min_cache_files = 1200$/;"	v
+g:unite_split_rule	nvim/opciones/plugins.vim	/^let g:unite_split_rule = "botright"$/;"	v
+g:unite_start_instert	nvim/opciones/plugins.vim	/^let g:unite_start_instert = 0$/;"	v
+g:unite_winheight	nvim/opciones/plugins.vim	/^let g:unite_winheight = 10$/;"	v
+g:vimfiler_as_default_explorer	nvim/opciones/plugins.vim	/^let g:vimfiler_as_default_explorer = 1$/;"	v
+g:vimfiler_expand_jump_to_first_child	nvim/opciones/plugins.vim	/^let g:vimfiler_expand_jump_to_first_child = 0$/;"	v
+g:vimfiler_file_icon	nvim/opciones/plugins.vim	/^let g:vimfiler_file_icon = '-'$/;"	v
+g:vimfiler_ignore_pattern	nvim/opciones/plugins.vim	/^let g:vimfiler_ignore_pattern = '\\.git\\|\\.DS_Store\\|\\.pyc'$/;"	v
+g:vimfiler_marked_file_icon	nvim/opciones/plugins.vim	/^let g:vimfiler_marked_file_icon = '✓'$/;"	v
+g:vimfiler_readonly_file_icon	nvim/opciones/plugins.vim	/^let g:vimfiler_readonly_file_icon = '✗'$/;"	v
+g:vimfiler_safe_mode_by_default	nvim/opciones/plugins.vim	/^let g:vimfiler_safe_mode_by_default = 0$/;"	v
+g:vimfiler_time_format	nvim/opciones/plugins.vim	/^let g:vimfiler_time_format = '%m-%d-%y %H:%M:%S'$/;"	v
+g:vimfiler_tree_closed_icon	nvim/opciones/plugins.vim	/^let g:vimfiler_tree_closed_icon = '▸'$/;"	v
+g:vimfiler_tree_leaf_icon	nvim/opciones/plugins.vim	/^let g:vimfiler_tree_leaf_icon = " "$/;"	v
+g:vimfiler_tree_opened_icon	nvim/opciones/plugins.vim	/^let g:vimfiler_tree_opened_icon = '▾'$/;"	v
+g:vimtex_complete_close_braces	nvim/opciones/plugins.vim	/^let g:vimtex_complete_close_braces = 1$/;"	v
+g:vimtex_fold_comments	nvim/opciones/plugins.vim	/^let g:vimtex_fold_comments = 1$/;"	v
+g:vimtex_fold_enabled	nvim/opciones/plugins.vim	/^let g:vimtex_fold_enabled = 1$/;"	v
+g:vimtex_latexmk_callback_hooks	nvim/opciones/plugins.vim	/^let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']$/;"	v
+g:vimtex_view_general_options	nvim/opciones/plugins.vim	/^let g:vimtex_view_general_options = '-r @line @pdf @tex'$/;"	v
+g:vimtex_view_general_viewer	nvim/opciones/plugins.vim	/^let g:vimtex_view_general_viewer$/;"	v
+ga	nvim/opciones/plugins.vim	/^nmap ga <Plug>(EasyAlign)$/;"	m
+gitFiles	setup.sh	/^function gitFiles() {$/;"	f
+git_validate	nvim/autoload/plug.vim	/^function! s:git_validate(spec, check_branch)$/;"	f
+git_version_requirement	nvim/autoload/plug.vim	/^function! s:git_version_requirement(...)$/;"	f
+glob	nvim/autoload/plug.vim	/^function! s:glob(from, pattern)$/;"	f
+glob_dir	nvim/autoload/plug.vim	/^function! s:glob_dir(path)$/;"	f
+goyo_enter	nvim/opciones/plugins.vim	/^function! s:goyo_enter()$/;"	f
+goyo_leave	nvim/opciones/plugins.vim	/^function! s:goyo_leave()$/;"	f
+grey_color	nvim/colors/desert256.vim	/^    fun <SID>grey_color(n)$/;"	f
+grey_color	nvim/colors/jellybeans.vim	/^fun! s:grey_color(n)$/;"	f
+grey_color	nvim/colors/summerfruit256.vim	/^    fun <SID>grey_color(n)$/;"	f
+grey_color	nvim/colors/wombat256.vim	/^fun <SID>grey_color(n)$/;"	f
+grey_colour	nvim/colors/Tomorrow-Night-Eighties.vim	/^	fun <SID>grey_colour(n)$/;"	f
+grey_colour	nvim/colors/Tomorrow-Night.vim	/^	fun <SID>grey_colour(n)$/;"	f
+grey_colour	nvim/colors/Tomorrow.vim	/^	fun <SID>grey_colour(n)$/;"	f
+grey_level	nvim/colors/Tomorrow-Night-Eighties.vim	/^	fun <SID>grey_level(n)$/;"	f
+grey_level	nvim/colors/Tomorrow-Night.vim	/^	fun <SID>grey_level(n)$/;"	f
+grey_level	nvim/colors/Tomorrow.vim	/^	fun <SID>grey_level(n)$/;"	f
+grey_level	nvim/colors/desert256.vim	/^    fun <SID>grey_level(n)$/;"	f
+grey_level	nvim/colors/jellybeans.vim	/^fun! s:grey_level(n)$/;"	f
+grey_level	nvim/colors/summerfruit256.vim	/^    fun <SID>grey_level(n)$/;"	f
+grey_level	nvim/colors/wombat256.vim	/^fun <SID>grey_level(n)$/;"	f
+grey_number	nvim/colors/Tomorrow-Night-Eighties.vim	/^	fun <SID>grey_number(x)$/;"	f
+grey_number	nvim/colors/Tomorrow-Night.vim	/^	fun <SID>grey_number(x)$/;"	f
+grey_number	nvim/colors/Tomorrow.vim	/^	fun <SID>grey_number(x)$/;"	f
+grey_number	nvim/colors/desert256.vim	/^    fun <SID>grey_number(x)$/;"	f
+grey_number	nvim/colors/jellybeans.vim	/^fun! s:grey_number(x)$/;"	f
+grey_number	nvim/colors/summerfruit256.vim	/^    fun <SID>grey_number(x)$/;"	f
+grey_number	nvim/colors/wombat256.vim	/^fun <SID>grey_number(x)$/;"	f
+gui	nvim/colors/base16-3024.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-apathy.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-ashes.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-atelierdune.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-atelierforest.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-atelierheath.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-atelierlakeside.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-atelierseaside.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-bespin.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-brewer.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-bright.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-chalk.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-codeschool.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-colors.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-default.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-eighties.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-embers.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-flat.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-google.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-grayscale.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-greenscreen.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-harmonic16.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-isotope.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-londontube.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-marrakesh.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-mocha.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-monokai.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-ocean.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-paraiso.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-railscasts.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-shapeshifter.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-solarized.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-summerfruit.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-tomorrow.vim	/^fun s:gui(color)$/;"	f
+gui	nvim/colors/base16-twilight.vim	/^fun s:gui(color)$/;"	f
+guisetcolor	nvim/colors/calmar256-dark.vim	/^function! s:guisetcolor(colarg)$/;"	f
+guisetcolor	nvim/colors/calmar256-light.vim	/^function! s:guisetcolor(colarg)$/;"	f
+hash_match	nvim/autoload/plug.vim	/^function! s:hash_match(a, b)$/;"	f
+haskell	nvim/opciones/plugins.vim	/^augroup haskell$/;"	a
+hi	nvim/colors/base16-3024.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-apathy.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-ashes.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-atelierdune.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-atelierforest.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-atelierheath.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-atelierlakeside.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-atelierseaside.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-bespin.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-brewer.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-bright.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-chalk.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-codeschool.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-colors.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-default.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-eighties.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-embers.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-flat.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-google.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-grayscale.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-greenscreen.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-harmonic16.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-isotope.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-londontube.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-marrakesh.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-mocha.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-monokai.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-ocean.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-paraiso.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-pop.vim	/^fun! <SID>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-railscasts.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-shapeshifter.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-solarized.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-summerfruit.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-tomorrow.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hi	nvim/colors/base16-twilight.vim	/^fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr)$/;"	f
+hibg	nvim/colors/vividchalk.vim	/^function! s:hibg(group,guibg,first,second)$/;"	f
+hifg	nvim/colors/vividchalk.vim	/^function! s:hifg(group,guifg,first,second,...)$/;"	f
+highlight	nvim/colors/coffee.vim	/^function! s:highlight(group, fg, bg, attr)$/;"	f
+hs_highlight_boolean	nvim/colors/solarized.vim	/^let hs_highlight_boolean=1$/;"	v
+hs_highlight_delimiters	nvim/colors/solarized.vim	/^let hs_highlight_delimiters=1$/;"	v
+html_my_rendering	nvim/colors/tabula.vim	/^let html_my_rendering=1$/;"	v
+infer_properties	nvim/autoload/plug.vim	/^function! s:infer_properties(name, repo)$/;"	f
+install	nvim/autoload/plug.vim	/^function! s:install(force, names)$/;"	f
+installJobs	setup.sh	/^function installJobs() {$/;"	f
+is_local_plug	nvim/autoload/plug.vim	/^  function! s:is_local_plug(repo)$/;"	f
+is_managed	nvim/autoload/plug.vim	/^function! s:is_managed(name)$/;"	f
+is_preview_window_open	nvim/autoload/plug.vim	/^function! s:is_preview_window_open()$/;"	f
+is_updated	nvim/autoload/plug.vim	/^function! s:is_updated(dir)$/;"	f
+j	nvim/opciones/keys.vim	/^nnoremap j gj$/;"	m
+jj	nvim/opciones/keys.vim	/^inoremap jj <ESC>$/;"	m
+job_abort	nvim/autoload/plug.vim	/^function! s:job_abort()$/;"	f
+job_cb	nvim/autoload/plug.vim	/^function! s:job_cb(fn, job, ch, data)$/;"	f
+job_exit_cb	nvim/autoload/plug.vim	/^function! s:job_exit_cb(self, data) abort$/;"	f
+job_out_cb	nvim/autoload/plug.vim	/^function! s:job_out_cb(self, data) abort$/;"	f
+k	nvim/opciones/keys.vim	/^nnoremap k gk$/;"	m
+last_edit	nvim/opciones/globales.vim	/^augroup last_edit$/;"	a
+last_non_empty_line	nvim/autoload/plug.vim	/^function! s:last_non_empty_line(lines)$/;"	f
+lastline	nvim/autoload/plug.vim	/^function! s:lastline(msg)$/;"	f
+lines	nvim/autoload/plug.vim	/^function! s:lines(msg)$/;"	f
+load_plugin	nvim/autoload/plug.vim	/^function! s:load_plugin(spec)$/;"	f
+loaded_names	nvim/autoload/plug.vim	/^function! s:loaded_names()$/;"	f
+lod	nvim/autoload/plug.vim	/^function! s:lod(names, types, ...)$/;"	f
+lod_cmd	nvim/autoload/plug.vim	/^function! s:lod_cmd(cmd, bang, l1, l2, args, names)$/;"	f
+lod_ft	nvim/autoload/plug.vim	/^function! s:lod_ft(pat, names)$/;"	f
+lod_map	nvim/autoload/plug.vim	/^function! s:lod_map(map, names, with_prefix, prefix)$/;"	f
+log	nvim/autoload/plug.vim	/^function! s:log(bullet, name, lines)$/;"	f
+log4	nvim/autoload/plug.vim	/^function! s:log4(name, msg)$/;"	f
+logpos	nvim/autoload/plug.vim	/^function! s:logpos(name)$/;"	f
+lpad	nvim/autoload/plug.vim	/^function! s:lpad(str, len)$/;"	f
+main	nvim/colors/marklar.vim	/^    function! s:main()$/;"	f
+mapleader	nvim/opciones/keys.vim	/^let mapleader=","$/;"	v
+my_cr_function	nvim/opciones/keys.vim	/^function! s:my_cr_function()$/;"	f
+names	nvim/autoload/plug.vim	/^function! s:names(...)$/;"	f
+new_window	nvim/autoload/plug.vim	/^function! s:new_window()$/;"	f
+nvimFiles	setup.sh	/^function nvimFiles() {$/;"	f
+nvim_cb	nvim/autoload/plug.vim	/^function! s:nvim_cb(job_id, data, event) dict abort$/;"	f
+pandoc	nvim/opciones/plugins.vim	/^augroup pandoc$/;"	a
+parseOptions	setup.sh	/^function parseOptions() {$/;"	f
+parse_options	nvim/autoload/plug.vim	/^function! s:parse_options(arg)$/;"	f
+path	nvim/autoload/plug.vim	/^  function! s:path(path)$/;"	f
+plug#	nvim/autoload/plug.vim	/^function! plug#(repo, ...)$/;"	f
+plug#begin	nvim/autoload/plug.vim	/^function! plug#begin(...)$/;"	f
+plug#end	nvim/autoload/plug.vim	/^function! plug#end()$/;"	f
+plug#helptags	nvim/autoload/plug.vim	/^function! plug#helptags()$/;"	f
+plug#load	nvim/autoload/plug.vim	/^function! plug#load(...)$/;"	f
+plug_window_exists	nvim/autoload/plug.vim	/^function! s:plug_window_exists()$/;"	f
+prepare	nvim/autoload/plug.vim	/^function! s:prepare(...)$/;"	f
+preview_commit	nvim/autoload/plug.vim	/^function! s:preview_commit()$/;"	f
+print_opts	nvim/colors/marklar.vim	/^        function! s:print_opts(...)$/;"	f
+progress_bar	nvim/autoload/plug.vim	/^function! s:progress_bar(line, bar, total)$/;"	f
+progress_opt	nvim/autoload/plug.vim	/^function! s:progress_opt(base)$/;"	f
+python	nvim/opciones/plugins.vim	/^augroup python$/;"	a
+reap	nvim/autoload/plug.vim	/^function! s:reap(name)$/;"	f
+regress_bar	nvim/autoload/plug.vim	/^function! s:regress_bar()$/;"	f
+reload_plugins	nvim/autoload/plug.vim	/^function! s:reload_plugins()$/;"	f
+removeOldDotFiles	setup.sh	/^function removeOldDotFiles() {$/;"	f
+remove_rtp	nvim/autoload/plug.vim	/^function! s:remove_rtp()$/;"	f
+remove_triggers	nvim/autoload/plug.vim	/^function! s:remove_triggers(name)$/;"	f
+reorg_rtp	nvim/autoload/plug.vim	/^function! s:reorg_rtp()$/;"	f
+retry	nvim/autoload/plug.vim	/^function! s:retry()$/;"	f
+revert	nvim/autoload/plug.vim	/^function! s:revert()$/;"	f
+rgb	nvim/colors/Tomorrow-Night-Eighties.vim	/^	fun <SID>rgb(rgb)$/;"	f
+rgb	nvim/colors/Tomorrow-Night.vim	/^	fun <SID>rgb(rgb)$/;"	f
+rgb	nvim/colors/Tomorrow.vim	/^	fun <SID>rgb(rgb)$/;"	f
+rgb	nvim/colors/desert256.vim	/^    fun <SID>rgb(rgb)$/;"	f
+rgb	nvim/colors/jellybeans.vim	/^fun! s:rgb(rgb)$/;"	f
+rgb	nvim/colors/summerfruit256.vim	/^    fun <SID>rgb(rgb)$/;"	f
+rgb	nvim/colors/wombat256.vim	/^fun <SID>rgb(rgb)$/;"	f
+rgb_color	nvim/colors/desert256.vim	/^    fun <SID>rgb_color(x, y, z)$/;"	f
+rgb_color	nvim/colors/jellybeans.vim	/^fun! s:rgb_color(x, y, z)$/;"	f
+rgb_color	nvim/colors/summerfruit256.vim	/^    fun <SID>rgb_color(x, y, z)$/;"	f
+rgb_color	nvim/colors/wombat256.vim	/^fun <SID>rgb_color(x, y, z)$/;"	f
+rgb_colour	nvim/colors/Tomorrow-Night-Eighties.vim	/^	fun <SID>rgb_colour(x, y, z)$/;"	f
+rgb_colour	nvim/colors/Tomorrow-Night.vim	/^	fun <SID>rgb_colour(x, y, z)$/;"	f
+rgb_colour	nvim/colors/Tomorrow.vim	/^	fun <SID>rgb_colour(x, y, z)$/;"	f
+rgb_level	nvim/colors/Tomorrow-Night-Eighties.vim	/^	fun <SID>rgb_level(n)$/;"	f
+rgb_level	nvim/colors/Tomorrow-Night.vim	/^	fun <SID>rgb_level(n)$/;"	f
+rgb_level	nvim/colors/Tomorrow.vim	/^	fun <SID>rgb_level(n)$/;"	f
+rgb_level	nvim/colors/desert256.vim	/^    fun <SID>rgb_level(n)$/;"	f
+rgb_level	nvim/colors/jellybeans.vim	/^fun! s:rgb_level(n)$/;"	f
+rgb_level	nvim/colors/summerfruit256.vim	/^    fun <SID>rgb_level(n)$/;"	f
+rgb_level	nvim/colors/wombat256.vim	/^fun <SID>rgb_level(n)$/;"	f
+rgb_number	nvim/colors/Tomorrow-Night-Eighties.vim	/^	fun <SID>rgb_number(x)$/;"	f
+rgb_number	nvim/colors/Tomorrow-Night.vim	/^	fun <SID>rgb_number(x)$/;"	f
+rgb_number	nvim/colors/Tomorrow.vim	/^	fun <SID>rgb_number(x)$/;"	f
+rgb_number	nvim/colors/desert256.vim	/^    fun <SID>rgb_number(x)$/;"	f
+rgb_number	nvim/colors/jellybeans.vim	/^fun! s:rgb_number(x)$/;"	f
+rgb_number	nvim/colors/summerfruit256.vim	/^    fun <SID>rgb_number(x)$/;"	f
+rgb_number	nvim/colors/wombat256.vim	/^fun <SID>rgb_number(x)$/;"	f
+rm_rf	nvim/autoload/plug.vim	/^function! s:rm_rf(dir)$/;"	f
+rtp	nvim/autoload/plug.vim	/^  function! s:rtp(spec)$/;"	f
+ruby_operators	nvim/colors/herald.vim	/^let ruby_operators = 1$/;"	v
+s:Aluminium	nvim/colors/two2tango.vim	/^let s:Aluminium		= ['#eeeeec', '#d3d7cf', '#babdb6',$/;"	v
+s:Background	nvim/colors/two2tango.vim	/^let s:Background    = '#212628'$/;"	v
+s:BoldStatement	nvim/colors/tabula.vim	/^  let s:BoldStatement = g:Tabula_BoldStatement$/;"	v
+s:BoldStatement	nvim/colors/tabula.vim	/^let s:BoldStatement = 0$/;"	v
+s:Butter	nvim/colors/two2tango.vim	/^let s:Butter		= ['#fce94f', '#edd400', '#c4a000']$/;"	v
+s:Chameleon	nvim/colors/two2tango.vim	/^let s:Chameleon		= ['#8ae234', '#73d216', '#4e9a06']$/;"	v
+s:Chocolate	nvim/colors/two2tango.vim	/^let s:Chocolate		= ['#e9b96e', '#c17d11', '#8f5902']$/;"	v
+s:ColorPre	nvim/colors/tabula.vim	/^    let s:ColorPre = g:Tabula_ColorPre$/;"	v
+s:ColorPre	nvim/colors/tabula.vim	/^let s:ColorPre = "blue"$/;"	v
+s:CurColor	nvim/colors/tabula.vim	/^  let s:CurColor = g:Tabula_CurColor$/;"	v
+s:CurColor	nvim/colors/tabula.vim	/^let s:CurColor = "blue"$/;"	v
+s:DarkError	nvim/colors/tabula.vim	/^  let s:DarkError = g:Tabula_DarkError$/;"	v
+s:DarkError	nvim/colors/tabula.vim	/^let s:DarkError = 0$/;"	v
+s:FlatConstants	nvim/colors/tabula.vim	/^  let s:FlatConstants = g:Tabula_FlatConstants$/;"	v
+s:FlatConstants	nvim/colors/tabula.vim	/^let s:FlatConstants = 1$/;"	v
+s:InvisibleIgnore	nvim/colors/tabula.vim	/^  let s:InvisibleIgnore = g:Tabula_InvisibleIgnore$/;"	v
+s:InvisibleIgnore	nvim/colors/tabula.vim	/^let s:InvisibleIgnore = 1$/;"	v
+s:LNumUnderline	nvim/colors/tabula.vim	/^  let s:LNumUnderline = g:Tabula_LNumUnderline$/;"	v
+s:LNumUnderline	nvim/colors/tabula.vim	/^let s:LNumUnderline = 0$/;"	v
+s:Orange	nvim/colors/two2tango.vim	/^let s:Orange		= ['#fcaf3e', '#f57900', '#ce5c00']$/;"	v
+s:Plum	nvim/colors/two2tango.vim	/^let s:Plum			= ['#ad7fa8', '#75507b', '#5c3566']$/;"	v
+s:ScarletRed	nvim/colors/two2tango.vim	/^let s:ScarletRed	= ['#ef2929', '#cc0000', '#a40000']$/;"	v
+s:SearchStandOut	nvim/colors/tabula.vim	/^  let s:SearchStandOut = g:Tabula_SearchStandOut$/;"	v
+s:SearchStandOut	nvim/colors/tabula.vim	/^let s:SearchStandOut=0$/;"	v
+s:SkyBlue	nvim/colors/two2tango.vim	/^let s:SkyBlue		= ['#729fcf', '#3465a4', '#204a87']$/;"	v
+s:TYPE	nvim/autoload/plug.vim	/^let s:TYPE = {$/;"	v
+s:TodoUnderline	nvim/colors/tabula.vim	/^  let s:TodoUnderline = g:Tabula_TodoUnderline$/;"	v
+s:TodoUnderline	nvim/colors/tabula.vim	/^let s:TodoUnderline=1$/;"	v
+s:aqua	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:aqua = "66cccc"$/;"	v
+s:aqua	nvim/colors/Tomorrow-Night.vim	/^let s:aqua = "8abeb7"$/;"	v
+s:aqua	nvim/colors/Tomorrow.vim	/^let s:aqua = "3e999f"$/;"	v
+s:b	nvim/colors/solarized.vim	/^    let s:b           = ""$/;"	v
+s:b	nvim/colors/solarized.vim	/^    let s:b           = ",bold"$/;"	v
+s:back	nvim/colors/solarized.vim	/^        let s:back    = s:base03$/;"	v
+s:back	nvim/colors/solarized.vim	/^    let s:back        = "NONE"$/;"	v
+s:back	nvim/colors/solarized.vim	/^    let s:back        = s:back$/;"	v
+s:back	nvim/colors/solarized.vim	/^    let s:back        = s:base02$/;"	v
+s:back	nvim/colors/solarized.vim	/^    let s:back        = s:base03$/;"	v
+s:background	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:background = "2d2d2d"$/;"	v
+s:background	nvim/colors/Tomorrow-Night.vim	/^	let s:background = "303030"$/;"	v
+s:background	nvim/colors/Tomorrow-Night.vim	/^let s:background = "1d1f21"$/;"	v
+s:background	nvim/colors/Tomorrow.vim	/^let s:background = "ffffff"$/;"	v
+s:base0	nvim/colors/solarized.vim	/^    let s:base0       = "#808080"$/;"	v
+s:base0	nvim/colors/solarized.vim	/^    let s:base0       = "#839496"$/;"	v
+s:base0	nvim/colors/solarized.vim	/^    let s:base0       = "12"$/;"	v
+s:base0	nvim/colors/solarized.vim	/^    let s:base0       = "244"$/;"	v
+s:base0	nvim/colors/solarized.vim	/^    let s:base0       = "LightBlue"     " 4*$/;"	v
+s:base0	nvim/colors/solarized.vim	/^    let s:base0       = s:base1$/;"	v
+s:base0	nvim/colors/solarized.vim	/^    let s:base0       = s:temp00$/;"	v
+s:base00	nvim/colors/solarized.vim	/^    let s:base00      = "#585858"$/;"	v
+s:base00	nvim/colors/solarized.vim	/^    let s:base00      = "#657b83"$/;"	v
+s:base00	nvim/colors/solarized.vim	/^    let s:base00      = "11"$/;"	v
+s:base00	nvim/colors/solarized.vim	/^    let s:base00      = "240"$/;"	v
+s:base00	nvim/colors/solarized.vim	/^    let s:base00      = "LightYellow"   " 3*$/;"	v
+s:base00	nvim/colors/solarized.vim	/^    let s:base00      = s:base0$/;"	v
+s:base01	nvim/colors/solarized.vim	/^    let s:base01      = "#4e4e4e"$/;"	v
+s:base01	nvim/colors/solarized.vim	/^    let s:base01      = "#586e75"$/;"	v
+s:base01	nvim/colors/solarized.vim	/^    let s:base01      = "10"$/;"	v
+s:base01	nvim/colors/solarized.vim	/^    let s:base01      = "239"$/;"	v
+s:base01	nvim/colors/solarized.vim	/^    let s:base01      = "LightGreen"    " 2*$/;"	v
+s:base01	nvim/colors/solarized.vim	/^    let s:base01      = s:base00$/;"	v
+s:base01	nvim/colors/solarized.vim	/^    let s:base01      = s:base1$/;"	v
+s:base02	nvim/colors/solarized.vim	/^    let s:base02      = "#073642"$/;"	v
+s:base02	nvim/colors/solarized.vim	/^    let s:base02      = "#262626"$/;"	v
+s:base02	nvim/colors/solarized.vim	/^    let s:base02      = "0"$/;"	v
+s:base02	nvim/colors/solarized.vim	/^    let s:base02      = "235"$/;"	v
+s:base02	nvim/colors/solarized.vim	/^    let s:base02      = "Black"         " 0$/;"	v
+s:base02	nvim/colors/solarized.vim	/^    let s:base02      = s:base2$/;"	v
+s:base03	nvim/colors/solarized.vim	/^    let s:base03      = "#002b36"$/;"	v
+s:base03	nvim/colors/solarized.vim	/^    let s:base03      = "#1c1c1c"$/;"	v
+s:base03	nvim/colors/solarized.vim	/^    let s:base03      = "234"$/;"	v
+s:base03	nvim/colors/solarized.vim	/^    let s:base03      = "8"$/;"	v
+s:base03	nvim/colors/solarized.vim	/^    let s:base03      = "DarkGray"      " 0*$/;"	v
+s:base03	nvim/colors/solarized.vim	/^    let s:base03      = s:base3$/;"	v
+s:base1	nvim/colors/solarized.vim	/^    let s:base1       = "#8a8a8a"$/;"	v
+s:base1	nvim/colors/solarized.vim	/^    let s:base1       = "#93a1a1"$/;"	v
+s:base1	nvim/colors/solarized.vim	/^    let s:base1       = "14"$/;"	v
+s:base1	nvim/colors/solarized.vim	/^    let s:base1       = "245"$/;"	v
+s:base1	nvim/colors/solarized.vim	/^    let s:base1       = "LightCyan"     " 6*$/;"	v
+s:base1	nvim/colors/solarized.vim	/^    let s:base1       = s:base2$/;"	v
+s:base1	nvim/colors/solarized.vim	/^    let s:base1       = s:temp01$/;"	v
+s:base2	nvim/colors/solarized.vim	/^    let s:base2       = "#d7d7af"$/;"	v
+s:base2	nvim/colors/solarized.vim	/^    let s:base2       = "#eee8d5"$/;"	v
+s:base2	nvim/colors/solarized.vim	/^    let s:base2       = "187"$/;"	v
+s:base2	nvim/colors/solarized.vim	/^    let s:base2       = "7"$/;"	v
+s:base2	nvim/colors/solarized.vim	/^    let s:base2       = "LightGray"     " 7$/;"	v
+s:base2	nvim/colors/solarized.vim	/^    let s:base2       = s:base3$/;"	v
+s:base2	nvim/colors/solarized.vim	/^    let s:base2       = s:temp02$/;"	v
+s:base3	nvim/colors/solarized.vim	/^    let s:base3       = "#fdf6e3"$/;"	v
+s:base3	nvim/colors/solarized.vim	/^    let s:base3       = "#ffffd7"$/;"	v
+s:base3	nvim/colors/solarized.vim	/^    let s:base3       = "15"$/;"	v
+s:base3	nvim/colors/solarized.vim	/^    let s:base3       = "230"$/;"	v
+s:base3	nvim/colors/solarized.vim	/^    let s:base3       = "White"         " 7*$/;"	v
+s:base3	nvim/colors/solarized.vim	/^    let s:base3       = s:temp03$/;"	v
+s:base_spec	nvim/autoload/plug.vim	/^let s:base_spec = { 'branch': 'master', 'frozen': 0 }$/;"	v
+s:bb	nvim/colors/solarized.vim	/^    let s:bb          = ""$/;"	v
+s:bb	nvim/colors/solarized.vim	/^    let s:bb          = ",bold"$/;"	v
+s:beige	nvim/colors/twilight.vim	/^let s:beige = '#ceb67f'$/;"	v
+s:black	nvim/colors/astronaut.vim	/^ let s:black   = "black"$/;"	v
+s:blue	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:blue = "6699cc"$/;"	v
+s:blue	nvim/colors/Tomorrow-Night.vim	/^let s:blue = "81a2be"$/;"	v
+s:blue	nvim/colors/Tomorrow.vim	/^let s:blue = "4271ae"$/;"	v
+s:blue	nvim/colors/astronaut.vim	/^ let s:blue    = "blue"$/;"	v
+s:blue	nvim/colors/astronaut.vim	/^ let s:blue    = "darkblue"$/;"	v
+s:blue	nvim/colors/solarized.vim	/^    let s:blue        = "#0087ff"$/;"	v
+s:blue	nvim/colors/solarized.vim	/^    let s:blue        = "#268bd2"$/;"	v
+s:blue	nvim/colors/solarized.vim	/^    let s:blue        = "33"$/;"	v
+s:blue	nvim/colors/solarized.vim	/^    let s:blue        = "4"$/;"	v
+s:blue	nvim/colors/solarized.vim	/^    let s:blue        = "DarkBlue"      " 4$/;"	v
+s:bold	nvim/colors/astronaut.vim	/^ let s:bold=""$/;"	v
+s:bold	nvim/colors/astronaut.vim	/^ let s:bold=",bold"$/;"	v
+s:bold_opt	nvim/colors/marklar.vim	/^    let s:bold_opt = 0$/;"	v
+s:bright	nvim/colors/solarized.vim	/^    let s:bright      = "* term=bold cterm=bold"$/;"	v
+s:c	nvim/colors/solarized.vim	/^    let s:c               = ",undercurl"$/;"	v
+s:cmap	nvim/colors/calmar256-dark.vim	/^    let s:cmap =   [ $/;"	v
+s:cmap	nvim/colors/calmar256-light.vim	/^    let s:cmap =   [ $/;"	v
+s:col	nvim/colors/calmar256-dark.vim	/^            let s:col[i] = "NONE"$/;"	v
+s:col	nvim/colors/calmar256-light.vim	/^            let s:col[i] = "NONE"$/;"	v
+s:colors256	nvim/colors/calmar256-dark.vim	/^let s:colors256 = [$/;"	v
+s:colors256	nvim/colors/calmar256-light.vim	/^let s:colors256 = [$/;"	v
+s:colorscheme_list	nvim/colors/solarized.vim	/^let s:colorscheme_list=[$/;"	v
+s:colorvim7	nvim/colors/calmar256-dark.vim	/^let s:colorvim7 = [$/;"	v
+s:colorvim7	nvim/colors/calmar256-light.vim	/^let s:colorvim7 = [$/;"	v
+s:comment	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:comment = "999999"$/;"	v
+s:comment	nvim/colors/Tomorrow-Night.vim	/^let s:comment = "969896"$/;"	v
+s:comment	nvim/colors/Tomorrow.vim	/^let s:comment = "8e908c"$/;"	v
+s:cpo_save	nvim/autoload/plug.vim	/^let s:cpo_save = &cpo$/;"	v
+s:cterm00	nvim/colors/base16-3024.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-apathy.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-ashes.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-atelierdune.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-atelierforest.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-atelierheath.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-atelierlakeside.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-atelierseaside.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-bespin.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-brewer.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-bright.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-chalk.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-codeschool.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-colors.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-default.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-eighties.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-embers.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-flat.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-google.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-grayscale.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-greenscreen.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-harmonic16.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-isotope.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-londontube.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-marrakesh.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-mocha.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-monokai.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-ocean.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-paraiso.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-pop.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-railscasts.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-shapeshifter.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-solarized.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-summerfruit.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-tomorrow.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm00	nvim/colors/base16-twilight.vim	/^let s:cterm00 = "00"$/;"	v
+s:cterm01	nvim/colors/base16-3024.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-3024.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-apathy.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-apathy.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-ashes.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-ashes.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-atelierdune.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-atelierdune.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-atelierforest.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-atelierforest.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-atelierheath.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-atelierheath.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-bespin.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-bespin.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-brewer.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-brewer.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-bright.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-bright.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-chalk.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-chalk.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-codeschool.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-codeschool.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-colors.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-colors.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-default.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-default.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-eighties.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-eighties.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-embers.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-embers.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-flat.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-flat.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-google.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-google.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-grayscale.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-grayscale.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-greenscreen.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-greenscreen.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-harmonic16.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-harmonic16.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-isotope.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-isotope.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-londontube.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-londontube.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-marrakesh.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-marrakesh.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-mocha.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-mocha.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-monokai.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-monokai.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-ocean.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-ocean.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-paraiso.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-paraiso.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-pop.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-pop.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-railscasts.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-railscasts.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-solarized.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-solarized.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-summerfruit.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-summerfruit.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-tomorrow.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-tomorrow.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm01	nvim/colors/base16-twilight.vim	/^  let s:cterm01 = "10"$/;"	v
+s:cterm01	nvim/colors/base16-twilight.vim	/^  let s:cterm01 = "18"$/;"	v
+s:cterm02	nvim/colors/base16-3024.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-3024.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-apathy.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-apathy.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-ashes.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-ashes.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-atelierdune.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-atelierdune.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-atelierforest.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-atelierforest.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-atelierheath.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-atelierheath.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-bespin.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-bespin.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-brewer.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-brewer.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-bright.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-bright.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-chalk.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-chalk.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-codeschool.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-codeschool.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-colors.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-colors.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-default.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-default.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-eighties.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-eighties.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-embers.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-embers.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-flat.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-flat.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-google.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-google.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-grayscale.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-grayscale.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-greenscreen.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-greenscreen.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-harmonic16.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-harmonic16.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-isotope.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-isotope.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-londontube.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-londontube.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-marrakesh.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-marrakesh.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-mocha.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-mocha.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-monokai.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-monokai.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-ocean.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-ocean.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-paraiso.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-paraiso.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-pop.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-pop.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-railscasts.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-railscasts.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-solarized.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-solarized.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-summerfruit.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-summerfruit.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-tomorrow.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-tomorrow.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm02	nvim/colors/base16-twilight.vim	/^  let s:cterm02 = "11"$/;"	v
+s:cterm02	nvim/colors/base16-twilight.vim	/^  let s:cterm02 = "19"$/;"	v
+s:cterm03	nvim/colors/base16-3024.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-apathy.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-ashes.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-atelierdune.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-atelierforest.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-atelierheath.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-atelierlakeside.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-atelierseaside.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-bespin.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-brewer.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-bright.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-chalk.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-codeschool.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-colors.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-default.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-eighties.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-embers.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-flat.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-google.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-grayscale.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-greenscreen.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-harmonic16.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-isotope.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-londontube.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-marrakesh.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-mocha.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-monokai.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-ocean.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-paraiso.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-pop.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-railscasts.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-shapeshifter.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-solarized.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-summerfruit.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-tomorrow.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm03	nvim/colors/base16-twilight.vim	/^let s:cterm03 = "08"$/;"	v
+s:cterm04	nvim/colors/base16-3024.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-3024.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-apathy.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-apathy.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-ashes.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-ashes.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-atelierdune.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-atelierdune.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-atelierforest.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-atelierforest.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-atelierheath.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-atelierheath.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-bespin.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-bespin.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-brewer.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-brewer.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-bright.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-bright.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-chalk.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-chalk.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-codeschool.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-codeschool.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-colors.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-colors.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-default.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-default.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-eighties.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-eighties.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-embers.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-embers.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-flat.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-flat.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-google.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-google.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-grayscale.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-grayscale.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-greenscreen.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-greenscreen.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-harmonic16.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-harmonic16.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-isotope.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-isotope.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-londontube.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-londontube.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-marrakesh.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-marrakesh.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-mocha.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-mocha.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-monokai.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-monokai.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-ocean.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-ocean.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-paraiso.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-paraiso.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-pop.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-pop.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-railscasts.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-railscasts.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-solarized.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-solarized.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-summerfruit.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-summerfruit.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-tomorrow.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-tomorrow.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm04	nvim/colors/base16-twilight.vim	/^  let s:cterm04 = "12"$/;"	v
+s:cterm04	nvim/colors/base16-twilight.vim	/^  let s:cterm04 = "20"$/;"	v
+s:cterm05	nvim/colors/base16-3024.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-apathy.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-ashes.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-atelierdune.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-atelierforest.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-atelierheath.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-atelierlakeside.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-atelierseaside.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-bespin.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-brewer.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-bright.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-chalk.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-codeschool.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-colors.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-default.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-eighties.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-embers.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-flat.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-google.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-grayscale.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-greenscreen.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-harmonic16.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-isotope.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-londontube.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-marrakesh.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-mocha.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-monokai.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-ocean.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-paraiso.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-pop.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-railscasts.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-shapeshifter.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-solarized.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-summerfruit.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-tomorrow.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm05	nvim/colors/base16-twilight.vim	/^let s:cterm05 = "07"$/;"	v
+s:cterm06	nvim/colors/base16-3024.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-3024.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-apathy.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-apathy.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-ashes.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-ashes.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-atelierdune.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-atelierdune.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-atelierforest.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-atelierforest.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-atelierheath.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-atelierheath.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-bespin.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-bespin.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-brewer.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-brewer.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-bright.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-bright.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-chalk.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-chalk.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-codeschool.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-codeschool.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-colors.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-colors.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-default.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-default.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-eighties.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-eighties.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-embers.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-embers.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-flat.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-flat.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-google.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-google.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-grayscale.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-grayscale.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-greenscreen.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-greenscreen.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-harmonic16.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-harmonic16.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-isotope.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-isotope.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-londontube.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-londontube.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-marrakesh.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-marrakesh.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-mocha.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-mocha.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-monokai.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-monokai.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-ocean.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-ocean.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-paraiso.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-paraiso.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-pop.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-pop.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-railscasts.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-railscasts.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-solarized.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-solarized.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-summerfruit.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-summerfruit.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-tomorrow.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-tomorrow.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm06	nvim/colors/base16-twilight.vim	/^  let s:cterm06 = "13"$/;"	v
+s:cterm06	nvim/colors/base16-twilight.vim	/^  let s:cterm06 = "21"$/;"	v
+s:cterm07	nvim/colors/base16-3024.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-apathy.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-ashes.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-atelierdune.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-atelierforest.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-atelierheath.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-atelierlakeside.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-atelierseaside.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-bespin.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-brewer.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-bright.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-chalk.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-codeschool.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-colors.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-default.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-eighties.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-embers.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-flat.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-google.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-grayscale.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-greenscreen.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-harmonic16.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-isotope.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-londontube.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-marrakesh.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-mocha.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-monokai.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-ocean.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-paraiso.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-pop.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-railscasts.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-shapeshifter.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-solarized.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-summerfruit.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-tomorrow.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm07	nvim/colors/base16-twilight.vim	/^let s:cterm07 = "15"$/;"	v
+s:cterm08	nvim/colors/base16-3024.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-apathy.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-ashes.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-atelierdune.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-atelierforest.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-atelierheath.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-atelierlakeside.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-atelierseaside.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-bespin.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-brewer.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-bright.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-chalk.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-codeschool.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-colors.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-default.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-eighties.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-embers.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-flat.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-google.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-grayscale.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-greenscreen.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-harmonic16.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-isotope.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-londontube.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-marrakesh.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-mocha.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-monokai.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-ocean.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-paraiso.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-pop.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-railscasts.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-shapeshifter.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-solarized.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-summerfruit.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-tomorrow.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm08	nvim/colors/base16-twilight.vim	/^let s:cterm08 = "01"$/;"	v
+s:cterm09	nvim/colors/base16-3024.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-3024.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-apathy.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-apathy.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-ashes.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-ashes.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-atelierdune.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-atelierdune.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-atelierforest.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-atelierforest.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-atelierheath.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-atelierheath.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-bespin.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-bespin.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-brewer.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-brewer.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-bright.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-bright.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-chalk.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-chalk.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-codeschool.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-codeschool.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-colors.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-colors.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-default.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-default.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-eighties.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-eighties.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-embers.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-embers.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-flat.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-flat.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-google.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-google.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-grayscale.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-grayscale.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-greenscreen.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-greenscreen.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-harmonic16.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-harmonic16.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-isotope.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-isotope.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-londontube.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-londontube.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-marrakesh.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-marrakesh.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-mocha.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-mocha.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-monokai.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-monokai.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-ocean.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-ocean.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-paraiso.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-paraiso.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-pop.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-pop.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-railscasts.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-railscasts.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-solarized.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-solarized.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-summerfruit.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-summerfruit.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-tomorrow.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-tomorrow.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm09	nvim/colors/base16-twilight.vim	/^  let s:cterm09 = "09"$/;"	v
+s:cterm09	nvim/colors/base16-twilight.vim	/^  let s:cterm09 = "16"$/;"	v
+s:cterm0A	nvim/colors/base16-3024.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-apathy.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-ashes.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-atelierdune.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-atelierforest.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-atelierheath.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-atelierlakeside.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-atelierseaside.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-bespin.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-brewer.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-bright.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-chalk.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-codeschool.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-colors.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-default.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-eighties.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-embers.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-flat.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-google.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-grayscale.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-greenscreen.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-harmonic16.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-isotope.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-londontube.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-marrakesh.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-mocha.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-monokai.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-ocean.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-paraiso.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-pop.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-railscasts.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-shapeshifter.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-solarized.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-summerfruit.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-tomorrow.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0A	nvim/colors/base16-twilight.vim	/^let s:cterm0A = "03"$/;"	v
+s:cterm0B	nvim/colors/base16-3024.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-apathy.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-ashes.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-atelierdune.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-atelierforest.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-atelierheath.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-atelierlakeside.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-atelierseaside.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-bespin.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-brewer.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-bright.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-chalk.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-codeschool.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-colors.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-default.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-eighties.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-embers.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-flat.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-google.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-grayscale.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-greenscreen.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-harmonic16.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-isotope.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-londontube.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-marrakesh.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-mocha.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-monokai.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-ocean.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-paraiso.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-pop.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-railscasts.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-shapeshifter.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-solarized.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-summerfruit.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-tomorrow.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0B	nvim/colors/base16-twilight.vim	/^let s:cterm0B = "02"$/;"	v
+s:cterm0C	nvim/colors/base16-3024.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-apathy.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-ashes.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-atelierdune.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-atelierforest.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-atelierheath.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-atelierlakeside.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-atelierseaside.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-bespin.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-brewer.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-bright.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-chalk.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-codeschool.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-colors.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-default.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-eighties.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-embers.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-flat.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-google.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-grayscale.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-greenscreen.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-harmonic16.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-isotope.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-londontube.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-marrakesh.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-mocha.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-monokai.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-ocean.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-paraiso.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-pop.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-railscasts.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-shapeshifter.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-solarized.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-summerfruit.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-tomorrow.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0C	nvim/colors/base16-twilight.vim	/^let s:cterm0C = "06"$/;"	v
+s:cterm0D	nvim/colors/base16-3024.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-apathy.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-ashes.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-atelierdune.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-atelierforest.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-atelierheath.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-atelierlakeside.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-atelierseaside.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-bespin.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-brewer.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-bright.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-chalk.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-codeschool.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-colors.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-default.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-eighties.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-embers.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-flat.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-google.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-grayscale.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-greenscreen.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-harmonic16.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-isotope.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-londontube.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-marrakesh.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-mocha.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-monokai.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-ocean.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-paraiso.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-pop.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-railscasts.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-shapeshifter.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-solarized.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-summerfruit.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-tomorrow.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0D	nvim/colors/base16-twilight.vim	/^let s:cterm0D = "04"$/;"	v
+s:cterm0E	nvim/colors/base16-3024.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-apathy.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-ashes.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-atelierdune.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-atelierforest.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-atelierheath.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-atelierlakeside.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-atelierseaside.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-bespin.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-brewer.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-bright.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-chalk.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-codeschool.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-colors.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-default.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-eighties.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-embers.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-flat.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-google.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-grayscale.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-greenscreen.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-harmonic16.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-isotope.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-londontube.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-marrakesh.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-mocha.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-monokai.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-ocean.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-paraiso.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-pop.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-railscasts.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-shapeshifter.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-solarized.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-summerfruit.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-tomorrow.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0E	nvim/colors/base16-twilight.vim	/^let s:cterm0E = "05"$/;"	v
+s:cterm0F	nvim/colors/base16-3024.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-3024.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-apathy.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-apathy.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-ashes.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-ashes.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-atelierdune.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-atelierdune.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-atelierforest.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-atelierforest.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-atelierheath.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-atelierheath.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-atelierlakeside.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-atelierseaside.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-bespin.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-bespin.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-brewer.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-brewer.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-bright.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-bright.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-chalk.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-chalk.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-codeschool.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-codeschool.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-colors.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-colors.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-default.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-default.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-eighties.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-eighties.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-embers.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-embers.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-flat.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-flat.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-google.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-google.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-grayscale.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-grayscale.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-greenscreen.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-greenscreen.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-harmonic16.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-harmonic16.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-isotope.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-isotope.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-londontube.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-londontube.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-marrakesh.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-marrakesh.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-mocha.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-mocha.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-monokai.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-monokai.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-ocean.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-ocean.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-paraiso.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-paraiso.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-pop.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-pop.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-railscasts.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-railscasts.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-shapeshifter.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-solarized.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-solarized.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-summerfruit.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-summerfruit.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-tomorrow.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-tomorrow.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cterm0F	nvim/colors/base16-twilight.vim	/^  let s:cterm0F = "14"$/;"	v
+s:cterm0F	nvim/colors/base16-twilight.vim	/^  let s:cterm0F = "17"$/;"	v
+s:cyan	nvim/colors/astronaut.vim	/^ let s:cyan    = "cyan"$/;"	v
+s:cyan	nvim/colors/astronaut.vim	/^ let s:cyan    = "darkcyan"$/;"	v
+s:cyan	nvim/colors/solarized.vim	/^    let s:cyan        = "#00afaf"$/;"	v
+s:cyan	nvim/colors/solarized.vim	/^    let s:cyan        = "#2aa198"$/;"	v
+s:cyan	nvim/colors/solarized.vim	/^    let s:cyan        = "37"$/;"	v
+s:cyan	nvim/colors/solarized.vim	/^    let s:cyan        = "6"$/;"	v
+s:cyan	nvim/colors/solarized.vim	/^    let s:cyan        = "DarkCyan"      " 6$/;"	v
+s:cyan	nvim/colors/twilight.vim	/^let s:cyan = '#74dad9'$/;"	v
+s:dark_grey_blue	nvim/colors/twilight.vim	/^let s:dark_grey_blue = '#34383c'$/;"	v
+s:darkgrey	nvim/colors/twilight.vim	/^let s:darkgrey = '#1a1a1a'$/;"	v
+s:defaults_list	nvim/colors/solarized.vim	/^let s:defaults_list=[$/;"	v
+s:fg_pdef	nvim/colors/solarized.vim	/^let s:fg_pdef = s:fg_violet$/;"	v
+s:fg_phead	nvim/colors/solarized.vim	/^let s:fg_phead = s:fg_orange$/;"	v
+s:fg_ptable	nvim/colors/solarized.vim	/^let s:fg_ptable = s:fg_blue$/;"	v
+s:first_rtp	nvim/autoload/plug.vim	/^let s:first_rtp = s:escrtp(get(s:split_rtp(), 0, ''))$/;"	v
+s:foreground	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:foreground = "cccccc"$/;"	v
+s:foreground	nvim/colors/Tomorrow-Night.vim	/^let s:foreground = "c5c8c6"$/;"	v
+s:foreground	nvim/colors/Tomorrow.vim	/^let s:foreground = "4d4d4c"$/;"	v
+s:green	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:green = "99cc99"$/;"	v
+s:green	nvim/colors/Tomorrow-Night.vim	/^let s:green = "b5bd68"$/;"	v
+s:green	nvim/colors/Tomorrow.vim	/^let s:green = "718c00"$/;"	v
+s:green	nvim/colors/astronaut.vim	/^ let s:green   = "darkgreen"$/;"	v
+s:green	nvim/colors/astronaut.vim	/^ let s:green   = "green"$/;"	v
+s:green	nvim/colors/solarized.vim	/^    let s:green       = "#5f8700"$/;"	v
+s:green	nvim/colors/solarized.vim	/^    let s:green       = "#719e07" "experimental$/;"	v
+s:green	nvim/colors/solarized.vim	/^    let s:green       = "2"$/;"	v
+s:green	nvim/colors/solarized.vim	/^    let s:green       = "64"$/;"	v
+s:green	nvim/colors/solarized.vim	/^    let s:green       = "DarkGreen"     " 2$/;"	v
+s:green	nvim/colors/twilight.vim	/^let s:green = '#a2a96f'$/;"	v
+s:grey	nvim/colors/twilight.vim	/^let s:grey = '#303030'$/;"	v
+s:grey_blue	nvim/colors/twilight.vim	/^let s:grey_blue = '#8a9597'$/;"	v
+s:gui00	nvim/colors/base16-3024.vim	/^let s:gui00 = "090300"$/;"	v
+s:gui00	nvim/colors/base16-apathy.vim	/^let s:gui00 = "031A16"$/;"	v
+s:gui00	nvim/colors/base16-ashes.vim	/^let s:gui00 = "1C2023"$/;"	v
+s:gui00	nvim/colors/base16-atelierdune.vim	/^let s:gui00 = "20201d"$/;"	v
+s:gui00	nvim/colors/base16-atelierforest.vim	/^let s:gui00 = "1b1918"$/;"	v
+s:gui00	nvim/colors/base16-atelierheath.vim	/^let s:gui00 = "1b181b"$/;"	v
+s:gui00	nvim/colors/base16-atelierlakeside.vim	/^let s:gui00 = "161b1d"$/;"	v
+s:gui00	nvim/colors/base16-atelierseaside.vim	/^let s:gui00 = "131513"$/;"	v
+s:gui00	nvim/colors/base16-bespin.vim	/^let s:gui00 = "28211c"$/;"	v
+s:gui00	nvim/colors/base16-brewer.vim	/^let s:gui00 = "0c0d0e"$/;"	v
+s:gui00	nvim/colors/base16-bright.vim	/^let s:gui00 = "000000"$/;"	v
+s:gui00	nvim/colors/base16-chalk.vim	/^let s:gui00 = "151515"$/;"	v
+s:gui00	nvim/colors/base16-codeschool.vim	/^let s:gui00 = "232c31"$/;"	v
+s:gui00	nvim/colors/base16-colors.vim	/^let s:gui00 = "111111"$/;"	v
+s:gui00	nvim/colors/base16-default.vim	/^let s:gui00 = "181818"$/;"	v
+s:gui00	nvim/colors/base16-eighties.vim	/^let s:gui00 = "2d2d2d"$/;"	v
+s:gui00	nvim/colors/base16-embers.vim	/^let s:gui00 = "16130F"$/;"	v
+s:gui00	nvim/colors/base16-flat.vim	/^let s:gui00 = "2C3E50"$/;"	v
+s:gui00	nvim/colors/base16-google.vim	/^let s:gui00 = "1d1f21"$/;"	v
+s:gui00	nvim/colors/base16-grayscale.vim	/^let s:gui00 = "101010"$/;"	v
+s:gui00	nvim/colors/base16-greenscreen.vim	/^let s:gui00 = "001100"$/;"	v
+s:gui00	nvim/colors/base16-harmonic16.vim	/^let s:gui00 = "0b1c2c"$/;"	v
+s:gui00	nvim/colors/base16-isotope.vim	/^let s:gui00 = "000000"$/;"	v
+s:gui00	nvim/colors/base16-londontube.vim	/^let s:gui00 = "231f20"$/;"	v
+s:gui00	nvim/colors/base16-marrakesh.vim	/^let s:gui00 = "201602"$/;"	v
+s:gui00	nvim/colors/base16-mocha.vim	/^let s:gui00 = "3B3228"$/;"	v
+s:gui00	nvim/colors/base16-monokai.vim	/^let s:gui00 = "272822"$/;"	v
+s:gui00	nvim/colors/base16-ocean.vim	/^let s:gui00 = "2b303b"$/;"	v
+s:gui00	nvim/colors/base16-paraiso.vim	/^let s:gui00 = "2f1e2e"$/;"	v
+s:gui00	nvim/colors/base16-pop.vim	/^let s:gui00 = "000000"$/;"	v
+s:gui00	nvim/colors/base16-railscasts.vim	/^let s:gui00 = "2b2b2b"$/;"	v
+s:gui00	nvim/colors/base16-shapeshifter.vim	/^let s:gui00 = "000000"$/;"	v
+s:gui00	nvim/colors/base16-solarized.vim	/^let s:gui00 = "002b36"$/;"	v
+s:gui00	nvim/colors/base16-summerfruit.vim	/^let s:gui00 = "151515"$/;"	v
+s:gui00	nvim/colors/base16-tomorrow.vim	/^let s:gui00 = "1d1f21"$/;"	v
+s:gui00	nvim/colors/base16-twilight.vim	/^let s:gui00 = "1e1e1e"$/;"	v
+s:gui01	nvim/colors/base16-3024.vim	/^let s:gui01 = "3a3432"$/;"	v
+s:gui01	nvim/colors/base16-apathy.vim	/^let s:gui01 = "0B342D"$/;"	v
+s:gui01	nvim/colors/base16-ashes.vim	/^let s:gui01 = "393F45"$/;"	v
+s:gui01	nvim/colors/base16-atelierdune.vim	/^let s:gui01 = "292824"$/;"	v
+s:gui01	nvim/colors/base16-atelierforest.vim	/^let s:gui01 = "2c2421"$/;"	v
+s:gui01	nvim/colors/base16-atelierheath.vim	/^let s:gui01 = "292329"$/;"	v
+s:gui01	nvim/colors/base16-atelierlakeside.vim	/^let s:gui01 = "1f292e"$/;"	v
+s:gui01	nvim/colors/base16-atelierseaside.vim	/^let s:gui01 = "242924"$/;"	v
+s:gui01	nvim/colors/base16-bespin.vim	/^let s:gui01 = "36312e"$/;"	v
+s:gui01	nvim/colors/base16-brewer.vim	/^let s:gui01 = "2e2f30"$/;"	v
+s:gui01	nvim/colors/base16-bright.vim	/^let s:gui01 = "303030"$/;"	v
+s:gui01	nvim/colors/base16-chalk.vim	/^let s:gui01 = "202020"$/;"	v
+s:gui01	nvim/colors/base16-codeschool.vim	/^let s:gui01 = "1c3657"$/;"	v
+s:gui01	nvim/colors/base16-colors.vim	/^let s:gui01 = "333333"$/;"	v
+s:gui01	nvim/colors/base16-default.vim	/^let s:gui01 = "282828"$/;"	v
+s:gui01	nvim/colors/base16-eighties.vim	/^let s:gui01 = "393939"$/;"	v
+s:gui01	nvim/colors/base16-embers.vim	/^let s:gui01 = "2C2620"$/;"	v
+s:gui01	nvim/colors/base16-flat.vim	/^let s:gui01 = "34495E"$/;"	v
+s:gui01	nvim/colors/base16-google.vim	/^let s:gui01 = "282a2e"$/;"	v
+s:gui01	nvim/colors/base16-grayscale.vim	/^let s:gui01 = "252525"$/;"	v
+s:gui01	nvim/colors/base16-greenscreen.vim	/^let s:gui01 = "003300"$/;"	v
+s:gui01	nvim/colors/base16-harmonic16.vim	/^let s:gui01 = "223b54"$/;"	v
+s:gui01	nvim/colors/base16-isotope.vim	/^let s:gui01 = "404040"$/;"	v
+s:gui01	nvim/colors/base16-londontube.vim	/^let s:gui01 = "1c3f95"$/;"	v
+s:gui01	nvim/colors/base16-marrakesh.vim	/^let s:gui01 = "302e00"$/;"	v
+s:gui01	nvim/colors/base16-mocha.vim	/^let s:gui01 = "534636"$/;"	v
+s:gui01	nvim/colors/base16-monokai.vim	/^let s:gui01 = "383830"$/;"	v
+s:gui01	nvim/colors/base16-ocean.vim	/^let s:gui01 = "343d46"$/;"	v
+s:gui01	nvim/colors/base16-paraiso.vim	/^let s:gui01 = "41323f"$/;"	v
+s:gui01	nvim/colors/base16-pop.vim	/^let s:gui01 = "202020"$/;"	v
+s:gui01	nvim/colors/base16-railscasts.vim	/^let s:gui01 = "272935"$/;"	v
+s:gui01	nvim/colors/base16-shapeshifter.vim	/^let s:gui01 = "040404"$/;"	v
+s:gui01	nvim/colors/base16-solarized.vim	/^let s:gui01 = "073642"$/;"	v
+s:gui01	nvim/colors/base16-summerfruit.vim	/^let s:gui01 = "202020"$/;"	v
+s:gui01	nvim/colors/base16-tomorrow.vim	/^let s:gui01 = "282a2e"$/;"	v
+s:gui01	nvim/colors/base16-twilight.vim	/^let s:gui01 = "323537"$/;"	v
+s:gui02	nvim/colors/base16-3024.vim	/^let s:gui02 = "4a4543"$/;"	v
+s:gui02	nvim/colors/base16-apathy.vim	/^let s:gui02 = "184E45"$/;"	v
+s:gui02	nvim/colors/base16-ashes.vim	/^let s:gui02 = "565E65"$/;"	v
+s:gui02	nvim/colors/base16-atelierdune.vim	/^let s:gui02 = "6e6b5e"$/;"	v
+s:gui02	nvim/colors/base16-atelierforest.vim	/^let s:gui02 = "68615e"$/;"	v
+s:gui02	nvim/colors/base16-atelierheath.vim	/^let s:gui02 = "695d69"$/;"	v
+s:gui02	nvim/colors/base16-atelierlakeside.vim	/^let s:gui02 = "516d7b"$/;"	v
+s:gui02	nvim/colors/base16-atelierseaside.vim	/^let s:gui02 = "5e6e5e"$/;"	v
+s:gui02	nvim/colors/base16-bespin.vim	/^let s:gui02 = "5e5d5c"$/;"	v
+s:gui02	nvim/colors/base16-brewer.vim	/^let s:gui02 = "515253"$/;"	v
+s:gui02	nvim/colors/base16-bright.vim	/^let s:gui02 = "505050"$/;"	v
+s:gui02	nvim/colors/base16-chalk.vim	/^let s:gui02 = "303030"$/;"	v
+s:gui02	nvim/colors/base16-codeschool.vim	/^let s:gui02 = "2a343a"$/;"	v
+s:gui02	nvim/colors/base16-colors.vim	/^let s:gui02 = "555555"$/;"	v
+s:gui02	nvim/colors/base16-default.vim	/^let s:gui02 = "383838"$/;"	v
+s:gui02	nvim/colors/base16-eighties.vim	/^let s:gui02 = "515151"$/;"	v
+s:gui02	nvim/colors/base16-embers.vim	/^let s:gui02 = "433B32"$/;"	v
+s:gui02	nvim/colors/base16-flat.vim	/^let s:gui02 = "7F8C8D"$/;"	v
+s:gui02	nvim/colors/base16-google.vim	/^let s:gui02 = "373b41"$/;"	v
+s:gui02	nvim/colors/base16-grayscale.vim	/^let s:gui02 = "464646"$/;"	v
+s:gui02	nvim/colors/base16-greenscreen.vim	/^let s:gui02 = "005500"$/;"	v
+s:gui02	nvim/colors/base16-harmonic16.vim	/^let s:gui02 = "405c79"$/;"	v
+s:gui02	nvim/colors/base16-isotope.vim	/^let s:gui02 = "606060"$/;"	v
+s:gui02	nvim/colors/base16-londontube.vim	/^let s:gui02 = "5a5758"$/;"	v
+s:gui02	nvim/colors/base16-marrakesh.vim	/^let s:gui02 = "5f5b17"$/;"	v
+s:gui02	nvim/colors/base16-mocha.vim	/^let s:gui02 = "645240"$/;"	v
+s:gui02	nvim/colors/base16-monokai.vim	/^let s:gui02 = "49483e"$/;"	v
+s:gui02	nvim/colors/base16-ocean.vim	/^let s:gui02 = "4f5b66"$/;"	v
+s:gui02	nvim/colors/base16-paraiso.vim	/^let s:gui02 = "4f424c"$/;"	v
+s:gui02	nvim/colors/base16-pop.vim	/^let s:gui02 = "303030"$/;"	v
+s:gui02	nvim/colors/base16-railscasts.vim	/^let s:gui02 = "3a4055"$/;"	v
+s:gui02	nvim/colors/base16-shapeshifter.vim	/^let s:gui02 = "102015"$/;"	v
+s:gui02	nvim/colors/base16-solarized.vim	/^let s:gui02 = "586e75"$/;"	v
+s:gui02	nvim/colors/base16-summerfruit.vim	/^let s:gui02 = "303030"$/;"	v
+s:gui02	nvim/colors/base16-tomorrow.vim	/^let s:gui02 = "373b41"$/;"	v
+s:gui02	nvim/colors/base16-twilight.vim	/^let s:gui02 = "464b50"$/;"	v
+s:gui03	nvim/colors/base16-3024.vim	/^let s:gui03 = "5c5855"$/;"	v
+s:gui03	nvim/colors/base16-apathy.vim	/^let s:gui03 = "2B685E"$/;"	v
+s:gui03	nvim/colors/base16-ashes.vim	/^let s:gui03 = "747C84"$/;"	v
+s:gui03	nvim/colors/base16-atelierdune.vim	/^let s:gui03 = "7d7a68"$/;"	v
+s:gui03	nvim/colors/base16-atelierforest.vim	/^let s:gui03 = "766e6b"$/;"	v
+s:gui03	nvim/colors/base16-atelierheath.vim	/^let s:gui03 = "776977"$/;"	v
+s:gui03	nvim/colors/base16-atelierlakeside.vim	/^let s:gui03 = "5a7b8c"$/;"	v
+s:gui03	nvim/colors/base16-atelierseaside.vim	/^let s:gui03 = "687d68"$/;"	v
+s:gui03	nvim/colors/base16-bespin.vim	/^let s:gui03 = "666666"$/;"	v
+s:gui03	nvim/colors/base16-brewer.vim	/^let s:gui03 = "737475"$/;"	v
+s:gui03	nvim/colors/base16-bright.vim	/^let s:gui03 = "b0b0b0"$/;"	v
+s:gui03	nvim/colors/base16-chalk.vim	/^let s:gui03 = "505050"$/;"	v
+s:gui03	nvim/colors/base16-codeschool.vim	/^let s:gui03 = "3f4944"$/;"	v
+s:gui03	nvim/colors/base16-colors.vim	/^let s:gui03 = "777777"$/;"	v
+s:gui03	nvim/colors/base16-default.vim	/^let s:gui03 = "585858"$/;"	v
+s:gui03	nvim/colors/base16-eighties.vim	/^let s:gui03 = "747369"$/;"	v
+s:gui03	nvim/colors/base16-embers.vim	/^let s:gui03 = "5A5047"$/;"	v
+s:gui03	nvim/colors/base16-flat.vim	/^let s:gui03 = "95A5A6"$/;"	v
+s:gui03	nvim/colors/base16-google.vim	/^let s:gui03 = "969896"$/;"	v
+s:gui03	nvim/colors/base16-grayscale.vim	/^let s:gui03 = "525252"$/;"	v
+s:gui03	nvim/colors/base16-greenscreen.vim	/^let s:gui03 = "007700"$/;"	v
+s:gui03	nvim/colors/base16-harmonic16.vim	/^let s:gui03 = "627e99"$/;"	v
+s:gui03	nvim/colors/base16-isotope.vim	/^let s:gui03 = "808080"$/;"	v
+s:gui03	nvim/colors/base16-londontube.vim	/^let s:gui03 = "737171"$/;"	v
+s:gui03	nvim/colors/base16-marrakesh.vim	/^let s:gui03 = "6c6823"$/;"	v
+s:gui03	nvim/colors/base16-mocha.vim	/^let s:gui03 = "7e705a"$/;"	v
+s:gui03	nvim/colors/base16-monokai.vim	/^let s:gui03 = "75715e"$/;"	v
+s:gui03	nvim/colors/base16-ocean.vim	/^let s:gui03 = "65737e"$/;"	v
+s:gui03	nvim/colors/base16-paraiso.vim	/^let s:gui03 = "776e71"$/;"	v
+s:gui03	nvim/colors/base16-pop.vim	/^let s:gui03 = "505050"$/;"	v
+s:gui03	nvim/colors/base16-railscasts.vim	/^let s:gui03 = "5a647e"$/;"	v
+s:gui03	nvim/colors/base16-shapeshifter.vim	/^let s:gui03 = "343434"$/;"	v
+s:gui03	nvim/colors/base16-solarized.vim	/^let s:gui03 = "657b83"$/;"	v
+s:gui03	nvim/colors/base16-summerfruit.vim	/^let s:gui03 = "505050"$/;"	v
+s:gui03	nvim/colors/base16-tomorrow.vim	/^let s:gui03 = "969896"$/;"	v
+s:gui03	nvim/colors/base16-twilight.vim	/^let s:gui03 = "5f5a60"$/;"	v
+s:gui04	nvim/colors/base16-3024.vim	/^let s:gui04 = "807d7c"$/;"	v
+s:gui04	nvim/colors/base16-apathy.vim	/^let s:gui04 = "5F9C92"$/;"	v
+s:gui04	nvim/colors/base16-ashes.vim	/^let s:gui04 = "ADB3BA"$/;"	v
+s:gui04	nvim/colors/base16-atelierdune.vim	/^let s:gui04 = "999580"$/;"	v
+s:gui04	nvim/colors/base16-atelierforest.vim	/^let s:gui04 = "9c9491"$/;"	v
+s:gui04	nvim/colors/base16-atelierheath.vim	/^let s:gui04 = "9e8f9e"$/;"	v
+s:gui04	nvim/colors/base16-atelierlakeside.vim	/^let s:gui04 = "7195a8"$/;"	v
+s:gui04	nvim/colors/base16-atelierseaside.vim	/^let s:gui04 = "809980"$/;"	v
+s:gui04	nvim/colors/base16-bespin.vim	/^let s:gui04 = "797977"$/;"	v
+s:gui04	nvim/colors/base16-brewer.vim	/^let s:gui04 = "959697"$/;"	v
+s:gui04	nvim/colors/base16-bright.vim	/^let s:gui04 = "d0d0d0"$/;"	v
+s:gui04	nvim/colors/base16-chalk.vim	/^let s:gui04 = "b0b0b0"$/;"	v
+s:gui04	nvim/colors/base16-codeschool.vim	/^let s:gui04 = "84898c"$/;"	v
+s:gui04	nvim/colors/base16-colors.vim	/^let s:gui04 = "999999"$/;"	v
+s:gui04	nvim/colors/base16-default.vim	/^let s:gui04 = "b8b8b8"$/;"	v
+s:gui04	nvim/colors/base16-eighties.vim	/^let s:gui04 = "a09f93"$/;"	v
+s:gui04	nvim/colors/base16-embers.vim	/^let s:gui04 = "8A8075"$/;"	v
+s:gui04	nvim/colors/base16-flat.vim	/^let s:gui04 = "BDC3C7"$/;"	v
+s:gui04	nvim/colors/base16-google.vim	/^let s:gui04 = "b4b7b4"$/;"	v
+s:gui04	nvim/colors/base16-grayscale.vim	/^let s:gui04 = "ababab"$/;"	v
+s:gui04	nvim/colors/base16-greenscreen.vim	/^let s:gui04 = "009900"$/;"	v
+s:gui04	nvim/colors/base16-harmonic16.vim	/^let s:gui04 = "aabcce"$/;"	v
+s:gui04	nvim/colors/base16-isotope.vim	/^let s:gui04 = "c0c0c0"$/;"	v
+s:gui04	nvim/colors/base16-londontube.vim	/^let s:gui04 = "959ca1"$/;"	v
+s:gui04	nvim/colors/base16-marrakesh.vim	/^let s:gui04 = "86813b"$/;"	v
+s:gui04	nvim/colors/base16-mocha.vim	/^let s:gui04 = "b8afad"$/;"	v
+s:gui04	nvim/colors/base16-monokai.vim	/^let s:gui04 = "a59f85"$/;"	v
+s:gui04	nvim/colors/base16-ocean.vim	/^let s:gui04 = "a7adba"$/;"	v
+s:gui04	nvim/colors/base16-paraiso.vim	/^let s:gui04 = "8d8687"$/;"	v
+s:gui04	nvim/colors/base16-pop.vim	/^let s:gui04 = "b0b0b0"$/;"	v
+s:gui04	nvim/colors/base16-railscasts.vim	/^let s:gui04 = "d4cfc9"$/;"	v
+s:gui04	nvim/colors/base16-shapeshifter.vim	/^let s:gui04 = "555555"$/;"	v
+s:gui04	nvim/colors/base16-solarized.vim	/^let s:gui04 = "839496"$/;"	v
+s:gui04	nvim/colors/base16-summerfruit.vim	/^let s:gui04 = "B0B0B0"$/;"	v
+s:gui04	nvim/colors/base16-tomorrow.vim	/^let s:gui04 = "b4b7b4"$/;"	v
+s:gui04	nvim/colors/base16-twilight.vim	/^let s:gui04 = "838184"$/;"	v
+s:gui05	nvim/colors/base16-3024.vim	/^let s:gui05 = "a5a2a2"$/;"	v
+s:gui05	nvim/colors/base16-apathy.vim	/^let s:gui05 = "81B5AC"$/;"	v
+s:gui05	nvim/colors/base16-ashes.vim	/^let s:gui05 = "C7CCD1"$/;"	v
+s:gui05	nvim/colors/base16-atelierdune.vim	/^let s:gui05 = "a6a28c"$/;"	v
+s:gui05	nvim/colors/base16-atelierforest.vim	/^let s:gui05 = "a8a19f"$/;"	v
+s:gui05	nvim/colors/base16-atelierheath.vim	/^let s:gui05 = "ab9bab"$/;"	v
+s:gui05	nvim/colors/base16-atelierlakeside.vim	/^let s:gui05 = "7ea2b4"$/;"	v
+s:gui05	nvim/colors/base16-atelierseaside.vim	/^let s:gui05 = "8ca68c"$/;"	v
+s:gui05	nvim/colors/base16-bespin.vim	/^let s:gui05 = "8a8986"$/;"	v
+s:gui05	nvim/colors/base16-brewer.vim	/^let s:gui05 = "b7b8b9"$/;"	v
+s:gui05	nvim/colors/base16-bright.vim	/^let s:gui05 = "e0e0e0"$/;"	v
+s:gui05	nvim/colors/base16-chalk.vim	/^let s:gui05 = "d0d0d0"$/;"	v
+s:gui05	nvim/colors/base16-codeschool.vim	/^let s:gui05 = "9ea7a6"$/;"	v
+s:gui05	nvim/colors/base16-colors.vim	/^let s:gui05 = "bbbbbb"$/;"	v
+s:gui05	nvim/colors/base16-default.vim	/^let s:gui05 = "d8d8d8"$/;"	v
+s:gui05	nvim/colors/base16-eighties.vim	/^let s:gui05 = "d3d0c8"$/;"	v
+s:gui05	nvim/colors/base16-embers.vim	/^let s:gui05 = "A39A90"$/;"	v
+s:gui05	nvim/colors/base16-flat.vim	/^let s:gui05 = "e0e0e0"$/;"	v
+s:gui05	nvim/colors/base16-google.vim	/^let s:gui05 = "c5c8c6"$/;"	v
+s:gui05	nvim/colors/base16-grayscale.vim	/^let s:gui05 = "b9b9b9"$/;"	v
+s:gui05	nvim/colors/base16-greenscreen.vim	/^let s:gui05 = "00bb00"$/;"	v
+s:gui05	nvim/colors/base16-harmonic16.vim	/^let s:gui05 = "cbd6e2"$/;"	v
+s:gui05	nvim/colors/base16-isotope.vim	/^let s:gui05 = "d0d0d0"$/;"	v
+s:gui05	nvim/colors/base16-londontube.vim	/^let s:gui05 = "d9d8d8"$/;"	v
+s:gui05	nvim/colors/base16-marrakesh.vim	/^let s:gui05 = "948e48"$/;"	v
+s:gui05	nvim/colors/base16-mocha.vim	/^let s:gui05 = "d0c8c6"$/;"	v
+s:gui05	nvim/colors/base16-monokai.vim	/^let s:gui05 = "f8f8f2"$/;"	v
+s:gui05	nvim/colors/base16-ocean.vim	/^let s:gui05 = "c0c5ce"$/;"	v
+s:gui05	nvim/colors/base16-paraiso.vim	/^let s:gui05 = "a39e9b"$/;"	v
+s:gui05	nvim/colors/base16-pop.vim	/^let s:gui05 = "d0d0d0"$/;"	v
+s:gui05	nvim/colors/base16-railscasts.vim	/^let s:gui05 = "e6e1dc"$/;"	v
+s:gui05	nvim/colors/base16-shapeshifter.vim	/^let s:gui05 = "ababab"$/;"	v
+s:gui05	nvim/colors/base16-solarized.vim	/^let s:gui05 = "93a1a1"$/;"	v
+s:gui05	nvim/colors/base16-summerfruit.vim	/^let s:gui05 = "D0D0D0"$/;"	v
+s:gui05	nvim/colors/base16-tomorrow.vim	/^let s:gui05 = "c5c8c6"$/;"	v
+s:gui05	nvim/colors/base16-twilight.vim	/^let s:gui05 = "a7a7a7"$/;"	v
+s:gui06	nvim/colors/base16-3024.vim	/^let s:gui06 = "d6d5d4"$/;"	v
+s:gui06	nvim/colors/base16-apathy.vim	/^let s:gui06 = "A7CEC8"$/;"	v
+s:gui06	nvim/colors/base16-ashes.vim	/^let s:gui06 = "DFE2E5"$/;"	v
+s:gui06	nvim/colors/base16-atelierdune.vim	/^let s:gui06 = "e8e4cf"$/;"	v
+s:gui06	nvim/colors/base16-atelierforest.vim	/^let s:gui06 = "e6e2e0"$/;"	v
+s:gui06	nvim/colors/base16-atelierheath.vim	/^let s:gui06 = "d8cad8"$/;"	v
+s:gui06	nvim/colors/base16-atelierlakeside.vim	/^let s:gui06 = "c1e4f6"$/;"	v
+s:gui06	nvim/colors/base16-atelierseaside.vim	/^let s:gui06 = "cfe8cf"$/;"	v
+s:gui06	nvim/colors/base16-bespin.vim	/^let s:gui06 = "9d9b97"$/;"	v
+s:gui06	nvim/colors/base16-brewer.vim	/^let s:gui06 = "dadbdc"$/;"	v
+s:gui06	nvim/colors/base16-bright.vim	/^let s:gui06 = "f5f5f5"$/;"	v
+s:gui06	nvim/colors/base16-chalk.vim	/^let s:gui06 = "e0e0e0"$/;"	v
+s:gui06	nvim/colors/base16-codeschool.vim	/^let s:gui06 = "a7cfa3"$/;"	v
+s:gui06	nvim/colors/base16-colors.vim	/^let s:gui06 = "dddddd"$/;"	v
+s:gui06	nvim/colors/base16-default.vim	/^let s:gui06 = "e8e8e8"$/;"	v
+s:gui06	nvim/colors/base16-eighties.vim	/^let s:gui06 = "e8e6df"$/;"	v
+s:gui06	nvim/colors/base16-embers.vim	/^let s:gui06 = "BEB6AE"$/;"	v
+s:gui06	nvim/colors/base16-flat.vim	/^let s:gui06 = "f5f5f5"$/;"	v
+s:gui06	nvim/colors/base16-google.vim	/^let s:gui06 = "e0e0e0"$/;"	v
+s:gui06	nvim/colors/base16-grayscale.vim	/^let s:gui06 = "e3e3e3"$/;"	v
+s:gui06	nvim/colors/base16-greenscreen.vim	/^let s:gui06 = "00dd00"$/;"	v
+s:gui06	nvim/colors/base16-harmonic16.vim	/^let s:gui06 = "e5ebf1"$/;"	v
+s:gui06	nvim/colors/base16-isotope.vim	/^let s:gui06 = "e0e0e0"$/;"	v
+s:gui06	nvim/colors/base16-londontube.vim	/^let s:gui06 = "e7e7e8"$/;"	v
+s:gui06	nvim/colors/base16-marrakesh.vim	/^let s:gui06 = "ccc37a"$/;"	v
+s:gui06	nvim/colors/base16-mocha.vim	/^let s:gui06 = "e9e1dd"$/;"	v
+s:gui06	nvim/colors/base16-monokai.vim	/^let s:gui06 = "f5f4f1"$/;"	v
+s:gui06	nvim/colors/base16-ocean.vim	/^let s:gui06 = "dfe1e8"$/;"	v
+s:gui06	nvim/colors/base16-paraiso.vim	/^let s:gui06 = "b9b6b0"$/;"	v
+s:gui06	nvim/colors/base16-pop.vim	/^let s:gui06 = "e0e0e0"$/;"	v
+s:gui06	nvim/colors/base16-railscasts.vim	/^let s:gui06 = "f4f1ed"$/;"	v
+s:gui06	nvim/colors/base16-shapeshifter.vim	/^let s:gui06 = "e0e0e0"$/;"	v
+s:gui06	nvim/colors/base16-solarized.vim	/^let s:gui06 = "eee8d5"$/;"	v
+s:gui06	nvim/colors/base16-summerfruit.vim	/^let s:gui06 = "E0E0E0"$/;"	v
+s:gui06	nvim/colors/base16-tomorrow.vim	/^let s:gui06 = "e0e0e0"$/;"	v
+s:gui06	nvim/colors/base16-twilight.vim	/^let s:gui06 = "c3c3c3"$/;"	v
+s:gui07	nvim/colors/base16-3024.vim	/^let s:gui07 = "f7f7f7"$/;"	v
+s:gui07	nvim/colors/base16-apathy.vim	/^let s:gui07 = "D2E7E4"$/;"	v
+s:gui07	nvim/colors/base16-ashes.vim	/^let s:gui07 = "F3F4F5"$/;"	v
+s:gui07	nvim/colors/base16-atelierdune.vim	/^let s:gui07 = "fefbec"$/;"	v
+s:gui07	nvim/colors/base16-atelierforest.vim	/^let s:gui07 = "f1efee"$/;"	v
+s:gui07	nvim/colors/base16-atelierheath.vim	/^let s:gui07 = "f7f3f7"$/;"	v
+s:gui07	nvim/colors/base16-atelierlakeside.vim	/^let s:gui07 = "ebf8ff"$/;"	v
+s:gui07	nvim/colors/base16-atelierseaside.vim	/^let s:gui07 = "f0fff0"$/;"	v
+s:gui07	nvim/colors/base16-bespin.vim	/^let s:gui07 = "baae9e"$/;"	v
+s:gui07	nvim/colors/base16-brewer.vim	/^let s:gui07 = "fcfdfe"$/;"	v
+s:gui07	nvim/colors/base16-bright.vim	/^let s:gui07 = "ffffff"$/;"	v
+s:gui07	nvim/colors/base16-chalk.vim	/^let s:gui07 = "f5f5f5"$/;"	v
+s:gui07	nvim/colors/base16-codeschool.vim	/^let s:gui07 = "b5d8f6"$/;"	v
+s:gui07	nvim/colors/base16-colors.vim	/^let s:gui07 = "ffffff"$/;"	v
+s:gui07	nvim/colors/base16-default.vim	/^let s:gui07 = "f8f8f8"$/;"	v
+s:gui07	nvim/colors/base16-eighties.vim	/^let s:gui07 = "f2f0ec"$/;"	v
+s:gui07	nvim/colors/base16-embers.vim	/^let s:gui07 = "DBD6D1"$/;"	v
+s:gui07	nvim/colors/base16-flat.vim	/^let s:gui07 = "ECF0F1"$/;"	v
+s:gui07	nvim/colors/base16-google.vim	/^let s:gui07 = "ffffff"$/;"	v
+s:gui07	nvim/colors/base16-grayscale.vim	/^let s:gui07 = "f7f7f7"$/;"	v
+s:gui07	nvim/colors/base16-greenscreen.vim	/^let s:gui07 = "00ff00"$/;"	v
+s:gui07	nvim/colors/base16-harmonic16.vim	/^let s:gui07 = "f7f9fb"$/;"	v
+s:gui07	nvim/colors/base16-isotope.vim	/^let s:gui07 = "ffffff"$/;"	v
+s:gui07	nvim/colors/base16-londontube.vim	/^let s:gui07 = "ffffff"$/;"	v
+s:gui07	nvim/colors/base16-marrakesh.vim	/^let s:gui07 = "faf0a5"$/;"	v
+s:gui07	nvim/colors/base16-mocha.vim	/^let s:gui07 = "f5eeeb"$/;"	v
+s:gui07	nvim/colors/base16-monokai.vim	/^let s:gui07 = "f9f8f5"$/;"	v
+s:gui07	nvim/colors/base16-ocean.vim	/^let s:gui07 = "eff1f5"$/;"	v
+s:gui07	nvim/colors/base16-paraiso.vim	/^let s:gui07 = "e7e9db"$/;"	v
+s:gui07	nvim/colors/base16-pop.vim	/^let s:gui07 = "ffffff"$/;"	v
+s:gui07	nvim/colors/base16-railscasts.vim	/^let s:gui07 = "f9f7f3"$/;"	v
+s:gui07	nvim/colors/base16-shapeshifter.vim	/^let s:gui07 = "f9f9f9"$/;"	v
+s:gui07	nvim/colors/base16-solarized.vim	/^let s:gui07 = "fdf6e3"$/;"	v
+s:gui07	nvim/colors/base16-summerfruit.vim	/^let s:gui07 = "FFFFFF"$/;"	v
+s:gui07	nvim/colors/base16-tomorrow.vim	/^let s:gui07 = "ffffff"$/;"	v
+s:gui07	nvim/colors/base16-twilight.vim	/^let s:gui07 = "ffffff"$/;"	v
+s:gui08	nvim/colors/base16-3024.vim	/^let s:gui08 = "db2d20"$/;"	v
+s:gui08	nvim/colors/base16-apathy.vim	/^let s:gui08 = "3E9688"$/;"	v
+s:gui08	nvim/colors/base16-ashes.vim	/^let s:gui08 = "C7AE95"$/;"	v
+s:gui08	nvim/colors/base16-atelierdune.vim	/^let s:gui08 = "d73737"$/;"	v
+s:gui08	nvim/colors/base16-atelierforest.vim	/^let s:gui08 = "f22c40"$/;"	v
+s:gui08	nvim/colors/base16-atelierheath.vim	/^let s:gui08 = "ca402b"$/;"	v
+s:gui08	nvim/colors/base16-atelierlakeside.vim	/^let s:gui08 = "d22d72"$/;"	v
+s:gui08	nvim/colors/base16-atelierseaside.vim	/^let s:gui08 = "e6193c"$/;"	v
+s:gui08	nvim/colors/base16-bespin.vim	/^let s:gui08 = "cf6a4c"$/;"	v
+s:gui08	nvim/colors/base16-brewer.vim	/^let s:gui08 = "e31a1c"$/;"	v
+s:gui08	nvim/colors/base16-bright.vim	/^let s:gui08 = "fb0120"$/;"	v
+s:gui08	nvim/colors/base16-chalk.vim	/^let s:gui08 = "fb9fb1"$/;"	v
+s:gui08	nvim/colors/base16-codeschool.vim	/^let s:gui08 = "2a5491"$/;"	v
+s:gui08	nvim/colors/base16-colors.vim	/^let s:gui08 = "ff4136"$/;"	v
+s:gui08	nvim/colors/base16-default.vim	/^let s:gui08 = "ab4642"$/;"	v
+s:gui08	nvim/colors/base16-eighties.vim	/^let s:gui08 = "f2777a"$/;"	v
+s:gui08	nvim/colors/base16-embers.vim	/^let s:gui08 = "826D57"$/;"	v
+s:gui08	nvim/colors/base16-flat.vim	/^let s:gui08 = "E74C3C"$/;"	v
+s:gui08	nvim/colors/base16-google.vim	/^let s:gui08 = "CC342B"$/;"	v
+s:gui08	nvim/colors/base16-grayscale.vim	/^let s:gui08 = "7c7c7c"$/;"	v
+s:gui08	nvim/colors/base16-greenscreen.vim	/^let s:gui08 = "007700"$/;"	v
+s:gui08	nvim/colors/base16-harmonic16.vim	/^let s:gui08 = "bf8b56"$/;"	v
+s:gui08	nvim/colors/base16-isotope.vim	/^let s:gui08 = "ff0000"$/;"	v
+s:gui08	nvim/colors/base16-londontube.vim	/^let s:gui08 = "ee2e24"$/;"	v
+s:gui08	nvim/colors/base16-marrakesh.vim	/^let s:gui08 = "c35359"$/;"	v
+s:gui08	nvim/colors/base16-mocha.vim	/^let s:gui08 = "cb6077"$/;"	v
+s:gui08	nvim/colors/base16-monokai.vim	/^let s:gui08 = "f92672"$/;"	v
+s:gui08	nvim/colors/base16-ocean.vim	/^let s:gui08 = "bf616a"$/;"	v
+s:gui08	nvim/colors/base16-paraiso.vim	/^let s:gui08 = "ef6155"$/;"	v
+s:gui08	nvim/colors/base16-pop.vim	/^let s:gui08 = "eb008a"$/;"	v
+s:gui08	nvim/colors/base16-railscasts.vim	/^let s:gui08 = "da4939"$/;"	v
+s:gui08	nvim/colors/base16-shapeshifter.vim	/^let s:gui08 = "e92f2f"$/;"	v
+s:gui08	nvim/colors/base16-solarized.vim	/^let s:gui08 = "dc322f"$/;"	v
+s:gui08	nvim/colors/base16-summerfruit.vim	/^let s:gui08 = "FF0086"$/;"	v
+s:gui08	nvim/colors/base16-tomorrow.vim	/^let s:gui08 = "cc6666"$/;"	v
+s:gui08	nvim/colors/base16-twilight.vim	/^let s:gui08 = "cf6a4c"$/;"	v
+s:gui09	nvim/colors/base16-3024.vim	/^let s:gui09 = "e8bbd0"$/;"	v
+s:gui09	nvim/colors/base16-apathy.vim	/^let s:gui09 = "3E7996"$/;"	v
+s:gui09	nvim/colors/base16-ashes.vim	/^let s:gui09 = "C7C795"$/;"	v
+s:gui09	nvim/colors/base16-atelierdune.vim	/^let s:gui09 = "b65611"$/;"	v
+s:gui09	nvim/colors/base16-atelierforest.vim	/^let s:gui09 = "df5320"$/;"	v
+s:gui09	nvim/colors/base16-atelierheath.vim	/^let s:gui09 = "a65926"$/;"	v
+s:gui09	nvim/colors/base16-atelierlakeside.vim	/^let s:gui09 = "935c25"$/;"	v
+s:gui09	nvim/colors/base16-atelierseaside.vim	/^let s:gui09 = "87711d"$/;"	v
+s:gui09	nvim/colors/base16-bespin.vim	/^let s:gui09 = "cf7d34"$/;"	v
+s:gui09	nvim/colors/base16-brewer.vim	/^let s:gui09 = "e6550d"$/;"	v
+s:gui09	nvim/colors/base16-bright.vim	/^let s:gui09 = "fc6d24"$/;"	v
+s:gui09	nvim/colors/base16-chalk.vim	/^let s:gui09 = "eda987"$/;"	v
+s:gui09	nvim/colors/base16-codeschool.vim	/^let s:gui09 = "43820d"$/;"	v
+s:gui09	nvim/colors/base16-colors.vim	/^let s:gui09 = "ff851b"$/;"	v
+s:gui09	nvim/colors/base16-default.vim	/^let s:gui09 = "dc9656"$/;"	v
+s:gui09	nvim/colors/base16-eighties.vim	/^let s:gui09 = "f99157"$/;"	v
+s:gui09	nvim/colors/base16-embers.vim	/^let s:gui09 = "828257"$/;"	v
+s:gui09	nvim/colors/base16-flat.vim	/^let s:gui09 = "E67E22"$/;"	v
+s:gui09	nvim/colors/base16-google.vim	/^let s:gui09 = "F96A38"$/;"	v
+s:gui09	nvim/colors/base16-grayscale.vim	/^let s:gui09 = "999999"$/;"	v
+s:gui09	nvim/colors/base16-greenscreen.vim	/^let s:gui09 = "009900"$/;"	v
+s:gui09	nvim/colors/base16-harmonic16.vim	/^let s:gui09 = "bfbf56"$/;"	v
+s:gui09	nvim/colors/base16-isotope.vim	/^let s:gui09 = "ff9900"$/;"	v
+s:gui09	nvim/colors/base16-londontube.vim	/^let s:gui09 = "f386a1"$/;"	v
+s:gui09	nvim/colors/base16-marrakesh.vim	/^let s:gui09 = "b36144"$/;"	v
+s:gui09	nvim/colors/base16-mocha.vim	/^let s:gui09 = "d28b71"$/;"	v
+s:gui09	nvim/colors/base16-monokai.vim	/^let s:gui09 = "fd971f"$/;"	v
+s:gui09	nvim/colors/base16-ocean.vim	/^let s:gui09 = "d08770"$/;"	v
+s:gui09	nvim/colors/base16-paraiso.vim	/^let s:gui09 = "f99b15"$/;"	v
+s:gui09	nvim/colors/base16-pop.vim	/^let s:gui09 = "f29333"$/;"	v
+s:gui09	nvim/colors/base16-railscasts.vim	/^let s:gui09 = "cc7833"$/;"	v
+s:gui09	nvim/colors/base16-shapeshifter.vim	/^let s:gui09 = "e09448"$/;"	v
+s:gui09	nvim/colors/base16-solarized.vim	/^let s:gui09 = "cb4b16"$/;"	v
+s:gui09	nvim/colors/base16-summerfruit.vim	/^let s:gui09 = "FD8900"$/;"	v
+s:gui09	nvim/colors/base16-tomorrow.vim	/^let s:gui09 = "de935f"$/;"	v
+s:gui09	nvim/colors/base16-twilight.vim	/^let s:gui09 = "cda869"$/;"	v
+s:gui0A	nvim/colors/base16-3024.vim	/^let s:gui0A = "fded02"$/;"	v
+s:gui0A	nvim/colors/base16-apathy.vim	/^let s:gui0A = "3E4C96"$/;"	v
+s:gui0A	nvim/colors/base16-ashes.vim	/^let s:gui0A = "AEC795"$/;"	v
+s:gui0A	nvim/colors/base16-atelierdune.vim	/^let s:gui0A = "cfb017"$/;"	v
+s:gui0A	nvim/colors/base16-atelierforest.vim	/^let s:gui0A = "d5911a"$/;"	v
+s:gui0A	nvim/colors/base16-atelierheath.vim	/^let s:gui0A = "bb8a35"$/;"	v
+s:gui0A	nvim/colors/base16-atelierlakeside.vim	/^let s:gui0A = "8a8a0f"$/;"	v
+s:gui0A	nvim/colors/base16-atelierseaside.vim	/^let s:gui0A = "c3c322"$/;"	v
+s:gui0A	nvim/colors/base16-bespin.vim	/^let s:gui0A = "f9ee98"$/;"	v
+s:gui0A	nvim/colors/base16-brewer.vim	/^let s:gui0A = "dca060"$/;"	v
+s:gui0A	nvim/colors/base16-bright.vim	/^let s:gui0A = "fda331"$/;"	v
+s:gui0A	nvim/colors/base16-chalk.vim	/^let s:gui0A = "ddb26f"$/;"	v
+s:gui0A	nvim/colors/base16-codeschool.vim	/^let s:gui0A = "a03b1e"$/;"	v
+s:gui0A	nvim/colors/base16-colors.vim	/^let s:gui0A = "ffdc00"$/;"	v
+s:gui0A	nvim/colors/base16-default.vim	/^let s:gui0A = "f7ca88"$/;"	v
+s:gui0A	nvim/colors/base16-eighties.vim	/^let s:gui0A = "ffcc66"$/;"	v
+s:gui0A	nvim/colors/base16-embers.vim	/^let s:gui0A = "6D8257"$/;"	v
+s:gui0A	nvim/colors/base16-flat.vim	/^let s:gui0A = "F1C40F"$/;"	v
+s:gui0A	nvim/colors/base16-google.vim	/^let s:gui0A = "FBA922"$/;"	v
+s:gui0A	nvim/colors/base16-grayscale.vim	/^let s:gui0A = "a0a0a0"$/;"	v
+s:gui0A	nvim/colors/base16-greenscreen.vim	/^let s:gui0A = "007700"$/;"	v
+s:gui0A	nvim/colors/base16-harmonic16.vim	/^let s:gui0A = "8bbf56"$/;"	v
+s:gui0A	nvim/colors/base16-isotope.vim	/^let s:gui0A = "ff0099"$/;"	v
+s:gui0A	nvim/colors/base16-londontube.vim	/^let s:gui0A = "ffd204"$/;"	v
+s:gui0A	nvim/colors/base16-marrakesh.vim	/^let s:gui0A = "a88339"$/;"	v
+s:gui0A	nvim/colors/base16-mocha.vim	/^let s:gui0A = "f4bc87"$/;"	v
+s:gui0A	nvim/colors/base16-monokai.vim	/^let s:gui0A = "f4bf75"$/;"	v
+s:gui0A	nvim/colors/base16-ocean.vim	/^let s:gui0A = "ebcb8b"$/;"	v
+s:gui0A	nvim/colors/base16-paraiso.vim	/^let s:gui0A = "fec418"$/;"	v
+s:gui0A	nvim/colors/base16-pop.vim	/^let s:gui0A = "f8ca12"$/;"	v
+s:gui0A	nvim/colors/base16-railscasts.vim	/^let s:gui0A = "ffc66d"$/;"	v
+s:gui0A	nvim/colors/base16-shapeshifter.vim	/^let s:gui0A = "dddd13"$/;"	v
+s:gui0A	nvim/colors/base16-solarized.vim	/^let s:gui0A = "b58900"$/;"	v
+s:gui0A	nvim/colors/base16-summerfruit.vim	/^let s:gui0A = "ABA800"$/;"	v
+s:gui0A	nvim/colors/base16-tomorrow.vim	/^let s:gui0A = "f0c674"$/;"	v
+s:gui0A	nvim/colors/base16-twilight.vim	/^let s:gui0A = "f9ee98"$/;"	v
+s:gui0B	nvim/colors/base16-3024.vim	/^let s:gui0B = "01a252"$/;"	v
+s:gui0B	nvim/colors/base16-apathy.vim	/^let s:gui0B = "883E96"$/;"	v
+s:gui0B	nvim/colors/base16-ashes.vim	/^let s:gui0B = "95C7AE"$/;"	v
+s:gui0B	nvim/colors/base16-atelierdune.vim	/^let s:gui0B = "60ac39"$/;"	v
+s:gui0B	nvim/colors/base16-atelierforest.vim	/^let s:gui0B = "5ab738"$/;"	v
+s:gui0B	nvim/colors/base16-atelierheath.vim	/^let s:gui0B = "379a37"$/;"	v
+s:gui0B	nvim/colors/base16-atelierlakeside.vim	/^let s:gui0B = "568c3b"$/;"	v
+s:gui0B	nvim/colors/base16-atelierseaside.vim	/^let s:gui0B = "29a329"$/;"	v
+s:gui0B	nvim/colors/base16-bespin.vim	/^let s:gui0B = "54be0d"$/;"	v
+s:gui0B	nvim/colors/base16-brewer.vim	/^let s:gui0B = "31a354"$/;"	v
+s:gui0B	nvim/colors/base16-bright.vim	/^let s:gui0B = "a1c659"$/;"	v
+s:gui0B	nvim/colors/base16-chalk.vim	/^let s:gui0B = "acc267"$/;"	v
+s:gui0B	nvim/colors/base16-codeschool.vim	/^let s:gui0B = "237986"$/;"	v
+s:gui0B	nvim/colors/base16-colors.vim	/^let s:gui0B = "2ecc40"$/;"	v
+s:gui0B	nvim/colors/base16-default.vim	/^let s:gui0B = "a1b56c"$/;"	v
+s:gui0B	nvim/colors/base16-eighties.vim	/^let s:gui0B = "99cc99"$/;"	v
+s:gui0B	nvim/colors/base16-embers.vim	/^let s:gui0B = "57826D"$/;"	v
+s:gui0B	nvim/colors/base16-flat.vim	/^let s:gui0B = "2ECC71"$/;"	v
+s:gui0B	nvim/colors/base16-google.vim	/^let s:gui0B = "198844"$/;"	v
+s:gui0B	nvim/colors/base16-grayscale.vim	/^let s:gui0B = "8e8e8e"$/;"	v
+s:gui0B	nvim/colors/base16-greenscreen.vim	/^let s:gui0B = "00bb00"$/;"	v
+s:gui0B	nvim/colors/base16-harmonic16.vim	/^let s:gui0B = "56bf8b"$/;"	v
+s:gui0B	nvim/colors/base16-isotope.vim	/^let s:gui0B = "33ff00"$/;"	v
+s:gui0B	nvim/colors/base16-londontube.vim	/^let s:gui0B = "00853e"$/;"	v
+s:gui0B	nvim/colors/base16-marrakesh.vim	/^let s:gui0B = "18974e"$/;"	v
+s:gui0B	nvim/colors/base16-mocha.vim	/^let s:gui0B = "beb55b"$/;"	v
+s:gui0B	nvim/colors/base16-monokai.vim	/^let s:gui0B = "a6e22e"$/;"	v
+s:gui0B	nvim/colors/base16-ocean.vim	/^let s:gui0B = "a3be8c"$/;"	v
+s:gui0B	nvim/colors/base16-paraiso.vim	/^let s:gui0B = "48b685"$/;"	v
+s:gui0B	nvim/colors/base16-pop.vim	/^let s:gui0B = "37b349"$/;"	v
+s:gui0B	nvim/colors/base16-railscasts.vim	/^let s:gui0B = "a5c261"$/;"	v
+s:gui0B	nvim/colors/base16-shapeshifter.vim	/^let s:gui0B = "0ed839"$/;"	v
+s:gui0B	nvim/colors/base16-solarized.vim	/^let s:gui0B = "859900"$/;"	v
+s:gui0B	nvim/colors/base16-summerfruit.vim	/^let s:gui0B = "00C918"$/;"	v
+s:gui0B	nvim/colors/base16-tomorrow.vim	/^let s:gui0B = "b5bd68"$/;"	v
+s:gui0B	nvim/colors/base16-twilight.vim	/^let s:gui0B = "8f9d6a"$/;"	v
+s:gui0C	nvim/colors/base16-3024.vim	/^let s:gui0C = "b5e4f4"$/;"	v
+s:gui0C	nvim/colors/base16-apathy.vim	/^let s:gui0C = "963E4C"$/;"	v
+s:gui0C	nvim/colors/base16-ashes.vim	/^let s:gui0C = "95AEC7"$/;"	v
+s:gui0C	nvim/colors/base16-atelierdune.vim	/^let s:gui0C = "1fad83"$/;"	v
+s:gui0C	nvim/colors/base16-atelierforest.vim	/^let s:gui0C = "00ad9c"$/;"	v
+s:gui0C	nvim/colors/base16-atelierheath.vim	/^let s:gui0C = "159393"$/;"	v
+s:gui0C	nvim/colors/base16-atelierlakeside.vim	/^let s:gui0C = "2d8f6f"$/;"	v
+s:gui0C	nvim/colors/base16-atelierseaside.vim	/^let s:gui0C = "1999b3"$/;"	v
+s:gui0C	nvim/colors/base16-bespin.vim	/^let s:gui0C = "afc4db"$/;"	v
+s:gui0C	nvim/colors/base16-brewer.vim	/^let s:gui0C = "80b1d3"$/;"	v
+s:gui0C	nvim/colors/base16-bright.vim	/^let s:gui0C = "76c7b7"$/;"	v
+s:gui0C	nvim/colors/base16-chalk.vim	/^let s:gui0C = "12cfc0"$/;"	v
+s:gui0C	nvim/colors/base16-codeschool.vim	/^let s:gui0C = "b02f30"$/;"	v
+s:gui0C	nvim/colors/base16-colors.vim	/^let s:gui0C = "7fdbff"$/;"	v
+s:gui0C	nvim/colors/base16-default.vim	/^let s:gui0C = "86c1b9"$/;"	v
+s:gui0C	nvim/colors/base16-eighties.vim	/^let s:gui0C = "66cccc"$/;"	v
+s:gui0C	nvim/colors/base16-embers.vim	/^let s:gui0C = "576D82"$/;"	v
+s:gui0C	nvim/colors/base16-flat.vim	/^let s:gui0C = "1ABC9C"$/;"	v
+s:gui0C	nvim/colors/base16-google.vim	/^let s:gui0C = "3971ED"$/;"	v
+s:gui0C	nvim/colors/base16-grayscale.vim	/^let s:gui0C = "868686"$/;"	v
+s:gui0C	nvim/colors/base16-greenscreen.vim	/^let s:gui0C = "005500"$/;"	v
+s:gui0C	nvim/colors/base16-harmonic16.vim	/^let s:gui0C = "568bbf"$/;"	v
+s:gui0C	nvim/colors/base16-isotope.vim	/^let s:gui0C = "00ffff"$/;"	v
+s:gui0C	nvim/colors/base16-londontube.vim	/^let s:gui0C = "85cebc"$/;"	v
+s:gui0C	nvim/colors/base16-marrakesh.vim	/^let s:gui0C = "75a738"$/;"	v
+s:gui0C	nvim/colors/base16-mocha.vim	/^let s:gui0C = "7bbda4"$/;"	v
+s:gui0C	nvim/colors/base16-monokai.vim	/^let s:gui0C = "a1efe4"$/;"	v
+s:gui0C	nvim/colors/base16-ocean.vim	/^let s:gui0C = "96b5b4"$/;"	v
+s:gui0C	nvim/colors/base16-paraiso.vim	/^let s:gui0C = "5bc4bf"$/;"	v
+s:gui0C	nvim/colors/base16-pop.vim	/^let s:gui0C = "00aabb"$/;"	v
+s:gui0C	nvim/colors/base16-railscasts.vim	/^let s:gui0C = "519f50"$/;"	v
+s:gui0C	nvim/colors/base16-shapeshifter.vim	/^let s:gui0C = "23edda"$/;"	v
+s:gui0C	nvim/colors/base16-solarized.vim	/^let s:gui0C = "2aa198"$/;"	v
+s:gui0C	nvim/colors/base16-summerfruit.vim	/^let s:gui0C = "1faaaa"$/;"	v
+s:gui0C	nvim/colors/base16-tomorrow.vim	/^let s:gui0C = "8abeb7"$/;"	v
+s:gui0C	nvim/colors/base16-twilight.vim	/^let s:gui0C = "afc4db"$/;"	v
+s:gui0D	nvim/colors/base16-3024.vim	/^let s:gui0D = "01a0e4"$/;"	v
+s:gui0D	nvim/colors/base16-apathy.vim	/^let s:gui0D = "96883E"$/;"	v
+s:gui0D	nvim/colors/base16-ashes.vim	/^let s:gui0D = "AE95C7"$/;"	v
+s:gui0D	nvim/colors/base16-atelierdune.vim	/^let s:gui0D = "6684e1"$/;"	v
+s:gui0D	nvim/colors/base16-atelierforest.vim	/^let s:gui0D = "407ee7"$/;"	v
+s:gui0D	nvim/colors/base16-atelierheath.vim	/^let s:gui0D = "516aec"$/;"	v
+s:gui0D	nvim/colors/base16-atelierlakeside.vim	/^let s:gui0D = "257fad"$/;"	v
+s:gui0D	nvim/colors/base16-atelierseaside.vim	/^let s:gui0D = "3d62f5"$/;"	v
+s:gui0D	nvim/colors/base16-bespin.vim	/^let s:gui0D = "5ea6ea"$/;"	v
+s:gui0D	nvim/colors/base16-brewer.vim	/^let s:gui0D = "3182bd"$/;"	v
+s:gui0D	nvim/colors/base16-bright.vim	/^let s:gui0D = "6fb3d2"$/;"	v
+s:gui0D	nvim/colors/base16-chalk.vim	/^let s:gui0D = "6fc2ef"$/;"	v
+s:gui0D	nvim/colors/base16-codeschool.vim	/^let s:gui0D = "484d79"$/;"	v
+s:gui0D	nvim/colors/base16-colors.vim	/^let s:gui0D = "0074d9"$/;"	v
+s:gui0D	nvim/colors/base16-default.vim	/^let s:gui0D = "7cafc2"$/;"	v
+s:gui0D	nvim/colors/base16-eighties.vim	/^let s:gui0D = "6699cc"$/;"	v
+s:gui0D	nvim/colors/base16-embers.vim	/^let s:gui0D = "6D5782"$/;"	v
+s:gui0D	nvim/colors/base16-flat.vim	/^let s:gui0D = "3498DB"$/;"	v
+s:gui0D	nvim/colors/base16-google.vim	/^let s:gui0D = "3971ED"$/;"	v
+s:gui0D	nvim/colors/base16-grayscale.vim	/^let s:gui0D = "686868"$/;"	v
+s:gui0D	nvim/colors/base16-greenscreen.vim	/^let s:gui0D = "009900"$/;"	v
+s:gui0D	nvim/colors/base16-harmonic16.vim	/^let s:gui0D = "8b56bf"$/;"	v
+s:gui0D	nvim/colors/base16-isotope.vim	/^let s:gui0D = "0066ff"$/;"	v
+s:gui0D	nvim/colors/base16-londontube.vim	/^let s:gui0D = "009ddc"$/;"	v
+s:gui0D	nvim/colors/base16-marrakesh.vim	/^let s:gui0D = "477ca1"$/;"	v
+s:gui0D	nvim/colors/base16-mocha.vim	/^let s:gui0D = "8ab3b5"$/;"	v
+s:gui0D	nvim/colors/base16-monokai.vim	/^let s:gui0D = "66d9ef"$/;"	v
+s:gui0D	nvim/colors/base16-ocean.vim	/^let s:gui0D = "8fa1b3"$/;"	v
+s:gui0D	nvim/colors/base16-paraiso.vim	/^let s:gui0D = "06b6ef"$/;"	v
+s:gui0D	nvim/colors/base16-pop.vim	/^let s:gui0D = "0e5a94"$/;"	v
+s:gui0D	nvim/colors/base16-railscasts.vim	/^let s:gui0D = "6d9cbe"$/;"	v
+s:gui0D	nvim/colors/base16-shapeshifter.vim	/^let s:gui0D = "3b48e3"$/;"	v
+s:gui0D	nvim/colors/base16-solarized.vim	/^let s:gui0D = "268bd2"$/;"	v
+s:gui0D	nvim/colors/base16-summerfruit.vim	/^let s:gui0D = "3777E6"$/;"	v
+s:gui0D	nvim/colors/base16-tomorrow.vim	/^let s:gui0D = "81a2be"$/;"	v
+s:gui0D	nvim/colors/base16-twilight.vim	/^let s:gui0D = "7587a6"$/;"	v
+s:gui0E	nvim/colors/base16-3024.vim	/^let s:gui0E = "a16a94"$/;"	v
+s:gui0E	nvim/colors/base16-apathy.vim	/^let s:gui0E = "4C963E"$/;"	v
+s:gui0E	nvim/colors/base16-ashes.vim	/^let s:gui0E = "C795AE"$/;"	v
+s:gui0E	nvim/colors/base16-atelierdune.vim	/^let s:gui0E = "b854d4"$/;"	v
+s:gui0E	nvim/colors/base16-atelierforest.vim	/^let s:gui0E = "6666ea"$/;"	v
+s:gui0E	nvim/colors/base16-atelierheath.vim	/^let s:gui0E = "7b59c0"$/;"	v
+s:gui0E	nvim/colors/base16-atelierlakeside.vim	/^let s:gui0E = "5d5db1"$/;"	v
+s:gui0E	nvim/colors/base16-atelierseaside.vim	/^let s:gui0E = "ad2bee"$/;"	v
+s:gui0E	nvim/colors/base16-bespin.vim	/^let s:gui0E = "9b859d"$/;"	v
+s:gui0E	nvim/colors/base16-brewer.vim	/^let s:gui0E = "756bb1"$/;"	v
+s:gui0E	nvim/colors/base16-bright.vim	/^let s:gui0E = "d381c3"$/;"	v
+s:gui0E	nvim/colors/base16-chalk.vim	/^let s:gui0E = "e1a3ee"$/;"	v
+s:gui0E	nvim/colors/base16-codeschool.vim	/^let s:gui0E = "c59820"$/;"	v
+s:gui0E	nvim/colors/base16-colors.vim	/^let s:gui0E = "b10dc9"$/;"	v
+s:gui0E	nvim/colors/base16-default.vim	/^let s:gui0E = "ba8baf"$/;"	v
+s:gui0E	nvim/colors/base16-eighties.vim	/^let s:gui0E = "cc99cc"$/;"	v
+s:gui0E	nvim/colors/base16-embers.vim	/^let s:gui0E = "82576D"$/;"	v
+s:gui0E	nvim/colors/base16-flat.vim	/^let s:gui0E = "9B59B6"$/;"	v
+s:gui0E	nvim/colors/base16-google.vim	/^let s:gui0E = "A36AC7"$/;"	v
+s:gui0E	nvim/colors/base16-grayscale.vim	/^let s:gui0E = "747474"$/;"	v
+s:gui0E	nvim/colors/base16-greenscreen.vim	/^let s:gui0E = "00bb00"$/;"	v
+s:gui0E	nvim/colors/base16-harmonic16.vim	/^let s:gui0E = "bf568b"$/;"	v
+s:gui0E	nvim/colors/base16-isotope.vim	/^let s:gui0E = "cc00ff"$/;"	v
+s:gui0E	nvim/colors/base16-londontube.vim	/^let s:gui0E = "98005d"$/;"	v
+s:gui0E	nvim/colors/base16-marrakesh.vim	/^let s:gui0E = "8868b3"$/;"	v
+s:gui0E	nvim/colors/base16-mocha.vim	/^let s:gui0E = "a89bb9"$/;"	v
+s:gui0E	nvim/colors/base16-monokai.vim	/^let s:gui0E = "ae81ff"$/;"	v
+s:gui0E	nvim/colors/base16-ocean.vim	/^let s:gui0E = "b48ead"$/;"	v
+s:gui0E	nvim/colors/base16-paraiso.vim	/^let s:gui0E = "815ba4"$/;"	v
+s:gui0E	nvim/colors/base16-pop.vim	/^let s:gui0E = "b31e8d"$/;"	v
+s:gui0E	nvim/colors/base16-railscasts.vim	/^let s:gui0E = "b6b3eb"$/;"	v
+s:gui0E	nvim/colors/base16-shapeshifter.vim	/^let s:gui0E = "f996e2"$/;"	v
+s:gui0E	nvim/colors/base16-solarized.vim	/^let s:gui0E = "6c71c4"$/;"	v
+s:gui0E	nvim/colors/base16-summerfruit.vim	/^let s:gui0E = "AD00A1"$/;"	v
+s:gui0E	nvim/colors/base16-tomorrow.vim	/^let s:gui0E = "b294bb"$/;"	v
+s:gui0E	nvim/colors/base16-twilight.vim	/^let s:gui0E = "9b859d"$/;"	v
+s:gui0F	nvim/colors/base16-3024.vim	/^let s:gui0F = "cdab53"$/;"	v
+s:gui0F	nvim/colors/base16-apathy.vim	/^let s:gui0F = "3E965B"$/;"	v
+s:gui0F	nvim/colors/base16-ashes.vim	/^let s:gui0F = "C79595"$/;"	v
+s:gui0F	nvim/colors/base16-atelierdune.vim	/^let s:gui0F = "d43552"$/;"	v
+s:gui0F	nvim/colors/base16-atelierforest.vim	/^let s:gui0F = "c33ff3"$/;"	v
+s:gui0F	nvim/colors/base16-atelierheath.vim	/^let s:gui0F = "cc33cc"$/;"	v
+s:gui0F	nvim/colors/base16-atelierlakeside.vim	/^let s:gui0F = "b72dd2"$/;"	v
+s:gui0F	nvim/colors/base16-atelierseaside.vim	/^let s:gui0F = "e619c3"$/;"	v
+s:gui0F	nvim/colors/base16-bespin.vim	/^let s:gui0F = "937121"$/;"	v
+s:gui0F	nvim/colors/base16-brewer.vim	/^let s:gui0F = "b15928"$/;"	v
+s:gui0F	nvim/colors/base16-bright.vim	/^let s:gui0F = "be643c"$/;"	v
+s:gui0F	nvim/colors/base16-chalk.vim	/^let s:gui0F = "deaf8f"$/;"	v
+s:gui0F	nvim/colors/base16-codeschool.vim	/^let s:gui0F = "c98344"$/;"	v
+s:gui0F	nvim/colors/base16-colors.vim	/^let s:gui0F = "85144b"$/;"	v
+s:gui0F	nvim/colors/base16-default.vim	/^let s:gui0F = "a16946"$/;"	v
+s:gui0F	nvim/colors/base16-eighties.vim	/^let s:gui0F = "d27b53"$/;"	v
+s:gui0F	nvim/colors/base16-embers.vim	/^let s:gui0F = "825757"$/;"	v
+s:gui0F	nvim/colors/base16-flat.vim	/^let s:gui0F = "be643c"$/;"	v
+s:gui0F	nvim/colors/base16-google.vim	/^let s:gui0F = "3971ED"$/;"	v
+s:gui0F	nvim/colors/base16-grayscale.vim	/^let s:gui0F = "5e5e5e"$/;"	v
+s:gui0F	nvim/colors/base16-greenscreen.vim	/^let s:gui0F = "005500"$/;"	v
+s:gui0F	nvim/colors/base16-harmonic16.vim	/^let s:gui0F = "bf5656"$/;"	v
+s:gui0F	nvim/colors/base16-isotope.vim	/^let s:gui0F = "3300ff"$/;"	v
+s:gui0F	nvim/colors/base16-londontube.vim	/^let s:gui0F = "b06110"$/;"	v
+s:gui0F	nvim/colors/base16-marrakesh.vim	/^let s:gui0F = "b3588e"$/;"	v
+s:gui0F	nvim/colors/base16-mocha.vim	/^let s:gui0F = "bb9584"$/;"	v
+s:gui0F	nvim/colors/base16-monokai.vim	/^let s:gui0F = "cc6633"$/;"	v
+s:gui0F	nvim/colors/base16-ocean.vim	/^let s:gui0F = "ab7967"$/;"	v
+s:gui0F	nvim/colors/base16-paraiso.vim	/^let s:gui0F = "e96ba8"$/;"	v
+s:gui0F	nvim/colors/base16-pop.vim	/^let s:gui0F = "7a2d00"$/;"	v
+s:gui0F	nvim/colors/base16-railscasts.vim	/^let s:gui0F = "bc9458"$/;"	v
+s:gui0F	nvim/colors/base16-shapeshifter.vim	/^let s:gui0F = "69542d"$/;"	v
+s:gui0F	nvim/colors/base16-solarized.vim	/^let s:gui0F = "d33682"$/;"	v
+s:gui0F	nvim/colors/base16-summerfruit.vim	/^let s:gui0F = "cc6633"$/;"	v
+s:gui0F	nvim/colors/base16-tomorrow.vim	/^let s:gui0F = "a3685a"$/;"	v
+s:gui0F	nvim/colors/base16-twilight.vim	/^let s:gui0F = "9b703f"$/;"	v
+s:i	nvim/colors/solarized.vim	/^    let s:i           = ""$/;"	v
+s:i	nvim/colors/solarized.vim	/^    let s:i           = ",italic"$/;"	v
+s:ignore_opt	nvim/colors/marklar.vim	/^    let s:ignore_opt = 1$/;"	v
+s:is_win	nvim/autoload/plug.vim	/^let s:is_win = has('win32') || has('win64')$/;"	v
+s:italic	nvim/colors/astronaut.vim	/^ let s:italic= ""$/;"	v
+s:italic	nvim/colors/astronaut.vim	/^ let s:italic= ",italic"$/;"	v
+s:last_rtp	nvim/autoload/plug.vim	/^let s:last_rtp  = s:escrtp(get(s:split_rtp(), -1, ''))$/;"	v
+s:lazycat_list	nvim/colors/solarized.vim	/^let s:lazycat_list=[$/;"	v
+s:light_grey_blue	nvim/colors/twilight.vim	/^let s:light_grey_blue = '#a0a8b0'$/;"	v
+s:light_orange	nvim/colors/twilight.vim	/^let s:light_orange = '#ebc471'$/;"	v
+s:lightgreen	nvim/colors/twilight.vim	/^let s:lightgreen = '#c2c98f'$/;"	v
+s:lightgrey	nvim/colors/twilight.vim	/^let s:lightgrey = '#605958'$/;"	v
+s:line	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:line = "393939"$/;"	v
+s:line	nvim/colors/Tomorrow-Night.vim	/^	let s:line = "3a3a3a"$/;"	v
+s:line	nvim/colors/Tomorrow-Night.vim	/^let s:line = "282a2e"$/;"	v
+s:line	nvim/colors/Tomorrow.vim	/^let s:line = "efefef"$/;"	v
+s:loaded	nvim/autoload/plug.vim	/^let s:loaded = get(s:, 'loaded', {})$/;"	v
+s:low_color	nvim/colors/jellybeans.vim	/^	let s:low_color = 0$/;"	v
+s:low_color	nvim/colors/jellybeans.vim	/^	let s:low_color = 1$/;"	v
+s:mac_gui	nvim/autoload/plug.vim	/^let s:mac_gui = has('gui_macvim') && has('gui_running')$/;"	v
+s:magenta	nvim/colors/astronaut.vim	/^ let s:magenta = "darkmagenta"$/;"	v
+s:magenta	nvim/colors/astronaut.vim	/^ let s:magenta = "magenta"$/;"	v
+s:magenta	nvim/colors/solarized.vim	/^    let s:magenta     = "#af005f"$/;"	v
+s:magenta	nvim/colors/solarized.vim	/^    let s:magenta     = "#d33682"$/;"	v
+s:magenta	nvim/colors/solarized.vim	/^    let s:magenta     = "125"$/;"	v
+s:magenta	nvim/colors/solarized.vim	/^    let s:magenta     = "5"$/;"	v
+s:magenta	nvim/colors/solarized.vim	/^    let s:magenta     = "DarkMagenta"   " 5$/;"	v
+s:me	nvim/autoload/plug.vim	/^let s:me = resolve(expand('<sfile>:p'))$/;"	v
+s:mid_grey_blue	nvim/colors/twilight.vim	/^let s:mid_grey_blue = '#64686c'$/;"	v
+s:molokai_original	nvim/colors/molokai.vim	/^    let s:molokai_original = 0$/;"	v
+s:molokai_original	nvim/colors/molokai.vim	/^    let s:molokai_original = g:molokai_original$/;"	v
+s:moria_fontface	nvim/colors/moria.vim	/^    let s:moria_fontface = "plain"$/;"	v
+s:moria_fontface	nvim/colors/moria.vim	/^    let s:moria_fontface = g:moria_fontface$/;"	v
+s:moria_monochrome	nvim/colors/moria.vim	/^    let s:moria_monochrome = 0$/;"	v
+s:moria_monochrome	nvim/colors/moria.vim	/^    let s:moria_monochrome = g:moria_monochrome$/;"	v
+s:moria_style	nvim/colors/moria.vim	/^    let s:moria_style = &background $/;"	v
+s:moria_style	nvim/colors/moria.vim	/^    let s:moria_style = &background$/;"	v
+s:moria_style	nvim/colors/moria.vim	/^    let s:moria_style = g:moria_style$/;"	v
+s:n	nvim/colors/solarized.vim	/^    let s:n               = "NONE"$/;"	v
+s:none	nvim/colors/solarized.vim	/^    let s:none            = "NONE"$/;"	v
+s:nvim	nvim/autoload/plug.vim	/^let s:nvim = has('nvim-0.2') || (has('nvim') && exists('*jobwait') && !s:is_win)$/;"	v
+s:ob	nvim/colors/solarized.vim	/^    let s:ob              = ""$/;"	v
+s:options_list	nvim/colors/solarized.vim	/^let s:options_list=[$/;"	v
+s:opts	nvim/colors/marklar.vim	/^        let s:opts = {'bold': 0, 'ignore': 1}$/;"	v
+s:orange	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:orange = "f99157"$/;"	v
+s:orange	nvim/colors/Tomorrow-Night.vim	/^let s:orange = "de935f"$/;"	v
+s:orange	nvim/colors/Tomorrow.vim	/^let s:orange = "f5871f"$/;"	v
+s:orange	nvim/colors/solarized.vim	/^    let s:orange      = "#cb4b16"$/;"	v
+s:orange	nvim/colors/solarized.vim	/^    let s:orange      = "#d75f00"$/;"	v
+s:orange	nvim/colors/solarized.vim	/^    let s:orange      = "166"$/;"	v
+s:orange	nvim/colors/solarized.vim	/^    let s:orange      = "9"$/;"	v
+s:orange	nvim/colors/solarized.vim	/^    let s:orange      = "LightRed"      " 1*$/;"	v
+s:ou	nvim/colors/solarized.vim	/^    let s:ou              = ""$/;"	v
+s:ou	nvim/colors/solarized.vim	/^    let s:ou          = ",underline"$/;"	v
+s:plug_buf	nvim/autoload/plug.vim	/^let s:plug_buf = get(s:, 'plug_buf', -1)$/;"	v
+s:plug_src	nvim/autoload/plug.vim	/^let s:plug_src = 'https:\/\/github.com\/junegunn\/vim-plug.git'$/;"	v
+s:plug_tab	nvim/autoload/plug.vim	/^let s:plug_tab = get(s:, 'plug_tab', -1)$/;"	v
+s:purple	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:purple = "cc99cc"$/;"	v
+s:purple	nvim/colors/Tomorrow-Night.vim	/^let s:purple = "b294bb"$/;"	v
+s:purple	nvim/colors/Tomorrow.vim	/^let s:purple = "8959a8"$/;"	v
+s:r	nvim/colors/solarized.vim	/^    let s:r               = ",reverse"$/;"	v
+s:red	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:red = "f2777a"$/;"	v
+s:red	nvim/colors/Tomorrow-Night.vim	/^let s:red = "cc6666"$/;"	v
+s:red	nvim/colors/Tomorrow.vim	/^let s:red = "c82829"$/;"	v
+s:red	nvim/colors/astronaut.vim	/^ let s:red     = "darkred"$/;"	v
+s:red	nvim/colors/astronaut.vim	/^ let s:red     = "red"$/;"	v
+s:red	nvim/colors/solarized.vim	/^    let s:red         = "#af0000"$/;"	v
+s:red	nvim/colors/solarized.vim	/^    let s:red         = "#dc322f"$/;"	v
+s:red	nvim/colors/solarized.vim	/^    let s:red         = "1"$/;"	v
+s:red	nvim/colors/solarized.vim	/^    let s:red         = "124"$/;"	v
+s:red	nvim/colors/solarized.vim	/^    let s:red         = "DarkRed"       " 1$/;"	v
+s:red	nvim/colors/twilight.vim	/^let s:red = '#d08356'$/;"	v
+s:s	nvim/colors/solarized.vim	/^    let s:s               = ",standout"$/;"	v
+s:save_cpo	nvim/colors/calmar256-dark.vim	/^let s:save_cpo = &cpo$/;"	v
+s:save_cpo	nvim/colors/calmar256-light.vim	/^let s:save_cpo = &cpo$/;"	v
+s:selection	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:selection = "515151"$/;"	v
+s:selection	nvim/colors/Tomorrow-Night.vim	/^	let s:selection = "585858"$/;"	v
+s:selection	nvim/colors/Tomorrow-Night.vim	/^let s:selection = "373b41"$/;"	v
+s:selection	nvim/colors/Tomorrow.vim	/^let s:selection = "d6d6d6"$/;"	v
+s:sienna_style	nvim/colors/sienna.vim	/^    let s:sienna_style = 'light'$/;"	v
+s:sienna_style	nvim/colors/sienna.vim	/^    let s:sienna_style = g:sienna_style$/;"	v
+s:solarized_termtrans_default	nvim/colors/solarized.vim	/^    let s:solarized_termtrans_default = 0$/;"	v
+s:solarized_termtrans_default	nvim/colors/solarized.vim	/^    let s:solarized_termtrans_default = 1$/;"	v
+s:sp_back	nvim/colors/solarized.vim	/^    let s:sp_back      = ""$/;"	v
+s:sp_base0	nvim/colors/solarized.vim	/^    let s:sp_base0     = ""$/;"	v
+s:sp_base00	nvim/colors/solarized.vim	/^    let s:sp_base00    = ""$/;"	v
+s:sp_base01	nvim/colors/solarized.vim	/^    let s:sp_base01    = ""$/;"	v
+s:sp_base02	nvim/colors/solarized.vim	/^    let s:sp_base02    = ""$/;"	v
+s:sp_base03	nvim/colors/solarized.vim	/^    let s:sp_base03    = ""$/;"	v
+s:sp_base1	nvim/colors/solarized.vim	/^    let s:sp_base1     = ""$/;"	v
+s:sp_base2	nvim/colors/solarized.vim	/^    let s:sp_base2     = ""$/;"	v
+s:sp_base3	nvim/colors/solarized.vim	/^    let s:sp_base3     = ""$/;"	v
+s:sp_blue	nvim/colors/solarized.vim	/^    let s:sp_blue      = ""$/;"	v
+s:sp_cyan	nvim/colors/solarized.vim	/^    let s:sp_cyan      = ""$/;"	v
+s:sp_green	nvim/colors/solarized.vim	/^    let s:sp_green     = ""$/;"	v
+s:sp_magenta	nvim/colors/solarized.vim	/^    let s:sp_magenta   = ""$/;"	v
+s:sp_none	nvim/colors/solarized.vim	/^    let s:sp_none      = ""$/;"	v
+s:sp_orange	nvim/colors/solarized.vim	/^    let s:sp_orange    = ""$/;"	v
+s:sp_red	nvim/colors/solarized.vim	/^    let s:sp_red       = ""$/;"	v
+s:sp_violet	nvim/colors/solarized.vim	/^    let s:sp_violet    = ""$/;"	v
+s:sp_yellow	nvim/colors/solarized.vim	/^    let s:sp_yellow    = ""$/;"	v
+s:t_none	nvim/colors/solarized.vim	/^    let s:t_none          = "NONE"$/;"	v
+s:temp00	nvim/colors/solarized.vim	/^    let s:temp00      = s:base00$/;"	v
+s:temp01	nvim/colors/solarized.vim	/^    let s:temp01      = s:base01$/;"	v
+s:temp02	nvim/colors/solarized.vim	/^    let s:temp02      = s:base02$/;"	v
+s:temp03	nvim/colors/solarized.vim	/^    let s:temp03      = s:base03$/;"	v
+s:terminal_italic	nvim/colors/solarized.vim	/^            let s:terminal_italic=1$/;"	v
+s:terminal_italic	nvim/colors/solarized.vim	/^    let s:terminal_italic=0 " terminals will be guilty until proven compatible$/;"	v
+s:terminal_italic	nvim/colors/solarized.vim	/^    let s:terminal_italic=1 " TODO: could refactor to not require this at all$/;"	v
+s:terms_italic	nvim/colors/solarized.vim	/^let s:terms_italic=[$/;"	v
+s:terms_noitalic	nvim/colors/solarized.vim	/^let s:terms_noitalic=[$/;"	v
+s:triggers	nvim/autoload/plug.vim	/^let s:triggers = get(s:, 'triggers', {})$/;"	v
+s:u	nvim/colors/solarized.vim	/^    let s:u           = ""$/;"	v
+s:u	nvim/colors/solarized.vim	/^    let s:u           = ",underline"$/;"	v
+s:ulbg	nvim/colors/astronaut.vim	/^  let s:ulbg     = "ctermbg=darkmagenta guibg=magenta4"$/;"	v
+s:ulbg	nvim/colors/astronaut.vim	/^  let s:ulbg     = "ctermbg=magenta guibg=magenta"$/;"	v
+s:ulbg	nvim/colors/astronaut.vim	/^ let s:ulbg     = ""$/;"	v
+s:underline	nvim/colors/astronaut.vim	/^ let s:underline= ",underline"$/;"	v
+s:underline	nvim/colors/astronaut.vim	/^ let s:underline= "none"$/;"	v
+s:vim8	nvim/autoload/plug.vim	/^let s:vim8 = has('patch-8.0.0039') && exists('*job_start')$/;"	v
+s:violet	nvim/colors/solarized.vim	/^    let s:violet      = "#5f5faf"$/;"	v
+s:violet	nvim/colors/solarized.vim	/^    let s:violet      = "#6c71c4"$/;"	v
+s:violet	nvim/colors/solarized.vim	/^    let s:violet      = "13"$/;"	v
+s:violet	nvim/colors/solarized.vim	/^    let s:violet      = "61"$/;"	v
+s:violet	nvim/colors/solarized.vim	/^    let s:violet      = "LightMagenta"  " 5*$/;"	v
+s:violet	nvim/colors/twilight.vim	/^let s:violet = '#a999ac'$/;"	v
+s:vmode	nvim/colors/solarized.vim	/^    let s:vmode       = "cterm"$/;"	v
+s:vmode	nvim/colors/solarized.vim	/^    let s:vmode       = "gui"$/;"	v
+s:white	nvim/colors/astronaut.vim	/^ let s:white   = "white"$/;"	v
+s:white	nvim/colors/twilight.vim	/^let s:white = '#fffedc'$/;"	v
+s:window	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:window = "4d5057"$/;"	v
+s:window	nvim/colors/Tomorrow-Night.vim	/^	let s:window = "5e5e5e"$/;"	v
+s:window	nvim/colors/Tomorrow-Night.vim	/^let s:window = "4d5057"$/;"	v
+s:window	nvim/colors/Tomorrow.vim	/^let s:window = "efefef"$/;"	v
+s:yellow	nvim/colors/Tomorrow-Night-Eighties.vim	/^let s:yellow = "ffcc66"$/;"	v
+s:yellow	nvim/colors/Tomorrow-Night.vim	/^let s:yellow = "f0c674"$/;"	v
+s:yellow	nvim/colors/Tomorrow.vim	/^let s:yellow = "eab700"$/;"	v
+s:yellow	nvim/colors/astronaut.vim	/^ let s:yellow  = "darkyellow"$/;"	v
+s:yellow	nvim/colors/astronaut.vim	/^ let s:yellow  = "yellow"$/;"	v
+s:yellow	nvim/colors/solarized.vim	/^    let s:yellow      = "#af8700"$/;"	v
+s:yellow	nvim/colors/solarized.vim	/^    let s:yellow      = "#b58900"$/;"	v
+s:yellow	nvim/colors/solarized.vim	/^    let s:yellow      = "136"$/;"	v
+s:yellow	nvim/colors/solarized.vim	/^    let s:yellow      = "3"$/;"	v
+s:yellow	nvim/colors/solarized.vim	/^    let s:yellow      = "DarkYellow"    " 3$/;"	v
+s:yellow	nvim/colors/twilight.vim	/^let s:yellow = '#e3d796'$/;"	v
+save_cpo	nvim/colors/candycode.vim	/^let save_cpo = &cpo$/;"	v
+section	nvim/autoload/plug.vim	/^function! s:section(flags)$/;"	f
+shellFiles	setup.sh	/^function shellFiles() {$/;"	f
+shellesc	nvim/autoload/plug.vim	/^function! s:shellesc(arg)$/;"	f
+skeletons#autoRegister	nvim/opciones/plugins.vim	/^let skeletons#autoRegister = 1$/;"	v
+skeletons#skeletonsDir	nvim/opciones/plugins.vim	/^let skeletons#skeletonsDir = "~\/dotfiles\/nvim\/skeletons"$/;"	v
+snapshot	nvim/autoload/plug.vim	/^function! s:snapshot(force, ...) abort$/;"	f
+source	nvim/autoload/plug.vim	/^function! s:source(from, ...)$/;"	f
+sourcing	nvim/init.vim	/^augroup sourcing$/;"	a
+spawn	nvim/autoload/plug.vim	/^function! s:spawn(name, cmd, opts)$/;"	f
+split_rtp	nvim/autoload/plug.vim	/^function! s:split_rtp()$/;"	f
+status	nvim/autoload/plug.vim	/^function! s:status()$/;"	f
+status_load	nvim/autoload/plug.vim	/^function! s:status_load(lnum)$/;"	f
+status_update	nvim/autoload/plug.vim	/^function! s:status_update() range$/;"	f
+switch_in	nvim/autoload/plug.vim	/^function! s:switch_in()$/;"	f
+switch_out	nvim/autoload/plug.vim	/^function! s:switch_out(...)$/;"	f
+syntax	nvim/autoload/plug.vim	/^function! s:syntax()$/;"	f
+system	nvim/autoload/plug.vim	/^function! s:system(cmd, ...)$/;"	f
+system_chomp	nvim/autoload/plug.vim	/^function! s:system_chomp(...)$/;"	f
+te	nvim/opciones/keys.vim	/^map <silent> te :GhcModTypeClear<CR>$/;"	m
+tick	nvim/autoload/plug.vim	/^function! s:tick()$/;"	f
+to_a	nvim/autoload/plug.vim	/^function! s:to_a(v)$/;"	f
+to_s	nvim/autoload/plug.vim	/^function! s:to_s(v)$/;"	f
+tq	nvim/opciones/keys.vim	/^map <silent> tq :GhcModType<CR>$/;"	m
+translate_color	nvim/colors/coffee.vim	/^function! s:translate_color(number)$/;"	f
+trim	nvim/autoload/plug.vim	/^function! s:trim(str)$/;"	f
+ts	nvim/opciones/keys.vim	/^map <silent> ts :GhcModSplitFunCase<CR>$/;"	m
+tw	nvim/opciones/keys.vim	/^map <silent> tw :GhcModTypeInsert<CR>$/;"	m
+unite_settings	nvim/opciones/keys.vim	/^function! s:unite_settings()$/;"	f
+update	nvim/autoload/plug.vim	/^function! s:update(force, names)$/;"	f
+update_finish	nvim/autoload/plug.vim	/^function! s:update_finish()$/;"	f
+update_impl	nvim/autoload/plug.vim	/^function! s:update_impl(pull, force, args) abort$/;"	f
+update_python	nvim/autoload/plug.vim	/^function! s:update_python()$/;"	f
+update_ruby	nvim/autoload/plug.vim	/^function! s:update_ruby()$/;"	f
+update_vim	nvim/autoload/plug.vim	/^function! s:update_vim()$/;"	f
+upgrade	nvim/autoload/plug.vim	/^function! s:upgrade()$/;"	f
+upgrade_specs	nvim/autoload/plug.vim	/^function! s:upgrade_specs()$/;"	f
+usage	setup.sh	/^function usage() {$/;"	f
+version_requirement	nvim/autoload/plug.vim	/^function! s:version_requirement(val, min)$/;"	f
+vimFiles	setup.sh	/^function vimFiles() {$/;"	f
+vimperator	setup.sh	/^function vimperator() {$/;"	f
+warn	nvim/autoload/plug.vim	/^function! s:warn(cmd, msg)$/;"	f
+with_cd	nvim/autoload/plug.vim	/^function! s:with_cd(cmd, dir)$/;"	f

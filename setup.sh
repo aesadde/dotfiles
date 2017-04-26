@@ -115,10 +115,10 @@ function nvimFiles() {
 #2}}}
 #Function: vimperator() sets vimperator options {{{2
 function vimperator() {
-  if [ -d /Applications/Firefox.app ]; then
-    ln -s "$DOTFILES_ROOT/vimperator" "$HOME/.vimperator"
-    ln -s "$DOTFILES_ROOT/vimperator/vimperatorrc" "$HOME/.vimperatorrc"
-  fi
+  # if [ -d /Applications/Firefox.app ]; then
+  ln -s "$DOTFILES_ROOT/vimperator" "$HOME/.vimperator"
+  ln -s "$DOTFILES_ROOT/vimperator/vimperatorrc" "$HOME/.vimperatorrc"
+  # fi
 }
 
 #Function: gitFiles() sets global git config dotfiles {{{2
@@ -151,6 +151,7 @@ function all() {
   shellFiles
   vimperator
   vimFiles
+  nvimFiles
   gitFiles
   installJobs
 }
