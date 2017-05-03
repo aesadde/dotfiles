@@ -111,6 +111,7 @@ autoload -U +X bashcompinit && bashcompinit
 #export custom scripts
 # export PATH="$HOME/.scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/anaconda3/bin:$PATH"
 #2}}}
 
 #keeping everything clean. Source all the files
@@ -132,7 +133,6 @@ if [ "$OSTYPE" = 'Darwin' ]; then
 
 elif [ "$OSTYPE" = 'Linux' ]; then
     export PATH="$HOME/.local/bin:$PATH"
-    export PATH="$HOME/anaconda3/bin:$PATH"
     export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"
     export PATH="$HOME/.linuxbrew/bin:$PATH"
     export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
