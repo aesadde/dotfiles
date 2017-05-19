@@ -111,7 +111,6 @@ autoload -U +X bashcompinit && bashcompinit
 #export custom scripts
 # export PATH="$HOME/.scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/anaconda3/bin:$PATH"
 #2}}}
 
 #keeping everything clean. Source all the files
