@@ -26,10 +26,6 @@ alias tml='tmux ls'
 alias tma='tmux attach -t'
 alias tnew='new-tmux-from-dir-name'
 
-#neovim
-alias vim='nvim'
-alias vi='nvim'
-
 #stack
 alias ghc='stack exec -- ghc'
 alias ghci='stack exec -- ghci'

@@ -64,9 +64,9 @@ function parseOptions() {
 #2}}}
 #Function: removeOldDotFiles() cleans up home directory from old dotfiles if they exist {{{2
 function removeOldDotFiles() {
-  for file in $HOME/.{scripts,tmux.conf,gitignore,gitconfig,gitattributes,bash_profile,aliases,bashrc,exports,init.vim,customFunctions}; do
-    if [ -f $file ]; then
-      rm $file
+  for file in $HOME/.{config/nvim,vimperator,vimperatorrc,zshrc,ghci.conf,scripts,tmux.conf,gitignore,gitconfig,gitattributes,bash_profile,aliases,bashrc,exports,config/init.vim,customFunctions}; do
+    if [ -e $file ]; then
+      rm -rf $file
     fi
   done
   unset file
@@ -78,6 +78,15 @@ function removeOldDotFiles() {
 #2}}}
 #Function: shellFiles() sets the shell dotfiles {{{2
 function shellFiles() {
+  echo -e "Changing to zsh - Be ready to sudo"
+  /usr/bin/sudo apt-get install zsh
+  chsh
+  ln -s $DOTFILES_ROOT/aesadde.zsh-theme $HOME/.oh-my-zsh/themes/aesadde.zsh-theme
+
+  echo -e "Install oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  rm $HOME/.zshrc*
+
   for file in {ghci.conf,zshrc,bash_profile,bashrc,tmux.conf}; do
     if [ -f $HOME/.$file ]; then
       rm $HOME/.$file
@@ -87,7 +96,7 @@ function shellFiles() {
   done
   unset file
 
-  if [ ! -f $HOME/.scripts ]; then
+  if [ ! -e $HOME/.scripts ]; then
     ln -s $DOTFILES_ROOT/scripts $HOME/.scripts
   fi
 
@@ -115,10 +124,10 @@ function nvimFiles() {
 #2}}}
 #Function: vimperator() sets vimperator options {{{2
 function vimperator() {
-  if [ -d /Applications/Firefox.app ]; then
-    ln -s "$DOTFILES_ROOT/vimperator" "$HOME/.vimperator"
-    ln -s "$DOTFILES_ROOT/vimperator/vimperatorrc" "$HOME/.vimperatorrc"
-  fi
+  # if [ -d /Applications/Firefox.app ]; then
+  ln -s "$DOTFILES_ROOT/vimperator" "$HOME/.vimperator"
+  ln -s "$DOTFILES_ROOT/vimperator/vimperatorrc" "$HOME/.vimperatorrc"
+  # fi
 }
 
 #Function: gitFiles() sets global git config dotfiles {{{2
@@ -150,9 +159,9 @@ function installJobs() {
 function all() {
   shellFiles
   vimperator
-  vimFiles
+  nvimFiles
+  nvimFiles
   gitFiles
-  installJobs
 }
 #2}}}
 #Main: {{{
