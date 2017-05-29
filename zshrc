@@ -121,8 +121,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # ===[ OS specific ]=== {{{1
 if [ "$OSTYPE" = 'Darwin' ]; then
     [[ -f $DOTF/aliases.local ]] && source $DOTF/aliases.local
-    #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
-    test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
     #TeX
     export PATH=/Library/TeX/texbin:$PATH
     # activate syntax highlighting on terminal
@@ -130,9 +128,13 @@ if [ "$OSTYPE" = 'Darwin' ]; then
 
     export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+    export PATH="$HOME/anaconda3/bin:$PATH"
+    #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
+    test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
+
 elif [ "$OSTYPE" = 'Linux' ]; then
     export PATH="$HOME/.local/bin:$PATH"
-    export PATH="$HOME/anaconda3/bin:$PATH"
+
     export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"
     export PATH="$HOME/.linuxbrew/bin:$PATH"
     export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
@@ -143,3 +145,5 @@ elif [ "$OSTYPE" = 'Linux' ]; then
 elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
     export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
