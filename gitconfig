@@ -57,7 +57,7 @@
 	# Make `git rebase` safer on OS X
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
-	editor = $HOME/.linuxbrew/bin/nvim
+	editor = vim
 
 [color]
 	# Use colors in Git commands that are capable of colored output when
@@ -85,9 +85,5 @@
 	default = current
 [init]
 	templatedir = ~/dotfiles/git_hooks
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
 [mergetool]
 	path = /usr/local/bin/nvim
