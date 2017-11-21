@@ -128,7 +128,17 @@ if [ "$OSTYPE" = 'Darwin' ]; then
 
     export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-    export PATH="$HOME/anaconda3/bin:$PATH"
+    if [[ -d $HOME/anaconda3 ]]; then
+      export PATH="$HOME/anaconda3/bin:$PATH"
+
+    elif [[ -d $HOME/miniconda3 ]]; then
+      export PATH="$HOME/miniconda3/bin:$PATH"
+    fi
+
+    if [[ -d $HOME/.fastlane ]]; then
+      export PATH="$HOME/.fastlane/bin:$PATH"
+    fi
+
     #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
     test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
 
