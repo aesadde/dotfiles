@@ -128,16 +128,11 @@ if [ "$OSTYPE" = 'Darwin' ]; then
 
     export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-    export PATH="$HOME/anaconda3/bin:$PATH"
     #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
     test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
 
 elif [ "$OSTYPE" = 'Linux' ]; then
-    export PATH="/opt/anaconda3/bin:$PATH"
     export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"
-    export PATH="$HOME/.linuxbrew/bin:$PATH"
-    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 
