@@ -139,6 +139,11 @@ if [ "$OSTYPE" = 'Darwin' ]; then
       export PATH="$HOME/.fastlane/bin:$PATH"
     fi
 
+    if [[ -d $HOME/goprojects ]]; then
+      export GOPATH="$HOME/goprojects"
+      export PATH=$PATH:$GOPATH/bin
+    fi
+
     #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
     test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
 
