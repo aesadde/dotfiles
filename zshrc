@@ -139,6 +139,11 @@ if [ "$OSTYPE" = 'Darwin' ]; then
       export PATH="$HOME/.fastlane/bin:$PATH"
     fi
 
+    if [[ -d $HOME/goprojects ]]; then
+      export GOPATH="$HOME/goprojects"
+      export PATH=$PATH:$GOPATH/bin
+    fi
+
     #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
     test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
 
@@ -156,7 +161,13 @@ if [[ -d /usr/local/go ]]; then
   export PATH=/usr/local/go/bin:$PATH
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # k8s autocompletion
 echo "if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi" >> ~/.zshrc # add autocomplete permanently to your zsh shell
+
+# fzf via Homebrew
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+  source /usr/local/opt/fzf/shell/completion.zsh
+fi

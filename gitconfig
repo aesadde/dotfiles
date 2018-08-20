@@ -1,5 +1,5 @@
 [user]
-	name = Alberto Sadde
+	name = aesadde
 	email = alberto@aifi.io
 [alias]
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -58,6 +58,7 @@
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
 	editor = nvim
+	hooksPath = /Users/alberto/dotfiles/git_hooks
 
 [color]
 	# Use colors in Git commands that are capable of colored output when
