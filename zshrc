@@ -146,22 +146,26 @@ if [ "$OSTYPE" = 'Darwin' ]; then
 
     #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
     test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
+    if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 elif [ "$OSTYPE" = 'Linux' ]; then
-    export PATH="/opt/anaconda3/bin:$PATH"
     export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"
-    export PATH="$HOME/.linuxbrew/bin:$PATH"
-    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+    if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 
 elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
     export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Golang Path
+if [[ -d /usr/local/go ]]; then
+  export PATH=/usr/local/go/bin:$PATH
+fi
+
 # fzf via Homebrew
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
   source /usr/local/opt/fzf/shell/key-bindings.zsh
   source /usr/local/opt/fzf/shell/completion.zsh
