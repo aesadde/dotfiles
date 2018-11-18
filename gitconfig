@@ -47,7 +47,7 @@
 
 [core]
 	# Use custom `.gitignore` and `.gitattributes`
-	excludesfile = /Users/alberto/.gitignore
+	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error.
 	# [default] trailing-space: looks for spaces at the end of a line
@@ -58,7 +58,7 @@
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
 	editor = nvim
-	hooksPath = /Users/alberto/dotfiles/git_hooks
+	hooksPath = ~/dotfiles/git_hooks
 
 [color]
 	# Use colors in Git commands that are capable of colored output when
@@ -88,8 +88,5 @@
 	templatedir = ~/dotfiles/git_hooks
 [mergetool]
 	path = /usr/local/bin/nvim
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/

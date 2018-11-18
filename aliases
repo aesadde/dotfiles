@@ -42,3 +42,8 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Faster Backups in El capitan
 alias nothrottle='sudo sysctl debug.lowpri_throttle_enabled=0'
 alias throttel='sudo sysctl debug.lowpri_throttle_enabled=1'
+
+#K8s
+
+alias klog='kubectl logs -f --tail 100'
+
