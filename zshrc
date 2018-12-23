@@ -106,7 +106,9 @@ export LSCOLORS=dxgxcxdxcxegedacagacad
 
 # === [ Global Exports ]=== {{{2
 # stack autocompletion
+autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
+eval "$(stack --bash-completion-script stack)"
 
 #export custom scripts
 # export PATH="$HOME/.scripts:$PATH"
