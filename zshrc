@@ -21,7 +21,7 @@ ZSH_THEME="afowler"
 setopt AUTO_CD
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -76,8 +76,7 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  export EDITOR='nvim'
-  # export PS1=''
+  export EDITOR='vim'
 else
   export EDITOR='nvim'
 fi
@@ -100,69 +99,25 @@ bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^c" kill-line
 
+# === [ Global Exports ]=== {{{2
 #Shell colors
 export CLICOLOR=1
 export LSCOLORS=dxgxcxdxcxegedacagacad
 
-# === [ Global Exports ]=== {{{2
-# stack autocompletion
-autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
-eval "$(stack --bash-completion-script stack)"
-
-#export custom scripts
-# export PATH="$HOME/.scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-#2}}}
-
-#keeping everything clean. Source all the files
+#
+# Keeping everything clean. Source all the files
 [ -r $DOTF/customFunctions ] && [ -f $DOTF/customFunctions ] && source $DOTF/customFunctions
 [[ -f $DOTF/aliases ]] && source $DOTF/aliases
 [[ -f $HOME/.local_settings ]] && source $HOME/.local_settings
-#1}}}
-# ===[ OS specific ]=== {{{1
-if [ "$OSTYPE" = 'Darwin' ]; then
-    [[ -f $DOTF/aliases.local ]] && source $DOTF/aliases.local
-    #TeX
-    export PATH=/Library/TeX/texbin:$PATH
-    # activate syntax highlighting on terminal
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-    if [[ -d $HOME/anaconda3 ]]; then
-      export PATH="$HOME/anaconda3/bin:$PATH"
-
-    elif [[ -d $HOME/miniconda3 ]]; then
-      export PATH="$HOME/miniconda3/bin:$PATH"
-    fi
-
-    if [[ -d $HOME/.fastlane ]]; then
-      export PATH="$HOME/.fastlane/bin:$PATH"
-    fi
-
-    if [[ -d $HOME/goprojects ]]; then
-      export GOPATH="$HOME/goprojects"
-      export PATH=$PATH:$GOPATH/bin
-    fi
-
-    #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
-    test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
-    if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
-
-elif [ "$OSTYPE" = 'Linux' ]; then
-    export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"
-    export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-    if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
-
-
-elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
-    export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
-fi
 
 # Golang Path
 if [[ -d /usr/local/go ]]; then
   export PATH=/usr/local/go/bin:$PATH
+fi
+if [[ -d $HOME/goprojects ]]; then
+  export GOPATH="$HOME/goprojects"
+  export PATH=$PATH:$GOPATH/bin
 fi
 
 # fzf via Homebrew
@@ -174,3 +129,45 @@ if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
 
   export FZF_CTRL_T_OPTS="--select-1 --exit-0 --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 fi
+
+# stack auto-completion
+if [ -f $(which stack) ]; then
+  autoload -U +X compinit && compinit
+  autoload -U +X bashcompinit && bashcompinit
+  eval "$(stack --bash-completion-script stack)"
+fi
+
+# Anaconda Environments
+if [[ -d $HOME/anaconda3 ]]; then
+  export PATH="$HOME/anaconda3/bin:$PATH"
+
+elif [[ -d $HOME/miniconda3 ]]; then
+  export PATH="$HOME/miniconda3/bin:$PATH"
+fi
+#2}}}
+
+# ===[ OS specific ]=== {{{1
+if [ "$OSTYPE" = 'Darwin' ]; then
+    [[ -f $DOTF/aliases.local ]] && source $DOTF/aliases.local
+    #TeX
+    export PATH=/Library/TeX/texbin:$PATH
+    # activate syntax highlighting on terminal
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+    [ -f /Users/alberto/Library/Android/sdk ] && export PATH=$PATH:/Users/alberto/Library/Android/sdk
+
+    #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
+    test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
+    if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+elif [ "$OSTYPE" = 'Linux' ]; then
+    export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+    if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
+    export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
+fi
+#1}}}
+#1}}}

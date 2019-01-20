@@ -1,4 +1,4 @@
-#LS aliases
+#Common aliases
 alias lx='ls -laXB'          # Sort by extension.
 alias lk='ls -laSr'          # Sort by size, biggest last.
 alias lt='ls -latr'          # Sort by date, most recent last.
@@ -7,6 +7,10 @@ alias lu='ls -latur'         # Sort by/show access time,most recent last.
 alias la='ls -la -G'
 alias lg='ls -la | grep'     # show only matching files/dirs
 alias lcount='ls -1 | wc -l' # count number of files in dir
+alias grep='grep --color=auto'
+alias rm='rm -i'
+alias cp='cp -v'
+alias mv='mv -v'
 
 #faster cds
 alias ..='cd ..'
@@ -44,6 +48,8 @@ alias nothrottle='sudo sysctl debug.lowpri_throttle_enabled=0'
 alias throttel='sudo sysctl debug.lowpri_throttle_enabled=1'
 
 #K8s
-
 alias klog='kubectl logs -f --tail 100'
+
+
+
 
