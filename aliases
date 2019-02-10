@@ -8,7 +8,7 @@ alias la='ls -la -G'
 alias lg='ls -la | grep'     # show only matching files/dirs
 alias lcount='ls -1 | wc -l' # count number of files in dir
 alias grep='grep --color=auto'
-alias rm='rm -i'
+alias rm='rm -iv'
 alias cp='cp -v'
 alias mv='mv -v'
 

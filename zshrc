@@ -105,6 +105,7 @@ export CLICOLOR=1
 export LSCOLORS=dxgxcxdxcxegedacagacad
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$DOTF/scripts"
 #
 # Keeping everything clean. Source all the files
 [ -r $DOTF/customFunctions ] && [ -f $DOTF/customFunctions ] && source $DOTF/customFunctions
