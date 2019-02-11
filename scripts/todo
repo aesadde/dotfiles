@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+
+inbox="$HOME/Dropbox/notes/inbox.md"
+
+if [ $# -eq 0 ]; then
+  [ -f $inbox ] && $EDITOR $inbox
+else
+  echo "- [ ] $1" >> $inbox
+fi
