@@ -16,6 +16,7 @@ alias mv='mv -v'
 alias ..='cd ..'
 alias dow='cd ~/Downloads'
 alias cdot='cd ~/dotfiles'
+alias notes='cd ~/Dropbox/notes'
 
 #edit dots and vim
 alias ev='nvim ~/dotfiles/nvim/init.vim'
