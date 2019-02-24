@@ -16,7 +16,8 @@ alias mv='mv -v'
 alias ..='cd ..'
 alias dow='cd ~/Downloads'
 alias cdot='cd ~/dotfiles'
-alias notes='cd ~/Dropbox/notes'
+alias notes='cd ~/Dropbox/notes && "$EDITOR" index.md'
+alias inbox='cd ~/Dropbox/notes && "$EDITOR" Inbox.md'
 
 #edit dots and vim
 alias ev='nvim ~/dotfiles/nvim/init.vim'

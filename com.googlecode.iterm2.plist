@@ -42913,15 +42913,21 @@
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>575 748 400 129 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>370 191 700 622 0 0 1440 877 </string>
+	<string>0 435 700 622 0 0 2560 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>131 463 928 394 0 0 1440 877 </string>
+	<string>131 319 796 486 0 0 1440 877 </string>
+	<key>NSWindow Frame UKCrashReporter</key>
+	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1278 1057 0 0 1440 877 </string>
+	<string>0 448 585 429 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1280 0 1278 1057 0 0 2560 1057 </string>
+	<string>0 432 585 429 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 473 585 404 0 0 1440 877 </string>
+	<string>0 320 585 429 0 0 1440 877 </string>
+	<key>NeverWarnAboutShortLivedSessions_5547E902-4952-405F-87AA-E10FD2013481</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_5547E902-4952-405F-87AA-E10FD2013481_selection</key>
+	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -43880,7 +43886,7 @@
 				<real>0.86274510622024536</real>
 			</dict>
 			<key>Custom Command</key>
-			<string>No</string>
+			<string>Yes</string>
 			<key>Custom Directory</key>
 			<string>No</string>
 			<key>Default Bookmark</key>
@@ -44313,6 +44319,10 @@
 	<string>A759108B-410E-43BB-8F40-5AB438322132</string>
 	<key>NoSyncLastTipTime</key>
 	<real>539502206.70669198</real>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>1</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncSuppressClipboardAccessDeniedWarning</key>
@@ -44439,17 +44449,19 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-12-02T23:50:29Z</date>
+	<date>2019-02-24T03:52:29Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SuppressRestartAnnouncement</key>
 	<true/>
+	<key>UKCrashReporterLastCrashReportDate</key>
+	<real>1549298048</real>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.2.6</string>
+	<string>3.2.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
