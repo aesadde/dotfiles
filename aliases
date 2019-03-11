@@ -16,15 +16,14 @@ alias mv='mv -v'
 alias ..='cd ..'
 alias dow='cd ~/Downloads'
 alias cdot='cd ~/dotfiles'
-alias notes='cd ~/Dropbox/notes && "$EDITOR" index.md'
-alias inbox='cd ~/Dropbox/notes && "$EDITOR" Inbox.md'
+alias notes='cd ~/notes && "$EDITOR" index.md'
 
 #edit dots and vim
 alias ev='nvim ~/dotfiles/nvim/init.vim'
 
 #Git aliases (git specific aliases are in gitconfig)
 alias g\?='git status'
-alias tasks='git grep -EI "TODO|FIXME"'
+alias tasks='ag -A 5 ":todo:|TODO|FIXME"'
 
 #tmux aliases
 alias tn='tmux new-session -s'
