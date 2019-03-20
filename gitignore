@@ -68,7 +68,6 @@ Temporary Items
 # ------------------ xcode -----------------
 # Xcode
 #
-build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
