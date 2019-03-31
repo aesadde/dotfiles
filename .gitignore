@@ -4,6 +4,7 @@
 *macros
 *vimperator/info*
 *ctags*
+tmux/plugins/*
 
 .DS_Store
 *aifi*
