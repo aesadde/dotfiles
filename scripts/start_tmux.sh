@@ -1,15 +1,69 @@
 #!/bin/sh
-export PATH=$PATH:/usr/local/bin
 
+# error out if tmux not avilable
+type tmux > /dev/null || (echo "Please install tmux"; exit 1)
 # abort if we're already inside a TMUX session
 [ "$TMUX" == "" ] || exit 0
 
-# startup a "main" session if none currently exists
-if tmux has-session -t main; then
-  tmux attach -t main
-else
-  tmux new-session -s main -d
-  tmux rename-window -t main notes
-  tmux send-keys -t main 'notes' C-m
-  tmux attach -t main
-fi
+DOW=$(date +%u) # Day of the week
+HOUR=$(date +%X | cut -d : -f 1)
+
+start_session() {
+  SESSION=$1
+  if tmux has-session -t $SESSION 2> /dev/null; then
+    tmux attach -t $SESSION
+  else
+    tmux new-session -s $SESSION -d
+    tmux rename-window -t $SESSION tasks
+    tmux send-keys -t $SESSION "cd ~/Projects/$SESSION && tasks" C-m
+    tmux split-window -h
+    tmux split-window -v
+    tmux send-keys "$EDITOR ~/Projects/$SESSION/log.md" C-m
+    tmux attach -t $SESSION
+  fi
+}
+
+monitor_session() {
+  SESSION='monitor'
+  if tmux has-session -t $SESSION 2> /dev/null; then
+    tmux attach -t $SESSION
+  else
+    tmux new-session -s $SESSION -d
+    tmux rename-window -t $SESSION usage
+    tmux split-window -h
+    tmux send-keys -t $SESSION "(which htop && htop) || (which top && top)" C-m
+    tmux split-window -v
+    tmux send-keys "(which gpustat && gpustat) || (which nvidia-smi && nvidia-smi -L)" C-m
+    tmux select-pane -t 0
+    tmux attach -t $SESSION
+  fi
+}
+
+
+# Give options
+PS4="Please choose your session: "
+options=($(tmux list-sessions -F "#S" 2> /dev/null) "NEW SESSION" "me" "aifi" "monitor")
+
+echo "Available sessions"
+echo "------------------"
+select opt in "${options[@]}"
+do
+  case $opt in
+    "NEW SESSION")
+      read -p "Enter new session name: " SESSION_NAME
+      tmux new -s "$SESSION_NAME"
+      break ;;
+    "aifi")
+      start_session 'aifi'
+      break ;;
+    "me")
+      start_session 'me'
+      break ;;
+    "monitor")
+      monitor_session
+      break ;;
+    *)
+      tmux attach-session -t $opt
+      break ;;
+  esac
+done

@@ -160,7 +160,7 @@ if [ "$OSTYPE" = 'Darwin' ]; then
 
     #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
     test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
-    if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+    if [ -f /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 elif [ "$OSTYPE" = 'Linux' ]; then
     export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"

@@ -23,7 +23,7 @@ alias ev='nvim ~/dotfiles/nvim/init.vim'
 
 #Git aliases (git specific aliases are in gitconfig)
 alias g\?='git status'
-alias tasks='ag -A 5 ":todo:|TODO|FIXME"'
+alias tasks='ag --md --ignore ARCHIVE --ignore repos -A 5 ":todo:|TODO|FIXME"'
 
 #tmux aliases
 alias tn='tmux new-session -s'
@@ -50,7 +50,3 @@ alias throttel='sudo sysctl debug.lowpri_throttle_enabled=1'
 
 #K8s
 alias klog='kubectl logs -f --tail 100'
-
-
-
-
