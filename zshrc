@@ -174,7 +174,10 @@ fi
 #1}}}
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+if [ -f "$HOME/local/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/local/google-cloud-sdk/completion.zsh.inc"; fi
+if [ -f "$HOME/local/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/local/google-cloud-sdk/path.zsh.inc"; fi
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
