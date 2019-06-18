@@ -14,7 +14,7 @@ alias ev='nvim ~/dotfiles/nvim/init.vim'
 
 #Git aliases (git specific aliases are in gitconfig)
 alias g\?='git status'
-alias tasks='ag --md --ignore ARCHIVE --ignore repos -A 5 ":todo:|TODO|FIXME"'
+alias tasks='ag --md --nonumbers --ignore ARCHIVE --ignore repos -A 5 ":todo:|TODO|FIXME"'
 
 #tmux aliases
 alias tn='tmux new-session -s'
