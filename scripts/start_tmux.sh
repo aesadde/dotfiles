@@ -15,10 +15,8 @@ start_session() {
   else
     tmux new-session -s $SESSION -d
     tmux rename-window -t $SESSION tasks
-    tmux send-keys -t $SESSION "cd ~/Projects/$SESSION && tasks" C-m
+    tmux send-keys -t $SESSION "cd ~/Projects/$SESSION && cat TODO.md" C-m
     tmux split-window -h
-    tmux split-window -v
-    tmux send-keys "$EDITOR ~/Projects/$SESSION/log.md" C-m
     tmux attach -t $SESSION
   fi
 }
