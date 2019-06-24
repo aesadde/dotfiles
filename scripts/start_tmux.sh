@@ -15,7 +15,7 @@ start_session() {
   else
     tmux new-session -s $SESSION -d
     tmux rename-window -t $SESSION tasks
-    tmux send-keys -t $SESSION "cd ~/Projects/$SESSION && cat TODO.md" C-m
+    tmux send-keys -t $SESSION "cd ~/Projects && cat TODO.md" C-m
     tmux split-window -h
     tmux attach -t $SESSION
   fi
@@ -40,7 +40,7 @@ monitor_session() {
 
 # Give options
 PS4="Please choose your session: "
-options=($(tmux list-sessions -F "#S" 2> /dev/null) "NEW SESSION" "me" "aifi" "monitor")
+options=($(tmux list-sessions -F "#S" 2> /dev/null) "NEW SESSION" "default" "monitor")
 
 echo "Available sessions"
 echo "------------------"
@@ -51,11 +51,8 @@ do
       read -p "Enter new session name: " SESSION_NAME
       tmux new -s "$SESSION_NAME"
       break ;;
-    "aifi")
-      start_session 'aifi'
-      break ;;
-    "me")
-      start_session 'me'
+    "default")
+      start_session 'default'
       break ;;
     "monitor")
       monitor_session
