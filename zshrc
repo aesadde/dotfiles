@@ -129,14 +129,12 @@ if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
   source /usr/local/opt/fzf/shell/key-bindings.zsh
   source /usr/local/opt/fzf/shell/completion.zsh
 
+    if [ $(which rg) ]; then
+      export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+      export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    fi
   export FZF_CTRL_T_OPTS="--select-1 --exit-0 --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-fi
-
-# stack auto-completion
-if [ -f $(which stack) ]; then
-  autoload -U +X compinit && compinit
-  autoload -U +X bashcompinit && bashcompinit
-  eval "$(stack --bash-completion-script stack)"
+  export FZF_DEFAULT_OPTS="--layout=reverse --border"
 fi
 
 # Anaconda Environments
