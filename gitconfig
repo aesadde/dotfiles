@@ -1,6 +1,7 @@
 [user]
 	name = aesadde
 	useConfigOnly = true
+	signingkey = 98C7C11D6E8D7F0B
 [alias]
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit

@@ -8,17 +8,31 @@ type tmux > /dev/null || (echo "Please install tmux"; exit 1)
 DOW=$(date +%u) # Day of the week
 HOUR=$(date +%X | cut -d : -f 1)
 
+tasks_window() {
+  tmux rename-window -t $SESSION tasks
+  tmux send-keys -t $SESSION "cd ~/Projects && tasks" C-m
+  tmux split-window -h
+}
+
 start_session() {
   SESSION=$1
   if tmux has-session -t $SESSION 2> /dev/null; then
-    tmux attach -t $SESSION
+    break
+  elif [ "$SESSION" == "akorda-dev" ]; then
+    tmux new-session -s $SESSION -d
+    tasks_window
+    tmux new-window -t $SESSION
+    tmux rename-window -t $SESSION connections
+    tmux send-keys -t $SESSION "kproxy dev" C-m
+    tmux split-window -v
+    tmux send-keys -t $SESSION "dbproxy" C-m
+    tmux previous-window -t $SESSION
   else
     tmux new-session -s $SESSION -d
-    tmux rename-window -t $SESSION tasks
-    tmux send-keys -t $SESSION "cd ~/Projects && tasks" C-m
-    tmux split-window -h
-    tmux attach -t $SESSION
+    tasks_window
   fi
+
+  tmux attach -t $SESSION
 }
 
 monitor_session() {
@@ -40,7 +54,7 @@ monitor_session() {
 
 # Give options
 PS4="Please choose your session: "
-options=($(tmux list-sessions -F "#S" 2> /dev/null) "NEW SESSION" "default" "monitor")
+options=($(tmux list-sessions -F "#S" 2> /dev/null) "NEW SESSION" "akorda-dev" "default" "monitor")
 
 echo "Available sessions"
 echo "------------------"
@@ -53,6 +67,9 @@ do
       break ;;
     "default")
       start_session 'default'
+      break ;;
+    "akorda-dev")
+      start_session 'akorda-dev'
       break ;;
     "monitor")
       monitor_session

@@ -37,3 +37,4 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 #K8s
 alias klog='kubectl logs -f --tail 100'
+alias kdev='kubectl -n dev'
