@@ -62,17 +62,19 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew vi-mode pip)
+plugins=(git brew vi-mode pip kube-ps1)
 
 # User configuration
-
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+
+# Add Kube prompt
+KUBE_PS1_SYMBOL_USE_IMG=true
+PROMPT=$PROMPT'$(kube_ps1) '
+
 
 # Preferred editor for local and remote sessions
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
@@ -107,6 +109,7 @@ export LSCOLORS=dxgxcxdxcxegedacagacad
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$DOTF/scripts"
 export VIM_VIKI_HOME="$HOME/Projects/wiki"
+export VIM_VIKI_PLAN="$HOME/Projects/PLAN"
 #
 # Keeping everything clean. Source all the files
 [ -r $DOTF/customFunctions ] && [ -f $DOTF/customFunctions ] && source $DOTF/customFunctions
@@ -140,9 +143,6 @@ fi
 # Anaconda Environments
 if [[ -d $HOME/anaconda3 ]]; then
   export PATH="$HOME/anaconda3/bin:$PATH"
-
-elif [[ -d $HOME/miniconda3 ]]; then
-  export PATH="$HOME/miniconda3/bin:$PATH"
 fi
 #2}}}
 
@@ -160,6 +160,19 @@ if [ "$OSTYPE" = 'Darwin' ]; then
     #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
     test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
     if [ -f /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+    # Initialze Conda
+    __conda_setup="$('/Users/aesadde/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+    else
+      if [ -f "/Users/aesadde/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/aesadde/miniconda3/etc/profile.d/conda.sh"
+      else
+        export PATH="/Users/aesadde/miniconda3/bin:$PATH"
+      fi
+    fi
+    unset __conda_setup
 
 elif [ "$OSTYPE" = 'Linux' ]; then
     export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"

@@ -87,3 +87,4 @@ DerivedData
 # ----- JAVA - SCALA ---------------------------
 *.class
 *.vscode*
+.vim

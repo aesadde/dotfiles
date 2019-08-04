@@ -14,19 +14,26 @@ tasks_window() {
   tmux split-window -h
 }
 
+akorda_session() {
+  kubectl config use-context "$1-cluster"
+  tmux new-session -s $SESSION -d
+  tasks_window
+  tmux new-window -t $SESSION
+  tmux rename-window -t $SESSION connections
+  tmux send-keys -t $SESSION "kproxy $1" C-m
+  tmux split-window -v
+  tmux send-keys -t $SESSION "dbproxy $1" C-m
+  tmux previous-window -t $SESSION
+}
+
 start_session() {
   SESSION=$1
   if tmux has-session -t $SESSION 2> /dev/null; then
-    break
+    :
   elif [ "$SESSION" == "akorda-dev" ]; then
-    tmux new-session -s $SESSION -d
-    tasks_window
-    tmux new-window -t $SESSION
-    tmux rename-window -t $SESSION connections
-    tmux send-keys -t $SESSION "kproxy dev" C-m
-    tmux split-window -v
-    tmux send-keys -t $SESSION "dbproxy" C-m
-    tmux previous-window -t $SESSION
+    akorda_session "dev"
+  elif [ "$SESSION" == "akorda-qa" ]; then
+    akorda_session "qa"
   else
     tmux new-session -s $SESSION -d
     tasks_window
@@ -54,7 +61,7 @@ monitor_session() {
 
 # Give options
 PS4="Please choose your session: "
-options=($(tmux list-sessions -F "#S" 2> /dev/null) "NEW SESSION" "akorda-dev" "default" "monitor")
+options=($(tmux list-sessions -F "#S" 2> /dev/null) "NEW SESSION" "akorda-dev" "akorda-qa" "default" "monitor")
 
 echo "Available sessions"
 echo "------------------"
@@ -70,6 +77,9 @@ do
       break ;;
     "akorda-dev")
       start_session 'akorda-dev'
+      break ;;
+    "akorda-qa")
+      start_session 'akorda-qa'
       break ;;
     "monitor")
       monitor_session

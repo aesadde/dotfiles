@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import os
+import sys
+import datetime
+
+PLAN_DIR=os.path.join(os.environ['HOME'], 'Projects/PLAN')
+
+def create_template(title, date):
+    heading = "---\n title: {0}\n created: {1}\n tags: plan\n---\n".format(title,date)
+    content = "## Tasks\n\n## Lunes\n\n## Martes\n\n## Miércoles\n\n##Jueves\n\n## Viernes\n\n## Sábado"
+    return heading + content
+
+if not os.path.exists(PLAN_DIR):
+    raise ValueError("Directory {} does not exist, please update".format(PLAN_DIR))
+    sys.exit(1)
+
+def create_new_plan():
+    latest_plan = sorted(os.listdir(PLAN_DIR), reverse=True)[0]
+    plan_date = latest_plan.split('.')[0].split('-')[:3]
+    plan_date = [int(d) for d in plan_date]
+    td = datetime.timedelta(weeks=1)
+    dt = datetime.date(plan_date[0], plan_date[1], plan_date[2])
+    new_plan_date = dt + td
+    fname = new_plan_date.__str__() + "-plan.md"
+    fpath = os.path.join(PLAN_DIR, fname)
+    with open(fpath, 'w') as f:
+        f.write(create_template(fname, new_plan_date.__str__()))
+    print("Created new plan at {}".format(fpath))
+
+if __name__ == "__main__":
+    create_new_plan()

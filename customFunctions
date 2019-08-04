@@ -1,3 +1,5 @@
+# vim: ft=sh
+
 function extract()      # Handy Extract Program
 {
     if [ -f $1 ] ; then
@@ -57,6 +59,7 @@ bup() {
   if [[ $upd ]]; then
     for prog in $(echo $upd);
     do; brew upgrade $prog; done;
+
   fi
 }
 
@@ -69,4 +72,15 @@ bcp() {
     for prog in $(echo $uninst);
     do; brew uninstall $prog; done;
   fi
+}
+
+## Kube stuff
+kproxy() {
+# Forward the ports to connect to the akorda proxy
+local pod=$(kubectl get pods | grep proxy | awk '{print $1}')
+kubectl port-forward $pod 8080:8080
+}
+
+dbproxy() {
+ cloud_sql_proxy -instances=ak-app-01:us-west1:$1-sql=tcp:3306
 }
