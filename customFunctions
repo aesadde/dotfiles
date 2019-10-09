@@ -22,7 +22,6 @@ function extract()      # Handy Extract Program
             fi
 }
 
-
 # Creates an archive (*.tar.gz) from given directory.
 function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
 
@@ -36,8 +35,6 @@ function sanitize() { chmod -R u=rwX,g=rX,o= "$@" ;}
 function cheat() {
       curl cht.sh/$1
   }
-
-### FZF Stuff
 
 # Install (one or multiple) selected application(s)
 # using "brew search" as source input
@@ -83,4 +80,41 @@ kubectl port-forward $pod 8080:8080
 
 dbproxy() {
  cloud_sql_proxy -instances=ak-app-01:us-west1:$1-sql=tcp:3306
+}
+
+pdbproxy() {
+  echo -e "Changing GCloud account to use prod credentials!"
+  gcloud config set project ak-prod-1
+  cloud_sql_proxy -instances=ak-prod-1:us-central1:akorda-sql=tcp:3306
+}
+
+sns() {
+  cd ~/Projects/notes
+  rg --no-line-number --no-heading . | fzf --reverse --delimiter=: --nth=2.. --preview="cat $(echo {1} | awk -F: '{print $1}')"
+}
+
+# Find pattern in files
+fif() {
+  if [ ! "$#" -ge 1 ]; then echo "Need a string to search for!"; return 1; fi
+  rg --files-with-matches --no-messages $1 | fzf --reverse --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 $1 || rg --ignore-case --pretty --context 10 $1 {}"
+}
+
+# Create a note in the notes directory with a unique prefix
+note() {
+  if [ ! "$#" -ge 1 ]; then echo "Need filename!"; return 1; fi
+  local fname=$(date +"%Y%m%d%H%M")_$1".md"
+  $EDITOR $HOME/Projects/notes/$fname
+}
+
+# Create a file with a unique prefix
+file() {
+  if [ ! "$#" -ge 1 ]; then echo "Need filename!"; return 1; fi
+  local fname=$(date +"%Y%m%d%H%M")_$1".md"
+  $EDITOR $fname
+}
+
+# Open Latest Weekly Plan
+plan() {
+  cd ~/Projects/PLAN
+  $EDITOR $(lt | tail -1 | awk '{print $9}')
 }

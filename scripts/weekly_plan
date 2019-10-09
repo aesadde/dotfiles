@@ -9,7 +9,7 @@ PLAN_DIR=os.path.join(os.environ['HOME'], 'Projects/PLAN')
 
 def create_template(title, date):
     heading = "---\n title: {0}\n created: {1}\n tags: plan\n---\n".format(title,date)
-    content = "## Tasks\n\n## Lunes\n\n## Martes\n\n## Miércoles\n\n##Jueves\n\n## Viernes\n\n## Sábado"
+    content = "\n## Tasks\n\n## Lunes\n\n## Martes\n\n## Miércoles\n\n##Jueves\n\n## Viernes\n\n## Sábado"
     return heading + content
 
 if not os.path.exists(PLAN_DIR):

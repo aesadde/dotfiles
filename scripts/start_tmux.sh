@@ -12,6 +12,7 @@ tasks_window() {
   tmux rename-window -t $SESSION tasks
   tmux send-keys -t $SESSION "cd ~/Projects && tasks" C-m
   tmux split-window -h
+  tmux send-keys -t $SESSION "plan" C-m
 }
 
 akorda_session() {

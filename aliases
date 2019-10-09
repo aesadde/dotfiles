@@ -1,8 +1,9 @@
 #Common aliases
-alias lk='ls -laSr'          # Sort by size, biggest last.
-alias lt='ls -latr'          # Sort by date, most recent last.
-alias la='ls -lha -G'
-alias lg='ls -la | grep'     # show only matching files/dirs
+alias ls='lsd'
+alias lk='lsd -laSr'          # Sort by size, biggest last.
+alias lt='lsd -latr'          # Sort by date, most recent last.
+alias la='lsd -lha'
+alias lg='lsd -la | grep'     # show only matching files/dirs
 alias lcount='ls -1 | wc -l' # count number of files in dir
 alias grep='grep --color=auto'
 alias rm='rm -iv'
