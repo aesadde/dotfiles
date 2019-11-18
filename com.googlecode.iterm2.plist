@@ -6,6 +6,8 @@
 	<true/>
 	<key>AboutToPasteTabsWithCancel_selection</key>
 	<integer>0</integer>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
 	<key>AppleScrollAnimationEnabled</key>
@@ -44043,12 +44045,14 @@
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>392 188 921 463 0 0 1920 1080 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>0 928 400 129 0 0 1920 1057 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>650 498 620 392 0 0 1920 1057 </string>
+	<string>490 303 700 622 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>-1734 238 796 486 -1920 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1920 1057 0 0 1920 1057 </string>
+	<string>0 0 1680 1027 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 560 650 452 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -44063,7 +44067,7 @@
 			<key>ASCII Anti Aliased</key>
 			<true/>
 			<key>ASCII Ligatures</key>
-			<true/>
+			<false/>
 			<key>Allow Title Setting</key>
 			<true/>
 			<key>Ambiguous Double Width</key>
@@ -44727,13 +44731,13 @@
 			<key>Name</key>
 			<string>palenight</string>
 			<key>Non Ascii Font</key>
-			<string>Hack-Regular 12</string>
+			<string>HackNerdFontComplete-Regular 13</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Non-ASCII Ligatures</key>
-			<true/>
+			<false/>
 			<key>Normal Font</key>
-			<string>Hack-Regular 13</string>
+			<string>HackNerdFontComplete-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -45063,9 +45067,11 @@
 		<string>3.3.4</string>
 		<string>3.3.0</string>
 		<string>3.3.3</string>
+		<string>3.3.5</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
+		<string>Hack Nerd Font</string>
 		<string>Inconsolata-g for Powerline</string>
 		<string>Hack</string>
 	</array>
@@ -45079,9 +45085,9 @@
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {1920, 1080}}</string>
+		<string>{{0, 0}, {1680, 1050}}</string>
 		<key>topLeft</key>
-		<string>{411, 731}</string>
+		<string>{269, 595}</string>
 	</dict>
 	<key>NoSyncHaveUsedCopyMode</key>
 	<true/>
@@ -45090,7 +45096,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>4C7D2F24-1361-4EC7-8061-7FBBAAF5E9BA</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>16</integer>
+	<integer>18</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
 	<real>586565307.39133501</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
@@ -45600,9 +45606,25 @@
 			</dict>
 			<dict>
 				<key>isTerminal</key>
+				<false/>
+				<key>name</key>
+				<string>title</string>
+				<key>nonterminalContext</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
 				<string>tmuxWindowTitle</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>title</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -45802,6 +45824,7 @@
 	</array>
 	<key>NoSyncSearchHistory2</key>
 	<array>
+		<string>Approval</string>
 		<string>unmatched</string>
 		<string>ERROR</string>
 		<string>REQUEST ERROR</string>
@@ -45811,12 +45834,13 @@
 		<string>OPST</string>
 		<string>POST REQUEST ERROR</string>
 		<string>POST RQU</string>
-		<string> akorda-de 0:tasks  1:zsh#                                                                                                                               |  |  | aesadde@akraes.webpass.net | Oct 04 10:16     1 import requests                                                                                   │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.6685233, "message": "Kreveal POST paylo[46/1741]     2 from requests.adapters import HTTPAdapter                                                         │ndardsBucket': 'ut-prod-standards', 'clauseID': '86b6c74f-2665-43a2-a02f-be3b2718607f', 'apiKey': '2cR4     3                                                                                                   │vU3s9o8Qtpm56bKSr3XsG281Guxd1NGAeyv0', 'callerName': 'Akorda'}", "logging.googleapis.com/sourceLocation     4 MAX_RETRIES = 3                                                                                   │": {"file": "kreveal_client.py", "function": "_kreveal_post_request", "line": 21}}     5 _REQUEST_TIMEOUT = 200                                                                            │app_1  | {"severity": "ERROR", "timestamp": 1570209351.7668934, "message": "Error in KReveal API -- {'r     6                                                                                                   │esult': 'error', 'msg': 'The incoming request has too many parameters. The server supports a maximum of     7                                                                                                   │ 2100 parameters. Reduce the number of parameters and resend the request.'}", "logging.googleapis.com/s     8 def requests_retry_session(session=None):  # pragma: no cover                                     │ourceLocation": {"file": "kreveal_client.py", "function": "_kreveal_post_request", "line": 26}}     9 ¦   session = session or requests.Session()                                                       │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.7671504, "message": "Getting clause content for    10 ¦   adapter = HTTPAdapter(max_retries=MAX_RETRIES)                                                │clause b86f6e35-65db-4a01-b7c5-8e124cf61f05", "logging.googleapis.com/sourceLocation": {"file": "data_s    11 ¦   session.mount("http://", adapter)                                                             │ervice.py", "function": "_get_clause_content", "line": 36}}    12 ¦   session.mount("https://", adapter)                                                            │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.7672298, "message": "Getting clause example. Pay    13 ¦   return session                                                                                │load --&gt; {'standardsBucket': 'ut-prod-standards', 'clauseID': 'b86f6e35-65db-4a01-b7c5-8e124cf61f05'}",    14                                                                                                   │ "logging.googleapis.com/sourceLocation": {"file": "kreveal_client.py", "function": "get_clause_example    15                                                                                                   │s", "line": 95}}    16 def post_api(url, data, timeout=_REQUEST_TIMEOUT):  # pragma: no cover                            │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.7673693, "message": "Kreveal POST payload: {'sta    17 ¦   """                                                                                           │ndardsBucket': 'ut-prod-standards', 'clauseID': 'b86f6e35-65db-4a01-b7c5-8e124cf61f05', 'apiKey': '2cR4    18 ¦   Performs a POST operation to a remote URL.                                                    │vU3s9o8Qtpm56bKSr3XsG281Guxd1NGAeyv0', 'callerName': 'Akorda'}", "logging.googleapis.com/sourceLocation    19 ¦   :param url: URL of the endpoint to consult.                                                   │": {"file": "kreveal_client.py", "function": "_kreveal_post_request", "line": 21}}    20 ¦   :param auth_token: Authorization token required to perform the operation.                     │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.8252807, "message": "Getting clause content for    21 ¦   :param data                                                                                   │clause 4af3c7bd-d7f7-41ec-991a-6e7f725c361a", "logging.googleapis.com/sourceLocation": {"file": "data_s    22 ¦   :param timeout                                                                                │ervice.py", "function": "_get_clause_content", "line": 36}}    23 ¦   :return: JSON response or an HTTPError is the operation wasn't successful.                    │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.8256295, "message": "Getting clause example. Pay    24 ¦   """                                                                                           │load --&gt; {'standardsBucket': 'ut-prod-standards', 'clauseID': '4af3c7bd-d7f7-41ec-991a-6e7f725c361a'}",    25 ¦   with requests_retry_session() as client:                                                      │ "logging.googleapis.com/sourceLocation": {"file": "kreveal_client.py", "function": "get_clause_example    26 ¦   |   response = client.post(url, json=data, timeout=timeout)                                   │s", "line": 95}}    27 ¦   |   response.raise_for_status()                                                               │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.8257072, "message": "Kreveal POST payload: {'sta    28                                                                                                   │ndardsBucket': 'ut-prod-standards', 'clauseID': '4af3c7bd-d7f7-41ec-991a-6e7f725c361a', 'apiKey': '2cR4    29 ¦   return response.json()                                                                        │vU3s9o8Qtpm56bKSr3XsG281Guxd1NGAeyv0', 'callerName': 'Akorda'}", "logging.googleapis.com/sourceLocation ~                                                                                                       │": {"file": "kreveal_client.py", "function": "_kreveal_post_request", "line": 21}} ~                                                                                                       │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.8804, "message": "Getting clause content for cla ~                                                                                                       │use b0466eb1-05cc-4ecb-b734-1ac93a867a0b", "logging.googleapis.com/sourceLocation": {"file": "data_serv ~                                                                                                       │ice.py", "function": "_get_clause_content", "line": 36}} ~                                                                                                       │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.8805652, "message": "Getting clause example. Pay ~                                                                                                       │load --&gt; {'standardsBucket': 'ut-prod-standards', 'clauseID': 'b0466eb1-05cc-4ecb-b734-1ac93a867a0b'}", ~                                                                                                       │ "logging.googleapis.com/sourceLocation": {"file": "kreveal_client.py", "function": "get_clause_example ~                                                                                                       │s", "line": 95}} ~                                                                                                       │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.8806612, "message": "Kreveal POST payload: {'sta ~                                                                                                       │ndardsBucket': 'ut-prod-standards', 'clauseID': 'b0466eb1-05cc-4ecb-b734-1ac93a867a0b', 'apiKey': '2cR4 ~                                                                                                       │vU3s9o8Qtpm56bKSr3XsG281Guxd1NGAeyv0', 'callerName': 'Akorda'}", "logging.googleapis.com/sourceLocation ~                                                                                                       │": {"file": "kreveal_client.py", "function": "_kreveal_post_request", "line": 21}} ~                                                                                                       │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.9188938, "message": "Getting clause content for ~                                                                                                       │clause 6f5b3faa-d9a0-4fa1-8043-5a8cea1f3c02", "logging.googleapis.com/sourceLocation": {"file": "data_s  N 27/29:16  ‹‹ ~/repos/clustering/src/main/commons/rest_client.py ››    ‹‹ utf-8 :: 94 words, :: 93 ›› │ervice.py", "function": "_get_clause_content", "line": 36}}                                                                                                         │app_1  | {"severity": "DEBUG", "timestamp": 1570209351.9190757, "message": "Getting clause example. Pay                                                                                                         │load --&gt; {'standardsBucket': 'ut-prod-standards', 'clauseID': '6f5b3faa-d9a0-4fa1-8043-5a8cea1f3c02'}"$</string>
 	</array>
 	<key>NoSyncSuppressClipboardAccessDeniedWarning</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>583690121.49043596</real>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PerPaneBackgroundImage</key>
 	<true/>
 	<key>PointerActions</key>
@@ -45854,6 +45878,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/aesadde/dotfiles</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -45863,11 +45889,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-10-04T22:42:29Z</date>
+	<date>2019-10-14T03:23:35Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
-	<false/>
+	<true/>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowNewOutputIndicator</key>
@@ -45899,7 +45925,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.3.4</string>
+	<string>3.3.5</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
