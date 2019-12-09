@@ -198,3 +198,4 @@ if [ -f "$HOME/.local/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/.local/goo
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+export PATH="/usr/local/opt/helm@2/bin:$PATH"
