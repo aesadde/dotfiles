@@ -18,13 +18,13 @@ tasks_window() {
 akorda_session() {
   kubectl config use-context "$1-cluster"
   tmux new-session -s $SESSION -d
-  tasks_window
-  tmux new-window -t $SESSION
   tmux rename-window -t $SESSION connections
   tmux send-keys -t $SESSION "kproxy $1" C-m
   tmux split-window -v
   tmux send-keys -t $SESSION "dbproxy $1" C-m
-  tmux previous-window -t $SESSION
+  tmux split-window -h
+  tmux send-keys -t $SESSION "kubectl -n elasticsearch port-forward elasticsearch-master-0 9200:9200" C-m
+  tmux new-window -t $SESSION
 }
 
 start_session() {
@@ -37,7 +37,6 @@ start_session() {
     akorda_session "qa"
   else
     tmux new-session -s $SESSION -d
-    tasks_window
   fi
 
   tmux attach -t $SESSION

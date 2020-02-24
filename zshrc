@@ -167,6 +167,7 @@ fi
 # ===[ OS specific ]=== {{{1
 if [ "$OSTYPE" = 'Darwin' ]; then
     [[ -f $DOTF/aliases.local ]] && source $DOTF/aliases.local
+    [[ -f $DOTF/kaliases ]] && source $DOTF/kaliases;
     #TeX
     export PATH=/Library/TeX/texbin:$PATH
     # activate syntax highlighting on terminal
@@ -199,3 +200,6 @@ if [ -f "$HOME/.local/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/.local/goo
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export PATH="/usr/local/opt/helm@2/bin:$PATH"
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+
