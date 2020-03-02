@@ -2,13 +2,20 @@
 local hyper = {"cmd", "alt", "ctrl","shift"}
 local log = hs.logger.new('hammerspoon','debug')
 
+----------------------------------------------------------------------------------------------------
+-- Load Dependencies
+require "wifi"
+require "airpods"
+-- require "reminders"
+
 -- Reload config
 hs.hotkey.bind(hyper, "R", function()
   hs.reload()
 end)
 hs.notify.new({title="Hammerspoon", informativeText="Config loaded"}):send()
 
--- Define default Spoons which will be loaded later
+----------------------------------------------------------------------------------------------------
+-- Load Spoons
 if not hspoon_list then
     hspoon_list = {
         "HSearch",
@@ -46,7 +53,7 @@ hs.hotkey.bind(hyper, "l", function()
 win:moveToUnit(hs.layout.right50)
 end)
 
-
+hs.hotkey.bind(hyper, "f", function() hs.hints.windowHints() end)
 
 ----------------------------------------------------------------------------------------------------
 -- App shortcuts
@@ -54,9 +61,10 @@ local applicationHotkeys = {
   b = '/Applications/Brave Browser.app',
   c = '/Applications/Visual Studio Code.app',
   e = '/Applications/Evernote.app',
-  i = '/Applications/iTerm.app',
+  t = '/Applications/iTerm.app',
   n = '/Applications/Notion.app',
-  s = '/Applications/Spotify.app',
+  m = '/Applications/Spotify.app',
+  s = '/Applications/Slack.app',
 }
 for key, app in pairs(applicationHotkeys) do
   hs.hotkey.bind(hyper, key, function()
@@ -64,3 +72,18 @@ for key, app in pairs(applicationHotkeys) do
   end)
 end
 
+----------------------------------------------------------------------------------------------------
+-- Connect Airpods
+hs.hotkey.bind(hyper, "x", function()
+  local ok, output = airPods("Alberto’s AirPods Pro")
+  if ok then
+    hs.alert.show(output)
+  else
+    hs.alert.show("Couldn't connect to AirPods!")
+  end
+end)
+
+----------------------------------------------------------------------------------------------------
+-- Reminders
+-- FIXME: NOT WORKING
+-- hs.hotkey.bind(hyper, "t", addReminder)

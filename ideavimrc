@@ -1,0 +1,86 @@
+"===[ Global Settings ]=== {{{1
+
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+set autoread           " Automatically reload changes if detected
+set mousehide  " Hide mouse after chars typed
+set mouse=a    " Mouse in all modes
+set complete=.,w,b,u,U " Better complete options to speed it up
+set noerrorbells
+set visualbell
+set t_vb=
+
+set surround "surround plugin emulation
+set multiple-cursors "emulates multiple cursors
+set commentary "emulates commentary plugin
+"1}}}
+"===[ Misc Keys ]=== {{{1
+let mapleader=","
+let g:mapleader=","
+let g:localLeader=","
+" Use ; for : in normal and visual mode, less keystrokes
+nnoremap ; :
+vnoremap ; :
+
+inoremap jj <ESC>
+nnoremap <leader>r :source ~/.ideavimrc <CR>
+
+"Clear highlights from search
+nnoremap <Leader>/ :nohls<CR>
+
+"indenta de manera correcta todo el archivo
+nnoremap <Leader>= 1G=G
+"1}}}
+" ===[ IDEA Actions ]=== {{{1
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gl :action JumpToLastChange<CR>
+nnoremap gb :action Back<CR>
+nnoremap gu :action FindUsages<CR>
+nnoremap == :action ReformatCode<CR>
+vnoremap == :action ReformatCode<CR>
+
+"1}}}
+" ===[ Motion ]=== {{{1
+"one screen line at a time (instead of vim line)
+nnoremap j gj
+nnoremap k gk
+nnoremap J <c-F>
+nnoremap K <c-B>
+
+"windows navigation
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
+
+"this are to get used to NOT use arrow keys in insert mode (good practice is
+"to exit to normal mode and move using normal keysnormal keys
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Move to next error after make
+nnoremap  <leader>ne :cnext<cr>
+nnoremap  <leader>pe :cprevious<cr>
+"1}}}
+"=== [ Modifications ]=== {{{1
+"" Show trailing spaces as dots and carrots for extended lines.
+" " From Janus, http://git.io/PLbAlw
+" "
+" Reset the listchars
+set listchars=""
+" " make tabs visible
+set listchars=tab:▸▸
+" " show trailing spaces as dots
+set listchars+=trail:•
+" " The character to show in the last column when wrap is off and the line
+" " continues beyond the right of the screen
+set listchars+=extends:>
+" " The character to show in the last column when wrap is off and the line
+" " continues beyond the right of the screen
+set listchars+=precedes:<>
+"1}}}
