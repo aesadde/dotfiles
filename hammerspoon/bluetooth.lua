@@ -1,6 +1,6 @@
 -- Found on: https://gist.githubusercontent.com/daGrevis/79b27b9c156ba828ad52976a118b29e0/raw/0e77383f4eb9301527caac3f0b71350e9499210b/init.lua
--- And: https://github.com/evantravers/hammerspoon/blob/master/airpods.lua
-function airPods(deviceName)
+-- And: https://github.com/evantravers/hammerspoon/blob/master/headphones.lua
+function connectBluetooth(deviceName)
   local s = [[
     activate application "SystemUIServer"
     tell application "System Events"
@@ -16,10 +16,10 @@ function airPods(deviceName)
             click
             if exists menu item "Connect" of menu 1 then
               click menu item "Connect" of menu 1
-              return "Connecting AirPods..."
+              return "Connecting ..."
             else
               click menu item "Disconnect" of menu 1
-              return "Disconnecting AirPods..."
+              return "Disconnecting ..."
             end if
           end tell
         end tell
