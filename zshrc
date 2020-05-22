@@ -6,7 +6,11 @@
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
+REPORTTIME=1
+
 setopt appendhistory autocd extendedglob
+autoload -U compinit
+compinit
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
