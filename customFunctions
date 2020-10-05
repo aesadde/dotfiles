@@ -91,42 +91,23 @@ pdbproxy() {
    -credential_file=$HOME/Downloads/alberto-prod-db.json
 }
 
-# function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
-
-s() {
-  if [ ! "$#" -ge 1 ]; then
-    $EDITOR -c 'NV!'
-  else
-    $EDITOR -c "NV! $1"
-  fi
-}
-
-# Create a note in the notes directory with a unique prefix
-note() {
-  if [ ! "$#" -ge 1 ]; then echo "Need filename!"; return 1; fi
-  local fname=$(date +"%Y%m%d")_$1".md"
-  $EDITOR $HOME/notes/$fname
-}
-
-# Create a file with a unique prefix
-file() {
-  if [ ! "$#" -ge 1 ]; then echo "Need filename!"; return 1; fi
-  local fname=$1_$(date +"%Y%m%d")".md"
-  $EDITOR $fname
-}
-
-# Create a directory with a unique prefix
-dir() {
-  if [ ! "$#" -ge 1 ]; then echo "Need filename!"; return 1; fi
-  mkdir -p $(date +"%Y%m%d")_$1
-}
-
-# Open Latest Weekly Plan
-plan() {
-  cd ~/Projects/PLAN
-  $EDITOR $(ls | tail -1)
-}
-
 topcmd() {
   history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+}
+
+# From https://www.usenix.org/sites/default/files/conference/protected-files/lisa19_maheshwari.pdf
+mcd() { mkdir -p $1; cd $1 }
+cdl() { cd $1; ls}
+backup() { cp "$1"{,.bak};} #test first
+gfind() { find / -iname $@ 2>/dev/null }
+lfind() { find . -iname $@ 2>/dev/null }
+rtfm() { help $@ || man $@ || open "http://www.google.com/search?q=$@"; }
+
+## Base64 encoding
+encode64() {
+  echo -n $1 | base64
+}
+
+decode64() {
+  echo -n $1 | base64 --decode
 }

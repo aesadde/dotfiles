@@ -10,14 +10,13 @@ HOUR=$(date +%X | cut -d : -f 1)
 
 tasks_window() {
   tmux rename-window -t $SESSION tasks
-  tmux send-keys -t $SESSION "cd ~/Projects && tasks" C-m
-  tmux split-window -h
-  tmux send-keys -t $SESSION "plan" C-m
+  tmux send-keys -t $SESSION "nvim -c VimwikiDiaryIndex" C-m
 }
 
 akorda_session() {
   kubectl config use-context "$1-cluster"
   tmux new-session -s $SESSION -d
+  tmux new-window -t $SESSION
   tmux rename-window -t $SESSION connections
   tmux send-keys -t $SESSION "kproxy $1" C-m
   tmux split-window -v

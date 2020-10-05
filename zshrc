@@ -207,3 +207,6 @@ export PATH="/usr/local/opt/helm@2/bin:$PATH"
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 
+export PATH="/Users/aesadde/.local/git-fuzzy/bin:$PATH"
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/kustomize kustomize

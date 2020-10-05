@@ -1,5 +1,5 @@
 #Common aliases
-alias ls='lsd'
+# alias ls='lsd'
 alias lk='lsd -laSr'          # Sort by size, biggest last.
 alias lt='lsd -latr'          # Sort by date, most recent last.
 alias la='lsd -lha'
@@ -44,3 +44,13 @@ alias watch='watch '
 
 #ZSH suffix aliases
 alias -s {md,yml,yaml,txt,rst}=nvim
+
+## From https://www.usenix.org/sites/default/files/conference/protected-files/lisa19_maheshwari.pdf
+alias s=ssh
+alias c=clear
+alias cx='chmod +x'
+alias more=less
+alias ps='ps auxf'
+alias psg='ps aux | grep -v grep | grep -i -e USER -e'
+alias myp='ps -fjH -u $USER'
+alias cleanup='rm -f *.tmp *.aux *.log'

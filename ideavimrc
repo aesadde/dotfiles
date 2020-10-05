@@ -4,13 +4,24 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
+set history=1000
 set autoread           " Automatically reload changes if detected
 set mousehide  " Hide mouse after chars typed
 set mouse=a    " Mouse in all modes
 set complete=.,w,b,u,U " Better complete options to speed it up
 set noerrorbells
+set mouse=a             "enables Mouse in vim"
 set visualbell
+set title               "sets filename on top of the open window"
+set ruler               "always show actual position"
+set noswapfile          "disable creating stupid .swp files"
+set nobackup
+set nowritebackup
+set showmatch           "show matching brackets/parenthesis
+
+
 set t_vb=
+set ideajoin
 
 set surround "surround plugin emulation
 set multiple-cursors "emulates multiple cursors
@@ -32,15 +43,53 @@ nnoremap <Leader>/ :nohls<CR>
 
 "indenta de manera correcta todo el archivo
 nnoremap <Leader>= 1G=G
+
+
+
+
 "1}}}
 " ===[ IDEA Actions ]=== {{{1
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gl :action JumpToLastChange<CR>
 nnoremap gb :action Back<CR>
-nnoremap gu :action FindUsages<CR>
+nnoremap gu :action ShowUsages<CR>
 nnoremap == :action ReformatCode<CR>
 vnoremap == :action ReformatCode<CR>
+nnoremap <leader>dt :action  ToggleDistractionFreeMode<CR>
+
+" built in search looks better
+nnoremap ,e :action SearchEverywhere<CR>
+nnoremap / :action Find<cr>
+" but preserve ideavim search
+nnoremap g/ /
+
+" refactoring actions
+nnoremap <Leader>ri :action Inline<CR>
+nnoremap <Leader>rr :action RenameElement<CR>i
+nnoremap <Leader>rj :action MemberPushDown<CR>
+nnoremap <Leader>rk :action MemberPullUp<CR>
+nnoremap <Leader>rs :action ChangeSignature<CR>
+nnoremap <Leader>rd :action SafeDelete<CR>
+nnoremap <Leader>rm :action Move<CR>
+nnoremap <Leader>rc :action CopyElement<CR>
+
+" fix actions
+nnoremap <Leader>fi :action OptimizeImports<CR>
+nnoremap <Leader>fa :action ShowIntentionActions<CR><Esc>
+
+"run
+nnoremap <leader>pr :action Run<cr>
+nnoremap <leader>pd :action Debug<cr>
+nnoremap <leader>br :action ToggleLineBreakpoint<cr>
+nnoremap <Leader>pc :action ChooseRunConfiguration<CR>
+nnoremap <Leader>dD :action ChooseDebugConfiguration<CR>
+
+" similar to my vim Nerd tree mapping
+nnoremap <Leader>nt :action ActivateProjectToolWindow<CR>
+
+" git vim fugitive
+nnoremap <leader>gb :action Annotate<CR>
 
 "1}}}
 " ===[ Motion ]=== {{{1
@@ -49,6 +98,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap J <c-F>
 nnoremap K <c-B>
+inoremap jk <esc>
+
 
 "windows navigation
 nnoremap <c-j> <c-w>j
@@ -66,6 +117,8 @@ inoremap <right> <nop>
 " Move to next error after make
 nnoremap  <leader>ne :cnext<cr>
 nnoremap  <leader>pe :cprevious<cr>
+
+
 "1}}}
 "=== [ Modifications ]=== {{{1
 "" Show trailing spaces as dots and carrots for extended lines.
