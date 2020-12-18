@@ -74,12 +74,11 @@ bcp() {
 ## Kube stuff
 kproxy() {
 # Forward the ports to connect to the akorda proxy
-local pod=$(kubectl get pods | grep proxy | awk '{print $1}')
-kubectl port-forward $pod 8080:8080
+kubectl port-forward svc/proxy-svc 8080:8080
 }
 
 dbproxy() {
- cloud_sql_proxy -instances=ak-app-01:us-west1:$1-sql=tcp:3306 \
+ cloud_sql_proxy -instances=ak-app-01:us-west1:$1-sql=tcp:$2\
    -credential_file=$HOME/Downloads/alberto-ak-app-01-db.json
 }
 
@@ -102,12 +101,3 @@ backup() { cp "$1"{,.bak};} #test first
 gfind() { find / -iname $@ 2>/dev/null }
 lfind() { find . -iname $@ 2>/dev/null }
 rtfm() { help $@ || man $@ || open "http://www.google.com/search?q=$@"; }
-
-## Base64 encoding
-encode64() {
-  echo -n $1 | base64
-}
-
-decode64() {
-  echo -n $1 | base64 --decode
-}

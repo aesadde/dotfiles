@@ -14,15 +14,19 @@ tasks_window() {
 }
 
 akorda_session() {
-  kubectl config use-context "$1-cluster"
+  kubectl config use-context "dev-qa"
   tmux new-session -s $SESSION -d
   tmux new-window -t $SESSION
   tmux rename-window -t $SESSION connections
-  tmux send-keys -t $SESSION "kproxy $1" C-m
+  tmux send-keys -t $SESSION "kproxy" C-m
   tmux split-window -v
-  tmux send-keys -t $SESSION "dbproxy $1" C-m
+  tmux send-keys -t $SESSION "kubectl -n dev port-forward svc/cloudsql-proxy 3306:3306" C-m
+  tmux split-window -v
+  tmux send-keys -t $SESSION "kubectl -n qa port-forward svc/cloudsql-proxy 3307:3306" C-m
   tmux split-window -h
-  tmux send-keys -t $SESSION "kubectl -n elasticsearch port-forward elasticsearch-master-0 9200:9200" C-m
+  tmux send-keys -t $SESSION "kubectl -n dev port-forward elasticsearch-master-0 9200:9200" C-m
+  tmux split-window -h
+  tmux send-keys -t $SESSION "kubectl -n qa port-forward elasticsearch-master-0 9300:9200" C-m
   tmux new-window -t $SESSION
 }
 
@@ -30,14 +34,11 @@ start_session() {
   SESSION=$1
   if tmux has-session -t $SESSION 2> /dev/null; then
     :
-  elif [ "$SESSION" == "akorda-dev" ]; then
-    akorda_session "dev"
-  elif [ "$SESSION" == "akorda-qa" ]; then
-    akorda_session "qa"
+  elif [ "$SESSION" == "akorda" ]; then
+    akorda_session
   else
     tmux new-session -s $SESSION -d
   fi
-
   tmux attach -t $SESSION
 }
 
@@ -60,7 +61,7 @@ monitor_session() {
 
 # Give options
 PS4="Please choose your session: "
-options=($(tmux list-sessions -F "#S" 2> /dev/null) "NEW SESSION" "akorda-dev" "akorda-qa" "default" "monitor")
+options=($(tmux list-sessions -F "#S" 2> /dev/null) "NEW SESSION" "akorda" "default" "monitor")
 
 echo "Available sessions"
 echo "------------------"
@@ -74,11 +75,8 @@ do
     "default")
       start_session 'default'
       break ;;
-    "akorda-dev")
-      start_session 'akorda-dev'
-      break ;;
-    "akorda-qa")
-      start_session 'akorda-qa'
+    "akorda")
+      start_session 'akorda'
       break ;;
     "monitor")
       monitor_session

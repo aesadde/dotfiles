@@ -39,12 +39,16 @@ matches:
   - trigger: "xdaily"
     force_clipboard: true
     replace: |
-      - ## Quote of The Day
-      - [[Morning Pages]]
+      - [[📝 Morning Pages]] {{[[POMO]]: 10}} {{word-count}}
+        - ((1Q4HeeYFY))
+        - ((437YmvaC0))
+        - ((eExVJh4Le)) {{[[slider]]}}
+          - Deep Sleep::
+          - Total Sleep::
+        - ((ewTI7O6y0))
       - ## Today's Plan
-      - ## Top Priorities
-        - {{[[query]]: {and: [[TP]] {not: [[query]]} }}}
-      - ## Tasks
+        - {{[[query]]: {and: [[Daily Goals]] {not: [[query]]} {between: [[today]] [[yesterday]]}}}}
+      - ## ✅ Tasks
         - {{[[query]]: {and: [[TODO]] {not: [[query]]} {between: [[last month]] [[today]]} }}}
       - ## Daily Log
 
@@ -81,6 +85,7 @@ matches:
     force_clipboard: true
     replace: |
       - Tags:: #Zettel
+      -
 
   - trigger: "xbook"
     force_clipboard: true
