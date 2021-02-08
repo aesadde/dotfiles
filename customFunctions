@@ -77,19 +77,6 @@ kproxy() {
 kubectl port-forward svc/proxy-svc 8080:8080
 }
 
-dbproxy() {
- cloud_sql_proxy -instances=ak-app-01:us-west1:$1-sql=tcp:$2\
-   -credential_file=$HOME/Downloads/alberto-ak-app-01-db.json
-}
-
-pdbproxy() {
-  echo -e "Changing GCloud account to use prod credentials!"
-  gcloud config set project ak-prod-1
-  cloud_sql_proxy -instances=ak-prod-1:us-central1:akorda-sql=tcp:3306
- cloud_sql_proxy -instances=ak-app-01:us-west1:akorda-sql=tcp:3306 \
-   -credential_file=$HOME/Downloads/alberto-prod-db.json
-}
-
 topcmd() {
   history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 }

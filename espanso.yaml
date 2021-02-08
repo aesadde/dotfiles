@@ -39,7 +39,7 @@ matches:
   - trigger: "xdaily"
     force_clipboard: true
     replace: |
-      - [[📝 Morning Pages]] {{[[POMO]]: 10}} {{word-count}}
+      - [[📝 Morning Pages]] {{[[POMO]]: 10}}
         - ((1Q4HeeYFY))
         - ((437YmvaC0))
         - ((eExVJh4Le)) {{[[slider]]}}
@@ -49,7 +49,7 @@ matches:
       - ## Today's Plan
         - {{[[query]]: {and: [[Daily Goals]] {not: [[query]]} {between: [[today]] [[yesterday]]}}}}
       - ## ✅ Tasks
-        - {{[[query]]: {and: [[TODO]] {not: [[query]]} {between: [[last month]] [[today]]} }}}
+        - {{[[query]]: {and: [[TODO]] [[Scheduled]] {not: [[query]]} {between: [[last week]] [[today]]} }}}
       - ## Daily Log
 
   - trigger: "xweekly"
@@ -69,7 +69,7 @@ matches:
       - Tags:: #Projects
       - Deadline::
       - Completed Date::
-      - Tasks::
+      - Next Actions::
       - Notes::
 
   - trigger: "xmtng"
@@ -81,11 +81,27 @@ matches:
       - Objectives::
       - Notes::
 
-  - triggers: ["xzet", "xnote"]
+  - triggers: ["xnote"]
     force_clipboard: true
     replace: |
-      - Tags:: #Zettel
-      -
+      - Tags:: #To-Create
+      - Checklist::
+        - {{[[TODO]]}} Twitter Thread
+        - {{[[TODO]]}} Instagram Post
+        - {{[[TODO]]}} Blog post
+
+  - triggers: ["xpub"]
+    force_clipboard: true
+    replace: |
+      - Publishing Checklist::
+        - {{[[TODO]]}} Keyword research
+        - {{[[TODO]]}} Twitter Thread
+        - {{[[TODO]]}} Instagram Post
+        - {{[[TODO]]}} Blog post
+          - {{[[TODO]]}} LinkedIn
+          - {{[[TODO]]}} Reddit
+          - {{[[TODO]]}} HN
+
 
   - trigger: "xbook"
     force_clipboard: true
@@ -138,13 +154,3 @@ matches:
      - URL::
      - Ingredients::
      - Tools::
-
-  - trigger: "xnerd"
-    force_clipboard: true
-    replace: |
-      - Tags:: #[[Nerd Corner]]
-      - Deadline::
-      - Tasks::
-      - ## What I am Reading 📚
-      - ## Nerd Corner 🤓
-      - ## Cool Finds 🤯

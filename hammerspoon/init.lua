@@ -2,12 +2,22 @@
 -- Load Dependencies
 require "wifi"
 require "bluetooth"
-local spotify = require "spotify"
 
 ----------------------------------------------------------------------------------------------------
 -- Global Settings
 local log = hs.logger.new('hammerspoon','debug')
 local hyper = {"cmd", "alt", "ctrl","shift"}
+
+local app_list = {
+  b = '/Applications/Brave Browser.app',
+  c = '/Applications/Visual Studio Code.app',
+  e = '/Applications/Evernote.app',
+  t = '/Applications/iTerm.app',
+  n = '/Applications/Notion.app',
+  m = '/Applications/Spotify.app',
+  s = '/Applications/Slack.app',
+  R = "/Applications/Roam/Roam.app"
+}
 
 hs.hotkey.alertDuration=0
 hs.hints.showTitleThresh = 0
@@ -73,16 +83,6 @@ if string.len(appM_keys[2]) > 0 then
 end
 
 -- App shortcuts
-local app_list = {
-  b = '/Applications/Brave Browser.app',
-  c = '/Applications/Visual Studio Code.app',
-  e = '/Applications/Evernote.app',
-  t = '/Applications/iTerm.app',
-  n = '/Applications/Notion.app',
-  m = '/Applications/Spotify.app',
-  s = '/Applications/Slack.app',
-  r = 'open "https://roamresearch.com/#/app/aesadde" -a /Applications/JetBrains Toolbox.app'
-}
 for key, app in pairs(app_list) do
   appModal:bind('', key, app, function()
     hs.application.launchOrFocus(app)
@@ -126,6 +126,75 @@ for _, v in ipairs(b_list) do
 end
 
 ----------------------------------------------------------------------------------------------------
+-- Window Layouts
+-- Monitors
+current_layout = hs.menubar.new()
+
+units = {
+  right30       = { x = 0.70, y = 0.00, w = 0.30, h = 1.00 },
+  right70       = { x = 0.30, y = 0.00, w = 0.70, h = 1.00 },
+  left70        = { x = 0.00, y = 0.00, w = 0.70, h = 1.00 },
+  left30        = { x = 0.00, y = 0.00, w = 0.30, h = 1.00 },
+  top50         = { x = 0.00, y = 0.00, w = 1.00, h = 0.50 },
+  bot50         = { x = 0.00, y = 0.50, w = 1.00, h = 0.50 },
+  bot80         = { x = 0.00, y = 0.20, w = 1.00, h = 0.80 },
+  bot87         = { x = 0.00, y = 0.20, w = 1.00, h = 0.87 },
+  bot90         = { x = 0.00, y = 0.20, w = 1.00, h = 0.90 },
+  upright30     = { x = 0.70, y = 0.00, w = 0.30, h = 0.50 },
+  botright30    = { x = 0.70, y = 0.50, w = 0.30, h = 0.50 },
+  upleft70      = { x = 0.00, y = 0.00, w = 0.70, h = 0.50 },
+  botleft70     = { x = 0.00, y = 0.50, w = 0.70, h = 0.50 },
+  right70top80  = { x = 0.70, y = 0.00, w = 0.30, h = 0.80 },
+  maximum       = { x = 0.00, y = 0.00, w = 1.00, h = 1.00 },
+  center        = { x = 0.25, y = 0.00, w = 0.50, h = 1.00 }
+}
+
+macbook_monitor = "Color LCD"
+second_monitor = 'HP VH240a'
+maing_monitor = "LG ULTRAWIDE"
+
+-- WRITING LAYOUT
+local writing_layout = {
+  {"Roam", nil, main_monitor, units.center, nil, nil},
+  {"Dictionary", nil, main_monitor, hs.layout.left25, nil, nil},
+  {"Spotify", nil, second_monitor,    units.top50,   nil, nil},
+
+}
+
+hs.hotkey.bind(hyper, '1', function()
+  hs.application.launchOrFocus("Dictionary")
+  hs.application.launchOrFocus("Spotify")
+  hs.application.launchOrFocus("Roam")
+  hs.layout.apply(writing_layout)
+  current_layout:setTitle("WRITING MODE")
+end)
+
+-- TERMINAL LAYOUT
+local terminal_layout = {
+  {"Slack", nil, main_monitor,    hs.layout.right50,   nil, nil},
+  {"iTerm2", nil, main_monitor, hs.layout.left50, nil, nil},
+}
+
+hs.hotkey.bind(hyper, '2', function()
+  hs.application.launchOrFocus("Slack")
+  hs.application.launchOrFocus("iTerm")
+  hs.layout.apply(terminal_layout)
+  current_layout:setTitle("TERMINAL MODE")
+end)
+
+local reading_layout = {
+  {"Roam", nil, main_monitor, hs.layout.left50, nil, nil},
+  {"Brave Browser", nil, main_monitor,    hs.layout.right50,   nil, nil},
+}
+
+hs.hotkey.bind(hyper, '3', function()
+  hs.application.launchOrFocus("Roam")
+  hs.application.launchOrFocus("Brave Browser")
+  hs.layout.apply(reading_layout)
+  current_layout:setTitle("READING MODE")
+end)
+
+----------------------------------------------------------------------------------------------------
 -- Register lock screen
 -- hslock_keys = hslock_keys or {hyper, "L"}
 -- if string.len(hslock_keys[2]) > 0 then
@@ -133,77 +202,6 @@ end
 --         os.execute("/System/Library/CoreServices/Menu\\ Extras/User.menu/Contents/Resources/CGSession -suspend")
 --     end)
 -- end
-
-----------------------------------------------------------------------------------------------------
--- Spotify Keys
---
-hs.hotkey.bind({}, "f7", function()
-  spotify.previousNotify()
-end)
-
-hs.hotkey.bind({}, "f8", function()
-  spotify.toggle()
-end)
-
-hs.hotkey.bind({}, "f9", function()
-  spotify.nextNotify()
-end)
-----------------------------------------------------------------------------------------------------
--- resizeM modal environment
-if spoon.WinWin then
-  spoon.ModalMgr:new("resizeM")
-  local cmodal = spoon.ModalMgr.modal_list["resizeM"]
-  cmodal:bind('', 'escape', 'Deactivate resizeM', function() spoon.ModalMgr:deactivate({"resizeM"}) end)
-  cmodal:bind('', 'Q', 'Deactivate resizeM', function() spoon.ModalMgr:deactivate({"resizeM"}) end)
-  cmodal:bind('', 'tab', 'Toggle Cheatsheet', function() spoon.ModalMgr:toggleCheatsheet() end)
-  cmodal:bind('', 'A', 'Move Leftward', function() spoon.WinWin:stepMove("left") end, nil, function() spoon.WinWin:stepMove("left") end)
-  cmodal:bind('', 'D', 'Move Rightward', function() spoon.WinWin:stepMove("right") end, nil, function() spoon.WinWin:stepMove("right") end)
-  cmodal:bind('', 'W', 'Move Upward', function() spoon.WinWin:stepMove("up") end, nil, function() spoon.WinWin:stepMove("up") end)
-  cmodal:bind('', 'S', 'Move Downward', function() spoon.WinWin:stepMove("down") end, nil, function() spoon.WinWin:stepMove("down") end)
-  cmodal:bind('', 'H', 'Lefthalf of Screen', function() spoon.WinWin:stash() spoon.WinWin:moveAndResize("halfleft") end)
-  cmodal:bind('', 'L', 'Righthalf of Screen', function() spoon.WinWin:stash() spoon.WinWin:moveAndResize("halfright") end)
-  cmodal:bind('', 'K', 'Uphalf of Screen', function() spoon.WinWin:stash() spoon.WinWin:moveAndResize("halfup") end)
-  cmodal:bind('', 'J', 'Downhalf of Screen', function() spoon.WinWin:stash() spoon.WinWin:moveAndResize("halfdown") end)
-  cmodal:bind('', 'Y', 'NorthWest Corner', function() spoon.WinWin:stash() spoon.WinWin:moveAndResize("cornerNW") end)
-  cmodal:bind('', 'O', 'NorthEast Corner', function() spoon.WinWin:stash() spoon.WinWin:moveAndResize("cornerNE") end)
-  cmodal:bind('', 'U', 'SouthWest Corner', function() spoon.WinWin:stash() spoon.WinWin:moveAndResize("cornerSW") end)
-  cmodal:bind('', 'I', 'SouthEast Corner', function() spoon.WinWin:stash() spoon.WinWin:moveAndResize("cornerSE") end)
-  cmodal:bind('', 'F', 'Fullscreen', function() spoon.WinWin:stash() spoon.WinWin:moveAndResize("fullscreen") end)
-  cmodal:bind('', 'C', 'Center Window', function() spoon.WinWin:stash() spoon.WinWin:moveAndResize("center") end)
-  cmodal:bind('', '=', 'Stretch Outward', function() spoon.WinWin:moveAndResize("expand") end, nil, function() spoon.WinWin:moveAndResize("expand") end)
-  cmodal:bind('', '-', 'Shrink Inward', function() spoon.WinWin:moveAndResize("shrink") end, nil, function() spoon.WinWin:moveAndResize("shrink") end)
-  cmodal:bind('shift', 'H', 'Move Leftward', function() spoon.WinWin:stepResize("left") end, nil, function() spoon.WinWin:stepResize("left") end)
-  cmodal:bind('shift', 'L', 'Move Rightward', function() spoon.WinWin:stepResize("right") end, nil, function() spoon.WinWin:stepResize("right") end)
-  cmodal:bind('shift', 'K', 'Move Upward', function() spoon.WinWin:stepResize("up") end, nil, function() spoon.WinWin:stepResize("up") end)
-  cmodal:bind('shift', 'J', 'Move Downward', function() spoon.WinWin:stepResize("down") end, nil, function() spoon.WinWin:stepResize("down") end)
-  cmodal:bind('', 'left', 'Move to Left Monitor', function() spoon.WinWin:stash() spoon.WinWin:moveToScreen("left") end)
-  cmodal:bind('', 'right', 'Move to Right Monitor', function() spoon.WinWin:stash() spoon.WinWin:moveToScreen("right") end)
-  cmodal:bind('', 'up', 'Move to Above Monitor', function() spoon.WinWin:stash() spoon.WinWin:moveToScreen("up") end)
-  cmodal:bind('', 'down', 'Move to Below Monitor', function() spoon.WinWin:stash() spoon.WinWin:moveToScreen("down") end)
-  cmodal:bind('', 'space', 'Move to Next Monitor', function() spoon.WinWin:stash() spoon.WinWin:moveToScreen("next") end)
-  cmodal:bind('', '[', 'Undo Window Manipulation', function() spoon.WinWin:undo() end)
-  cmodal:bind('', ']', 'Redo Window Manipulation', function() spoon.WinWin:redo() end)
-  cmodal:bind('', '`', 'Center Cursor', function() spoon.WinWin:centerCursor() end)
-
-  -- Register resizeM with modal supervisor
-  hsresizeM_keys = hsresizeM_keys or {hyper, "R"}
-  if string.len(hsresizeM_keys[2]) > 0 then
-    spoon.ModalMgr.supervisor:bind(hsresizeM_keys[1], hsresizeM_keys[2], "Enter resizeM Environment", function()
-      -- Deactivate some modal environments or not before activating a new one
-      spoon.ModalMgr:deactivateAll()
-      -- Show an status indicator so we know we're in some modal environment now
-      spoon.ModalMgr:activate({"resizeM"}, "#B22222")
-    end)
-  end
-end
-
-----------------------------------------------------------------------------------------------------
--- -- Register Hammerspoon console
--- hsconsole_keys = hsconsole_keys or {"opt", "Z"}
--- if string.len(hsconsole_keys[2]) > 0 then
---     spoon.ModalMgr.supervisor:bind(hsconsole_keys[1], hsconsole_keys[2], "Toggle Hammerspoon Console", function() hs.toggleConsole() end)
--- end
-
 ----------------------------------------------------------------------------------------------------
 -- Finally we initialize ModalMgr supervisor
 spoon.ModalMgr.supervisor:enter()

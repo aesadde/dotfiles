@@ -54,3 +54,9 @@ alias ps='ps auxf'
 alias psg='ps aux | grep -v grep | grep -i -e USER -e'
 alias myp='ps -fjH -u $USER'
 alias cleanup='rm -f *.tmp *.aux *.log'
+
+## JAVA
+
+alias setJDK8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
+alias setJDK11='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home'
+alias setJDK15='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home'

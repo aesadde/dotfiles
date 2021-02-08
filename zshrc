@@ -203,7 +203,8 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export PATH="/usr/local/opt/helm@2/bin:$PATH"
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+## JAVA OPTIONS - For other versions check the aliases setJDK*
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home
 
 export PATH="/Users/aesadde/.local/git-fuzzy/bin:$PATH"
 autoload -U +X bashcompinit && bashcompinit

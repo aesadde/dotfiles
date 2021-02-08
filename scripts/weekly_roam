@@ -14,7 +14,9 @@ def custom_strftime(fmt, t):
 
 def next_week():
     today = datetime.date.today()
-    next_monday = today + datetime.timedelta(days=-today.weekday(), weeks=1)
+    next_monday = today
+    if today.weekday() != 0:
+        next_monday = today + datetime.timedelta(days=-today.weekday(), weeks=1)
     return [
         custom_strftime("%B {S}, %Y", next_monday + datetime.timedelta(days=i))
         for i in range(0, 7)
