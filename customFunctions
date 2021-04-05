@@ -71,15 +71,34 @@ bcp() {
   fi
 }
 
-## Kube stuff
+# ==[ Kube stuff ]==
 kproxy() {
 # Forward the ports to connect to the akorda proxy
 kubectl port-forward svc/proxy-svc 8080:8080
 }
 
+
+kc() {
+  kubectl config get-contexts | tail -n +2 | fzf | cut -c 2- | awk '{print $1}' | xargs kubectl config use-context
+}
+
+# ==[ MISC ]==
+
+conda_activate() {
+  local selected_env
+  selected_env=$(ls ~/miniconda3/envs | fzf)
+
+  if [ -n "$selected_env" ]; then
+    source activate $selected_env
+  fi
+}
+
+
+
 topcmd() {
   history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 }
+
 
 # From https://www.usenix.org/sites/default/files/conference/protected-files/lisa19_maheshwari.pdf
 mcd() { mkdir -p $1; cd $1 }
@@ -88,3 +107,50 @@ backup() { cp "$1"{,.bak};} #test first
 gfind() { find / -iname $@ 2>/dev/null }
 lfind() { find . -iname $@ 2>/dev/null }
 rtfm() { help $@ || man $@ || open "http://www.google.com/search?q=$@"; }
+
+
+## ==[ 1 Password ]==
+### ref: https://austincloud.guru/2018/11/27/1password-cli-tricks/
+opon() {
+  if [[ -z $OP_SESSION_my ]]; then
+    eval $(op signin my)
+  fi
+}
+
+opoff() {
+  op signout
+  unset OP_SESSION_my
+}
+
+getpwd() {
+  opon
+  op get item "$1" |jq -r '.details.fields[] |select(.designation=="password").value'
+}
+
+## ==[ Jira ]==
+function create_branch() {
+  local jq_template query username password branch_name
+
+  jq_template='"'\ '\(.key). \(.fields.summary)'\ '\t'\ 'Reporter: \(.fields.reporter.displayName)\n'\ '\(.fields.description)'\ '"'
+  query='project=ACM AND assignee=currentUser() AND sprint in openSprints()'
+  username="alberto@akorda.com"
+  password=$(getpwd jira-api)
+
+  branch_name=$(
+    curl \
+      --data-urlencode "jql=$query" \
+      --get \
+      --user "$username:$password" \
+      --silent \
+      --compressed \
+      'https://akorda.atlassian.net/rest/api/3/search' |
+    jq -r '.issues[] | "\(.key)\t\(.fields.issuetype.name)\t\(.fields.summary)"' |
+    fzf |
+    awk '{printf "%s/%s", tolower($2), tolower($1)}' |
+    sed -e 's/story/feat/' -e 's/bug/fix/' -e 's/task/feat/'
+  )
+
+  if [ -n "$branch_name" ]; then
+    git checkout -b "$branch_name"
+  fi
+}

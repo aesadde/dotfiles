@@ -94,8 +94,6 @@
 	templatedir = ~/dotfiles/git_hooks
 [mergetool]
 	path = /usr/local/bin/nvim
-[url "git@gitlab.com:"]
-	insteadOf = https://gitlab.com/
 
 [merge]
 	tool = nvimdiff4
@@ -120,3 +118,5 @@
 	required = true
 [gpg]
 	program = /usr/local/bin/gpg
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/

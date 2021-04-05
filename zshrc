@@ -55,7 +55,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -75,14 +75,37 @@ COMPLETION_WAITING_DOTS="true"
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew osx vi-mode pip kubectl kube-ps1 encode64 docker terraform)
+plugins=(git brew osx vi-mode pip kubectl kube-ps1 encode64 docker terraform fzf-tab)
 
 # User configuration
+# # Do menu-driven completion.
+zstyle ':completion:*' menu select
+
+# Color completion for some things.
+# http://linuxshellaccount.blogspot.com/2008/12/color-completion-using-zsh-modules-on.html
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# formatting and messages
+# http://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format "$fg[yellow]%B--- %d%b"
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
+
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
 
 source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
 
 # Add Kube prompt
 KUBE_PS1_SYMBOL_USE_IMG=true
@@ -130,15 +153,20 @@ export VIM_VIKI_PLAN="$HOME/Projects/PLAN"
 [[ -f $HOME/.local_settings ]] && source $HOME/.local_settings
 
 # Golang Path
-if [[ -d /usr/local/go ]]; then
-  export PATH=/usr/local/go/bin:$PATH
-fi
+export GOROOT=/usr/local/opt/go/libexec #if installed view homebrew
+export PATH=$PATH:$GOROOT/bin
+
 if [[ -d $HOME/goprojects ]]; then
   export GOPATH="$HOME/goprojects"
 else
   export GOPATH="$HOME/go"
 fi
 export PATH=$PATH:$GOPATH/bin
+
+if [[ -d /usr/local/go ]]; then
+  export PATH=/usr/local/go/bin:$PATH
+fi
+
 
 # fzf via Homebrew
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -209,3 +237,4 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/
 export PATH="/Users/aesadde/.local/git-fuzzy/bin:$PATH"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/kustomize kustomize
+
