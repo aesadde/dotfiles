@@ -92,6 +92,7 @@
 	default = current
 [init]
 	templatedir = ~/dotfiles/git_hooks
+	defaultBranch = main
 [mergetool]
 	path = /usr/local/bin/nvim
 
@@ -120,3 +121,5 @@
 	program = /usr/local/bin/gpg
 [url "git@gitlab.com:"]
 	insteadOf = https://gitlab.com/
+[pull]
+	rebase = false

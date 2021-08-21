@@ -38,23 +38,17 @@ Install=spoon.SpoonInstall -- make more readable
 Install:andUse("ReloadConfiguration")
 spoon.ReloadConfiguration:start()
 
-Install:andUse("TextClipboardHistory",
-  {
-    disable = false,
-    config = {
-      show_in_menubar = true,
-    },
-    hotkeys = {
-    toggle_clipboard = { hyper, "v" } },
-    start = true,
-  }
-  )
-
-Install:andUse("KSheet",
-  {
-    hotkeys = {
-      toggle = { hyper, "/" }
-  }})
+-- Install:andUse("TextClipboardHistory",
+--   {
+--     disable = false,
+--     config = {
+--       show_in_menubar = true,
+--     },
+--     hotkeys = {
+--     toggle_clipboard = { hyper, "v" } },
+--     start = true,
+--   }
+--   )
 
 Install:andUse("TimeMachineProgress",
   {
@@ -155,7 +149,7 @@ maing_monitor = "LG ULTRAWIDE"
 
 -- WRITING LAYOUT
 local writing_layout = {
-  {"Roam", nil, main_monitor, units.center, nil, nil},
+  {"Roam", nil, main_monitor, hs.layout.right75, nil, nil},
   {"Dictionary", nil, main_monitor, hs.layout.left25, nil, nil},
   {"Spotify", nil, second_monitor,    units.top50,   nil, nil},
 
@@ -169,22 +163,26 @@ hs.hotkey.bind(hyper, '1', function()
   current_layout:setTitle("WRITING MODE")
 end)
 
--- TERMINAL LAYOUT
-local terminal_layout = {
-  {"Slack", nil, main_monitor,    hs.layout.right50,   nil, nil},
-  {"iTerm2", nil, main_monitor, hs.layout.left50, nil, nil},
+-- PROGRAMMING LAYOUT
+local programming_layout = {
+  {"Slack", nil, second_monitor,    units.top50,   nil, nil},
+  {"Spotify", nil, second_monitor,    units.bottom50,   nil, nil},
+  {"Goland", nil, main_monitor, hs.layout.right75, nil, nil},
+  {"Brave Browser", nil, main_monitor, hs.layout.left25, nil, nil},
 }
 
 hs.hotkey.bind(hyper, '2', function()
   hs.application.launchOrFocus("Slack")
-  hs.application.launchOrFocus("iTerm")
-  hs.layout.apply(terminal_layout)
-  current_layout:setTitle("TERMINAL MODE")
+  hs.application.launchOrFocus("Spotify")
+  hs.application.launchOrFocus("Goland")
+  hs.application.launchOrFocus("Brave Browser")
+  hs.layout.apply(programming_layout)
+  current_layout:setTitle("PROGRAMMING MODE")
 end)
 
 local reading_layout = {
-  {"Roam", nil, main_monitor, hs.layout.left50, nil, nil},
-  {"Brave Browser", nil, main_monitor,    hs.layout.right50,   nil, nil},
+  {"Roam", nil, main_monitor, hs.layout.left25, nil, nil},
+  {"Brave Browser", nil, main_monitor,    hs.layout.right75,   nil, nil},
 }
 
 hs.hotkey.bind(hyper, '3', function()
@@ -194,14 +192,5 @@ hs.hotkey.bind(hyper, '3', function()
   current_layout:setTitle("READING MODE")
 end)
 
-----------------------------------------------------------------------------------------------------
--- Register lock screen
--- hslock_keys = hslock_keys or {hyper, "L"}
--- if string.len(hslock_keys[2]) > 0 then
---     spoon.ModalMgr.supervisor:bind(hslock_keys[1], hslock_keys[2], "Lock Screen", function()
---         os.execute("/System/Library/CoreServices/Menu\\ Extras/User.menu/Contents/Resources/CGSession -suspend")
---     end)
--- end
-----------------------------------------------------------------------------------------------------
 -- Finally we initialize ModalMgr supervisor
 spoon.ModalMgr.supervisor:enter()

@@ -82,6 +82,10 @@ kc() {
   kubectl config get-contexts | tail -n +2 | fzf | cut -c 2- | awk '{print $1}' | xargs kubectl config use-context
 }
 
+kimage() {
+  kubectl get pod $1 -n $2 -o jsonpath='{ .spec.containers[*].image }'
+}
+
 # ==[ MISC ]==
 
 conda_activate() {
