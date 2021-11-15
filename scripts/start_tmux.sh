@@ -17,22 +17,20 @@ dev() {
   kubectl config use-context "dev"
   tmux new-session -s $SESSION -d
   tmux new-window -t $SESSION
-  tmux rename-window -t $SESSION connections
+  tmux rename-window -t $SESSION proxy-db-connections
   tmux send-keys -t $SESSION "kproxy" C-m
   tmux split-window -v
   tmux send-keys -t $SESSION "kubectl -n dev port-forward svc/cloudsql-proxy 3306:3306" C-m
   tmux split-window -v
   tmux send-keys -t $SESSION "kubectl -n qa port-forward svc/cloudsql-proxy 3307:3306" C-m
-  tmux split-window -v
+  tmux new-window -t $SESSION
+  tmux rename-window -t $SESSION es-connections
   tmux send-keys -t $SESSION "kubectl -n dev port-forward elasticsearch-master-0 9200:9200" C-m
   tmux split-window -v
   tmux send-keys -t $SESSION "kubectl -n qa port-forward elasticsearch-master-0 9300:9200" C-m
-  tmux split-window -v
   tmux new-window -t $SESSION
   tmux rename-window -t $SESSION temporal-connections
   tmux send-keys -t $SESSION "kubectl port-forward -n default svc/temporal-frontend 7233:7233" C-m
-  tmux split-window -v
-  tmux send-keys -t $SESSION "kubectl port-forward -n default svc/temporal-web 8088:8088" C-m
   tmux new-window -t $SESSION
 }
 
@@ -46,6 +44,11 @@ prod() {
   tmux send-keys -t $SESSION "kubectl port-forward svc/cloudsql-proxy 3306:3306" C-m
   tmux split-window -h
   tmux send-keys -t $SESSION "kubectl port-forward elasticsearch-master-0 9200:9200" C-m
+  tmux new-window -t $SESSION
+  tmux rename-window -t $SESSION temporal-connections
+  tmux send-keys -t $SESSION "kubectl port-forward -n default svc/temporal-prod-sought-satyr-frontend 7233:7233" C-m
+  tmux split-window -v
+  tmux send-keys -t $SESSION "kubectl port-forward -n default svc/temporal-prod-sought-satyr-web 8088:8088" C-m
   tmux new-window -t $SESSION
 }
 

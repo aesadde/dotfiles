@@ -237,3 +237,11 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/
 export PATH="/Users/aesadde/.local/git-fuzzy/bin:$PATH"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/kustomize kustomize
+
+# Use docker runtime to build docker images with minikube
+eval $(minikube docker-env)
+
+# linkerd
+export PATH=$PATH:/Users/aesadde/.linkerd2/bin
+
+[ -f "/Users/aesadde/.ghcup/env" ] && source "/Users/aesadde/.ghcup/env" # ghcup-env

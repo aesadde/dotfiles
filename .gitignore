@@ -9,3 +9,4 @@ tmux/plugins/*
 .DS_Store
 *aifi*
 *tags*
+.idea
