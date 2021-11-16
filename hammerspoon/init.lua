@@ -16,7 +16,6 @@ local app_list = {
   n = '/Applications/Notion.app',
   m = '/Applications/Spotify.app',
   s = '/Applications/Slack.app',
-  R = "/Applications/Roam/Roam.app"
 }
 
 hs.hotkey.alertDuration=0
@@ -168,14 +167,12 @@ local programming_layout = {
   {"Slack", nil, second_monitor,    units.top50,   nil, nil},
   {"Spotify", nil, second_monitor,    units.bottom50,   nil, nil},
   {"Goland", nil, main_monitor, hs.layout.right75, nil, nil},
-  {"Brave Browser", nil, main_monitor, hs.layout.left25, nil, nil},
 }
 
 hs.hotkey.bind(hyper, '2', function()
   hs.application.launchOrFocus("Slack")
   hs.application.launchOrFocus("Spotify")
   hs.application.launchOrFocus("Goland")
-  hs.application.launchOrFocus("Brave Browser")
   hs.layout.apply(programming_layout)
   current_layout:setTitle("PROGRAMMING MODE")
 end)
@@ -186,7 +183,7 @@ local reading_layout = {
 }
 
 hs.hotkey.bind(hyper, '3', function()
-  hs.application.launchOrFocus("Roam")
+  hs.application.launchOrFocus("Logseq")
   hs.application.launchOrFocus("Brave Browser")
   hs.layout.apply(reading_layout)
   current_layout:setTitle("READING MODE")

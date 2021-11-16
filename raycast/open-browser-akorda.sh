@@ -6,4 +6,4 @@
 # @raycast.mode silent
 # @raycast.packageName Brave Akorda
 
- open -n -a "Brave Browser" --args --profile-directory="Profile 1"
+ open -n -a "Brave Browser" --args --profile-directory="Profile 3"

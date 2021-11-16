@@ -10,6 +10,7 @@ REPORTTIME=1
 
 setopt appendhistory autocd extendedglob
 autoload -U compinit
+autoload -U +X bashcompinit && bashcompinit
 compinit
 
 # Path to your oh-my-zsh installation.
@@ -75,7 +76,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew osx vi-mode pip kubectl kube-ps1 encode64 docker terraform fzf-tab)
+plugins=(git brew macos vi-mode pip kubectl kube-ps1 encode64 docker terraform fzf fzf-tab)
 
 # User configuration
 # # Do menu-driven completion.
@@ -175,10 +176,10 @@ if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
   source /usr/local/opt/fzf/shell/key-bindings.zsh
   source /usr/local/opt/fzf/shell/completion.zsh
 
-    if [ $(which rg) ]; then
-      export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-      export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-    fi
+  if [ $(which rg) ]; then
+    export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  fi
   export FZF_CTRL_T_OPTS="--select-1 --exit-0 --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
   export FZF_DEFAULT_OPTS="--layout=reverse --border"
 fi
@@ -187,34 +188,45 @@ fi
 if [[ -d $HOME/anaconda3 ]]; then
   export PATH="$HOME/anaconda3/bin:$PATH"
 fi
-#
-# Miniconda Environments
+
 if [[ -d $HOME/miniconda3 ]]; then
-  export PATH="$HOME/miniconda3/bin:$PATH"
+
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/aesadde/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+  eval "$__conda_setup"
+else
+  if [ -f "/Users/aesadde/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+    . "/Users/aesadde/opt/miniconda3/etc/profile.d/conda.sh"
+  else
+    export PATH="/Users/aesadde/opt/miniconda3/bin:$PATH"
+  fi
+fi
+unset __conda_setup
 fi
 #2}}}
 
 # ===[ OS specific ]=== {{{1
 if [ "$OSTYPE" = 'Darwin' ]; then
-    [[ -f $DOTF/aliases.local ]] && source $DOTF/aliases.local
-    [[ -f $DOTF/kaliases ]] && source $DOTF/kaliases;
-    #TeX
-    export PATH=/Library/TeX/texbin:$PATH
-    # activate syntax highlighting on terminal
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  [[ -f $DOTF/aliases.local ]] && source $DOTF/aliases.local
+  [[ -f $DOTF/kaliases ]] && source $DOTF/kaliases;
+  #TeX
+  export PATH=/Library/TeX/texbin:$PATH
+  # activate syntax highlighting on terminal
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-    [ -f /Users/alberto/Library/Android/sdk ] && export PATH=$PATH:/Users/alberto/Library/Android/sdk
+  export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+  [ -f /Users/alberto/Library/Android/sdk ] && export PATH=$PATH:/Users/alberto/Library/Android/sdk
 
     #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
     test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
 
-elif [ "$OSTYPE" = 'Linux' ]; then
+  elif [ "$OSTYPE" = 'Linux' ]; then
     export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
     if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
-elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
+  elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
     export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
 fi
 #1}}}
@@ -229,13 +241,12 @@ if [ -f "$HOME/.local/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/.local/goo
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-export PATH="/usr/local/opt/helm@2/bin:$PATH"
-
 ## JAVA OPTIONS - For other versions check the aliases setJDK*
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home
 
 export PATH="/Users/aesadde/.local/git-fuzzy/bin:$PATH"
-autoload -U +X bashcompinit && bashcompinit
+
+
 complete -o nospace -C /usr/local/bin/kustomize kustomize
 
 # Use docker runtime to build docker images with minikube
@@ -245,3 +256,5 @@ eval $(minikube docker-env)
 export PATH=$PATH:/Users/aesadde/.linkerd2/bin
 
 [ -f "/Users/aesadde/.ghcup/env" ] && source "/Users/aesadde/.ghcup/env" # ghcup-env
+
+
