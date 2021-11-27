@@ -7,7 +7,6 @@ function displayMicMuteStatus()
     muted = currentAudioInputObject:inputMuted()
     if muted then
         micMuteStatusMenu:setIcon(os.getenv("HOME") .. "/.hammerspoon/muted.png")
-        micMuteStatusLineColor = {["red"]=1,["blue"]=0,["green"]=0,["alpha"]=0.7}
     else
         micMuteStatusMenu:setIcon(os.getenv("HOME") .. "/.hammerspoon/unmuted.png")
         micMuteStatusLineColor = {["red"]=1,["blue"]=0,["green"]=1,["alpha"]=0.7}
