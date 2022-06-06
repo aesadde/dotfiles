@@ -4,7 +4,7 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
-set history=1000
+set history=10000
 set autoread           " Automatically reload changes if detected
 set mousehide  " Hide mouse after chars typed
 set mouse=a    " Mouse in all modes
@@ -43,20 +43,22 @@ nnoremap <Leader>/ :nohls<CR>
 
 "indenta de manera correcta todo el archivo
 nnoremap <Leader>= 1G=G
-
-
-
-
 "1}}}
 " ===[ IDEA Actions ]=== {{{1
+nnoremap gc :action GotoClass<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gl :action JumpToLastChange<CR>
+nnoremap gf :action Forward<CR>
 nnoremap gb :action Back<CR>
+nnoremap gt :action GotoTest<CR>
 nnoremap gu :action ShowUsages<CR>
 nnoremap == :action ReformatCode<CR>
 vnoremap == :action ReformatCode<CR>
 nnoremap <leader>dt :action  ToggleDistractionFreeMode<CR>
+
+nnoremap <c-\> :action SplitVertically<CR>
+nnoremap <c--> :action SplitHorizontally<CR>
 
 " built in search looks better
 nnoremap ,e :action SearchEverywhere<CR>
@@ -79,11 +81,11 @@ nnoremap <Leader>fi :action OptimizeImports<CR>
 nnoremap <Leader>fa :action ShowIntentionActions<CR><Esc>
 
 "run
-nnoremap <leader>pr :action Run<cr>
-nnoremap <leader>pd :action Debug<cr>
-nnoremap <leader>br :action ToggleLineBreakpoint<cr>
+nnoremap <Leader>pr :action Run<cr>
+nnoremap <Leader>pd :action Debug<cr>
+nnoremap <Leader>br :action ToggleLineBreakpoint<cr>
 nnoremap <Leader>pc :action ChooseRunConfiguration<CR>
-nnoremap <Leader>dD :action ChooseDebugConfiguration<CR>
+nnoremap <leader>dD :action ChooseDebugConfiguration<CR>
 
 " similar to my vim Nerd tree mapping
 nnoremap <Leader>nt :action ActivateProjectToolWindow<CR>
@@ -117,6 +119,21 @@ inoremap <right> <nop>
 " Move to next error after make
 nnoremap  <leader>ne :cnext<cr>
 nnoremap  <leader>pe :cprevious<cr>
+
+nnoremap <leader>l :action RecentLocations<CR>
+nnoremap <leader>h  :action LocalHistory.ShowHistory<CR>
+nnoremap ge :action GotoNextError<CR>
+nnoremap gE :action GotoPreviousError<CR>
+
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+nmap <C-x> <Plug>SkipOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+nmap <C-p> <Plug>RemoveOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
 
 
 "1}}}

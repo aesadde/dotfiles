@@ -3,13 +3,14 @@
 require "wifi"
 require "bluetooth"
 require "layouts"
+require "dnd"
 
 ----------------------------------------------------------------------------------------------------
 -- Global Settings
 local log = hs.logger.new('hammerspoon', 'debug')
 local hyper = { "cmd", "alt", "ctrl", "shift" }
 
- --set a minimal style for all alerts and print them at the top of the screen
+--set a minimal style for all alerts and print them at the top of the screen
 hs.alert.defaultStyle = {
     strokeWidth = 2,
     strokeColor = { white = 0, alpha = 0 },
@@ -175,6 +176,21 @@ end
 ----------------------------------------------------------------------------------------------------
 -- Workspaces
 
+runningApps = {}
+function applicationWatcher(appName, eventType, appObject)
+    if (eventType == hs.application.watcher.launched) then
+        table.insert(runningApps, appObject)
+    end
+    if (eventType == hs.application.watcher.activated) then
+        if (appName == "Finder") then
+            -- Bring all Finder windows forward when one gets activated
+            appObject:selectMenuItem({"Window", "Bring All to Front"})
+        end
+    end
+end
+local appWatcher = hs.application.watcher.new(applicationWatcher)
+appWatcher:start()
+
 hs.application.enableSpotlightForNameSearches(true)
 
 spoon.ModalMgr:new("workspaceM")
@@ -201,18 +217,24 @@ w_list = {
         { name = "Logseq", main = true, position = hs.layout.maximized },
         { name = "Dictionary", main = true, position = hs.layout.left25 },
         { name = "Spotify", main = false, position = units.top50 },
-    }, wifi = false,
+    }, wifi = false, dnd = true,
     },
     {
         key = "p", name = "programming", apps = {
-        { name = "/Users/aesadde/Applications/JetBrains Toolbox/GoLand.app", main = true, position = hs.layout.maximized },
+        { name = "GoLand", main = true, position = hs.layout.maximized },
         { name = "Slack", main = false, position = units.top50 },
         { name = "Spotify", main = false, position = units.bottom50 },
-    }, wifi = true,
+    }, wifi = true, dnd = false,
     }
 }
 
 function applyLayout(params)
+
+    for _, v in ipairs(runningApps) do
+        if v:isRunning() then
+            v:kill()
+        end
+    end
 
     main_monitor = hs.screen.primaryScreen():name()
     second_monitor = main_monitor
@@ -241,6 +263,11 @@ function applyLayout(params)
     hs.application.launchOrFocus(params.apps[1].name)
 
     toggleWifi(params.wifi)
+    if params.dnd then
+        enableDND()
+    else
+        disableDND()
+    end
 end
 
 for _, v in ipairs(w_list) do

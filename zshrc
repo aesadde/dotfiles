@@ -76,7 +76,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew macos vi-mode pip kubectl kube-ps1 encode64 docker terraform fzf fzf-tab)
+plugins=(git macos vi-mode pip kubectl kube-ps1 encode64 docker terraform fzf fzf-tab)
 
 # User configuration
 # # Do menu-driven completion.
@@ -154,7 +154,7 @@ export VIM_VIKI_PLAN="$HOME/Projects/PLAN"
 [[ -f $HOME/.local_settings ]] && source $HOME/.local_settings
 
 # Golang Path
-export GOROOT=/usr/local/opt/go/libexec #if installed view homebrew
+export GOROOT="$(brew --prefix golang)/libexec"
 export PATH=$PATH:$GOROOT/bin
 
 if [[ -d $HOME/goprojects ]]; then
@@ -185,25 +185,20 @@ if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
 fi
 
 # Anaconda Environments
-if [[ -d $HOME/anaconda3 ]]; then
-  export PATH="$HOME/anaconda3/bin:$PATH"
-fi
-
-if [[ -d $HOME/miniconda3 ]]; then
-
+# >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/aesadde/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
+    eval "$__conda_setup"
 else
-  if [ -f "/Users/aesadde/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-    . "/Users/aesadde/opt/miniconda3/etc/profile.d/conda.sh"
-  else
-    export PATH="/Users/aesadde/opt/miniconda3/bin:$PATH"
-  fi
+    if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+    fi
 fi
 unset __conda_setup
-fi
+# <<< conda initialize <<<
 #2}}}
 
 # ===[ OS specific ]=== {{{1
@@ -212,8 +207,6 @@ if [ "$OSTYPE" = 'Darwin' ]; then
   [[ -f $DOTF/kaliases ]] && source $DOTF/kaliases;
   #TeX
   export PATH=/Library/TeX/texbin:$PATH
-  # activate syntax highlighting on terminal
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
   export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
   [ -f /Users/alberto/Library/Android/sdk ] && export PATH=$PATH:/Users/alberto/Library/Android/sdk
@@ -249,12 +242,14 @@ export PATH="/Users/aesadde/.local/git-fuzzy/bin:$PATH"
 
 complete -o nospace -C /usr/local/bin/kustomize kustomize
 
-# Use docker runtime to build docker images with minikube
-eval $(minikube docker-env)
+# # Use docker runtime to build docker images with minikube
+# eval $(minikube docker-env)
 
 # linkerd
 export PATH=$PATH:/Users/aesadde/.linkerd2/bin
 
 [ -f "/Users/aesadde/.ghcup/env" ] && source "/Users/aesadde/.ghcup/env" # ghcup-env
+
+
 
 

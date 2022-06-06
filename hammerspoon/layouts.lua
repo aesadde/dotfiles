@@ -2,6 +2,9 @@
 
 function stopApp(name)
   app = hs.application.get(name)
+  if not app then
+      app = hs.application.find(name)
+  end
   if app and app:isRunning() then
     app:kill()
   end

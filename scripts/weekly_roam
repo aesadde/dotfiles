@@ -18,7 +18,7 @@ def next_week():
     if today.weekday() != 0:
         next_monday = today + datetime.timedelta(days=-today.weekday(), weeks=1)
     return [
-        custom_strftime("%B {S}, %Y", next_monday + datetime.timedelta(days=i))
+        custom_strftime("%b {S}, %Y", next_monday + datetime.timedelta(days=i))
         for i in range(0, 7)
     ]
 
@@ -32,13 +32,13 @@ Tags:: #[[Weekly Plans]]
 ## Top Priorities
 
 ## [[Daily Goals]]
-    Monday: [[{monday}]]
-    Tuesday: [[{tuesday}]]
-    Wednesday: [[{wednesday}]]
-    Thursday: [[{thursday}]]
-    Friday: [[{friday}]]
-    Saturday: [[{saturday}]]
-    Sunday: [[{sunday}]]
+    - Monday: [[{monday}]]
+    - Tuesday: [[{tuesday}]]
+    - Wednesday: [[{wednesday}]]
+    - Thursday: [[{thursday}]]
+    - Friday: [[{friday}]]
+    - Saturday: [[{saturday}]]
+    - Sunday: [[{sunday}]]
     """.format(
         monday=week[0],
         tuesday=week[1],
