@@ -15,18 +15,13 @@ alias ev='nvim ~/dotfiles/nvim/init.vim'
 
 #Git aliases (git specific aliases are in gitconfig)
 alias g\?='git status'
-alias tasks='$EDITOR ~/Projects/TODO.md'
+alias save=git add . && git commit -m 'chore: save progres'
 
 #tmux aliases
 alias tn='tmux new-session -s'
 alias tml='tmux ls'
 alias tma='tmux attach -t'
 alias tnew='new-tmux-from-dir-name'
-
-#stack
-alias ghc='stack exec -- ghc'
-alias ghci='stack exec -- ghci'
-alias ydev='stack exec yesod devel'
 
 ## OS X
 #hide/show .files
@@ -60,3 +55,6 @@ alias cleanup='rm -f *.tmp *.aux *.log'
 alias setJDK8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
 alias setJDK11='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home'
 alias setJDK15='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home'
+
+
+alias brew='arch -arm64 brew'

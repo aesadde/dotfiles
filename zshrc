@@ -76,7 +76,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git macos vi-mode pip kubectl kube-ps1 encode64 docker terraform fzf fzf-tab)
+plugins=(git macos vi-mode pip kubectl kube-ps1 encode64 docker terraform fzf fzf-tab poetry)
 
 # User configuration
 # # Do menu-driven completion.
@@ -242,14 +242,14 @@ export PATH="/Users/aesadde/.local/git-fuzzy/bin:$PATH"
 
 complete -o nospace -C /usr/local/bin/kustomize kustomize
 
-# # Use docker runtime to build docker images with minikube
-# eval $(minikube docker-env)
-
 # linkerd
 export PATH=$PATH:/Users/aesadde/.linkerd2/bin
 
 [ -f "/Users/aesadde/.ghcup/env" ] && source "/Users/aesadde/.ghcup/env" # ghcup-env
+[[ -s "/Users/aesadde/.gvm/scripts/gvm" ]] && source "/Users/aesadde/.gvm/scripts/gvm"
 
+# colima docker
+export DOCKER_HOST=unix:///$HOME/.colima/docker.sock supabase start
 
-
+eval "$(github-copilot-cli alias -- "$0")"
 

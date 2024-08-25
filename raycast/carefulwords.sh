@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title lookup_webster_1913
+# @raycast.title carefulwords
 # @raycast.mode fullOutput
 
 # Optional parameters:
@@ -11,7 +11,7 @@
 # @raycast.packageName Writing
 
 # Documentation:
-# @raycast.description Lookup a word in the Webster 1913 Dictionary
+# @raycast.description Lookup a word in @simonsarris carefulwords.com
 # @raycast.author aesadde
 # @raycast.authorURL twitter.com/aesadde
 
@@ -24,4 +24,4 @@ fi
 word=$1
 word="$(tr '[:lower:]' '[:upper:]' <<< "${word:0:1}")${word:1}"
 
-curl -s https://www.websters1913.com/words/"$word"
+curl -s https://carefulwords.com/"$word"

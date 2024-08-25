@@ -1,0 +1,30 @@
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+set history=10000
+set visualbell
+
+set surround "surround plugin emulation
+set multiple-cursors "emulates multiple cursors
+set commentary "emulates commentary plugin
+let mapleader=","
+let g:mapleader=","
+let g:localLeader=","
+
+" Use ; for : in normal and visual mode, less keystrokes
+nnoremap ; :
+vnoremap ; :
+
+inoremap jj <ESC>
+
+"Clear highlights from search
+nnoremap <Leader>/ :nohls<CR>
+
+"one screen line at a time (instead of vim line)
+nnoremap j gj
+nnoremap k gk
+nnoremap J <c-F>
+nnoremap K <c-B>
+inoremap jk <esc>
+

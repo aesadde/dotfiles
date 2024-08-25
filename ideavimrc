@@ -5,22 +5,8 @@ set ignorecase
 set smartcase
 set hlsearch
 set history=10000
-set autoread           " Automatically reload changes if detected
-set mousehide  " Hide mouse after chars typed
-set mouse=a    " Mouse in all modes
-set complete=.,w,b,u,U " Better complete options to speed it up
-set noerrorbells
-set mouse=a             "enables Mouse in vim"
 set visualbell
-set title               "sets filename on top of the open window"
-set ruler               "always show actual position"
-set noswapfile          "disable creating stupid .swp files"
-set nobackup
-set nowritebackup
-set showmatch           "show matching brackets/parenthesis
 
-
-set t_vb=
 set ideajoin
 
 set surround "surround plugin emulation
@@ -51,7 +37,6 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gl :action JumpToLastChange<CR>
 nnoremap gf :action Forward<CR>
 nnoremap gb :action Back<CR>
-nnoremap gt :action GotoTest<CR>
 nnoremap gu :action ShowUsages<CR>
 nnoremap == :action ReformatCode<CR>
 vnoremap == :action ReformatCode<CR>
@@ -59,6 +44,8 @@ nnoremap <leader>dt :action  ToggleDistractionFreeMode<CR>
 
 nnoremap <c-\> :action SplitVertically<CR>
 nnoremap <c--> :action SplitHorizontally<CR>
+
+vnoremap <leader>s :action StringManipulation.Sort<CR>
 
 " built in search looks better
 nnoremap ,e :action SearchEverywhere<CR>
@@ -108,6 +95,11 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
+nnoremap <c-s-tab> gT
+nnoremap <c-tab> gt
+nnoremap <s-left>q :action ReopenClosedTab<cr>
+nnoremap <leader>q :action CloseContent<cr>
+
 
 "this are to get used to NOT use arrow keys in insert mode (good practice is
 "to exit to normal mode and move using normal keysnormal keys
@@ -134,23 +126,4 @@ nmap <C-x> <Plug>SkipOccurrence
 xmap <C-x> <Plug>SkipOccurrence
 nmap <C-p> <Plug>RemoveOccurrence
 xmap <C-p> <Plug>RemoveOccurrence
-
-
-"1}}}
-"=== [ Modifications ]=== {{{1
-"" Show trailing spaces as dots and carrots for extended lines.
-" " From Janus, http://git.io/PLbAlw
-" "
-" Reset the listchars
-set listchars=""
-" " make tabs visible
-set listchars=tab:▸▸
-" " show trailing spaces as dots
-set listchars+=trail:•
-" " The character to show in the last column when wrap is off and the line
-" " continues beyond the right of the screen
-set listchars+=extends:>
-" " The character to show in the last column when wrap is off and the line
-" " continues beyond the right of the screen
-set listchars+=precedes:<>
 "1}}}
