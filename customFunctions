@@ -236,7 +236,7 @@ Below is a diff of all staged changes, coming from the command:
 git diff --cached
 \`\`\`
 
-Please generate a concise, one-line commit message for these changes."
+Please generate a concise, one-line commit message for these changes using the semantic commit convention prefixes: chore:, fix:, feat:, refactor:, docs:, BREAKING:, etc."
     }
 
     # Function to read user input compatibly with both Bash and Zsh

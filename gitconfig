@@ -52,6 +52,7 @@
 	whitespace = fix
 
 [core]
+	pager = delta
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
