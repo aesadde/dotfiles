@@ -1,0 +1,42 @@
+# System and Hidden folders
+.Trash
+Library
+Applications
+Desktop
+Downloads
+
+# App-specific folders
+.ScreamingFrogSEOSpider
+DataGripProjects
+Dropbox
+Postman
+go
+screamingfrog
+opt
+Octoparse
+
+# Development folders and files (matched at any depth)
+**/node_modules
+**/venv
+**/.gradle
+**/.cache
+**/.vscode
+**/.npm
+.docker
+**/share
+**/.lesshst
+**/.argocd
+**/.cargo
+
+# Temporary and system files (matched at any depth)
+**/*.log
+**/.DS_Store
+**/dump*
+**/*.dump
+**/Caches
+**/AppleInternal
+
+# Specific file patterns
+**/*~        # backup files
+**/*.swp     # vim swap files
+**/*.tmp     # temporary files
