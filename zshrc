@@ -253,3 +253,6 @@ export DOCKER_HOST=unix:///$HOME/.colima/docker.sock supabase start
 
 eval "$(github-copilot-cli alias -- "$0")"
 
+
+# Added by Windsurf
+export PATH="/Users/aesadde/.codeium/windsurf/bin:$PATH"

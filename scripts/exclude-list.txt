@@ -27,6 +27,10 @@ Octoparse
 **/.lesshst
 **/.argocd
 **/.cargo
+**/.colima
+**/.cocoapods
+**/.codemod
+**/.android
 
 # Temporary and system files (matched at any depth)
 **/*.log
@@ -40,3 +44,4 @@ Octoparse
 **/*~        # backup files
 **/*.swp     # vim swap files
 **/*.tmp     # temporary files
+**/*.sock    # socket files

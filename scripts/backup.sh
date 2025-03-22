@@ -22,9 +22,39 @@ fi
 available_space=$(df -k "$BACKUP_BASE" | tail -1 | awk '{print $4}')
 minimum_space=$((50 * 1024 * 1024)) # 50GB in KB
 
+# Function to clean old backups until we have enough space
+clean_old_backups() {
+    local needed_space=$1
+    echo "Cleaning old backups to free up space..."
+    
+    # List backups by date, oldest first
+    find "$BACKUP_BASE" -type d -name "backup-*" -print0 | \
+        xargs -0 ls -td | \
+        tail -r | \
+        while read backup; do
+            echo "Removing old backup: $backup"
+            rm -rf "$backup"
+            
+            # Check if we have enough space now
+            available_space=$(df -k "$BACKUP_BASE" | tail -1 | awk '{print $4}')
+            if [ "$available_space" -gt "$needed_space" ]; then
+                echo "Sufficient space freed"
+                return 0
+            fi
+        done
+}
+
+# Check space and clean if necessary
 if [ "$available_space" -lt "$minimum_space" ]; then
-    echo "Error: Insufficient space on backup drive (less than 50GB available)"
-    exit 1
+    echo "Warning: Low space on backup drive (less than 50GB available)"
+    clean_old_backups "$minimum_space"
+    
+    # Check space again
+    available_space=$(df -k "$BACKUP_BASE" | tail -1 | awk '{print $4}')
+    if [ "$available_space" -lt "$minimum_space" ]; then
+        echo "Error: Could not free enough space on backup drive"
+        exit 1
+    fi
 fi
 
 # Create necessary directories if they don't exist
@@ -51,8 +81,15 @@ perform_rsync() {
             "$source/" \
             "$dest/" && return 0
         
-        echo "Rsync failed. Waiting 30 seconds before retry..."
-        sleep 30
+        # Check if failure was due to space
+        available_space=$(df -k "$BACKUP_BASE" | tail -1 | awk '{print $4}')
+        if [ "$available_space" -lt "$minimum_space" ]; then
+            echo "Failed due to low space. Attempting to clean old backups..."
+            clean_old_backups "$minimum_space"
+        else
+            echo "Rsync failed. Waiting 30 seconds before retry..."
+            sleep 30
+        fi
         ((attempt++))
     done
     
