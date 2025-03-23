@@ -14,8 +14,8 @@ RETENTION_DAYS=30
 
 # Check if backup drive is mounted
 if [ ! -d "$BACKUP_BASE" ]; then
-    echo "Error: Backup destination $BACKUP_BASE is not available"
-    exit 1
+  echo "Error: Backup destination $BACKUP_BASE is not available"
+  exit 1
 fi
 
 # Check available space
@@ -24,37 +24,37 @@ minimum_space=$((50 * 1024 * 1024)) # 50GB in KB
 
 # Function to clean old backups until we have enough space
 clean_old_backups() {
-    local needed_space=$1
-    echo "Cleaning old backups to free up space..."
-    
-    # List backups by date, oldest first
-    find "$BACKUP_BASE" -type d -name "backup-*" -print0 | \
-        xargs -0 ls -td | \
-        tail -r | \
-        while read backup; do
-            echo "Removing old backup: $backup"
-            rm -rf "$backup"
-            
-            # Check if we have enough space now
-            available_space=$(df -k "$BACKUP_BASE" | tail -1 | awk '{print $4}')
-            if [ "$available_space" -gt "$needed_space" ]; then
-                echo "Sufficient space freed"
-                return 0
-            fi
-        done
+  local needed_space=$1
+  echo "Cleaning old backups to free up space..."
+
+  # List backups by date, oldest first
+  find "$BACKUP_BASE" -type d -name "backup-*" -print0 |
+    xargs -0 ls -td |
+    tail -r |
+    while read backup; do
+      echo "Removing old backup: $backup"
+      rm -rf "$backup"
+
+      # Check if we have enough space now
+      available_space=$(df -k "$BACKUP_BASE" | tail -1 | awk '{print $4}')
+      if [ "$available_space" -gt "$needed_space" ]; then
+        echo "Sufficient space freed"
+        return 0
+      fi
+    done
 }
 
 # Check space and clean if necessary
 if [ "$available_space" -lt "$minimum_space" ]; then
-    echo "Warning: Low space on backup drive (less than 50GB available)"
-    clean_old_backups "$minimum_space"
-    
-    # Check space again
-    available_space=$(df -k "$BACKUP_BASE" | tail -1 | awk '{print $4}')
-    if [ "$available_space" -lt "$minimum_space" ]; then
-        echo "Error: Could not free enough space on backup drive"
-        exit 1
-    fi
+  echo "Warning: Low space on backup drive (less than 50GB available)"
+  clean_old_backups "$minimum_space"
+
+  # Check space again
+  available_space=$(df -k "$BACKUP_BASE" | tail -1 | awk '{print $4}')
+  if [ "$available_space" -lt "$minimum_space" ]; then
+    echo "Error: Could not free enough space on backup drive"
+    exit 1
+  fi
 fi
 
 # Create necessary directories if they don't exist
@@ -64,37 +64,37 @@ mkdir -p "$BACKUP_BASE/photos/backup-$DATE"
 
 # Function to perform rsync with retry
 perform_rsync() {
-    local max_attempts=3
-    local attempt=1
-    local source=$1
-    local dest=$2
-    local link_dest=$3
-    
-    while [ $attempt -le $max_attempts ]; do
-        echo "Attempt $attempt of $max_attempts for backing up $source"
-        rsync -avz \
-            --delete \
-            --ignore-errors \
-            --link-dest="$link_dest" \
-            --exclude-from="$HOME/dotfiles/scripts/exclude-list.txt" \
-            --log-file="$HOME/dotfiles/scripts/backup_details.log" \
-            "$source/" \
-            "$dest/" && return 0
-        
-        # Check if failure was due to space
-        available_space=$(df -k "$BACKUP_BASE" | tail -1 | awk '{print $4}')
-        if [ "$available_space" -lt "$minimum_space" ]; then
-            echo "Failed due to low space. Attempting to clean old backups..."
-            clean_old_backups "$minimum_space"
-        else
-            echo "Rsync failed. Waiting 30 seconds before retry..."
-            sleep 30
-        fi
-        ((attempt++))
-    done
-    
-    echo "Failed to backup $source after $max_attempts attempts"
-    return 1
+  local max_attempts=3
+  local attempt=1
+  local source=$1
+  local dest=$2
+  local link_dest=$3
+
+  while [ $attempt -le $max_attempts ]; do
+    echo "Attempt $attempt of $max_attempts for backing up $source"
+    rsync -avz \
+      --delete \
+      --ignore-errors \
+      --link-dest="$link_dest" \
+      --exclude-from="$HOME/dotfiles/scripts/exclude-list.txt" \
+      --log-file="$HOME/dotfiles/scripts/backup_details.log" \
+      "$source/" \
+      "$dest/" && return 0
+
+    # Check if failure was due to space
+    available_space=$(df -k "$BACKUP_BASE" | tail -1 | awk '{print $4}')
+    if [ "$available_space" -lt "$minimum_space" ]; then
+      echo "Failed due to low space. Attempting to clean old backups..."
+      clean_old_backups "$minimum_space"
+    else
+      echo "Rsync failed. Waiting 30 seconds before retry..."
+      sleep 30
+    fi
+    ((attempt++))
+  done
+
+  echo "Failed to backup $source after $max_attempts attempts"
+  return 1
 }
 
 # Backup home directory
