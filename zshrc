@@ -256,3 +256,5 @@ eval "$(github-copilot-cli alias -- "$0")"
 
 # Added by Windsurf
 export PATH="/Users/aesadde/.codeium/windsurf/bin:$PATH"
+
+eval "$(try init ~/repos/tries)"

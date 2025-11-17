@@ -5,6 +5,12 @@ Applications
 Desktop
 Downloads
 
+# iCloud and cloud storage folders
+Library/Mobile\ Documents
+**/Mobile\ Documents/**
+**/CloudDocs/**
+**/com~apple~CloudDocs/**
+
 # App-specific folders
 .ScreamingFrogSEOSpider
 DataGripProjects
@@ -38,10 +44,22 @@ Octoparse
 **/dump*
 **/*.dump
 **/Caches
+**/Caches/**
+**/Cache/**
+**/cache/**
+**/AppleInternal/**
 **/AppleInternal
-
-# Specific file patterns
+**/Library/AppleInternal/**
+**/Library/AppleInternal
+**/System/Library/AppleInternal/**
+**/System/Library/AppleInternal
+**/Library/Caches/**
+**/Library/Application\ Support/Caches/**
+**/Library/Logs/**
+**/.vim/tmp/**
+**/.vim/undo/**
 **/*~        # backup files
 **/*.swp     # vim swap files
+**/*.swo     # vim swap files
 **/*.tmp     # temporary files
 **/*.sock    # socket files
