@@ -1,5 +1,5 @@
 #Common aliases
-# alias ls='lsd'
+alias ls='lsd'
 alias lk='lsd -laSr'          # Sort by size, biggest last.
 alias lt='lsd -latr'          # Sort by date, most recent last.
 alias la='lsd -lha'
@@ -9,13 +9,20 @@ alias grep='grep --color=auto'
 alias rm='rm -iv'
 alias cp='cp -v'
 alias mv='mv -v'
+alias mkdir='mkdir -pv'
+
+# Modern tool replacements (if installed)
+command -v bat &> /dev/null && alias cat='bat'
+command -v htop &> /dev/null && alias top='htop'
+command -v dust &> /dev/null && alias du='dust'
+command -v duf &> /dev/null && alias df='duf'
 
 #edit dots and vim
-alias ev='nvim ~/dotfiles/nvim/init.vim'
+alias ev='nvim ~/dotfiles/nvim/init.lua'
 
 #Git aliases (git specific aliases are in gitconfig)
 alias g\?='git status'
-alias save=git add . && git commit -m 'chore: save progres'
+alias save='git add . && git commit -m "chore: save progress"'
 
 #tmux aliases
 alias tn='tmux new-session -s'
@@ -58,3 +65,6 @@ alias setJDK15='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-
 
 
 alias brew='arch -arm64 brew'
+
+## misc
+alias taxes='cd /Users/aesadde/Library/Mobile\ Documents/com~apple~CloudDocs/main/Areas/Family/finances/astrasr-llc'

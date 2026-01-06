@@ -1,25 +1,29 @@
 # vim: ft=sh
 
-function extract()      # Handy Extract Program
-{
-    if [ -f $1 ] ; then
-        case $1 in
-            *.tar.bz2)   tar xvjf $1     ;;
-    *.tar.gz)    tar xvzf $1     ;;
-    *.bz2)       bunzip2 $1      ;;
-    *.rar)       unrar x $1      ;;
-    *.gz)        gunzip $1       ;;
-    *.tar)       tar xvf $1      ;;
-    *.tbz2)      tar xvjf $1     ;;
-    *.tgz)       tar xvzf $1     ;;
-    *.zip)       unzip $1        ;;
-    *.Z)         uncompress $1   ;;
-    *.7z)        7z x $1         ;;
-    *)           echo "'$1' cannot be extracted via >extract<" ;;
-    esac
+function extract() {
+    # Handy Extract Program - handles most archive formats
+    if [[ -f "$1" ]]; then
+        case "$1" in
+            *.tar.bz2)   tar xvjf "$1"     ;;
+            *.tar.gz)    tar xvzf "$1"     ;;
+            *.bz2)       bunzip2 "$1"      ;;
+            *.rar)       unrar x "$1"      ;;
+            *.gz)        gunzip "$1"       ;;
+            *.tar)       tar xvf "$1"      ;;
+            *.tbz2)      tar xvjf "$1"     ;;
+            *.tgz)       tar xvzf "$1"     ;;
+            *.zip)       unzip "$1"        ;;
+            *.Z)         uncompress "$1"   ;;
+            *.7z)        7z x "$1"         ;;
+            *.tar.xz)    tar xvJf "$1"     ;;
+            *.xz)        unxz "$1"         ;;
+            *.tar.zst)   tar --zstd -xvf "$1" ;;
+            *.zst)       unzstd "$1"       ;;
+            *)           echo "'$1' cannot be extracted via extract" ;;
+        esac
     else
         echo "'$1' is not a valid file!"
-            fi
+    fi
 }
 
 # Creates an archive (*.tar.gz) from given directory.
@@ -33,8 +37,8 @@ function sanitize() { chmod -R u=rwX,g=rX,o= "$@" ;}
 
 # Function calls cht.sh (awesome cheatsheets!)
 function cheat() {
-      curl cht.sh/$1
-  }
+    curl "cht.sh/$1"
+}
 
 # Install (one or multiple) selected application(s)
 # using "brew search" as source input
@@ -83,7 +87,7 @@ kc() {
 }
 
 kimage() {
-  kubectl get pod $1 -n $2 -o jsonpath='{ .spec.containers[*].image }'
+    kubectl get pod "$1" -n "$2" -o jsonpath='{ .spec.containers[*].image }'
 }
 
 # ==[ MISC ]==
@@ -105,12 +109,21 @@ topcmd() {
 
 
 # From https://www.usenix.org/sites/default/files/conference/protected-files/lisa19_maheshwari.pdf
-mcd() { mkdir -p $1; cd $1 }
-cdl() { cd $1; ls}
-backup() { cp "$1"{,.bak};} #test first
-gfind() { find / -iname $@ 2>/dev/null }
-lfind() { find . -iname $@ 2>/dev/null }
-rtfm() { help $@ || man $@ || open "http://www.google.com/search?q=$@"; }
+mcd() { mkdir -p "$1" && cd "$1"; }
+cdl() { cd "$1" && ls; }
+backup() { cp "$1"{,.bak}; }
+gfind() { find / -iname "$@" 2>/dev/null; }
+lfind() { find . -iname "$@" 2>/dev/null; }
+rtfm() { help "$@" || man "$@" || open "http://www.google.com/search?q=$*"; }
+
+# Fuzzy tmux session switcher
+ts() {
+    local session
+    session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --height 40% --reverse)
+    if [[ -n "$session" ]]; then
+        tmux switch-client -t "$session" 2>/dev/null || tmux attach -t "$session"
+    fi
+}
 
 
 ## ==[ 1 Password ]==
@@ -294,4 +307,44 @@ Please generate a concise, one-line commit message for these changes using the s
                 ;;
         esac
     done
+}
+
+# -----------------------------------------------------------------------------
+# Git Worktree Functions
+
+# Create a new worktree and branch from within current git directory.
+gwa() {
+  if [[ -z $1 ]]; then
+    echo "Usage: gwa [branch name]"
+    return 1
+  fi
+
+  local branch="$1"
+  local base="$(basename "$PWD")"
+  local wt_path="../${base}--${branch}"
+
+  git worktree add -b "$branch" "$wt_path"
+  mise trust "$wt_path"
+  cd "$wt_path"
+}
+
+# Remove worktree and branch from within active worktree directory.
+gwd() {
+  if gum confirm "Remove worktree and branch?"; then
+    local cwd base branch root
+
+    cwd="$(pwd)"
+    worktree="$(basename "$cwd")"
+
+    # split on first `--`
+    root="${worktree%%--*}"
+    branch="${worktree#*--}"
+
+    # Protect against accidentally nuking a non-worktree directory
+    if [[ $root != $worktree ]]; then
+      cd "../$root"
+      git worktree remove "$worktree" --force
+      git branch -D "$branch"
+    fi
+  fi
 }

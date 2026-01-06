@@ -42,10 +42,42 @@
 	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 	# Remove branches that have already been merged with master
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
-        # Un-push a commit but leave the local repo intact
-        unpush = "push -f origin HEAD^:master"
-  #extract file from another branch
-  sf = !"git show $1:$2"
+	# Un-push a commit but leave the local repo intact
+	unpush = "push -f origin HEAD^:master"
+	# Extract file from another branch
+	sf = !"git show $1:$2"
+
+	# === Additional useful aliases ===
+	# Undo last commit but keep changes staged
+	undo = reset --soft HEAD~1
+	# Amend last commit without changing message
+	amend = commit --amend --no-edit
+	# List branches sorted by last modified
+	recent = branch --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative))%(color:reset)'
+	# Better log with graph
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	# Quick WIP commit
+	wip = !git add -A && git commit -m 'WIP'
+	# Unstage all staged changes
+	unstage = reset HEAD --
+	# Show last commit
+	last = log -1 HEAD --stat
+	# List aliases
+	aliases = config --get-regexp alias
+	# Diff staged changes
+	staged = diff --cached
+	# List contributors with number of commits
+	contributors = shortlog --summary --numbered
+	# Stash including untracked files
+	stash-all = stash push --include-untracked
+	# Clean merged branches (excluding main/master/develop)
+	cleanup = "!git branch --merged | grep -v '\\*\\|main\\|master\\|develop' | xargs -n 1 git branch -d"
+	# Show files changed in last commit
+	changed = show --stat --oneline HEAD
+	# Create a new branch and switch to it
+	new = checkout -b
+	# Push and set upstream
+	pushu = push -u origin HEAD
 
 [apply]
 	# Detect whitespace errors when applying a patch

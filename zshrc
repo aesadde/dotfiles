@@ -2,133 +2,128 @@
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
 
-# Lines configured by zsh-newuser-install
+# === [ History Configuration ] === {{{2
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=50000
+SAVEHIST=50000
 REPORTTIME=1
 
-setopt appendhistory autocd extendedglob
-autoload -U compinit
-autoload -U +X bashcompinit && bashcompinit
-compinit
+setopt APPEND_HISTORY         # Append to history file
+setopt EXTENDED_HISTORY       # Add timestamps to history
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicates first
+setopt HIST_IGNORE_DUPS       # Don't record duplicates
+setopt HIST_IGNORE_SPACE      # Don't record commands starting with space
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks
+setopt HIST_VERIFY            # Show command before executing from history
+setopt SHARE_HISTORY          # Share history between sessions
+setopt INC_APPEND_HISTORY     # Write immediately, not on exit
+#2}}}
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# === [ General Options ] === {{{2
+setopt AUTO_CD                # cd without typing cd
+setopt AUTO_PUSHD             # Push directories onto stack
+setopt PUSHD_IGNORE_DUPS      # Don't push duplicates
+setopt PUSHD_SILENT           # Don't print stack after pushd/popd
+setopt EXTENDED_GLOB          # Extended globbing
+setopt INTERACTIVE_COMMENTS   # Allow comments in interactive shell
+setopt NO_BEEP                # No beeping
+#2}}}
+
+# === [ Locale ] === {{{2
 export LANG="en_US.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
+#2}}}
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# === [ Zinit Installation ] === {{{2
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d "$ZINIT_HOME" ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d "$ZINIT_HOME/.git" ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+#2}}}
+
+# === [ Powerlevel10k Prompt ] === {{{2
+# Load immediately for instant prompt
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+#2}}}
 
-# cd without the command 'cd foo -> foo'
-setopt AUTO_CD
+# === [ Zinit Plugins ] === {{{2
+# Essential plugins with turbo mode (deferred loading for faster startup)
+# -C: skip security check, -i: ignore errors for missing completion files
+zinit wait lucid for \
+    atinit"ZINIT[COMPINIT_OPTS]='-C -i'; zicompinit; zicdreplay" \
+        zdharma-continuum/fast-syntax-highlighting \
+    blockf \
+        zsh-users/zsh-completions \
+    atload"!_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions
 
-# Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="true"
+# Oh-my-zsh plugins (only essentials, deferred)
+zinit wait lucid for \
+    OMZP::git \
+    OMZP::kubectl \
+    OMZP::docker \
+    OMZP::vi-mode \
+    OMZP::terraform \
+    OMZP::kube-ps1
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
+# FZF-tab for better completions
+zinit wait lucid for \
+    Aloxaf/fzf-tab
+#2}}}
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git macos vi-mode pip kubectl kube-ps1 encode64 docker terraform fzf fzf-tab poetry)
-
-# User configuration
-# # Do menu-driven completion.
+# === [ Completion Configuration ] === {{{2
+# Do menu-driven completion
 zstyle ':completion:*' menu select
 
-# Color completion for some things.
-# http://linuxshellaccount.blogspot.com/2008/12/color-completion-using-zsh-modules-on.html
+# Color completion using LS_COLORS
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# formatting and messages
-# http://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
+# Formatting and messages
 zstyle ':completion:*' verbose yes
-zstyle ':completion:*:descriptions' format "$fg[yellow]%B--- %d%b"
+zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
 
-# disable sort when completing `git checkout`
+# Disable sort when completing git checkout
 zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-# switch group using `,` and `.`
+
+# Preview directory content with lsd when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
+
+# Switch group using , and .
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
-source $ZSH/oh-my-zsh.sh
+# Case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+#2}}}
 
-# Add Kube prompt
+# === [ Kube Prompt ] === {{{2
 KUBE_PS1_SYMBOL_USE_IMG=true
-PROMPT=$PROMPT'$(kube_ps1) '
+#2}}}
 
-
-# Preferred editor for local and remote sessions
+# === [ Editor ] === {{{2
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  export EDITOR='vim'
+    export EDITOR='vim'
 else
-  export EDITOR='nvim'
+    export EDITOR='nvim'
 fi
+#2}}}
 #1}}}
 
-# === [ config ] === {{{1
+# === [ Config ] === {{{1
 OSTYPE="$(uname -s)"
 ARCH="$(uname -m)"
 DOTF="$HOME/dotfiles"
 
-#vi editing mode
+# vi editing mode
 set -o vi
-#
+
 # vi style incremental search
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
@@ -136,10 +131,10 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
-bindkey "^c" kill-line
+#1}}}
 
-# === [ Global Exports ]=== {{{2
-#Shell colors
+# === [ Global Exports ] === {{{1
+# Shell colors
 export CLICOLOR=1
 export LSCOLORS=dxgxcxdxcxegedacagacad
 
@@ -147,114 +142,145 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$DOTF/scripts"
 export VIM_VIKI_HOME="$HOME/Projects/wiki"
 export VIM_VIKI_PLAN="$HOME/Projects/PLAN"
-#
-# Keeping everything clean. Source all the files
-[ -r $DOTF/customFunctions ] && [ -f $DOTF/customFunctions ] && source $DOTF/customFunctions
-[[ -f $DOTF/aliases ]] && source $DOTF/aliases
-[[ -f $HOME/.local_settings ]] && source $HOME/.local_settings
 
-# Golang Path
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH=$PATH:$GOROOT/bin
+# Source custom files
+[ -r "$DOTF/customFunctions" ] && [ -f "$DOTF/customFunctions" ] && source "$DOTF/customFunctions"
+[[ -f "$DOTF/aliases" ]] && source "$DOTF/aliases"
+[[ -f "$HOME/.local_settings" ]] && source "$HOME/.local_settings"
 
-if [[ -d $HOME/goprojects ]]; then
-  export GOPATH="$HOME/goprojects"
+# Golang Path (cached to avoid slow brew --prefix on every shell start)
+export GOROOT="/opt/homebrew/opt/go/libexec"
+export PATH="$PATH:$GOROOT/bin"
+
+if [[ -d "$HOME/goprojects" ]]; then
+    export GOPATH="$HOME/goprojects"
 else
-  export GOPATH="$HOME/go"
+    export GOPATH="$HOME/go"
 fi
-export PATH=$PATH:$GOPATH/bin
+export PATH="$PATH:$GOPATH/bin"
 
-if [[ -d /usr/local/go ]]; then
-  export PATH=/usr/local/go/bin:$PATH
-fi
+[[ -d /usr/local/go ]] && export PATH="/usr/local/go/bin:$PATH"
+#1}}}
 
-
-# fzf via Homebrew
+# === [ FZF Configuration ] === {{{1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
-  source /usr/local/opt/fzf/shell/key-bindings.zsh
-  source /usr/local/opt/fzf/shell/completion.zsh
-
-  if [ $(which rg) ]; then
+# FZF with ripgrep
+if command -v rg &> /dev/null; then
     export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-  fi
-  export FZF_CTRL_T_OPTS="--select-1 --exit-0 --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-  export FZF_DEFAULT_OPTS="--layout=reverse --border"
 fi
 
-# Anaconda Environments
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+export FZF_DEFAULT_OPTS="--layout=reverse --border --height=40%"
+
+# Better preview with bat if available
+if command -v bat &> /dev/null; then
+    export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {} 2>/dev/null || cat {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 else
-    if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/anaconda3/bin:$PATH"
-    fi
+    export FZF_CTRL_T_OPTS="--preview '(cat {} || tree -C {}) 2>/dev/null | head -200'"
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-#2}}}
 
-# ===[ OS specific ]=== {{{1
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window up:3:hidden:wrap --bind 'ctrl-/:toggle-preview'"
+export FZF_ALT_C_OPTS="--preview 'lsd --tree --color=always {} 2>/dev/null | head -200'"
+#1}}}
+
+# === [ Conda - Lazy Loaded ] === {{{1
+# Lazy-load conda to speed up shell startup (~200-400ms savings)
+conda() {
+    unfunction conda 2>/dev/null
+    __conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    conda "$@"
+}
+#1}}}
+
+# === [ OS Specific ] === {{{1
 if [ "$OSTYPE" = 'Darwin' ]; then
-  [[ -f $DOTF/aliases.local ]] && source $DOTF/aliases.local
-  [[ -f $DOTF/kaliases ]] && source $DOTF/kaliases;
-  #TeX
-  export PATH=/Library/TeX/texbin:$PATH
+    [[ -f "$DOTF/aliases.local" ]] && source "$DOTF/aliases.local"
+    [[ -f "$DOTF/kaliases" ]] && source "$DOTF/kaliases"
 
-  export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-  [ -f /Users/alberto/Library/Android/sdk ] && export PATH=$PATH:/Users/alberto/Library/Android/sdk
+    # TeX
+    export PATH="/Library/TeX/texbin:$PATH"
 
-    #Homebrew path - tests that homebrew works and adds prepends /usr/local/bin to clean path
-    test -x /usr/local/bin/brew && export PATH=/usr/local/bin:`echo ":$PATH:" | sed -e "s:\:/usr/local/bin\::\::g" -e "s/^://" -e "s/:$//"`
+    # RVM
+    export PATH="$PATH:$HOME/.rvm/bin"
 
-  elif [ "$OSTYPE" = 'Linux' ]; then
+    # Android SDK (if exists)
+    [[ -d "$HOME/Library/Android/sdk" ]] && export PATH="$PATH:$HOME/Library/Android/sdk"
+
+    # Homebrew (Apple Silicon) - set paths directly instead of slow eval
+    export HOMEBREW_PREFIX="/opt/homebrew"
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+    export HOMEBREW_REPOSITORY="/opt/homebrew"
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
+    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
+
+elif [ "$OSTYPE" = 'Linux' ]; then
     export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-    if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
-
-  elif [ "$(expr substr $OSTYPE 1 10)" == "MINGW32_NT" ]; then
-    export EDITOR="/c/Program\ Files\ (x86)/Vim/vim74/gvim.exe"
+    command -v kubectl &> /dev/null && source <(kubectl completion zsh)
 fi
 #1}}}
-#1}}}
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
+# === [ Additional Tools ] === {{{1
+# Google Cloud SDK
+[[ -f "$HOME/.local/google-cloud-sdk/path.zsh.inc" ]] && source "$HOME/.local/google-cloud-sdk/path.zsh.inc"
+[[ -f "$HOME/.local/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/.local/google-cloud-sdk/completion.zsh.inc"
 
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/.local/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/.local/google-cloud-sdk/completion.zsh.inc"; fi
-if [ -f "$HOME/.local/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/.local/google-cloud-sdk/path.zsh.inc"; fi
-
+# Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-## JAVA OPTIONS - For other versions check the aliases setJDK*
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home
+# Java
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"
 
-export PATH="/Users/aesadde/.local/git-fuzzy/bin:$PATH"
+# Git-fuzzy (if exists)
+[[ -d "$HOME/.local/git-fuzzy/bin" ]] && export PATH="$HOME/.local/git-fuzzy/bin:$PATH"
 
+# Linkerd (if exists)
+[[ -d "$HOME/.linkerd2/bin" ]] && export PATH="$PATH:$HOME/.linkerd2/bin"
 
-complete -o nospace -C /usr/local/bin/kustomize kustomize
+# GHCup (Haskell) - just add to PATH, don't source the slow env file
+[[ -d "$HOME/.ghcup/bin" ]] && export PATH="$HOME/.ghcup/bin:$PATH"
 
-# linkerd
-export PATH=$PATH:/Users/aesadde/.linkerd2/bin
+# GVM (Go Version Manager) - lazy load
+gvm() {
+    unfunction gvm 2>/dev/null
+    [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+    gvm "$@"
+}
 
-[ -f "/Users/aesadde/.ghcup/env" ] && source "/Users/aesadde/.ghcup/env" # ghcup-env
-[[ -s "/Users/aesadde/.gvm/scripts/gvm" ]] && source "/Users/aesadde/.gvm/scripts/gvm"
+# Colima Docker
+export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
 
-# colima docker
-export DOCKER_HOST=unix:///$HOME/.colima/docker.sock supabase start
+# GitHub Copilot CLI - lazy load (very slow ~300ms)
+ghcs() {
+    unfunction ghcs 2>/dev/null
+    eval "$(github-copilot-cli alias -- zsh)"
+    ghcs "$@"
+}
+ghce() {
+    unfunction ghce 2>/dev/null
+    eval "$(github-copilot-cli alias -- zsh)"
+    ghce "$@"
+}
 
-eval "$(github-copilot-cli alias -- "$0")"
+# Windsurf (if exists)
+[[ -d "$HOME/.codeium/windsurf/bin" ]] && export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 
-
-# Added by Windsurf
-export PATH="/Users/aesadde/.codeium/windsurf/bin:$PATH"
-
-eval "$(try init ~/repos/tries)"
+# Try - lazy load
+t() {
+    unfunction t 2>/dev/null
+    eval "$(try init ~/repos/tries)"
+    try "$@"
+}
+#1}}}
