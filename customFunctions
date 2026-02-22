@@ -323,7 +323,27 @@ gwa() {
   local base="$(basename "$PWD")"
   local wt_path="../${base}--${branch}"
 
-  git worktree add -b "$branch" "$wt_path"
+  # Check if branch is already checked out in a worktree
+  local existing_wt=$(git worktree list --porcelain | grep -B2 "branch refs/heads/$branch$" | grep "^worktree " | cut -d' ' -f2-)
+  if [[ -n "$existing_wt" ]]; then
+    if [[ -d "$existing_wt" ]]; then
+      echo "Branch already in worktree: $existing_wt"
+      cd "$existing_wt"
+      return 0
+    else
+      # Worktree dir was deleted, prune stale entry
+      echo "Pruning stale worktree: $existing_wt"
+      git worktree prune
+    fi
+  fi
+
+  if git show-ref --verify --quiet "refs/heads/$branch"; then
+    # Branch exists, check it out
+    git worktree add "$wt_path" "$branch"
+  else
+    # Branch doesn't exist, create it
+    git worktree add -b "$branch" "$wt_path"
+  fi
   mise trust "$wt_path"
   cd "$wt_path"
 }

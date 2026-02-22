@@ -66,7 +66,6 @@ zinit wait lucid for \
     OMZP::git \
     OMZP::kubectl \
     OMZP::docker \
-    OMZP::vi-mode \
     OMZP::terraform \
     OMZP::kube-ps1
 
@@ -114,6 +113,48 @@ else
     export EDITOR='nvim'
 fi
 #2}}}
+#1}}}
+
+# === [ Terminal Title ] === {{{1
+_last_git_branch=""
+
+_update_tmux_git_branch() {
+    [[ -z "$TMUX" ]] && return
+    local branch
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+    if [[ -n "$branch" ]]; then
+        [[ "$branch" != "$_last_git_branch" ]] && tmux set-option -w @git_branch "$branch"
+    else
+        [[ -n "$_last_git_branch" ]] && tmux set-option -wu @git_branch
+    fi
+    _last_git_branch="$branch"
+}
+
+_get_pane_title() {
+    local git_root
+    git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+    if [[ -n "$git_root" ]]; then
+        basename "$git_root"
+    else
+        print -P '%2~'
+    fi
+}
+
+_set_terminal_title() { print -Pn "\e]0;${1}\a" }
+
+_update_title_precmd() {
+    _update_tmux_git_branch
+    _set_terminal_title "$(_get_pane_title)"
+}
+
+_update_title_chpwd() {
+    _update_tmux_git_branch
+    _set_terminal_title "$(_get_pane_title)"
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _update_title_precmd
+add-zsh-hook chpwd _update_title_chpwd
 #1}}}
 
 # === [ Config ] === {{{1
@@ -274,13 +315,6 @@ ghce() {
     ghce "$@"
 }
 
-# Windsurf (if exists)
-[[ -d "$HOME/.codeium/windsurf/bin" ]] && export PATH="$HOME/.codeium/windsurf/bin:$PATH"
-
-# Try - lazy load
-t() {
-    unfunction t 2>/dev/null
-    eval "$(try init ~/repos/tries)"
-    try "$@"
-}
 #1}}}
+export PATH="/Users/aesadde/.bun/bin:$PATH"
+eval "$(ruby ~/.local/try.rb init ~/repos/tries)"

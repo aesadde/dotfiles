@@ -68,3 +68,4 @@ alias brew='arch -arm64 brew'
 
 ## misc
 alias taxes='cd /Users/aesadde/Library/Mobile\ Documents/com~apple~CloudDocs/main/Areas/Family/finances/astrasr-llc'
+alias cc=claude
