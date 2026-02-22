@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(zsh -ic:*)",
+      "WebFetch(domain:ghostty.org)",
+      "Bash(brew update:*)",
+      "Bash(brew info:*)",
+      "Bash(brew cat:*)",
+      "Bash(arch -arm64 brew install:*)",
+      "Bash(tmux:*)",
+      "Bash(echo:*)",
+      "Bash(git submodule:*)"
+    ]
+  }
+}
