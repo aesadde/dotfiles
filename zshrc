@@ -318,3 +318,4 @@ ghce() {
 #1}}}
 export PATH="/Users/aesadde/.bun/bin:$PATH"
 eval "$(ruby ~/.local/try.rb init ~/repos/tries)"
+export PATH="$HOME/go/bin:$PATH"
