@@ -319,3 +319,5 @@ ghce() {
 export PATH="/Users/aesadde/.bun/bin:$PATH"
 eval "$(ruby ~/.local/try.rb init ~/repos/tries)"
 export PATH="$HOME/go/bin:$PATH"
+# Source secrets (not tracked in git)
+[[ -f ~/.env.local ]] && source ~/.env.local
