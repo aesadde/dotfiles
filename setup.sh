@@ -49,7 +49,7 @@ install_packages() {
         err "No Brewfile found"; return 1
     fi
     info "Installing packages from Brewfile..."
-    brew bundle --file="$DOTF/Brewfile" --no-lock
+    brew bundle --file="$DOTF/Brewfile"
     ok "Packages installed"
 }
 
