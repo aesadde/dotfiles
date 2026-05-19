@@ -1,171 +1,178 @@
 #!/usr/bin/env bash
-#===============================================================================
-#          FILE: setup.sh
-#         USAGE: ./setup.sh
-#
-#   DESCRIPTION: Setup dotfiles
-#
-#       OPTIONS: -h usage
-#  REQUIREMENTS: bash, vim 7+, nvim 0.1+
-#          BUGS:
-#         NOTES:
-#        AUTHOR: Alberto Sadde
-#       CREATED: 03/15/2014 20:35
-#       VERSION: 0.2
-#===============================================================================
+set -euo pipefail
 
-#Variables: {{{1
-DOTFILES_ROOT=$PWD
-#}}}
-#Functions: All functions are declared here {{{1
-#Function: usage() prints the usage instructions {{{2
-function usage() {
-  echo -e "Need to select at least one option\n"
-  echo -e "-h for help\n-all for all dotfiles\n-vim just for vim dotfiles\n-bash
-  just for bash dotfiles\n-git for git dotfiles\n-clean to remove old dotfiles"
+DOTF="$(cd "$(dirname "$0")" && pwd)"
 
-  exit 1
-}
-#2}}}
-#Function: parseOptions() parses the options selected by user {{{2
-function parseOptions() {
-  case "$1" in
-    -h)
-      usage
-      ;;
-    -all)
-      all
-      ;;
-    -vim)
-      vimFiles
-      ;;
-    -nvim)
-      nvimFiles
-      ;;
-    -vimperator)
-      vimperator
-      ;;
-    -shell)
-      shellFiles
-      ;;
-    -git)
-      gitFiles
-      ;;
-    -jobs)
-      installJobs
-      ;;
-    -clean)
-      removeOldDotFiles
-      ;;
-    -osx)
-      .$DOTFILES_ROOT/osx
-  esac
-}
-#2}}}
-#Function: removeOldDotFiles() cleans up home directory from old dotfiles if they exist {{{2
-function removeOldDotFiles() {
-  for file in $HOME/.{config/nvim,vimperator,vimperatorrc,zshrc,ghci.conf,scripts,tmux.conf,gitignore,gitconfig,gitattributes,bash_profile,aliases,bashrc,exports,config/init.vim,customFunctions}; do
-    if [ -e $file ]; then
-      rm -rf $file
-    fi
-  done
-  unset file
+info()  { printf "\033[1;34m→\033[0m %s\n" "$1"; }
+ok()    { printf "\033[1;32m✓\033[0m %s\n" "$1"; }
+warn()  { printf "\033[1;33m!\033[0m %s\n" "$1"; }
+err()   { printf "\033[1;31m✗\033[0m %s\n" "$1"; }
 
-  if [ -d $HOME/.config ]; then
-    rm -rf $HOME/.config
-  fi
-}
-#2}}}
-#Function: shellFiles() sets the shell dotfiles {{{2
-function shellFiles() {
-  echo -e "Changing to zsh - Be ready to sudo"
-  /usr/bin/sudo apt-get install zsh
-  chsh
-  ln -s $DOTFILES_ROOT/aesadde.zsh-theme $HOME/.oh-my-zsh/themes/aesadde.zsh-theme
+# Symlink helper: creates link, backs up existing files
+link_file() {
+    local src="$1" dst="$2"
+    local dst_dir="$(dirname "$dst")"
 
-  echo -e "Install oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  rm $HOME/.zshrc*
+    [[ ! -d "$dst_dir" ]] && mkdir -p "$dst_dir"
 
-  for file in {ghci.conf,zshrc,bash_profile,bashrc,tmux.conf}; do
-    if [ -f $HOME/.$file ]; then
-      rm $HOME/.$file
+    if [[ -L "$dst" ]]; then
+        local current="$(readlink "$dst")"
+        if [[ "$current" == "$src" ]]; then
+            ok "already linked: $dst"
+            return
+        fi
+        rm "$dst"
+    elif [[ -e "$dst" ]]; then
+        warn "backing up $dst → ${dst}.bak"
+        mv "$dst" "${dst}.bak"
     fi
 
-    ln -s $DOTFILES_ROOT/$file $HOME/.$file
-  done
-  unset file
-
-  if [ ! -e $HOME/.scripts ]; then
-    ln -s $DOTFILES_ROOT/scripts $HOME/.scripts
-  fi
-
-  echo -e "All shell dotfiles up and running!\n"
-}
-#2}}}
-#Function: vimFiles() sets .vimrc and .vim {{{2
-function vimFiles() {
-  git submodule init; git submodule update
-  ln -s  $DOTFILES_ROOT/vim $HOME/.vim
-  ln -s $DOTFILES_ROOT/vim/vimrc $HOME/.vimrc
-  echo -e "Vim files and plugins up and running!\n"
-  cd $DOTFILES_ROOT
-}
-#2}}}
-#Function: nvimFiles() sets .nvimrc and .nvim {{{2
-function nvimFiles() {
-  if [ ! -d $HOME/.config ]; then
-    mkdir -p $HOME/.config
-  fi
-  ln -s  $DOTFILES_ROOT/nvim $HOME/.config/nvim
-  ln -s $DOTFILES_ROOT/nvim/init.vim $HOME/.config/init.vim
-  cd $DOTFILES_ROOT
-}
-#2}}}
-#Function: vimperator() sets vimperator options {{{2
-function vimperator() {
-  # if [ -d /Applications/Firefox.app ]; then
-  ln -s "$DOTFILES_ROOT/vimperator" "$HOME/.vimperator"
-  ln -s "$DOTFILES_ROOT/vimperator/vimperatorrc" "$HOME/.vimperatorrc"
-  # fi
+    ln -s "$src" "$dst"
+    ok "linked: $dst → $src"
 }
 
-#Function: gitFiles() sets global git config dotfiles {{{2
-function gitFiles() {
-  for file in {gitignore,gitconfig}; do
-    if [ -f $HOME/.$file ]; then
-      rm $HOME/.$file
+# ─── Homebrew ────────────────────────────────────────────────────────────────
+
+install_homebrew() {
+    if command -v brew &>/dev/null; then
+        ok "Homebrew already installed"
+    else
+        info "Installing Homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+        ok "Homebrew installed"
+    fi
+}
+
+install_packages() {
+    if [[ ! -f "$DOTF/Brewfile" ]]; then
+        err "No Brewfile found"; return 1
+    fi
+    info "Installing packages from Brewfile..."
+    brew bundle --file="$DOTF/Brewfile" --no-lock
+    ok "Packages installed"
+}
+
+# ─── Symlinks ────────────────────────────────────────────────────────────────
+
+link_dotfiles() {
+    info "Linking dotfiles..."
+
+    # Shell
+    link_file "$DOTF/zshrc"       "$HOME/.zshrc"
+    link_file "$DOTF/p10k.zsh"    "$HOME/.p10k.zsh"
+    link_file "$DOTF/aliases"     "$HOME/.aliases"
+
+    # Git
+    link_file "$DOTF/gitconfig"   "$HOME/.gitconfig"
+    link_file "$DOTF/gitignore"   "$HOME/.gitignore"
+
+    # Tmux
+    link_file "$DOTF/tmux/tmux.conf" "$HOME/.tmux.conf"
+
+    # Neovim
+    link_file "$DOTF/nvim"        "$HOME/.config/nvim"
+
+    # Ghostty
+    link_file "$DOTF/ghostty/config" "$HOME/.config/ghostty/config"
+
+    # Karabiner
+    link_file "$DOTF/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
+
+    ok "All dotfiles linked"
+}
+
+# ─── macOS defaults ──────────────────────────────────────────────────────────
+
+apply_macos_defaults() {
+    info "Applying macOS defaults..."
+
+    if [[ -f "$DOTF/macos/defaults.sh" ]]; then
+        bash "$DOTF/macos/defaults.sh"
     fi
 
-    ln -s $DOTFILES_ROOT/$file $HOME/.$file
-  done
-  unset file
-  echo -e "All git config files up and running!\n"
+    for plist in dock screencapture trackpad window-manager; do
+        local file="$DOTF/macos/${plist}.plist"
+        if [[ -f "$file" ]]; then
+            local domain
+            case "$plist" in
+                dock)           domain="com.apple.dock" ;;
+                screencapture)  domain="com.apple.screencapture" ;;
+                trackpad)       domain="com.apple.AppleMultitouchTrackpad" ;;
+                window-manager) domain="com.apple.WindowManager" ;;
+            esac
+            defaults import "$domain" "$file"
+            ok "imported $plist"
+        fi
+    done
+
+    killall Dock Finder SystemUIServer 2>/dev/null || true
+    ok "macOS defaults applied"
 }
-#2}}}
-#Function: installJobs() installs all jobs in jobs dir {{{2
-function installJobs() {
-  LAUNCH=/Library/LaunchAgents
-  cd $DOTFILES_ROOT/jobs
-  for file in *; do
-    /usr/bin/sudo cp $file $LAUNCH/.
-    /usr/bin/sudo chown root:wheel $LAUNCH/$file
-    sudo launchctl load $LAUNCH/$file
-  done
-  cd $DOTFILES_ROOT
+
+# ─── Shell ───────────────────────────────────────────────────────────────────
+
+setup_shell() {
+    # Set zsh as default shell if it isn't already
+    if [[ "$SHELL" != */zsh ]]; then
+        info "Changing default shell to zsh..."
+        chsh -s "$(which zsh)"
+        ok "Default shell set to zsh"
+    else
+        ok "Shell is already zsh"
+    fi
 }
-#2}}}
-#Function: all() sets all dotfiles {{{2
-function all() {
-  shellFiles
-  vimperator
-  nvimFiles
-  nvimFiles
-  gitFiles
+
+# ─── Secrets reminder ────────────────────────────────────────────────────────
+
+remind_secrets() {
+    echo ""
+    info "Manual steps remaining:"
+    echo "  1. Create ~/.env.local with API keys (LINEAR_API_KEY, etc.)"
+    echo "  2. Copy SSH keys or generate new ones"
+    echo "  3. Copy ~/.claude/ settings (or scp from old machine)"
+    echo "  4. Run 'p10k configure' if prompt looks wrong"
+    echo "  5. Open Ghostty/tmux to verify theme"
+    echo ""
 }
-#2}}}
-#Main: {{{
-# check we are given at least one parameter
-[[ $# -ne 1 ]] && usage
-parseOptions $1
-#}}}
+
+# ─── Main ────────────────────────────────────────────────────────────────────
+
+usage() {
+    echo "Usage: ./setup.sh [command]"
+    echo ""
+    echo "Commands:"
+    echo "  all       Run full setup (default)"
+    echo "  link      Symlink dotfiles only"
+    echo "  brew      Install Homebrew + packages"
+    echo "  macos     Apply macOS defaults"
+    echo "  shell     Set default shell to zsh"
+    echo ""
+}
+
+main() {
+    local cmd="${1:-all}"
+
+    case "$cmd" in
+        all)
+            install_homebrew
+            install_packages
+            link_dotfiles
+            setup_shell
+            apply_macos_defaults
+            remind_secrets
+            ;;
+        link)   link_dotfiles ;;
+        brew)   install_homebrew && install_packages ;;
+        macos)  apply_macos_defaults ;;
+        shell)  setup_shell ;;
+        -h|--help|help) usage ;;
+        *)
+            err "Unknown command: $cmd"
+            usage
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"
