@@ -76,9 +76,6 @@ link_dotfiles() {
     # Ghostty
     link_file "$DOTF/ghostty/config" "$HOME/.config/ghostty/config"
 
-    # Karabiner
-    link_file "$DOTF/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
-
     ok "All dotfiles linked"
 }
 
