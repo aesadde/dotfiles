@@ -4,8 +4,6 @@ tap "homebrew/services"
 tap "jesseduffield/lazygit"
 tap "oven-sh/bun"
 tap "stripe/stripe-cli"
-tap "supabase/tap"
-tap "yakitrak/yakitrak"
 
 # Core CLI
 brew "bash"
@@ -42,7 +40,6 @@ brew "oven-sh/bun/bun"
 brew "neovim"
 brew "tmux", args: ["HEAD"]
 brew "tree-sitter"
-brew "zsh-syntax-highlighting"
 
 # Docker
 brew "docker"
@@ -50,36 +47,28 @@ brew "docker-compose"
 brew "docker-credential-helper"
 brew "colima", restart_service: :changed
 
-# Cloud & infra
-brew "supabase/tap/supabase"
+# Cloud
 brew "stripe/stripe-cli/stripe"
-brew "hashicorp/tap/terraform"
 brew "doctl"
-brew "pulumi"
 
 # Data
-brew "postgresql@17"
+brew "postgresql"
 
 # AI
 brew "llm"
 brew "codex"
 
 # Misc CLI
-brew "ast-grep"
-brew "gping"
+brew "gnupg"
 brew "gum"
-brew "httpie"
 brew "lsd"
 brew "nmap"
 brew "pandoc"
-brew "shfmt"
 brew "typos-cli"
-brew "yt-dlp"
-brew "gnupg"
-brew "yakitrak/yakitrak/obsidian-cli"
 
 # Casks
 cask "1password-cli"
+cask "claude"
 cask "claude-code"
 cask "ghostty"
 cask "hammerspoon"
