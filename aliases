@@ -67,5 +67,5 @@ alias setJDK15='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-
 alias brew='arch -arm64 brew'
 
 ## misc
-alias taxes='cd /Users/aesadde/Library/Mobile\ Documents/com~apple~CloudDocs/main/Areas/Family/finances/astrasr-llc'
+alias taxes='cd /Users/aesadde/Dropbox/Family\ Room/finances/'
 alias cc=claude
