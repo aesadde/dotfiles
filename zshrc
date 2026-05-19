@@ -1,3 +1,10 @@
+# === [ Powerlevel10k Instant Prompt ] === {{{1
+# Must stay at the top. No console output above this.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+#1}}}
+
 # === [ Global ] === {{{1
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
@@ -42,17 +49,12 @@ source "${ZINIT_HOME}/zinit.zsh"
 #2}}}
 
 # === [ Powerlevel10k Prompt ] === {{{2
-# Load immediately for instant prompt
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 #2}}}
 
 # === [ Zinit Plugins ] === {{{2
-# Essential plugins with turbo mode (deferred loading for faster startup)
-# -C: skip security check, -i: ignore errors for missing completion files
 zinit wait lucid for \
     atinit"ZINIT[COMPINIT_OPTS]='-C -i'; zicompinit; zicdreplay" \
         zdharma-continuum/fast-syntax-highlighting \
@@ -61,49 +63,33 @@ zinit wait lucid for \
     atload"!_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions
 
-# Oh-my-zsh plugins (only essentials, deferred)
 zinit wait lucid for \
     OMZP::git \
-    OMZP::kubectl \
-    OMZP::docker \
-    OMZP::terraform \
-    OMZP::kube-ps1
+    OMZP::docker
 
-# FZF-tab for better completions
 zinit wait lucid for \
     Aloxaf/fzf-tab
 #2}}}
 
 # === [ Completion Configuration ] === {{{2
-# Do menu-driven completion
 zstyle ':completion:*' menu select
-
-# Color completion using LS_COLORS
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# Formatting and messages
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
-
-# Disable sort when completing git checkout
 zstyle ':completion:*:git-checkout:*' sort false
-
-# Preview directory content with lsd when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
-
-# Switch group using , and .
 zstyle ':fzf-tab:*' switch-group ',' '.'
-
-# Case-insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-#2}}}
 
-# === [ Kube Prompt ] === {{{2
-KUBE_PS1_SYMBOL_USE_IMG=true
+# Preview directory content with lsd when completing cd (falls back to ls)
+if command -v lsd &>/dev/null; then
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
+else
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
+fi
 #2}}}
 
 # === [ Editor ] === {{{2
@@ -158,14 +144,11 @@ add-zsh-hook chpwd _update_title_chpwd
 #1}}}
 
 # === [ Config ] === {{{1
-OSTYPE="$(uname -s)"
-ARCH="$(uname -m)"
 DOTF="$HOME/dotfiles"
 
 # vi editing mode
 set -o vi
 
-# vi style incremental search
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
@@ -174,62 +157,76 @@ bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 #1}}}
 
-# === [ Global Exports ] === {{{1
-# Shell colors
+# === [ PATH & Exports ] === {{{1
 export CLICOLOR=1
 export LSCOLORS=dxgxcxdxcxegedacagacad
 
+# Homebrew (Apple Silicon)
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+export HOMEBREW_REPOSITORY="/opt/homebrew"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
+
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$DOTF/scripts"
-export VIM_VIKI_HOME="$HOME/Projects/wiki"
-export VIM_VIKI_PLAN="$HOME/Projects/PLAN"
+
+# Go
+export GOROOT="/opt/homebrew/opt/go/libexec"
+export GOPATH="${HOME}/go"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+
+# Bun
+[[ -d "$HOME/.bun/bin" ]] && export PATH="$HOME/.bun/bin:$PATH"
+
+# Colima Docker
+export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
 
 # Source custom files
-[ -r "$DOTF/customFunctions" ] && [ -f "$DOTF/customFunctions" ] && source "$DOTF/customFunctions"
+[ -r "$DOTF/customFunctions" ] && source "$DOTF/customFunctions"
 [[ -f "$DOTF/aliases" ]] && source "$DOTF/aliases"
+
+# Source secrets (not tracked in git)
+[[ -f ~/.env.local ]] && source ~/.env.local
+
+# Machine-local settings
 [[ -f "$HOME/.local_settings" ]] && source "$HOME/.local_settings"
-
-# Golang Path (cached to avoid slow brew --prefix on every shell start)
-export GOROOT="/opt/homebrew/opt/go/libexec"
-export PATH="$PATH:$GOROOT/bin"
-
-if [[ -d "$HOME/goprojects" ]]; then
-    export GOPATH="$HOME/goprojects"
-else
-    export GOPATH="$HOME/go"
-fi
-export PATH="$PATH:$GOPATH/bin"
-
-[[ -d /usr/local/go ]] && export PATH="/usr/local/go/bin:$PATH"
 #1}}}
 
 # === [ FZF Configuration ] === {{{1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# FZF with ripgrep
-if command -v rg &> /dev/null; then
+if command -v rg &>/dev/null; then
     export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
 export FZF_DEFAULT_OPTS="--layout=reverse --border --height=40%"
 
-# Better preview with bat if available
-if command -v bat &> /dev/null; then
+if command -v bat &>/dev/null; then
     export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {} 2>/dev/null || cat {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 else
     export FZF_CTRL_T_OPTS="--preview '(cat {} || tree -C {}) 2>/dev/null | head -200'"
 fi
 
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window up:3:hidden:wrap --bind 'ctrl-/:toggle-preview'"
-export FZF_ALT_C_OPTS="--preview 'lsd --tree --color=always {} 2>/dev/null | head -200'"
+
+if command -v lsd &>/dev/null; then
+    export FZF_ALT_C_OPTS="--preview 'lsd --tree --color=always {} 2>/dev/null | head -200'"
+else
+    export FZF_ALT_C_OPTS="--preview 'ls -1 --color=always {} 2>/dev/null | head -200'"
+fi
+#1}}}
+
+# === [ Mise (runtime manager) ] === {{{1
+command -v mise &>/dev/null && eval "$(mise activate zsh)"
 #1}}}
 
 # === [ Conda - Lazy Loaded ] === {{{1
-# Lazy-load conda to speed up shell startup (~200-400ms savings)
 conda() {
     unfunction conda 2>/dev/null
-    __conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    __conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
@@ -244,80 +241,7 @@ conda() {
 }
 #1}}}
 
-# === [ OS Specific ] === {{{1
-if [ "$OSTYPE" = 'Darwin' ]; then
-    [[ -f "$DOTF/aliases.local" ]] && source "$DOTF/aliases.local"
-    [[ -f "$DOTF/kaliases" ]] && source "$DOTF/kaliases"
-
-    # TeX
-    export PATH="/Library/TeX/texbin:$PATH"
-
-    # RVM
-    export PATH="$PATH:$HOME/.rvm/bin"
-
-    # Android SDK (if exists)
-    [[ -d "$HOME/Library/Android/sdk" ]] && export PATH="$PATH:$HOME/Library/Android/sdk"
-
-    # Homebrew (Apple Silicon) - set paths directly instead of slow eval
-    export HOMEBREW_PREFIX="/opt/homebrew"
-    export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
-    export HOMEBREW_REPOSITORY="/opt/homebrew"
-    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
-    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
-
-elif [ "$OSTYPE" = 'Linux' ]; then
-    export LD_LIBRARY_PATH="$HOME/local/lib:/lib:/lib64:$LD_LIBRARY_PATH"
-    export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
-    command -v kubectl &> /dev/null && source <(kubectl completion zsh)
-fi
-#1}}}
-
-# === [ Additional Tools ] === {{{1
-# Google Cloud SDK
+# === [ Google Cloud SDK ] === {{{1
 [[ -f "$HOME/.local/google-cloud-sdk/path.zsh.inc" ]] && source "$HOME/.local/google-cloud-sdk/path.zsh.inc"
 [[ -f "$HOME/.local/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/.local/google-cloud-sdk/completion.zsh.inc"
-
-# Yarn
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"
-
-# Git-fuzzy (if exists)
-[[ -d "$HOME/.local/git-fuzzy/bin" ]] && export PATH="$HOME/.local/git-fuzzy/bin:$PATH"
-
-# Linkerd (if exists)
-[[ -d "$HOME/.linkerd2/bin" ]] && export PATH="$PATH:$HOME/.linkerd2/bin"
-
-# GHCup (Haskell) - just add to PATH, don't source the slow env file
-[[ -d "$HOME/.ghcup/bin" ]] && export PATH="$HOME/.ghcup/bin:$PATH"
-
-# GVM (Go Version Manager) - lazy load
-gvm() {
-    unfunction gvm 2>/dev/null
-    [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-    gvm "$@"
-}
-
-# Colima Docker
-export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
-
-# GitHub Copilot CLI - lazy load (very slow ~300ms)
-ghcs() {
-    unfunction ghcs 2>/dev/null
-    eval "$(github-copilot-cli alias -- zsh)"
-    ghcs "$@"
-}
-ghce() {
-    unfunction ghce 2>/dev/null
-    eval "$(github-copilot-cli alias -- zsh)"
-    ghce "$@"
-}
-
 #1}}}
-export PATH="/Users/aesadde/.bun/bin:$PATH"
-eval "$(ruby ~/.local/try.rb init ~/repos/tries)"
-export PATH="$HOME/go/bin:$PATH"
-# Source secrets (not tracked in git)
-[[ -f ~/.env.local ]] && source ~/.env.local

@@ -1,10 +1,12 @@
-#Common aliases
-alias ls='lsd'
-alias lk='lsd -laSr'          # Sort by size, biggest last.
-alias lt='lsd -latr'          # Sort by date, most recent last.
-alias la='lsd -lha'
-alias lg='lsd -la | grep'     # show only matching files/dirs
-alias lcount='ls -1 | wc -l' # count number of files in dir
+# Common aliases
+if command -v lsd &>/dev/null; then
+  alias ls='lsd'
+  alias lk='lsd -laSr'
+  alias lt='lsd -latr'
+  alias la='lsd -lha'
+  alias lg='lsd -la | grep'
+fi
+alias lcount='ls -1 | wc -l'
 alias grep='grep --color=auto'
 alias rm='rm -iv'
 alias cp='cp -v'
@@ -12,60 +14,39 @@ alias mv='mv -v'
 alias mkdir='mkdir -pv'
 
 # Modern tool replacements (if installed)
-command -v bat &> /dev/null && alias cat='bat'
-command -v htop &> /dev/null && alias top='htop'
-command -v dust &> /dev/null && alias du='dust'
-command -v duf &> /dev/null && alias df='duf'
+command -v bat &>/dev/null && alias cat='bat'
+command -v htop &>/dev/null && alias top='htop'
+command -v dust &>/dev/null && alias du='dust'
+command -v duf &>/dev/null && alias df='duf'
 
-#edit dots and vim
+# Editors
 alias ev='nvim ~/dotfiles/nvim/init.lua'
 
-#Git aliases (git specific aliases are in gitconfig)
+# Git (git-specific aliases are in gitconfig)
 alias g\?='git status'
 alias save='git add . && git commit -m "chore: save progress"'
 
-#tmux aliases
+# Tmux
 alias tn='tmux new-session -s'
 alias tml='tmux ls'
 alias tma='tmux attach -t'
-alias tnew='new-tmux-from-dir-name'
 
-## OS X
-#hide/show .files
+# macOS
 alias hiddentrue='defaults write com.apple.finder AppleShowAllFiles TRUE & killall Finder'
 alias hiddenfalse='defaults write com.apple.finder AppleShowAllFiles FALSE & killall Finder'
-
-#Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-
-#K8s
-alias klog='kubectl logs -f --tail 100'
 
 # Make watch work with aliases
 alias watch='watch '
 
-#ZSH suffix aliases
+# ZSH suffix aliases
 alias -s {md,yml,yaml,txt,rst}=nvim
 
-## From https://www.usenix.org/sites/default/files/conference/protected-files/lisa19_maheshwari.pdf
+# Shortcuts
 alias s=ssh
 alias c=clear
 alias cx='chmod +x'
 alias more=less
-alias ps='ps auxf'
-alias psg='ps aux | grep -v grep | grep -i -e USER -e'
-alias myp='ps -fjH -u $USER'
-alias cleanup='rm -f *.tmp *.aux *.log'
-
-## JAVA
-
-alias setJDK8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
-alias setJDK11='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home'
-alias setJDK15='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home'
-
+alias cc=claude
 
 alias brew='arch -arm64 brew'
-
-## misc
-alias taxes='cd /Users/aesadde/Dropbox/Family\ Room/finances/'
-alias cc=claude

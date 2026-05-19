@@ -1,7 +1,6 @@
 # vim: ft=sh
 
 function extract() {
-    # Handy Extract Program - handles most archive formats
     if [[ -f "$1" ]]; then
         case "$1" in
             *.tar.bz2)   tar xvjf "$1"     ;;
@@ -26,95 +25,33 @@ function extract() {
     fi
 }
 
-# Creates an archive (*.tar.gz) from given directory.
 function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
-
-# Create a ZIP archive of a file or folder.
 function makezip() { zip -r "${1%%/}.zip" "$1" ; }
 
-# Make your directories and files access rights sane.
-function sanitize() { chmod -R u=rwX,g=rX,o= "$@" ;}
+function cheat() { curl "cht.sh/$1"; }
 
-# Function calls cht.sh (awesome cheatsheets!)
-function cheat() {
-    curl "cht.sh/$1"
-}
-
-# Install (one or multiple) selected application(s)
-# using "brew search" as source input
-# mnemonic [B]rew [I]nstall [P]lugin
+# Brew helpers with fzf
 bip() {
   local inst=$(brew search | fzf -m)
-
-  if [[ $inst ]]; then
-    for prog in $(echo $inst);
-    do; brew install $prog; done;
-  fi
+  [[ $inst ]] && for prog in $(echo $inst); do brew install $prog; done
 }
 
-# Update (one or multiple) selected application(s)
-# mnemonic [B]rew [U]pdate [P]lugin
 bup() {
   local upd=$(brew leaves | fzf -m)
-
-  if [[ $upd ]]; then
-    for prog in $(echo $upd);
-    do; brew upgrade $prog; done;
-
-  fi
+  [[ $upd ]] && for prog in $(echo $upd); do brew upgrade $prog; done
 }
 
-# Delete (one or multiple) selected application(s)
-# mnemonic [B]rew [C]lean [P]lugin (e.g. uninstall)
 bcp() {
   local uninst=$(brew leaves | fzf -m)
-
-  if [[ $uninst ]]; then
-    for prog in $(echo $uninst);
-    do; brew uninstall $prog; done;
-  fi
+  [[ $uninst ]] && for prog in $(echo $uninst); do brew uninstall $prog; done
 }
 
-# ==[ Kube stuff ]==
-kproxy() {
-# Forward the ports to connect to the akorda proxy
-kubectl port-forward svc/proxy-svc 8080:8080
-}
-
-
-kc() {
-  kubectl config get-contexts | tail -n +2 | fzf | cut -c 2- | awk '{print $1}' | xargs kubectl config use-context
-}
-
-kimage() {
-    kubectl get pod "$1" -n "$2" -o jsonpath='{ .spec.containers[*].image }'
-}
-
-# ==[ MISC ]==
-
-conda_activate() {
-  local selected_env
-  selected_env=$(ls ~/miniconda3/envs | fzf)
-
-  if [ -n "$selected_env" ]; then
-    source activate $selected_env
-  fi
-}
-
-
-
-topcmd() {
-  history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
-}
-
-
-# From https://www.usenix.org/sites/default/files/conference/protected-files/lisa19_maheshwari.pdf
+# Misc
 mcd() { mkdir -p "$1" && cd "$1"; }
 cdl() { cd "$1" && ls; }
 backup() { cp "$1"{,.bak}; }
-gfind() { find / -iname "$@" 2>/dev/null; }
 lfind() { find . -iname "$@" 2>/dev/null; }
-rtfm() { help "$@" || man "$@" || open "http://www.google.com/search?q=$*"; }
+topcmd() { history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head; }
 
 # Fuzzy tmux session switcher
 ts() {
@@ -125,194 +62,7 @@ ts() {
     fi
 }
 
-
-## ==[ 1 Password ]==
-### ref: https://austincloud.guru/2018/11/27/1password-cli-tricks/
-opon() {
-  if [[ -z $OP_SESSION_my ]]; then
-    eval $(op signin my)
-  fi
-}
-
-opoff() {
-  op signout
-  unset OP_SESSION_my
-}
-
-getpwd() {
-  opon
-  op get item "$1" |jq -r '.details.fields[] |select(.designation=="password").value'
-}
-
-## ==[ Jira ]==
-function create_branch() {
-  local jq_template query username password branch_name
-
-  jq_template='"'\ '\(.key). \(.fields.summary)'\ '\t'\ 'Reporter: \(.fields.reporter.displayName)\n'\ '\(.fields.description)'\ '"'
-  query='project=ACM AND assignee=currentUser() AND sprint in openSprints()'
-  username="alberto@akorda.com"
-  password=$(getpwd jira-api)
-
-  branch_name=$(
-    curl \
-      --data-urlencode "jql=$query" \
-      --get \
-      --user "$username:$password" \
-      --silent \
-      --compressed \
-      'https://akorda.atlassian.net/rest/api/3/search' |
-    jq -r '.issues[] | "\(.key)\t\(.fields.issuetype.name)\t\(.fields.summary)"' |
-    fzf |
-    awk '{printf "%s/%s", tolower($2), tolower($1)}' |
-    sed -e 's/story/feat/' -e 's/bug/fix/' -e 's/task/feat/'
-  )
-
-  if [ -n "$branch_name" ]; then
-    git checkout -b "$branch_name"
-  fi
-}
-
-#### TMUX FUNCTIONS
-sdev() {
-  SESSION='dev'
-  kubectl config use-context "dev"
-  tmux new-session -s $SESSION -d
-  tmux new-window -t $SESSION
-  tmux rename-window -t $SESSION proxy-db-connections
-  tmux send-keys -t $SESSION "kproxy" C-m
-  tmux split-window -v
-  tmux send-keys -t $SESSION "kubectl -n dev port-forward svc/cloudsql-proxy 3306:3306" C-m
-  tmux split-window -v
-  tmux send-keys -t $SESSION "kubectl -n qa port-forward svc/cloudsql-proxy 3307:3306" C-m
-  tmux new-window -t $SESSION
-  tmux rename-window -t $SESSION es-connections
-  tmux send-keys -t $SESSION "kubectl -n dev port-forward elasticsearch-master-0 9200:9200" C-m
-  tmux split-window -v
-  tmux send-keys -t $SESSION "kubectl -n qa port-forward elasticsearch-master-0 9300:9200" C-m
-  tmux new-window -t $SESSION
-  tmux rename-window -t $SESSION temporal-connections
-  tmux send-keys -t $SESSION "kubectl port-forward -n default svc/temporal-frontend 7233:7233" C-m
-  tmux new-window -t $SESSION
-  tmux attach -t $SESSION
-}
-
-sprod() {
-  SESSION='prod'
-  kubectl config use-context "prod"
-  tmux new-session -s $SESSION -d
-  tmux new-window -t $SESSION
-  tmux rename-window -t $SESSION connections
-  tmux send-keys -t $SESSION "kproxy" C-m
-  tmux split-window -v
-  tmux send-keys -t $SESSION "kubectl port-forward svc/cloudsql-proxy 3306:3306" C-m
-  tmux split-window -h
-  tmux send-keys -t $SESSION "kubectl port-forward elasticsearch-master-0 9200:9200" C-m
-  tmux new-window -t $SESSION
-  tmux rename-window -t $SESSION temporal-connections
-  tmux send-keys -t $SESSION "kubectl port-forward -n default svc/temporal-prod-sought-satyr-frontend 7233:7233" C-m
-  tmux split-window -v
-  tmux send-keys -t $SESSION "kubectl port-forward -n default svc/temporal-prod-sought-satyr-web 8088:8088" C-m
-  tmux new-window -t $SESSION
-  tmux attach -t $SESSION
-}
-
-start_session() {
-  SESSION=$1
-  if tmux has-session -t $SESSION 2> /dev/null; then
-    tmux attach -t $SESSION
-  elif [ "$SESSION" == "dev" ]; then
-    sdev
-  elif [ "$SESSION" == "prod" ]; then
-    sprod
-  else
-    tmux new-session -s $SESSION -d
-    tmux attach -t $SESSION
-  fi
-}
-
-# -----------------------------------------------------------------------------
-# AI-powered Git Commit Function
-# Copy paste this gist into your ~/.bashrc or ~/.zshrc to gain the `gcm` command. It:
-# 1) gets the current staged changed diff
-# 2) sends them to an LLM to write the git commit message
-# 3) allows you to easily accept, edit, regenerate, cancel
-# But - just read and edit the code however you like
-# the `llm` CLI util is awesome, can get it here: https://llm.datasette.io/en/stable/
-
-gcm() {
-    # Function to generate commit message
-    generate_commit_message() {
-        git diff --cached | llm -m "4o" "
-Below is a diff of all staged changes, coming from the command:
-
-\`\`\`
-git diff --cached
-\`\`\`
-
-Please generate a concise, one-line commit message for these changes using the semantic commit convention prefixes: chore:, fix:, feat:, refactor:, docs:, BREAKING:, etc."
-    }
-
-    # Function to read user input compatibly with both Bash and Zsh
-    read_input() {
-        if [ -n "$ZSH_VERSION" ]; then
-            echo -n "$1"
-            read -r REPLY
-        else
-            read -p "$1" -r REPLY
-        fi
-    }
-
-    # Main script
-    echo "Generating AI-powered commit message..."
-    commit_message=$(generate_commit_message)
-
-    while true; do
-        echo -e "\nProposed commit message:"
-        echo "$commit_message"
-
-        read_input "Do you want to (a)ccept, (e)dit, (r)egenerate, or (c)ancel? "
-        choice=$REPLY
-
-        case "$choice" in
-            a|A )
-                if git commit -m "$commit_message"; then
-                    echo "Changes committed successfully!"
-                    return 0
-                else
-                    echo "Commit failed. Please check your changes and try again."
-                    return 1
-                fi
-                ;;
-            e|E )
-                read_input "Enter your commit message: "
-                commit_message=$REPLY
-                if [ -n "$commit_message" ] && git commit -m "$commit_message"; then
-                    echo "Changes committed successfully with your message!"
-                    return 0
-                else
-                    echo "Commit failed. Please check your message and try again."
-                    return 1
-                fi
-                ;;
-            r|R )
-                echo "Regenerating commit message..."
-                commit_message=$(generate_commit_message)
-                ;;
-            c|C )
-                echo "Commit cancelled."
-                return 1
-                ;;
-            * )
-                echo "Invalid choice. Please try again."
-                ;;
-        esac
-    done
-}
-
-# -----------------------------------------------------------------------------
-# Git Worktree Functions
-
-# Create a new worktree and branch from within current git directory.
+# Git worktree helpers
 gwa() {
   if [[ -z $1 ]]; then
     echo "Usage: gwa [branch name]"
@@ -323,7 +73,6 @@ gwa() {
   local base="$(basename "$PWD")"
   local wt_path="../${base}--${branch}"
 
-  # Check if branch is already checked out in a worktree
   local existing_wt=$(git worktree list --porcelain | grep -B2 "branch refs/heads/$branch$" | grep "^worktree " | cut -d' ' -f2-)
   if [[ -n "$existing_wt" ]]; then
     if [[ -d "$existing_wt" ]]; then
@@ -331,40 +80,73 @@ gwa() {
       cd "$existing_wt"
       return 0
     else
-      # Worktree dir was deleted, prune stale entry
       echo "Pruning stale worktree: $existing_wt"
       git worktree prune
     fi
   fi
 
   if git show-ref --verify --quiet "refs/heads/$branch"; then
-    # Branch exists, check it out
     git worktree add "$wt_path" "$branch"
   else
-    # Branch doesn't exist, create it
     git worktree add -b "$branch" "$wt_path"
   fi
-  mise trust "$wt_path"
+  command -v mise &>/dev/null && mise trust "$wt_path"
   cd "$wt_path"
 }
 
-# Remove worktree and branch from within active worktree directory.
 gwd() {
+  command -v gum &>/dev/null || { echo "gum not installed"; return 1; }
   if gum confirm "Remove worktree and branch?"; then
     local cwd base branch root
-
     cwd="$(pwd)"
     worktree="$(basename "$cwd")"
-
-    # split on first `--`
     root="${worktree%%--*}"
     branch="${worktree#*--}"
-
-    # Protect against accidentally nuking a non-worktree directory
     if [[ $root != $worktree ]]; then
       cd "../$root"
       git worktree remove "$worktree" --force
       git branch -D "$branch"
     fi
   fi
+}
+
+# AI-powered git commit
+gcm() {
+    command -v llm &>/dev/null || { echo "llm not installed"; return 1; }
+
+    generate_commit_message() {
+        git diff --cached | llm -m "4o" "
+Below is a diff of all staged changes, coming from the command:
+\`\`\`
+git diff --cached
+\`\`\`
+Please generate a concise, one-line commit message for these changes using the semantic commit convention prefixes: chore:, fix:, feat:, refactor:, docs:, BREAKING:, etc."
+    }
+
+    read_input() {
+        if [ -n "$ZSH_VERSION" ]; then
+            echo -n "$1"
+            read -r REPLY
+        else
+            read -p "$1" -r REPLY
+        fi
+    }
+
+    echo "Generating AI-powered commit message..."
+    commit_message=$(generate_commit_message)
+
+    while true; do
+        echo -e "\nProposed commit message:"
+        echo "$commit_message"
+        read_input "Do you want to (a)ccept, (e)dit, (r)egenerate, or (c)ancel? "
+        choice=$REPLY
+        case "$choice" in
+            a|A ) git commit -m "$commit_message" && echo "Committed!" && return 0 || return 1 ;;
+            e|E ) read_input "Enter your commit message: "; commit_message=$REPLY
+                  [ -n "$commit_message" ] && git commit -m "$commit_message" && return 0 || return 1 ;;
+            r|R ) echo "Regenerating..."; commit_message=$(generate_commit_message) ;;
+            c|C ) echo "Cancelled."; return 1 ;;
+            * ) echo "Invalid choice." ;;
+        esac
+    done
 }
