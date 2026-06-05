@@ -245,3 +245,9 @@ conda() {
 [[ -f "$HOME/.local/google-cloud-sdk/path.zsh.inc" ]] && source "$HOME/.local/google-cloud-sdk/path.zsh.inc"
 [[ -f "$HOME/.local/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/.local/google-cloud-sdk/completion.zsh.inc"
 #1}}}
+#
+eval "$(try init ~/Dropbox/tries/)"
+
+# Added by Raindrop installer
+export PATH="$HOME/.raindrop/bin:$PATH"
+# End Raindrop installer
