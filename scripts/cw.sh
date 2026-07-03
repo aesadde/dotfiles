@@ -19,10 +19,32 @@ set -e
 SV_REPO="${SV_REPO:-$HOME/repos/supervisible}"
 SV_WT="${SV_WT:-$HOME/repos/sv-worktree}"
 
+# --- resolve the claude CLI robustly --------------------------------------
+# `cw` is a shell alias, so this bash script runs as a child process: it can't
+# see zsh aliases/functions and may inherit a stale PATH or command hash (e.g.
+# right after reinstalling claude). Resolve an absolute path up front, falling
+# back to known install locations, so we never die with a cryptic
+# "exec: claude: not found" — and bail before touching worktrees if it's gone.
+CLAUDE_BIN="$(command -v claude 2>/dev/null || true)"
+if [[ -z "$CLAUDE_BIN" ]]; then
+  for c in \
+    /opt/homebrew/bin/claude \
+    /usr/local/bin/claude \
+    "$HOME/.local/bin/claude" \
+    "$HOME/.claude/local/claude"; do
+    if [[ -x "$c" ]]; then CLAUDE_BIN="$c"; break; fi
+  done
+fi
+if [[ -z "$CLAUDE_BIN" ]]; then
+  echo "cw: could not find the 'claude' CLI on PATH or in known locations." >&2
+  echo "cw: is Claude Code installed? try:  which claude  (in a fresh shell)" >&2
+  exit 127
+fi
+
 # --- stay on main ----------------------------------------------------------
 if [[ "$1" == "--main" || "$1" == "-m" ]]; then
   cd "$SV_REPO"
-  exec claude "${@:2}"
+  exec "$CLAUDE_BIN" "${@:2}"
 fi
 
 # --- parse flags -----------------------------------------------------------
@@ -63,4 +85,4 @@ if [[ -n "$TMUX" ]]; then
   tmux rename-window "$slug" >/dev/null 2>&1
 fi
 
-exec claude "${@:2}"
+exec "$CLAUDE_BIN" "${@:2}"

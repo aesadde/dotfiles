@@ -88,3 +88,5 @@ DerivedData
 *.class
 *.vscode*
 .vim
+
+**/.claude/settings.local.json
